@@ -1,0 +1,3 @@
+acari:
+  mongo:
+    connectionString: mongodb://sandwich:27017
