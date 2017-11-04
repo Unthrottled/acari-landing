@@ -2,6 +2,8 @@ package io.acari.landing;
 
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;
+import com.mongodb.reactivestreams.client.gridfs.GridFSBucket;
+import com.mongodb.reactivestreams.client.gridfs.GridFSBuckets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +34,10 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
   @Override
   protected String getDatabaseName() {
     return "landing";
+  }
+
+  @Bean
+  public GridFSBucket gridFsTemplate(MongoClient reactiveMongoClient) throws Exception {
+    return GridFSBuckets.create(reactiveMongoClient.getDatabase(environment.getProperty("acari.mongo.landingDatabase", "landing")));
   }
 }

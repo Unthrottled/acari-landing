@@ -1,3 +1,4 @@
 acari:
   mongo:
     connectionString: mongodb://sandwich:27017
+    landingDatabase: landing
