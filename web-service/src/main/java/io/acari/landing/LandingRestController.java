@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 public class LandingRestController {
 
     @GetMapping("/")
-    public Mono<String> fetchBase(){
-      return Mono.fromSupplier(()->"Hello Werld!\n");
+    public Mono<String> fetchBase() {
+        return Mono.fromSupplier(() -> "Hello Werld!\n");
     }
 }

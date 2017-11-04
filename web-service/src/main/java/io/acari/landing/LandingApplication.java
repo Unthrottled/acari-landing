@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
 @SpringBootApplication(exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
 public class LandingApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(LandingApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(LandingApplication.class, args);
+    }
 }
