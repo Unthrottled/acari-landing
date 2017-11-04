@@ -10,6 +10,6 @@ public class LandingRestController {
 
     @GetMapping("/")
     public Mono<String> fetchBase() {
-        return Mono.fromSupplier(() -> "Hello Werld!\n");
+        return Mono.just( "Hello Werld!\n");
     }
 }
