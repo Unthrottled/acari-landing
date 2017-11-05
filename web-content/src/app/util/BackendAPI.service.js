@@ -16,10 +16,11 @@ var BackendAPIService = /** @class */ (function () {
         this.http = http;
     }
     BackendAPIService.prototype.postImage = function (formData) {
-        return this.http.request(new http_1.HttpRequest('POST', '/save', formData, {
+        return this.http.post('./api/save', formData, {
             reportProgress: true,
-            responseType: 'text'
-        }));
+            observe: 'events',
+            responseType: 'blob'
+        });
     };
     BackendAPIService = __decorate([
         core_1.Injectable(),

@@ -32,6 +32,7 @@ export class UploadFileComponent {
     }
 
     upload(): void {
-        this.uploadService.pushFileToStorage(this.selectedFile);
+        this.uploadService.pushFileToStorage(this.selectedFile)
+            .subscribe(()=>{}, ()=>{}, ()=> this.selectedFile = null);
     }
 }

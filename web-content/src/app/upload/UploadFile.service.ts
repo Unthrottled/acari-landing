@@ -13,6 +13,6 @@ export class UploadFileService {
         let formData = new FormData();
         formData.append('file', file);
         return this.backendAPIService.postImage(formData)
-            .map((httpEvent: HttpEvent<any>) => httpEvent instanceof HttpResponse);
+            .map((httpEvent: HttpEvent<Blob>) => httpEvent instanceof HttpResponse);
     }
 }

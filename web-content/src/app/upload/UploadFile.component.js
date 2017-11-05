@@ -38,7 +38,9 @@ var UploadFileComponent = /** @class */ (function () {
         configurable: true
     });
     UploadFileComponent.prototype.upload = function () {
-        this.uploadService.pushFileToStorage(this.selectedFile);
+        var _this = this;
+        this.uploadService.pushFileToStorage(this.selectedFile)
+            .subscribe(function () { }, function () { }, function () { return _this.selectedFile = null; });
     };
     UploadFileComponent = __decorate([
         core_1.Component({
