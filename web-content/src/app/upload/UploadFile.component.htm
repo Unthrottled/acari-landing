@@ -2,5 +2,5 @@
     <input type="file" (change)="selectFile($event)"/>
 </label>
 
-<button class="btn btn-success" [disabled]="isUploadable | async"
+<button class="btn btn-success" [hidden]="notUploadable | async"
         (click)="uploadFile()">Upload</button>
