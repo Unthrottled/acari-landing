@@ -6,16 +6,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.multipart.Part;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Objects;
 
 @RestController
+@RequestMapping("/api")
 public class LandingRestController {
   private static final Logger LOGGER = LoggerFactory.getLogger(LandingRestController.class);
 
@@ -27,7 +25,7 @@ public class LandingRestController {
   }
 
 
-  @GetMapping("/")
+  @GetMapping("")
   public Mono<String> fetchBase() {
     return Mono.just("Hello Werld!\n");
   }
