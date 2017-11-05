@@ -1,16 +1,15 @@
-
-
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
+import {BackendAPIService} from "../util/BackendAPI.service";
 
 @Injectable()
 export class UploadFileService {
-    constructor(private http: Http){
+    constructor(private backendAPIService: BackendAPIService) {
 
     }
 
-    pushFileToStorage(file: File){
-
-
+    pushFileToStorage(file: File) {
+        let formData = new FormData();
+        formData.append('file', file);
+        this.backendAPIService.postImage(formData);
     }
 }
