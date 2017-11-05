@@ -11,7 +11,7 @@ export class UploadFileComponent {
     constructor(private uploadService: UploadFileService) {
     }
 
-    private _selectedFiles: any[];
+    private _selectedFiles: any[] = [];
 
     selectFile(event: any): void {
         this.selectedFiles = event.target.files;
