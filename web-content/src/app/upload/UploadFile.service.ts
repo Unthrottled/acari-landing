@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
 import {BackendAPIService} from "../util/BackendAPI.service";
+import {Observable} from "rxjs/Observable";
+import {HttpEvent, HttpResponse} from "@angular/common/http";
 
 @Injectable()
 export class UploadFileService {
@@ -7,9 +9,10 @@ export class UploadFileService {
 
     }
 
-    pushFileToStorage(file: File) {
+    pushFileToStorage(file: File): Observable<boolean> {
         let formData = new FormData();
         formData.append('file', file);
-        this.backendAPIService.postImage(formData);
+        return this.backendAPIService.postImage(formData)
+            .map((httpEvent: HttpEvent<any>) => httpEvent instanceof HttpResponse);
     }
 }

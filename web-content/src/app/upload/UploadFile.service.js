@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../util/BackendAPI.service");
+var http_1 = require("@angular/common/http");
 var UploadFileService = /** @class */ (function () {
     function UploadFileService(backendAPIService) {
         this.backendAPIService = backendAPIService;
@@ -18,7 +19,8 @@ var UploadFileService = /** @class */ (function () {
     UploadFileService.prototype.pushFileToStorage = function (file) {
         var formData = new FormData();
         formData.append('file', file);
-        this.backendAPIService.postImage(formData);
+        return this.backendAPIService.postImage(formData)
+            .map(function (httpEvent) { return httpEvent instanceof http_1.HttpResponse; });
     };
     UploadFileService = __decorate([
         core_1.Injectable(),

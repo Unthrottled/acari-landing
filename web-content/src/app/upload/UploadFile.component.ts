@@ -12,18 +12,18 @@ export class UploadFileComponent {
     constructor(private uploadService: UploadFileService) {
     }
 
-    private _selectedFile: any;
+    private _selectedFile: File;
 
     selectFile(event: any): void {
         this.selectedFile = event.target.files.item(0);
     }
 
 
-    get selectedFile(): any {
+    get selectedFile(): File {
         return this._selectedFile;
     }
 
-    set selectedFile(value: any) {
+    set selectedFile(value: File) {
         this._selectedFile = value;
     }
 
@@ -32,7 +32,6 @@ export class UploadFileComponent {
     }
 
     upload(): void {
-        // this.selectedFile
-        //     .map()
+        this.uploadService.pushFileToStorage(this.selectedFile);
     }
 }

@@ -18,28 +18,27 @@ var UploadFileComponent = /** @class */ (function () {
         this.uploadService = uploadService;
     }
     UploadFileComponent.prototype.selectFile = function (event) {
-        this.selectedFiles = event.target.files.item(0);
+        this.selectedFile = event.target.files.item(0);
     };
-    Object.defineProperty(UploadFileComponent.prototype, "selectedFiles", {
+    Object.defineProperty(UploadFileComponent.prototype, "selectedFile", {
         get: function () {
-            return this._selectedFiles;
+            return this._selectedFile;
         },
         set: function (value) {
-            this._selectedFiles = value;
+            this._selectedFile = value;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(UploadFileComponent.prototype, "notUploadable", {
         get: function () {
-            return Observable_1.Observable.of(util_1.isNullOrUndefined(this.selectedFiles));
+            return Observable_1.Observable.of(util_1.isNullOrUndefined(this.selectedFile));
         },
         enumerable: true,
         configurable: true
     });
     UploadFileComponent.prototype.upload = function () {
-        // this.selectedFiles
-        //     .map()
+        this.uploadService.pushFileToStorage(this.selectedFile);
     };
     UploadFileComponent = __decorate([
         core_1.Component({
