@@ -12,27 +12,27 @@ export class UploadFileComponent {
     constructor(private uploadService: UploadFileService) {
     }
 
-    private _selectedFiles: any;
+    private _selectedFile: any;
 
     selectFile(event: any): void {
-        this.selectedFiles = event.target.files.item(0);
+        this.selectedFile = event.target.files.item(0);
     }
 
 
-    get selectedFiles(): any {
-        return this._selectedFiles;
+    get selectedFile(): any {
+        return this._selectedFile;
     }
 
-    set selectedFiles(value: any) {
-        this._selectedFiles = value;
+    set selectedFile(value: any) {
+        this._selectedFile = value;
     }
 
     get notUploadable(): Observable<boolean>{
-        return Observable.of(isNullOrUndefined(this.selectedFiles));
+        return Observable.of(isNullOrUndefined(this.selectedFile));
     }
 
     upload(): void {
-        // this.selectedFiles
+        // this.selectedFile
         //     .map()
     }
 }
