@@ -1,0 +1,6 @@
+<label class="btn btn-lg btn-default">
+    <input type="file" (change)="selectFile($event)"/>
+</label>
+
+<button class="btn btn-success" [disabled]="isUploadable | async"
+        (click)="uploadFile()">Upload</button>
