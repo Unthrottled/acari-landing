@@ -1,6 +1,5 @@
 package io.acari.landing;
 
-import com.mongodb.gridfs.GridFS;
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;
 import com.mongodb.reactivestreams.client.gridfs.GridFSBucket;
