@@ -1,4 +1,4 @@
-export class ProjecRank {
+export class ProjectRank {
     private _rank: number;
 
 
