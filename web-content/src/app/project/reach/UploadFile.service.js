@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var BackendAPI_service_1 = require("../util/BackendAPI.service");
+var BackendAPI_service_1 = require("../../util/BackendAPI.service");
 var http_1 = require("@angular/common/http");
 var UploadFileService = /** @class */ (function () {
     function UploadFileService(backendAPIService) {

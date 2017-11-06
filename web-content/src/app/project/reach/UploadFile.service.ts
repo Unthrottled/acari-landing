@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {BackendAPIService} from "../util/BackendAPI.service";
+import {BackendAPIService} from "../../util/BackendAPI.service";
 import {Observable} from "rxjs/Observable";
 import {HttpEvent, HttpResponse} from "@angular/common/http";
 
