@@ -2,11 +2,13 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {ProjectUploadService} from "./ProjectUpload.service";
 import {isNullOrUndefined} from "util";
+import {Project} from "../Project.model";
 @Component({
     selector: 'project-upload',
     template: require('./ProjectUpload.component.htm')
 })
 export class ProjectUploadComponent {
+
 
     @Output()
     private fileSelectedEmitter = new EventEmitter<File>();
@@ -34,8 +36,12 @@ export class ProjectUploadComponent {
         return Observable.of(isNullOrUndefined(this.selectedFile));
     }
 
+    get project(): Project {
+        return new Project();
+    }
+
     upload(): void {
-        this.uploadFileService.pushFileToStorage(this.selectedFile)
+        this.uploadFileService.pushFileToStorage(this.project)
             .subscribe(()=>{}, ()=>{}, ()=> this.selectedFile = null);
     }
 }
