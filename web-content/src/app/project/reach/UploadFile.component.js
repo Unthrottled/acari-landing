@@ -10,15 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var Observable_1 = require("rxjs/Observable");
-var UploadFile_service_1 = require("./UploadFile.service");
-var util_1 = require("util");
 var UploadFileComponent = /** @class */ (function () {
-    function UploadFileComponent(uploadService) {
-        this.uploadService = uploadService;
+    function UploadFileComponent() {
+        this.fileSelectedEmitter = new core_1.EventEmitter();
     }
     UploadFileComponent.prototype.selectFile = function (event) {
         this.selectedFile = event.target.files.item(0);
+        this.fileSelectedEmitter.emit(this.selectedFile);
     };
     Object.defineProperty(UploadFileComponent.prototype, "selectedFile", {
         get: function () {
@@ -30,24 +28,16 @@ var UploadFileComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(UploadFileComponent.prototype, "notUploadable", {
-        get: function () {
-            return Observable_1.Observable.of(util_1.isNullOrUndefined(this.selectedFile));
-        },
-        enumerable: true,
-        configurable: true
-    });
-    UploadFileComponent.prototype.upload = function () {
-        var _this = this;
-        this.uploadService.pushFileToStorage(this.selectedFile)
-            .subscribe(function () { }, function () { }, function () { return _this.selectedFile = null; });
-    };
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], UploadFileComponent.prototype, "fileSelectedEmitter", void 0);
     UploadFileComponent = __decorate([
         core_1.Component({
             selector: 'file-upload',
             template: require('./UploadFile.component.htm')
         }),
-        __metadata("design:paramtypes", [UploadFile_service_1.UploadFileService])
+        __metadata("design:paramtypes", [])
     ], UploadFileComponent);
     return UploadFileComponent;
 }());

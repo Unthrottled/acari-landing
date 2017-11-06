@@ -1,5 +1,5 @@
 import {UploadFileComponent} from "./reach/UploadFile.component";
-import {UploadFileService} from "./reach/UploadFile.service";
+import {ProjectUploadService} from "./upload/ProjectUpload.service";
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 
@@ -11,7 +11,7 @@ import {CommonModule} from "@angular/common";
     ],
     bootstrap: [],
     providers: [
-        UploadFileService
+        ProjectUploadService
     ]
 })
 export class ProjectModule {

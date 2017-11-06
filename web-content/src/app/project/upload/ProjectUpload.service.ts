@@ -4,7 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {HttpEvent, HttpResponse} from "@angular/common/http";
 
 @Injectable()
-export class UploadFileService {
+export class ProjectUploadService {
     constructor(private backendAPIService: BackendAPIService) {
 
     }

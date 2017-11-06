@@ -12,21 +12,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../../util/BackendAPI.service");
 var http_1 = require("@angular/common/http");
-var UploadFileService = /** @class */ (function () {
-    function UploadFileService(backendAPIService) {
+var ProjectUploadService = /** @class */ (function () {
+    function ProjectUploadService(backendAPIService) {
         this.backendAPIService = backendAPIService;
     }
-    UploadFileService.prototype.pushFileToStorage = function (file) {
+    ProjectUploadService.prototype.pushFileToStorage = function (file) {
         var formData = new FormData();
         formData.append('file', file);
         return this.backendAPIService.postImage(formData)
             .map(function (httpEvent) { return httpEvent instanceof http_1.HttpResponse; });
     };
-    UploadFileService = __decorate([
+    ProjectUploadService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService])
-    ], UploadFileService);
-    return UploadFileService;
+    ], ProjectUploadService);
+    return ProjectUploadService;
 }());
-exports.UploadFileService = UploadFileService;
-//# sourceMappingURL=UploadFile.service.js.map
+exports.ProjectUploadService = ProjectUploadService;
+//# sourceMappingURL=ProjectUpload.service.js.map
