@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {UploadFileService} from "./UploadFile.service";
 import {isNullOrUndefined} from "util";
@@ -8,6 +8,8 @@ import {isNullOrUndefined} from "util";
 })
 export class UploadFileComponent {
 
+    @Output()
+    private fileSelectedEmitter = new EventEmitter<File>();
 
     constructor(private uploadService: UploadFileService) {
     }
@@ -16,6 +18,7 @@ export class UploadFileComponent {
 
     selectFile(event: any): void {
         this.selectedFile = event.target.files.item(0);
+        this.fileSelectedEmitter.emit(this.selectedFile);
     }
 
 
