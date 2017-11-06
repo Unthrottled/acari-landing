@@ -1,5 +1,5 @@
-import {UploadFileComponent} from "../upload/UploadFile.component";
-import {UploadFileService} from "../upload/UploadFile.service";
+import {UploadFileComponent} from "./reach/UploadFile.component";
+import {UploadFileService} from "./reach/UploadFile.service";
 import {NgModule} from "@angular/core";
 
 @NgModule({
