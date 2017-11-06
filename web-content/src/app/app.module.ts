@@ -10,6 +10,7 @@ import {UploadFileService} from "./upload/UploadFile.service";
 import {UploadFileComponent} from "./upload/UploadFile.component";
 import {BackendAPIService} from "./util/BackendAPI.service";
 import {HttpClientModule} from "@angular/common/http";
+import {ProjectModule} from "./project/Project.module";
 
 
 @NgModule({
@@ -18,18 +19,17 @@ import {HttpClientModule} from "@angular/common/http";
         FormsModule,
         HttpModule,
         HttpClientModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        ProjectModule
     ],
     exports: [
         RouterModule
     ],
     declarations: [
-        AppComponent,
-        UploadFileComponent
+        AppComponent
     ],
     bootstrap: [AppComponent],
     providers: [
-        UploadFileService,
         BackendAPIService
     ]
 })
