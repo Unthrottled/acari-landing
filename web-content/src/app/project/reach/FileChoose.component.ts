@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 @Component({
     selector: 'file-upload',
-    template: require('./UploadFile.component.htm')
+    template: require('./FileChoose.component.htm')
 })
 export class UploadFileComponent {
 

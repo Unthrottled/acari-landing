@@ -35,11 +35,11 @@ var UploadFileComponent = /** @class */ (function () {
     UploadFileComponent = __decorate([
         core_1.Component({
             selector: 'file-upload',
-            template: require('./UploadFile.component.htm')
+            template: require('./FileChoose.component.htm')
         }),
         __metadata("design:paramtypes", [])
     ], UploadFileComponent);
     return UploadFileComponent;
 }());
 exports.UploadFileComponent = UploadFileComponent;
-//# sourceMappingURL=UploadFile.component.js.map
+//# sourceMappingURL=FileChoose.component.js.map
