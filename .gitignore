@@ -69,3 +69,4 @@ nbdist/
 .nb-gradle/
 
 *.sh
+web-content/dist
