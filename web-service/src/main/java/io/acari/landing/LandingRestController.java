@@ -1,19 +1,14 @@
 package io.acari.landing;
 
 
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.codec.multipart.FormFieldPart;
-import org.springframework.http.codec.multipart.Part;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api")
@@ -41,9 +36,7 @@ public class LandingRestController {
       MediaType.APPLICATION_FORM_URLENCODED_VALUE,
 
   })
-  Mono<Boolean> createEntry(@RequestPart MultipartFile file) {
-    return Mono.just(true);
-//    return imageHandler.saveImage(partFlux)
-//        .all(Objects::nonNull);
+  Mono<String> createEntry(@RequestPart MultipartFile file) {
+    return imageHandler.saveImage(file);
   }
 }
