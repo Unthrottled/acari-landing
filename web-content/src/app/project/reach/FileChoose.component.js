@@ -10,15 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var UploadFileComponent = /** @class */ (function () {
-    function UploadFileComponent() {
+var FileChooseComponent = /** @class */ (function () {
+    function FileChooseComponent() {
         this.fileSelectedEmitter = new core_1.EventEmitter();
     }
-    UploadFileComponent.prototype.selectFile = function (event) {
+    FileChooseComponent.prototype.selectFile = function (event) {
         this.selectedFile = event.target.files.item(0);
         this.fileSelectedEmitter.emit(this.selectedFile);
     };
-    Object.defineProperty(UploadFileComponent.prototype, "selectedFile", {
+    Object.defineProperty(FileChooseComponent.prototype, "selectedFile", {
         get: function () {
             return this._selectedFile;
         },
@@ -31,15 +31,15 @@ var UploadFileComponent = /** @class */ (function () {
     __decorate([
         core_1.Output(),
         __metadata("design:type", Object)
-    ], UploadFileComponent.prototype, "fileSelectedEmitter", void 0);
-    UploadFileComponent = __decorate([
+    ], FileChooseComponent.prototype, "fileSelectedEmitter", void 0);
+    FileChooseComponent = __decorate([
         core_1.Component({
-            selector: 'file-upload',
+            selector: 'file-choose',
             template: require('./FileChoose.component.htm')
         }),
         __metadata("design:paramtypes", [])
-    ], UploadFileComponent);
-    return UploadFileComponent;
+    ], FileChooseComponent);
+    return FileChooseComponent;
 }());
-exports.UploadFileComponent = UploadFileComponent;
+exports.FileChooseComponent = FileChooseComponent;
 //# sourceMappingURL=FileChoose.component.js.map
