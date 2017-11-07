@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Project} from "../Project.model";
+
 @Component({
     selector: 'project-creation',
     template: require('./ProjectCreation.component.htm')
@@ -8,14 +9,23 @@ import {Project} from "../Project.model";
 export class ProjectCreationComponent {
 
     private _excerpt: string = 'I did a thing';
-    private _description: string = 'The thing is pretty kewl';
 
-    fileChosen(chosenFile: File): void{
-
+    get excerpt(): string {
+        return this._excerpt;
     }
 
-    fileUploaded(success: boolean){
+    set excerpt(value: string) {
+        this._excerpt = value;
+    }
 
+    private _description: string = 'The thing is pretty kewl';
+
+    get description(): string {
+        return this._description;
+    }
+
+    set description(value: string) {
+        this._description = value;
     }
 
     get notUploadable(): Observable<boolean> {
@@ -26,20 +36,11 @@ export class ProjectCreationComponent {
         return new Project();
     }
 
+    fileChosen(chosenFile: File): void {
 
-    get excerpt(): string {
-        return this._excerpt;
     }
 
-    set excerpt(value: string) {
-        this._excerpt = value;
-    }
+    fileUploaded(success: boolean) {
 
-    get description(): string {
-        return this._description;
-    }
-
-    set description(value: string) {
-        this._description = value;
     }
 }
