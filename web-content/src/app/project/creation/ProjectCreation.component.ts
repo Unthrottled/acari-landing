@@ -7,6 +7,9 @@ import {Project} from "../Project.model";
 })
 export class ProjectCreationComponent {
 
+    private _excerpt: string = 'I did a thing';
+    private _description: string = 'The thing is pretty kewl';
+
     fileChosen(chosenFile: File): void{
 
     }
@@ -23,4 +26,20 @@ export class ProjectCreationComponent {
         return new Project();
     }
 
+
+    get excerpt(): string {
+        return this._excerpt;
+    }
+
+    set excerpt(value: string) {
+        this._excerpt = value;
+    }
+
+    get description(): string {
+        return this._description;
+    }
+
+    set description(value: string) {
+        this._description = value;
+    }
 }
