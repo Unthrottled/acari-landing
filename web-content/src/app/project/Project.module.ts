@@ -6,7 +6,7 @@ import {ProjectCreationComponent} from "./creation/ProjectCreation.component";
 
 @NgModule({
     imports: [CommonModule],
-    exports: [UploadFileComponent],
+    exports: [UploadFileComponent, ProjectCreationComponent],
     declarations: [
         UploadFileComponent,
         ProjectCreationComponent
