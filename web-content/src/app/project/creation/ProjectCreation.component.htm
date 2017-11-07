@@ -1,3 +1,7 @@
 <div class="app-container">
     <file-choose (fileSelectedEmitter)="fileChosen($event)"></file-choose>
+    <project-upload
+            [notUploadable]="notUploadable"
+            [project]="project"
+            (uploadSuccess)="fileUploaded($event)"></project-upload>
 </div>

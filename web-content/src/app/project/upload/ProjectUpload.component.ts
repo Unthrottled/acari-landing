@@ -10,7 +10,7 @@ import {Project} from "../Project.model";
 export class ProjectUploadComponent {
 
     @Output()
-    private uploadSuccessEmitter = new EventEmitter<boolean>();
+    private uploadSuccess = new EventEmitter<boolean>();
 
     constructor(private uploadFileService: ProjectUploadService) {
     }
@@ -40,7 +40,7 @@ export class ProjectUploadComponent {
     upload(): void {
         this.uploadFileService.pushFileToStorage(this._project)
             .subscribe(() => {
-                }, () => this.uploadSuccessEmitter.emit(false)
-                , () => this.uploadSuccessEmitter.emit(true));
+                }, () => this.uploadSuccess.emit(false)
+                , () => this.uploadSuccess.emit(true));
     }
 }
