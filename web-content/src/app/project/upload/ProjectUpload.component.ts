@@ -1,47 +1,46 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {ProjectUploadService} from "./ProjectUpload.service";
-import {isNullOrUndefined} from "util";
 import {Project} from "../Project.model";
+
 @Component({
     selector: 'project-upload',
     template: require('./ProjectUpload.component.htm')
 })
 export class ProjectUploadComponent {
 
-
     @Output()
-    private fileSelectedEmitter = new EventEmitter<File>();
+    private uploadSuccessEmitter = new EventEmitter<boolean>();
 
     constructor(private uploadFileService: ProjectUploadService) {
     }
 
-    private _selectedFile: File;
+    private _notUploadable: Observable<boolean> = Observable.of(true);
 
-    selectFile(event: any): void {
-        this.selectedFile = event.target.files.item(0);
-        this.fileSelectedEmitter.emit(this.selectedFile);
+    @Input()
+    get notUploadable(): Observable<boolean> {
+        return this._notUploadable;
     }
 
-
-    get selectedFile(): File {
-        return this._selectedFile;
+    set notUploadable(value: Observable<boolean>) {
+        this._notUploadable = value;
     }
 
-    set selectedFile(value: File) {
-        this._selectedFile = value;
-    }
+    private _project: Project;
 
-    get notUploadable(): Observable<boolean>{
-        return Observable.of(isNullOrUndefined(this.selectedFile));
-    }
-
+    @Input()
     get project(): Project {
-        return new Project();
+        return this._project;
+    }
+
+    set project(value: Project) {
+        this._project = value;
     }
 
     upload(): void {
-        this.uploadFileService.pushFileToStorage(this.project)
-            .subscribe(()=>{}, ()=>{}, ()=> this.selectedFile = null);
+        this.uploadFileService.pushFileToStorage(this._project)
+            .subscribe(() => {
+                }, () => this.uploadSuccessEmitter.emit(false)
+                , () => this.uploadSuccessEmitter.emit(true));
     }
 }
