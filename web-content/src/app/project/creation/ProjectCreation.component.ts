@@ -5,5 +5,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 })
 export class ProjectCreationComponent {
 
+    fileChosen(chosenFile: File): void{
 
+    }
 }
