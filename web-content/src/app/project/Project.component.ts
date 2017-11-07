@@ -20,7 +20,7 @@ export class UploadFileComponent {
     }
 
 
-    get selectedReach(): Blob {
-        return this._project.selectedReach;
+    get reachImage(): Blob {
+        return this._project.reachBlob;
     }
 }

@@ -10,4 +10,9 @@ export class Project {
     background: Background;
     description: Description;
     location: Location;
+
+
+    get reachBlob(): Blob {
+        return this.selectedReach.rawFile;
+    }
 }
