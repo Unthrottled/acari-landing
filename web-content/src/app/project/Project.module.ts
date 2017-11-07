@@ -1,23 +1,23 @@
 import {FileChooseComponent} from "./reach/FileChoose.component";
 import {ProjectUploadService} from "./upload/ProjectUpload.service";
-import {NgModule, NO_ERRORS_SCHEMA} from "@angular/core";
+import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {ProjectCreationComponent} from "./creation/ProjectCreation.component";
+import {ProjectUploadComponent} from "./upload/ProjectUpload.component";
 
 @NgModule({
     imports: [CommonModule],
-    exports: [FileChooseComponent, ProjectCreationComponent],
+    exports: [FileChooseComponent, ProjectCreationComponent, ProjectUploadComponent],
     declarations: [
         FileChooseComponent,
-        ProjectCreationComponent
+        ProjectCreationComponent,
+        ProjectUploadComponent
     ],
     bootstrap: [],
     providers: [
         ProjectUploadService
     ],
-    schemas: [
-        NO_ERRORS_SCHEMA
-    ]
+    schemas: []
 })
 export class ProjectModule {
 }

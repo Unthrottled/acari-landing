@@ -16,7 +16,7 @@ export class ProjectCreationComponent {
     }
 
     get notUploadable(): Observable<boolean> {
-        return Observable.of(false);
+        return Observable.of(true);
     }
 
     get project(): Project {
