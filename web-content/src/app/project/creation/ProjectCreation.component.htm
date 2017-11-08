@@ -2,6 +2,7 @@
     <file-choose (fileSelectedEmitter)="fileChosen($event)"></file-choose>
     <text-entry [(textValue)]="excerpt"></text-entry>
     <text-entry [(textValue)]="description"></text-entry>
+    <input type="number" value="{{maxProjectCount | async}}" min="1" max="{{maxProjectCount | async}}"/>
     <project-upload
             [notUploadable]="notUploadable"
             [project]="project"

@@ -7,6 +7,7 @@ import {ProjectUploadComponent} from "./upload/ProjectUpload.component";
 import {TextEntryComponent} from "./textEntry/TextEntry.component";
 import {FormsModule} from "@angular/forms";
 import {ProjectViewComponent} from "./view/ProjectView.component";
+import {ProjectService} from "./Project.service";
 
 @NgModule({
     imports: [CommonModule, FormsModule],
@@ -24,7 +25,8 @@ import {ProjectViewComponent} from "./view/ProjectView.component";
     ],
     bootstrap: [],
     providers: [
-        ProjectUploadService
+        ProjectUploadService,
+        ProjectService
     ],
     schemas: []
 })

@@ -2,12 +2,18 @@ import {Component} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Project} from "../Project.model";
 import {Description} from "../Description.model";
+import {ProjectService} from "../Project.service";
 
 @Component({
     selector: 'project-creation',
     template: require('./ProjectCreation.component.htm')
 })
 export class ProjectCreationComponent {
+
+
+    constructor(private projectService: ProjectService) {
+
+    }
 
     private _excerpt: string = 'I did a thing';
 
@@ -47,5 +53,11 @@ export class ProjectCreationComponent {
 
     fileUploaded(success: boolean) {
 
+    }
+
+    get maxProjectCount(): Observable<number> {
+        return this.projectService
+            .projectCount()
+            .map(count=>++count);
     }
 }

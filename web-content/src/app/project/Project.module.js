@@ -15,6 +15,7 @@ var ProjectUpload_component_1 = require("./upload/ProjectUpload.component");
 var TextEntry_component_1 = require("./textEntry/TextEntry.component");
 var forms_1 = require("@angular/forms");
 var ProjectView_component_1 = require("./view/ProjectView.component");
+var Project_service_1 = require("./Project.service");
 var ProjectModule = /** @class */ (function () {
     function ProjectModule() {
     }
@@ -35,7 +36,8 @@ var ProjectModule = /** @class */ (function () {
             ],
             bootstrap: [],
             providers: [
-                ProjectUpload_service_1.ProjectUploadService
+                ProjectUpload_service_1.ProjectUploadService,
+                Project_service_1.ProjectService
             ],
             schemas: []
         })
