@@ -15,6 +15,7 @@ var Project_model_1 = require("../Project.model");
 var Description_model_1 = require("../Description.model");
 var Project_service_1 = require("../Project.service");
 var Reach_model_1 = require("../Reach.model");
+var Background_model_1 = require("../Background.model");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService) {
         this.projectService = projectService;
@@ -71,11 +72,14 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "project", {
         get: function () {
-            return new Project_model_1.Project(this.buildDescription(), this.buildReachBlob());
+            return new Project_model_1.Project(this.buildDescription(), this.buildReachBlob(), this.buildBackground());
         },
         enumerable: true,
         configurable: true
     });
+    ProjectCreationComponent.prototype.buildBackground = function () {
+        return new Background_model_1.Background(null, 'purple', 'cyan');
+    };
     ProjectCreationComponent.prototype.buildReachBlob = function () {
         return new Reach_model_1.Reach(this.reachBlob);
     };

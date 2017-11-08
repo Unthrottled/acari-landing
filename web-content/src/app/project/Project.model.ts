@@ -12,9 +12,10 @@ export class Project {
     private _location: Location;
 
 
-    constructor(description: Description, reach: Reach) {
+    constructor(description: Description, reach: Reach, background: Background) {
         this._description = description;
         this._selectedReach = reach;
+        this._background = background;
     }
 
     get preachySpeechy(): string{
@@ -33,5 +34,9 @@ export class Project {
 
     get reachFile(): File {
         return this._selectedReach.selectedFile;
+    }
+
+    get colorOne(): string{
+        return this._background.colorOne;
     }
 }

@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Project} from "../Project.model";
+import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 
 @Component({
     selector: 'project-view',
@@ -7,8 +8,10 @@ import {Project} from "../Project.model";
 })
 export class ProjectViewComponent {
 
-    private _project: Project;
+    constructor(private sanitizer: DomSanitizer) {
+    }
 
+    private _project: Project;
 
     @Input()
     get project(): Project {
@@ -30,5 +33,13 @@ export class ProjectViewComponent {
 
     get reachBinary(): any {
         return this.project.reachBlob;
+    }
+
+
+    get backgroundStyle(): SafeStyle {
+        let rgba = this.project.colorOne;
+        let safeStyle = this.sanitizer.bypassSecurityTrustStyle("-webkit-linear-gradient(left, rgba(0, 0, 0, 0)");
+        console.log(safeStyle);
+        return safeStyle;
     }
 }

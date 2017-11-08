@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Project = /** @class */ (function () {
-    function Project(description, reach) {
+    function Project(description, reach, background) {
         this._description = description;
         this._selectedReach = reach;
+        this._background = background;
     }
     Object.defineProperty(Project.prototype, "preachySpeechy", {
         get: function () {
@@ -29,6 +30,13 @@ var Project = /** @class */ (function () {
     Object.defineProperty(Project.prototype, "reachFile", {
         get: function () {
             return this._selectedReach.selectedFile;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "colorOne", {
+        get: function () {
+            return this._background.colorOne;
         },
         enumerable: true,
         configurable: true
