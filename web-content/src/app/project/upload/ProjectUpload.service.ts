@@ -12,7 +12,7 @@ export class ProjectUploadService {
 
     pushFileToStorage(projectToUpload: Project): Observable<boolean> {
         let formData = new FormData();
-        formData.append('reach', projectToUpload.selectedReach.selectedFile);
+        formData.append('reach', projectToUpload.reachFile);
         return this.backendAPIService.postImage(formData)
             .map((httpEvent: HttpEvent<Blob>) => httpEvent instanceof HttpResponse);
     }

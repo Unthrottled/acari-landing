@@ -14,6 +14,7 @@ var ProjectCreation_component_1 = require("./creation/ProjectCreation.component"
 var ProjectUpload_component_1 = require("./upload/ProjectUpload.component");
 var TextEntry_component_1 = require("./textEntry/TextEntry.component");
 var forms_1 = require("@angular/forms");
+var ProjectView_component_1 = require("./view/ProjectView.component");
 var ProjectModule = /** @class */ (function () {
     function ProjectModule() {
     }
@@ -23,10 +24,12 @@ var ProjectModule = /** @class */ (function () {
             exports: [FileChoose_component_1.FileChooseComponent,
                 ProjectCreation_component_1.ProjectCreationComponent,
                 ProjectUpload_component_1.ProjectUploadComponent,
+                ProjectView_component_1.ProjectViewComponent,
                 TextEntry_component_1.TextEntryComponent],
             declarations: [
                 FileChoose_component_1.FileChooseComponent,
                 ProjectCreation_component_1.ProjectCreationComponent,
+                ProjectView_component_1.ProjectViewComponent,
                 ProjectUpload_component_1.ProjectUploadComponent,
                 TextEntry_component_1.TextEntryComponent
             ],

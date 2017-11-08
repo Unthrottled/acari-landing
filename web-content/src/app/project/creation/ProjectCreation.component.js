@@ -9,29 +9,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
 var Project_model_1 = require("../Project.model");
+var Description_model_1 = require("../Description.model");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent() {
         this._excerpt = 'I did a thing';
         this._description = 'The thing is pretty kewl';
     }
-    ProjectCreationComponent.prototype.fileChosen = function (chosenFile) {
-    };
-    ProjectCreationComponent.prototype.fileUploaded = function (success) {
-    };
-    Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {
-        get: function () {
-            return Observable_1.Observable.of(true);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(ProjectCreationComponent.prototype, "project", {
-        get: function () {
-            return new Project_model_1.Project();
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(ProjectCreationComponent.prototype, "excerpt", {
         get: function () {
             return this._excerpt;
@@ -52,6 +35,27 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {
+        get: function () {
+            return Observable_1.Observable.of(true);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ProjectCreationComponent.prototype, "project", {
+        get: function () {
+            return new Project_model_1.Project(this.buildDescription());
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ProjectCreationComponent.prototype.buildDescription = function () {
+        return new Description_model_1.Description(this.excerpt, this.description);
+    };
+    ProjectCreationComponent.prototype.fileChosen = function (chosenFile) {
+    };
+    ProjectCreationComponent.prototype.fileUploaded = function (success) {
+    };
     ProjectCreationComponent = __decorate([
         core_1.Component({
             selector: 'project-creation',

@@ -18,7 +18,7 @@ var ProjectUploadService = /** @class */ (function () {
     }
     ProjectUploadService.prototype.pushFileToStorage = function (projectToUpload) {
         var formData = new FormData();
-        formData.append('reach', projectToUpload.selectedReach.selectedFile);
+        formData.append('reach', projectToUpload.reachFile);
         return this.backendAPIService.postImage(formData)
             .map(function (httpEvent) { return httpEvent instanceof http_1.HttpResponse; });
     };
