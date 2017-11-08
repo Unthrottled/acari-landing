@@ -38,6 +38,13 @@ var ProjectViewComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ProjectViewComponent.prototype, "reachBinary", {
+        get: function () {
+            return this.project.reachBlob;
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),

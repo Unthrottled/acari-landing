@@ -1,9 +1,9 @@
 export class Reach {
     private _reachId: string;
-    private _rawFile: Blob;
+    private _rawFile: any;
     private _selectedFile: File;
-    constructor(reachId: string) {
-        this._reachId = reachId;
+    constructor(reachBinary: any) {
+        this._rawFile = reachBinary;
     }
 
 
@@ -16,11 +16,11 @@ export class Reach {
         this._reachId = value;
     }
 
-    get rawFile(): Blob {
+    get rawFile(): any {
         return this._rawFile;
     }
 
-    set rawFile(value: Blob) {
+    set rawFile(value: any) {
         this._rawFile = value;
     }
 

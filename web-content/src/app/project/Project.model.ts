@@ -12,8 +12,9 @@ export class Project {
     private _location: Location;
 
 
-    constructor(description: Description) {
+    constructor(description: Description, reach: Reach) {
         this._description = description;
+        this._selectedReach = reach;
     }
 
     get preachySpeechy(): string{
@@ -26,7 +27,7 @@ export class Project {
     }
 
 
-    get reachBlob(): Blob {
+    get reachBlob(): any {
         return this._selectedReach.rawFile;
     }
 

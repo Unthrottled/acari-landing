@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Project = /** @class */ (function () {
-    function Project(description) {
+    function Project(description, reach) {
         this._description = description;
+        this._selectedReach = reach;
     }
     Object.defineProperty(Project.prototype, "preachySpeechy", {
         get: function () {

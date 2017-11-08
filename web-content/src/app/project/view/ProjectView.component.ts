@@ -27,4 +27,8 @@ export class ProjectViewComponent {
     get excerpt(): string {
         return this.project.excerpt;
     }
+
+    get reachBinary(): any {
+        return this.project.reachBlob;
+    }
 }

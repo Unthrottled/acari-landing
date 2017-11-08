@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Reach = /** @class */ (function () {
-    function Reach(reachId) {
-        this._reachId = reachId;
+    function Reach(reachBinary) {
+        this._rawFile = reachBinary;
     }
     Object.defineProperty(Reach.prototype, "reachId", {
         get: function () {
