@@ -24,6 +24,20 @@ var ProjectViewComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ProjectViewComponent.prototype, "description", {
+        get: function () {
+            return this._project.preachySpeechy;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ProjectViewComponent.prototype, "excerpt", {
+        get: function () {
+            return this.project.excerpt;
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),

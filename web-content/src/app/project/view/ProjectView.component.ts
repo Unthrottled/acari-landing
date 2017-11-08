@@ -18,4 +18,13 @@ export class ProjectViewComponent {
     set project(value: Project) {
         this._project = value;
     }
+
+    get description(): string {
+        return this._project.preachySpeechy;
+    }
+
+
+    get excerpt(): string {
+        return this.project.excerpt;
+    }
 }

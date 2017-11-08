@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
 var Project_model_1 = require("../Project.model");
+var Description_model_1 = require("../Description.model");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent() {
         this._excerpt = 'I did a thing';
@@ -43,11 +44,14 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "project", {
         get: function () {
-            return new Project_model_1.Project();
+            return new Project_model_1.Project(this.buildDescription());
         },
         enumerable: true,
         configurable: true
     });
+    ProjectCreationComponent.prototype.buildDescription = function () {
+        return new Description_model_1.Description(this.excerpt, this.description);
+    };
     ProjectCreationComponent.prototype.fileChosen = function (chosenFile) {
     };
     ProjectCreationComponent.prototype.fileUploaded = function (success) {

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Project} from "../Project.model";
+import {Description} from "../Description.model";
 
 @Component({
     selector: 'project-creation',
@@ -33,7 +34,11 @@ export class ProjectCreationComponent {
     }
 
     get project(): Project {
-        return new Project();
+        return new Project(this.buildDescription());
+    }
+
+    private buildDescription() {
+        return new Description(this.excerpt, this.description);
     }
 
     fileChosen(chosenFile: File): void {
