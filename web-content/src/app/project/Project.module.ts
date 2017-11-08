@@ -6,16 +6,19 @@ import {ProjectCreationComponent} from "./creation/ProjectCreation.component";
 import {ProjectUploadComponent} from "./upload/ProjectUpload.component";
 import {TextEntryComponent} from "./textEntry/TextEntry.component";
 import {FormsModule} from "@angular/forms";
+import {ProjectViewComponent} from "./view/ProjectView.component";
 
 @NgModule({
     imports: [CommonModule, FormsModule],
     exports: [FileChooseComponent,
         ProjectCreationComponent,
         ProjectUploadComponent,
+        ProjectViewComponent,
         TextEntryComponent],
     declarations: [
         FileChooseComponent,
         ProjectCreationComponent,
+        ProjectViewComponent,
         ProjectUploadComponent,
         TextEntryComponent
     ],
