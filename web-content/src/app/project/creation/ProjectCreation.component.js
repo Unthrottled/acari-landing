@@ -16,6 +16,7 @@ var Description_model_1 = require("../Description.model");
 var Project_service_1 = require("../Project.service");
 var Reach_model_1 = require("../Reach.model");
 var Background_model_1 = require("../Background.model");
+var Location_model_1 = require("../Location.model");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService) {
         this.projectService = projectService;
@@ -108,7 +109,7 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "project", {
         get: function () {
-            return new Project_model_1.Project(this.buildDescription(), this.buildReachBlob(), this.buildBackground());
+            return new Project_model_1.Project(this.buildDescription(), this.buildReachBlob(), this.buildBackground(), new Location_model_1.Location(""));
         },
         enumerable: true,
         configurable: true

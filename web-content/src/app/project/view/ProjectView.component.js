@@ -11,8 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Project_model_1 = require("../Project.model");
+var RedirectService_1 = require("../../util/RedirectService");
 var ProjectViewComponent = /** @class */ (function () {
-    function ProjectViewComponent() {
+    function ProjectViewComponent(redirectService) {
+        this.redirectService = redirectService;
     }
     Object.defineProperty(ProjectViewComponent.prototype, "project", {
         get: function () {
@@ -59,6 +61,9 @@ var ProjectViewComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    ProjectViewComponent.prototype.redirect = function () {
+        this.redirectService.redirectToUrl(this.project.url);
+    };
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),
@@ -69,7 +74,7 @@ var ProjectViewComponent = /** @class */ (function () {
             selector: 'project-view',
             template: require('./ProjectView.component.htm')
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [RedirectService_1.RedirectService])
     ], ProjectViewComponent);
     return ProjectViewComponent;
 }());

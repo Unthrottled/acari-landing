@@ -17,6 +17,7 @@ var forms_1 = require("@angular/forms");
 var ProjectView_component_1 = require("./view/ProjectView.component");
 var Project_service_1 = require("./Project.service");
 var SafetyStylePipe_1 = require("../util/SafetyStylePipe");
+var RedirectService_1 = require("../util/RedirectService");
 var ProjectModule = /** @class */ (function () {
     function ProjectModule() {
     }
@@ -40,7 +41,8 @@ var ProjectModule = /** @class */ (function () {
             bootstrap: [],
             providers: [
                 ProjectUpload_service_1.ProjectUploadService,
-                Project_service_1.ProjectService
+                Project_service_1.ProjectService,
+                RedirectService_1.RedirectService
             ],
             schemas: []
         })

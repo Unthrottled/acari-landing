@@ -10,6 +10,7 @@ import {BackendAPIService} from "./util/BackendAPI.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ProjectModule} from "./project/Project.module";
 import {SafetyStylePipe} from "./util/SafetyStylePipe";
+import {WindowRef} from "./util/window";
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import {SafetyStylePipe} from "./util/SafetyStylePipe";
     ],
     bootstrap: [AppComponent],
     providers: [
-        BackendAPIService
+        BackendAPIService, WindowRef
     ]
 })
 export class AppModule {

@@ -12,10 +12,18 @@ export class Project {
     private _location: Location;
 
 
-    constructor(description: Description, reach: Reach, background: Background) {
+    constructor(description: Description,
+                reach: Reach,
+                background: Background,
+                location: Location) {
         this._description = description;
         this._selectedReach = reach;
         this._background = background;
+        this._location = location;
+    }
+
+    get url(): string {
+        return this._location.url;
     }
 
     get preachySpeechy(): string{

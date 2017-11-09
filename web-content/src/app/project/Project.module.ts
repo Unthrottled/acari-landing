@@ -9,6 +9,8 @@ import {FormsModule} from "@angular/forms";
 import {ProjectViewComponent} from "./view/ProjectView.component";
 import {ProjectService} from "./Project.service";
 import {SafetyStylePipe} from "../util/SafetyStylePipe";
+import {WindowRef} from "../util/window";
+import {RedirectService} from "../util/RedirectService";
 
 @NgModule({
     imports: [CommonModule, FormsModule],
@@ -29,7 +31,8 @@ import {SafetyStylePipe} from "../util/SafetyStylePipe";
     bootstrap: [],
     providers: [
         ProjectUploadService,
-        ProjectService
+        ProjectService,
+        RedirectService
     ],
     schemas: []
 })

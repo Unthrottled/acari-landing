@@ -16,6 +16,7 @@ var http_1 = require("@angular/http");
 var BackendAPI_service_1 = require("./util/BackendAPI.service");
 var http_2 = require("@angular/common/http");
 var Project_module_1 = require("./project/Project.module");
+var window_1 = require("./util/window");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -37,7 +38,7 @@ var AppModule = /** @class */ (function () {
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [
-                BackendAPI_service_1.BackendAPIService
+                BackendAPI_service_1.BackendAPIService, window_1.WindowRef
             ]
         })
     ], AppModule);

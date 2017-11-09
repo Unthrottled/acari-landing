@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Project} from "../Project.model";
+import {RedirectService} from "../../util/RedirectService";
 
 @Component({
     selector: 'project-view',
@@ -7,7 +8,7 @@ import {Project} from "../Project.model";
 })
 export class ProjectViewComponent {
 
-    constructor() {
+    constructor(private redirectService: RedirectService) {
     }
 
     private _project: Project;
@@ -41,5 +42,9 @@ export class ProjectViewComponent {
 
     get textColor(): string {
         return this.project.descriptionTextColor;
+    }
+
+    redirect(): void {
+        this.redirectService.redirectToUrl(this.project.url);
     }
 }

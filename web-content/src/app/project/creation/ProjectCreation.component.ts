@@ -5,6 +5,7 @@ import {Description} from "../Description.model";
 import {ProjectService} from "../Project.service";
 import {Reach} from "../Reach.model";
 import {Background} from "../Background.model";
+import {Location} from '../Location.model';
 
 @Component({
     selector: 'project-creation',
@@ -91,7 +92,10 @@ export class ProjectCreationComponent {
     }
 
     get project(): Project {
-        return new Project(this.buildDescription(), this.buildReachBlob(), this.buildBackground());
+        return new Project(this.buildDescription(),
+            this.buildReachBlob(),
+            this.buildBackground(),
+            new Location(""));
     }
 
     private buildBackground() {
