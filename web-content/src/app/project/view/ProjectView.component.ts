@@ -38,8 +38,7 @@ export class ProjectViewComponent {
 
     get backgroundStyle(): SafeStyle {
         let rgba = this.project.colorOne;
-        let safeStyle = this.sanitizer.bypassSecurityTrustStyle("-webkit-linear-gradient(left, rgba(0, 0, 0, 0)");
-        console.log(safeStyle);
-        return safeStyle;
+        let rgba2 = this.project.colorTwo;
+        return this.sanitizer.bypassSecurityTrustStyle("linear-gradient(to right, " + rgba + ", " + rgba2 + ")");
     }
 }

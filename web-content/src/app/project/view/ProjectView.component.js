@@ -50,9 +50,8 @@ var ProjectViewComponent = /** @class */ (function () {
     Object.defineProperty(ProjectViewComponent.prototype, "backgroundStyle", {
         get: function () {
             var rgba = this.project.colorOne;
-            var safeStyle = this.sanitizer.bypassSecurityTrustStyle("-webkit-linear-gradient(left, rgba(0, 0, 0, 0)");
-            console.log(safeStyle);
-            return safeStyle;
+            var rgba2 = this.project.colorTwo;
+            return this.sanitizer.bypassSecurityTrustStyle("linear-gradient(to right, " + rgba + ", " + rgba2 + ")");
         },
         enumerable: true,
         configurable: true

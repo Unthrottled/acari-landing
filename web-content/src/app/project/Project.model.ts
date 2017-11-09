@@ -39,4 +39,8 @@ export class Project {
     get colorOne(): string{
         return this._background.colorOne;
     }
+
+    get colorTwo(): string {
+        return this._background.colorTwo;
+    }
 }
