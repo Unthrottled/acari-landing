@@ -1,40 +1,44 @@
 <div class="app-container project-creation-container">
-    <label>
-        <file-choose (fileSelectedEmitter)="fileChosen($event)"></file-choose>
-        Select Reach
-    </label>
-    <label>
-        <text-entry [(textValue)]="excerpt"></text-entry>
-        Excerpt
-    </label>
-    <label>
-        <text-entry [(textValue)]="description"></text-entry>
-        Description
-    </label>
-    <label>
-        <input type="number" value="{{maxProjectCount | async}}" min="1" max="{{maxProjectCount | async}}"/>
-        Place In Line
-    </label>
-    <label>
-        <text-entry [(textValue)]="colorOne"></text-entry>
-        Gradient First Color
-    </label>
-    <label>
-        <text-entry [(textValue)]="colorTwo"></text-entry>
-        Gradient Second Color
-    </label>
-    <label>
-        <text-entry [(textValue)]="descriptionTextColor"></text-entry>
-        Text Color
-    </label>
-    <label>
-        <text-entry [(textValue)]="url"></text-entry>
-        Destination Url
-    </label>
-    <project-upload
-            [notUploadable]="notUploadable"
-            [project]="project"
-            (uploadSuccess)="fileUploaded($event)"></project-upload>
+    <div class="content-container">
+        <div>
+            <label>
+                <file-choose (fileSelectedEmitter)="fileChosen($event)"></file-choose>
+                Select Reach
+            </label>
+            <label>
+                <text-entry [(textValue)]="excerpt"></text-entry>
+                Excerpt
+            </label>
+            <label>
+                <text-entry [(textValue)]="description"></text-entry>
+                Description
+            </label>
+            <label>
+                <input type="number" value="{{maxProjectCount | async}}" min="1" max="{{maxProjectCount | async}}"/>
+                Place In Line
+            </label>
+            <label>
+                <text-entry [(textValue)]="colorOne"></text-entry>
+                Gradient First Color
+            </label>
+            <label>
+                <text-entry [(textValue)]="colorTwo"></text-entry>
+                Gradient Second Color
+            </label>
+            <label>
+                <text-entry [(textValue)]="descriptionTextColor"></text-entry>
+                Text Color
+            </label>
+            <label>
+                <text-entry [(textValue)]="url"></text-entry>
+                Destination Url
+            </label>
+            <project-upload
+                    [notUploadable]="notUploadable"
+                    [project]="project"
+                    (uploadSuccess)="fileUploaded($event)"></project-upload>
+        </div>
+    </div>
 
     <project-view [project]="project"></project-view>
 </div>
