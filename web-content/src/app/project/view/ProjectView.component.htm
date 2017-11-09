@@ -1,12 +1,17 @@
-<div class="project-container"
-     [style.background-image]="backgroundStyle | safetyStyle">
-    <div>
-        {{excerpt}}
-    </div>
-    <div>
-        {{description}}
-    </div>
-    <div *ngIf="reachBinary">
+<div class="project-container">
+    <div class="project-reach-container"
+            *ngIf="reachBinary">
         <img [src]="reachBinary" alt="HALO REACH"/>
     </div>
+    <div class="project-description-container"
+            [style.color]="textColor | safetyStyle"
+         [style.background-image]="backgroundStyle | safetyStyle">
+        <h4>
+            {{excerpt}}
+        </h4>
+        <p>
+            {{description}}
+        </p>
+    </div>
+
 </div>
