@@ -19,9 +19,9 @@ export class ProjectCreationComponent {
 
     private _reachBlob: any;
     private _reachFile: File;
-    private _colorOne: string = 'blue';
-    private _colorTwo: string = 'orange';
-    private _descriptionTextColor: string = 'white';
+    private _colorOne: string = '#464646';
+    private _colorTwo: string = '#8d85d6';
+    private _descriptionTextColor: string = '#f5f5f5';
 
 
     get descriptionTextColor(): string {

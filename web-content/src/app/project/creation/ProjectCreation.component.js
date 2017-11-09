@@ -20,9 +20,9 @@ var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService) {
         this.projectService = projectService;
         this.fileReader = new FileReader();
-        this._colorOne = 'blue';
-        this._colorTwo = 'orange';
-        this._descriptionTextColor = 'white';
+        this._colorOne = '#464646';
+        this._colorTwo = '#8d85d6';
+        this._descriptionTextColor = '#f5f5f5';
         this._excerpt = 'I did a thing';
         this._description = 'The thing is pretty kewl';
         this._backgroundStyle = this.buildStyle();
