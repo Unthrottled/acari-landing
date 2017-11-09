@@ -36,9 +36,7 @@ export class ProjectViewComponent {
 
 
     get backgroundStyle(): string {
-        let rgba = this.project.colorOne;
-        let rgba2 = this.project.colorTwo;
-        return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
+        return this.project.backgroundColor;
     }
 
     get textColor(): string {

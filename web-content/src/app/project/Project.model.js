@@ -48,6 +48,15 @@ var Project = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Project.prototype, "backgroundColor", {
+        get: function () {
+            var rgba = this.colorOne;
+            var rgba2 = this.colorTwo;
+            return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Project;
 }());
 exports.Project = Project;

@@ -20,9 +20,31 @@ var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService) {
         this.projectService = projectService;
         this.fileReader = new FileReader();
+        this._colorOne = 'blue';
+        this._colorTwo = 'orange';
         this._excerpt = 'I did a thing';
         this._description = 'The thing is pretty kewl';
     }
+    Object.defineProperty(ProjectCreationComponent.prototype, "colorOne", {
+        get: function () {
+            return this._colorOne;
+        },
+        set: function (value) {
+            this._colorOne = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ProjectCreationComponent.prototype, "colorTwo", {
+        get: function () {
+            return this._colorTwo;
+        },
+        set: function (value) {
+            this._colorTwo = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(ProjectCreationComponent.prototype, "reachBlob", {
         get: function () {
             return this._reachBlob;
@@ -78,7 +100,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         configurable: true
     });
     ProjectCreationComponent.prototype.buildBackground = function () {
-        return new Background_model_1.Background(null, 'purple', 'cyan');
+        return new Background_model_1.Background(null, this.colorOne, this.colorTwo);
     };
     ProjectCreationComponent.prototype.buildReachBlob = function () {
         return new Reach_model_1.Reach(this.reachBlob);

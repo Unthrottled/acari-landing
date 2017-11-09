@@ -19,6 +19,25 @@ export class ProjectCreationComponent {
 
     private _reachBlob: any;
     private _reachFile: File;
+    private _colorOne: string = 'blue';
+    private _colorTwo: string = 'orange';
+
+
+    get colorOne(): string {
+        return this._colorOne;
+    }
+
+    set colorOne(value: string) {
+        this._colorOne = value;
+    }
+
+    get colorTwo(): string {
+        return this._colorTwo;
+    }
+
+    set colorTwo(value: string) {
+        this._colorTwo = value;
+    }
 
     get reachBlob(): any {
         return this._reachBlob;
@@ -65,8 +84,9 @@ export class ProjectCreationComponent {
     }
 
     private buildBackground() {
-        return new Background(null, 'purple', 'cyan');
+        return new Background(null, this.colorOne, this.colorTwo);
     }
+
 
     private buildReachBlob() {
         return new Reach(this.reachBlob);

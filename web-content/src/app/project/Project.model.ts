@@ -43,4 +43,11 @@ export class Project {
     get colorTwo(): string {
         return this._background.colorTwo;
     }
+
+    get backgroundColor(): string {
+        let rgba = this.colorOne;
+        let rgba2 = this.colorTwo;
+        return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
+
+    }
 }

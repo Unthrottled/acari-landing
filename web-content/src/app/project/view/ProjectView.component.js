@@ -47,9 +47,7 @@ var ProjectViewComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectViewComponent.prototype, "backgroundStyle", {
         get: function () {
-            var rgba = this.project.colorOne;
-            var rgba2 = this.project.colorTwo;
-            return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
+            return this.project.backgroundColor;
         },
         enumerable: true,
         configurable: true
