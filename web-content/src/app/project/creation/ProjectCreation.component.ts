@@ -23,7 +23,16 @@ export class ProjectCreationComponent {
     private _colorOne: string = '#464646';
     private _colorTwo: string = '#8d85d6';
     private _descriptionTextColor: string = '#f5f5f5';
+    private _url: string = 'http://blog.acari.io';
 
+
+    get url(): string {
+        return this._url;
+    }
+
+    set url(value: string) {
+        this._url = value;
+    }
 
     get descriptionTextColor(): string {
         return this._descriptionTextColor;
@@ -95,7 +104,11 @@ export class ProjectCreationComponent {
         return new Project(this.buildDescription(),
             this.buildReachBlob(),
             this.buildBackground(),
-            new Location(""));
+            this.buildLocation());
+    }
+
+    private buildLocation() {
+        return new Location(this.url);
     }
 
     private buildBackground() {

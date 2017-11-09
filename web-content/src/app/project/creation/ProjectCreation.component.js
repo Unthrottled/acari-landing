@@ -24,10 +24,21 @@ var ProjectCreationComponent = /** @class */ (function () {
         this._colorOne = '#464646';
         this._colorTwo = '#8d85d6';
         this._descriptionTextColor = '#f5f5f5';
+        this._url = 'http://blog.acari.io';
         this._excerpt = 'Lorem ipsum';
         this._description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi libero, viverra vitae mi et, bibendum lobortis ipsum. Aenean vel sapien luctus, varius quam ac, bibendum nisl. Donec placerat turpis a leo auctor, non vestibulum ex tincidunt. Etiam id congue ligula. Donec vel eros tempus, condimentum erat in, faucibus erat. Ut hendrerit elementum justo eu commodo. Suspendisse vestibulum, justo ut ultricies convallis, elit ante lobortis diam, eu ullamcorper tortor libero sit amet nisi. Curabitur vitae magna elementum, dictum lacus vel, volutpat neque. Cras mauris purus, interdum vel arcu quis, mollis aliquam sem. Nunc posuere ipsum non dapibus porta. Pellentesque tristique aliquet nunc eget maximus. Proin faucibus tellus odio, a malesuada felis dictum ut. Integer venenatis in arcu id gravida. Nulla dapibus augue sapien, id tincidunt enim varius vel.';
         this._backgroundStyle = this.buildStyle();
     }
+    Object.defineProperty(ProjectCreationComponent.prototype, "url", {
+        get: function () {
+            return this._url;
+        },
+        set: function (value) {
+            this._url = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(ProjectCreationComponent.prototype, "descriptionTextColor", {
         get: function () {
             return this._descriptionTextColor;
@@ -109,11 +120,14 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "project", {
         get: function () {
-            return new Project_model_1.Project(this.buildDescription(), this.buildReachBlob(), this.buildBackground(), new Location_model_1.Location(""));
+            return new Project_model_1.Project(this.buildDescription(), this.buildReachBlob(), this.buildBackground(), this.buildLocation());
         },
         enumerable: true,
         configurable: true
     });
+    ProjectCreationComponent.prototype.buildLocation = function () {
+        return new Location_model_1.Location(this.url);
+    };
     ProjectCreationComponent.prototype.buildBackground = function () {
         return new Background_model_1.Background(null, this.backgroundStyle, this.descriptionTextColor);
     };
