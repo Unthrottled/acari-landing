@@ -8,6 +8,7 @@ import {TextEntryComponent} from "./textEntry/TextEntry.component";
 import {FormsModule} from "@angular/forms";
 import {ProjectViewComponent} from "./view/ProjectView.component";
 import {ProjectService} from "./Project.service";
+import {SafetyStylePipe} from "../util/SafetyStylePipe";
 
 @NgModule({
     imports: [CommonModule, FormsModule],
@@ -24,6 +25,7 @@ import {ProjectService} from "./Project.service";
         TextEntryComponent
     ],
     bootstrap: [],
+    pipe: [SafetyStylePipe],
     providers: [
         ProjectUploadService,
         ProjectService

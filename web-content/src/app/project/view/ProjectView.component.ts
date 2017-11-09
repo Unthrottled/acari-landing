@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
 import {Project} from "../Project.model";
-import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 
 @Component({
     selector: 'project-view',
@@ -8,7 +7,7 @@ import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 })
 export class ProjectViewComponent {
 
-    constructor(private sanitizer: DomSanitizer) {
+    constructor() {
     }
 
     private _project: Project;
@@ -36,9 +35,13 @@ export class ProjectViewComponent {
     }
 
 
-    get backgroundStyle(): SafeStyle {
+    get backgroundStyle(): string {
         let rgba = this.project.colorOne;
         let rgba2 = this.project.colorTwo;
-        return this.sanitizer.bypassSecurityTrustStyle("linear-gradient(to right, " + rgba + ", " + rgba2 + ")");
+        return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
+    }
+
+    get textColor(): string {
+        return "white";
     }
 }

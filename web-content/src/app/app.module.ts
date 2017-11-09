@@ -9,6 +9,7 @@ import {HttpModule} from "@angular/http";
 import {BackendAPIService} from "./util/BackendAPI.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ProjectModule} from "./project/Project.module";
+import {SafetyStylePipe} from "./util/SafetyStylePipe";
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {ProjectModule} from "./project/Project.module";
     declarations: [
         AppComponent
     ],
+    pipe: [SafetyStylePipe],
     bootstrap: [AppComponent],
     providers: [
         BackendAPIService

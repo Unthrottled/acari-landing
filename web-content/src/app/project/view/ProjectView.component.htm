@@ -1,5 +1,5 @@
 <div class="project-container"
-     [style.background-image]="backgroundStyle">
+     [style.background-image]="backgroundStyle | safetyStyle">
     <div>
         {{excerpt}}
     </div>
