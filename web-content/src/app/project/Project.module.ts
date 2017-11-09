@@ -16,16 +16,17 @@ import {SafetyStylePipe} from "../util/SafetyStylePipe";
         ProjectCreationComponent,
         ProjectUploadComponent,
         ProjectViewComponent,
-        TextEntryComponent],
+        TextEntryComponent,
+        SafetyStylePipe],
     declarations: [
         FileChooseComponent,
         ProjectCreationComponent,
         ProjectViewComponent,
         ProjectUploadComponent,
-        TextEntryComponent
+        TextEntryComponent,
+        SafetyStylePipe
     ],
     bootstrap: [],
-    pipe: [SafetyStylePipe],
     providers: [
         ProjectUploadService,
         ProjectService

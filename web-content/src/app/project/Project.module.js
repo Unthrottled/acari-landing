@@ -16,6 +16,7 @@ var TextEntry_component_1 = require("./textEntry/TextEntry.component");
 var forms_1 = require("@angular/forms");
 var ProjectView_component_1 = require("./view/ProjectView.component");
 var Project_service_1 = require("./Project.service");
+var SafetyStylePipe_1 = require("../util/SafetyStylePipe");
 var ProjectModule = /** @class */ (function () {
     function ProjectModule() {
     }
@@ -26,13 +27,15 @@ var ProjectModule = /** @class */ (function () {
                 ProjectCreation_component_1.ProjectCreationComponent,
                 ProjectUpload_component_1.ProjectUploadComponent,
                 ProjectView_component_1.ProjectViewComponent,
-                TextEntry_component_1.TextEntryComponent],
+                TextEntry_component_1.TextEntryComponent,
+                SafetyStylePipe_1.SafetyStylePipe],
             declarations: [
                 FileChoose_component_1.FileChooseComponent,
                 ProjectCreation_component_1.ProjectCreationComponent,
                 ProjectView_component_1.ProjectViewComponent,
                 ProjectUpload_component_1.ProjectUploadComponent,
-                TextEntry_component_1.TextEntryComponent
+                TextEntry_component_1.TextEntryComponent,
+                SafetyStylePipe_1.SafetyStylePipe
             ],
             bootstrap: [],
             providers: [

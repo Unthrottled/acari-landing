@@ -11,10 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Project_model_1 = require("../Project.model");
-var platform_browser_1 = require("@angular/platform-browser");
 var ProjectViewComponent = /** @class */ (function () {
-    function ProjectViewComponent(sanitizer) {
-        this.sanitizer = sanitizer;
+    function ProjectViewComponent() {
     }
     Object.defineProperty(ProjectViewComponent.prototype, "project", {
         get: function () {
@@ -51,7 +49,14 @@ var ProjectViewComponent = /** @class */ (function () {
         get: function () {
             var rgba = this.project.colorOne;
             var rgba2 = this.project.colorTwo;
-            return this.sanitizer.bypassSecurityTrustStyle("linear-gradient(to right, " + rgba + ", " + rgba2 + ")");
+            return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ProjectViewComponent.prototype, "textColor", {
+        get: function () {
+            return "white";
         },
         enumerable: true,
         configurable: true
@@ -66,7 +71,7 @@ var ProjectViewComponent = /** @class */ (function () {
             selector: 'project-view',
             template: require('./ProjectView.component.htm')
         }),
-        __metadata("design:paramtypes", [platform_browser_1.DomSanitizer])
+        __metadata("design:paramtypes", [])
     ], ProjectViewComponent);
     return ProjectViewComponent;
 }());

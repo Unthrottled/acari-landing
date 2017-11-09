@@ -26,8 +26,8 @@ import {SafetyStylePipe} from "./util/SafetyStylePipe";
     ],
     declarations: [
         AppComponent
+
     ],
-    pipe: [SafetyStylePipe],
     bootstrap: [AppComponent],
     providers: [
         BackendAPIService
