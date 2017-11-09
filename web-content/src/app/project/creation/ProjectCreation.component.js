@@ -22,10 +22,21 @@ var ProjectCreationComponent = /** @class */ (function () {
         this.fileReader = new FileReader();
         this._colorOne = 'blue';
         this._colorTwo = 'orange';
+        this._descriptionTextColor = 'white';
         this._excerpt = 'I did a thing';
         this._description = 'The thing is pretty kewl';
         this._backgroundStyle = this.buildStyle();
     }
+    Object.defineProperty(ProjectCreationComponent.prototype, "descriptionTextColor", {
+        get: function () {
+            return this._descriptionTextColor;
+        },
+        set: function (value) {
+            this._descriptionTextColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(ProjectCreationComponent.prototype, "colorOne", {
         get: function () {
             return this._colorOne;
@@ -103,7 +114,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         configurable: true
     });
     ProjectCreationComponent.prototype.buildBackground = function () {
-        return new Background_model_1.Background(null, this.backgroundStyle);
+        return new Background_model_1.Background(null, this.backgroundStyle, this.descriptionTextColor);
     };
     Object.defineProperty(ProjectCreationComponent.prototype, "backgroundStyle", {
         get: function () {

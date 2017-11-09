@@ -54,7 +54,7 @@ var ProjectViewComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectViewComponent.prototype, "textColor", {
         get: function () {
-            return "white";
+            return this.project.descriptionTextColor;
         },
         enumerable: true,
         configurable: true

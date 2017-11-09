@@ -38,6 +38,9 @@ export class Project {
 
     get backgroundColor(): string {
         return this._background.backgroundStyle;
+    }
 
+    get descriptionTextColor(): string {
+        return this._background.textColor;
     }
 }

@@ -21,7 +21,16 @@ export class ProjectCreationComponent {
     private _reachFile: File;
     private _colorOne: string = 'blue';
     private _colorTwo: string = 'orange';
+    private _descriptionTextColor: string = 'white';
 
+
+    get descriptionTextColor(): string {
+        return this._descriptionTextColor;
+    }
+
+    set descriptionTextColor(value: string) {
+        this._descriptionTextColor = value;
+    }
 
     get colorOne(): string {
         return this._colorOne;
@@ -86,7 +95,7 @@ export class ProjectCreationComponent {
     }
 
     private buildBackground() {
-        return new Background(null, this.backgroundStyle);
+        return new Background(null, this.backgroundStyle, this.descriptionTextColor);
     }
 
     private _backgroundStyle: string = this.buildStyle();

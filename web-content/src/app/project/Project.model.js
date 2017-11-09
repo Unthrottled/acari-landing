@@ -41,6 +41,13 @@ var Project = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Project.prototype, "descriptionTextColor", {
+        get: function () {
+            return this._background.textColor;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Project;
 }());
 exports.Project = Project;

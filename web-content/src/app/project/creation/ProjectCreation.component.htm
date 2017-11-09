@@ -5,6 +5,7 @@
     <input type="number" value="{{maxProjectCount | async}}" min="1" max="{{maxProjectCount | async}}"/>
     <text-entry [(textValue)]="colorOne"></text-entry>
     <text-entry [(textValue)]="colorTwo"></text-entry>
+    <text-entry [(textValue)]="descriptionTextColor"></text-entry>
     <project-upload
             [notUploadable]="notUploadable"
             [project]="project"

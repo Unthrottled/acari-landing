@@ -40,6 +40,6 @@ export class ProjectViewComponent {
     }
 
     get textColor(): string {
-        return "white";
+        return this.project.descriptionTextColor;
     }
 }
