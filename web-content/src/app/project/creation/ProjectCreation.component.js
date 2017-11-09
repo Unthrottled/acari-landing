@@ -23,8 +23,8 @@ var ProjectCreationComponent = /** @class */ (function () {
         this._colorOne = '#464646';
         this._colorTwo = '#8d85d6';
         this._descriptionTextColor = '#f5f5f5';
-        this._excerpt = 'I did a thing';
-        this._description = 'The thing is pretty kewl';
+        this._excerpt = 'Lorem ipsum';
+        this._description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi libero, viverra vitae mi et, bibendum lobortis ipsum. Aenean vel sapien luctus, varius quam ac, bibendum nisl. Donec placerat turpis a leo auctor, non vestibulum ex tincidunt. Etiam id congue ligula. Donec vel eros tempus, condimentum erat in, faucibus erat. Ut hendrerit elementum justo eu commodo. Suspendisse vestibulum, justo ut ultricies convallis, elit ante lobortis diam, eu ullamcorper tortor libero sit amet nisi. Curabitur vitae magna elementum, dictum lacus vel, volutpat neque. Cras mauris purus, interdum vel arcu quis, mollis aliquam sem. Nunc posuere ipsum non dapibus porta. Pellentesque tristique aliquet nunc eget maximus. Proin faucibus tellus odio, a malesuada felis dictum ut. Integer venenatis in arcu id gravida. Nulla dapibus augue sapien, id tincidunt enim varius vel.';
         this._backgroundStyle = this.buildStyle();
     }
     Object.defineProperty(ProjectCreationComponent.prototype, "descriptionTextColor", {
