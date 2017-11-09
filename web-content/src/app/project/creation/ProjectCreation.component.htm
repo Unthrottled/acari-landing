@@ -3,8 +3,8 @@
     <text-entry [(textValue)]="excerpt"></text-entry>
     <text-entry [(textValue)]="description"></text-entry>
     <input type="number" value="{{maxProjectCount | async}}" min="1" max="{{maxProjectCount | async}}"/>
-    <text-entry [textValue]="colorOne"></text-entry>
-    <text-entry [textValue]="colorTwo"></text-entry>
+    <text-entry [(textValue)]="colorOne"></text-entry>
+    <text-entry [(textValue)]="colorTwo"></text-entry>
     <project-upload
             [notUploadable]="notUploadable"
             [project]="project"

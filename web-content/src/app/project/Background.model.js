@@ -1,10 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Background = /** @class */ (function () {
-    function Background(image, colorOne, colorTwo) {
+    function Background(image, colorOne) {
         this._image = image;
-        this._colorOne = colorOne;
-        this._colorTwo = colorTwo;
+        this._backgroundStyle = colorOne;
     }
     Object.defineProperty(Background.prototype, "image", {
         get: function () {
@@ -16,22 +15,12 @@ var Background = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Background.prototype, "colorOne", {
+    Object.defineProperty(Background.prototype, "backgroundStyle", {
         get: function () {
-            return this._colorOne;
+            return this._backgroundStyle;
         },
         set: function (value) {
-            this._colorOne = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Background.prototype, "colorTwo", {
-        get: function () {
-            return this._colorTwo;
-        },
-        set: function (value) {
-            this._colorTwo = value;
+            this._backgroundStyle = value;
         },
         enumerable: true,
         configurable: true

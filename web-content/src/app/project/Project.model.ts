@@ -36,18 +36,8 @@ export class Project {
         return this._selectedReach.selectedFile;
     }
 
-    get colorOne(): string{
-        return this._background.colorOne;
-    }
-
-    get colorTwo(): string {
-        return this._background.colorTwo;
-    }
-
     get backgroundColor(): string {
-        let rgba = this.colorOne;
-        let rgba2 = this.colorTwo;
-        return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
+        return this._background.backgroundStyle;
 
     }
 }

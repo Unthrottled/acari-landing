@@ -24,6 +24,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         this._colorTwo = 'orange';
         this._excerpt = 'I did a thing';
         this._description = 'The thing is pretty kewl';
+        this._backgroundStyle = this.buildStyle();
     }
     Object.defineProperty(ProjectCreationComponent.prototype, "colorOne", {
         get: function () {
@@ -31,6 +32,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         },
         set: function (value) {
             this._colorOne = value;
+            this.rebuildStyle();
         },
         enumerable: true,
         configurable: true
@@ -41,6 +43,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         },
         set: function (value) {
             this._colorTwo = value;
+            this.rebuildStyle();
         },
         enumerable: true,
         configurable: true
@@ -100,7 +103,25 @@ var ProjectCreationComponent = /** @class */ (function () {
         configurable: true
     });
     ProjectCreationComponent.prototype.buildBackground = function () {
-        return new Background_model_1.Background(null, this.colorOne, this.colorTwo);
+        return new Background_model_1.Background(null, this.backgroundStyle);
+    };
+    Object.defineProperty(ProjectCreationComponent.prototype, "backgroundStyle", {
+        get: function () {
+            return this._backgroundStyle;
+        },
+        set: function (value) {
+            this._backgroundStyle = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ProjectCreationComponent.prototype.rebuildStyle = function () {
+        this.backgroundStyle = this.buildStyle();
+    };
+    ProjectCreationComponent.prototype.buildStyle = function () {
+        var rgba = this.colorOne;
+        var rgba2 = this.colorTwo;
+        return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
     };
     ProjectCreationComponent.prototype.buildReachBlob = function () {
         return new Reach_model_1.Reach(this.reachBlob);

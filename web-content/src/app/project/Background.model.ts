@@ -1,13 +1,12 @@
 export class Background {
     private _image: Blob;
-    private _colorOne: string;
-    private _colorTwo: string;
+    private _backgroundStyle: string;
 
 
-    constructor(image: Blob, colorOne: string, colorTwo: string) {
+
+    constructor(image: Blob, colorOne: string) {
         this._image = image;
-        this._colorOne = colorOne;
-        this._colorTwo = colorTwo;
+        this._backgroundStyle = colorOne;
     }
 
 
@@ -19,19 +18,11 @@ export class Background {
         this._image = value;
     }
 
-    get colorOne(): string {
-        return this._colorOne;
+    get backgroundStyle(): string {
+        return this._backgroundStyle;
     }
 
-    set colorOne(value: string) {
-        this._colorOne = value;
-    }
-
-    get colorTwo(): string {
-        return this._colorTwo;
-    }
-
-    set colorTwo(value: string) {
-        this._colorTwo = value;
+    set backgroundStyle(value: string) {
+        this._backgroundStyle = value;
     }
 }

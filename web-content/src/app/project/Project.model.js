@@ -34,25 +34,9 @@ var Project = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Project.prototype, "colorOne", {
-        get: function () {
-            return this._background.colorOne;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Project.prototype, "colorTwo", {
-        get: function () {
-            return this._background.colorTwo;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(Project.prototype, "backgroundColor", {
         get: function () {
-            var rgba = this.colorOne;
-            var rgba2 = this.colorTwo;
-            return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
+            return this._background.backgroundStyle;
         },
         enumerable: true,
         configurable: true

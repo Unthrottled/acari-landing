@@ -29,6 +29,7 @@ export class ProjectCreationComponent {
 
     set colorOne(value: string) {
         this._colorOne = value;
+        this.rebuildStyle();
     }
 
     get colorTwo(): string {
@@ -37,6 +38,7 @@ export class ProjectCreationComponent {
 
     set colorTwo(value: string) {
         this._colorTwo = value;
+        this.rebuildStyle();
     }
 
     get reachBlob(): any {
@@ -84,7 +86,28 @@ export class ProjectCreationComponent {
     }
 
     private buildBackground() {
-        return new Background(null, this.colorOne, this.colorTwo);
+        return new Background(null, this.backgroundStyle);
+    }
+
+    private _backgroundStyle: string = this.buildStyle();
+
+    get backgroundStyle(): string {
+        return this._backgroundStyle;
+    }
+
+    set backgroundStyle(value: string){
+        this._backgroundStyle = value;
+    }
+
+    rebuildStyle(): void {
+        this.backgroundStyle = this.buildStyle();
+    }
+
+
+    buildStyle(): string {
+        let rgba = this.colorOne;
+        let rgba2 = this.colorTwo;
+        return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
     }
 
 
