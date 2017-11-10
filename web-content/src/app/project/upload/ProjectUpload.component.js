@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
 var ProjectUpload_service_1 = require("./ProjectUpload.service");
-var Project_model_1 = require("../Project.model");
+var Project_model_1 = require("../model/Project.model");
 var ProjectUploadComponent = /** @class */ (function () {
     function ProjectUploadComponent(uploadFileService) {
         this.uploadFileService = uploadFileService;

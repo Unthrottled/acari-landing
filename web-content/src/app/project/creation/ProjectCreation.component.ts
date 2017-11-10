@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs/Observable";
-import {Project} from "../Project.model";
-import {Description} from "../Description.model";
+import {Project} from "../model/Project.model";
+import {Description} from "../model/Description.model";
 import {ProjectService} from "../Project.service";
-import {Reach} from "../Reach.model";
-import {Background} from "../Background.model";
-import {Location} from '../Location.model';
+import {Reach} from "../model/Reach.model";
+import {Background} from "../model/Background.model";
+import {Location} from '../model/Location.model';
 import {isNullOrUndefined} from "util";
-import {ProjectRank} from "../ProjectRank.model";
+import {ProjectRank} from "../model/ProjectRank.model";
 
 @Component({
     selector: 'project-creation',

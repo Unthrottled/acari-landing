@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Project} from "../Project.model";
+import {Project} from "../model/Project.model";
 import {RedirectService} from "../../util/RedirectService";
 import {Observable} from "rxjs/Observable";
 

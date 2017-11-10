@@ -11,14 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
-var Project_model_1 = require("../Project.model");
-var Description_model_1 = require("../Description.model");
+var Project_model_1 = require("../model/Project.model");
+var Description_model_1 = require("../model/Description.model");
 var Project_service_1 = require("../Project.service");
-var Reach_model_1 = require("../Reach.model");
-var Background_model_1 = require("../Background.model");
-var Location_model_1 = require("../Location.model");
+var Reach_model_1 = require("../model/Reach.model");
+var Background_model_1 = require("../model/Background.model");
+var Location_model_1 = require("../model/Location.model");
 var util_1 = require("util");
-var ProjectRank_model_1 = require("../ProjectRank.model");
+var ProjectRank_model_1 = require("../model/ProjectRank.model");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService) {
         this.projectService = projectService;

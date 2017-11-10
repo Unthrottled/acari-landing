@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {BackendAPIService} from "../../util/BackendAPI.service";
 import {Observable} from "rxjs/Observable";
 import {HttpEvent, HttpResponse} from "@angular/common/http";
-import {Project} from "../Project.model";
+import {Project} from "../model/Project.model";
 
 @Injectable()
 export class ProjectUploadService {

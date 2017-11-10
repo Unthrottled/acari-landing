@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {ProjectUploadService} from "./ProjectUpload.service";
-import {Project} from "../Project.model";
+import {Project} from "../model/Project.model";
 
 @Component({
     selector: 'project-upload',
