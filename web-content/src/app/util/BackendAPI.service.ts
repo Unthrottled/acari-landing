@@ -11,11 +11,9 @@ export class BackendAPIService {
     }
 
 
-    postImage(formData: FormData): Observable<HttpEvent<Blob>> {
+    postImage(formData: FormData): Observable<string> {
         return this.http.post('./api/save/image', formData, {
-            reportProgress: true,
-            observe: 'events',
-            responseType: 'blob'
+            responseType: 'text'
         });
     }
 }

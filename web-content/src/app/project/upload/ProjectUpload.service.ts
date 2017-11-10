@@ -14,6 +14,6 @@ export class ProjectUploadService {
         let formData = new FormData();
         formData.append('reach', projectToUpload.reachFile);
         return this.backendAPIService.postImage(formData)
-            .map((httpEvent: HttpEvent<Blob>) => httpEvent instanceof HttpResponse);
+            .map((imageId: string) => imageId.length > 0);
     }
 }

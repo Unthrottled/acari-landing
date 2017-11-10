@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../../util/BackendAPI.service");
-var http_1 = require("@angular/common/http");
 var ProjectUploadService = /** @class */ (function () {
     function ProjectUploadService(backendAPIService) {
         this.backendAPIService = backendAPIService;
@@ -20,7 +19,7 @@ var ProjectUploadService = /** @class */ (function () {
         var formData = new FormData();
         formData.append('reach', projectToUpload.reachFile);
         return this.backendAPIService.postImage(formData)
-            .map(function (httpEvent) { return httpEvent instanceof http_1.HttpResponse; });
+            .map(function (imageId) { return imageId.length > 0; });
     };
     ProjectUploadService = __decorate([
         core_1.Injectable(),
