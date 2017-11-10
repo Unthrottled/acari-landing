@@ -97,16 +97,6 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "reachFile", {
-        get: function () {
-            return this._reachFile;
-        },
-        set: function (value) {
-            this._reachFile = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(ProjectCreationComponent.prototype, "excerpt", {
         get: function () {
             return this._excerpt;

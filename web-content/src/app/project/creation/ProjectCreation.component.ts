@@ -84,14 +84,6 @@ export class ProjectCreationComponent implements OnInit {
         this._reachBlob = value;
     }
 
-    get reachFile(): File {
-        return this._reachFile;
-    }
-
-    set reachFile(value: File) {
-        this._reachFile = value;
-    }
-
     private _excerpt: string = 'Lorem ipsum';
 
     get excerpt(): string {
