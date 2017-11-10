@@ -21,7 +21,7 @@
             </label>
             <label>
                 <div>
-                    <input type="number" value="{{maxProjectCount | async}}" min="1" max="{{maxProjectCount | async}}"/>
+                    <input type="number" (change)="rank = $event" value="{{maxProjectCount | async}}" min="1" max="{{maxProjectCount | async}}"/>
                 </div>
                 Place In Line
             </label>

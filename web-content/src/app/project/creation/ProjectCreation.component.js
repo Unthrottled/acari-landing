@@ -18,6 +18,7 @@ var Reach_model_1 = require("../Reach.model");
 var Background_model_1 = require("../Background.model");
 var Location_model_1 = require("../Location.model");
 var util_1 = require("util");
+var ProjectRank_model_1 = require("../ProjectRank.model");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService) {
         this.projectService = projectService;
@@ -30,6 +31,20 @@ var ProjectCreationComponent = /** @class */ (function () {
         this._description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi libero, viverra vitae mi et, bibendum lobortis ipsum. Aenean vel sapien luctus, varius quam ac, bibendum nisl. Donec placerat turpis a leo auctor, non vestibulum ex tincidunt. Etiam id congue ligula. Donec vel eros tempus, condimentum erat in, faucibus erat. Ut hendrerit elementum justo eu commodo. Suspendisse vestibulum, justo ut ultricies convallis, elit ante lobortis diam, eu ullamcorper tortor libero sit amet nisi. Curabitur vitae magna elementum, dictum lacus vel, volutpat neque. Cras mauris purus, interdum vel arcu quis, mollis aliquam sem. Nunc posuere ipsum non dapibus porta. Pellentesque tristique aliquet nunc eget maximus. Proin faucibus tellus odio, a malesuada felis dictum ut. Integer venenatis in arcu id gravida. Nulla dapibus augue sapien, id tincidunt enim varius vel.';
         this._backgroundStyle = this.buildStyle();
     }
+    ProjectCreationComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.maxProjectCount.subscribe(function (lowestRank) { return _this.rank = lowestRank; });
+    };
+    Object.defineProperty(ProjectCreationComponent.prototype, "rank", {
+        get: function () {
+            return this._rank;
+        },
+        set: function (value) {
+            this._rank = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(ProjectCreationComponent.prototype, "url", {
         get: function () {
             return this._url;
@@ -122,11 +137,14 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "project", {
         get: function () {
-            return new Project_model_1.Project(this.buildDescription(), this.buildReachBlob(), this.buildBackground(), this.buildLocation());
+            return new Project_model_1.Project(this.buildDescription(), this.buildReachBlob(), this.buildBackground(), this.buildLocation(), this.buildProjectRank());
         },
         enumerable: true,
         configurable: true
     });
+    ProjectCreationComponent.prototype.buildProjectRank = function () {
+        return new ProjectRank_model_1.ProjectRank(this.rank);
+    };
     ProjectCreationComponent.prototype.buildLocation = function () {
         return new Location_model_1.Location(this.url);
     };

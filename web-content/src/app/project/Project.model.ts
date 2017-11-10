@@ -15,11 +15,13 @@ export class Project {
     constructor(description: Description,
                 reach: Reach,
                 background: Background,
-                location: Location) {
+                location: Location,
+                rank: ProjectRank) {
         this._description = description;
         this._selectedReach = reach;
         this._background = background;
         this._location = location;
+        this._rank = rank;
     }
 
     get url(): string {

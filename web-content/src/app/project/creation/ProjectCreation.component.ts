@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Project} from "../Project.model";
 import {Description} from "../Description.model";
@@ -7,12 +7,16 @@ import {Reach} from "../Reach.model";
 import {Background} from "../Background.model";
 import {Location} from '../Location.model';
 import {isNullOrUndefined} from "util";
+import {ProjectRank} from "../ProjectRank.model";
 
 @Component({
     selector: 'project-creation',
     template: require('./ProjectCreation.component.htm')
 })
-export class ProjectCreationComponent {
+export class ProjectCreationComponent implements OnInit {
+    ngOnInit(): void {
+        this.maxProjectCount.subscribe(lowestRank=> this.rank=lowestRank);
+    }
     private fileReader: FileReader = new FileReader();
 
     constructor(private projectService: ProjectService) {
@@ -25,7 +29,18 @@ export class ProjectCreationComponent {
     private _colorTwo: string = '#8d85d6';
     private _descriptionTextColor: string = '#f5f5f5';
     private _url: string = 'http://blog.acari.io';
+    private _rank: number;
 
+
+
+
+    get rank(): number {
+        return this._rank;
+    }
+
+    set rank(value: number) {
+        this._rank = value;
+    }
 
     get url(): string {
         return this._url;
@@ -106,7 +121,12 @@ export class ProjectCreationComponent {
         return new Project(this.buildDescription(),
             this.buildReachBlob(),
             this.buildBackground(),
-            this.buildLocation());
+            this.buildLocation(),
+            this.buildProjectRank());
+    }
+
+    private buildProjectRank() {
+        return new ProjectRank(this.rank);
     }
 
     private buildLocation() {
