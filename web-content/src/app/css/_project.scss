@@ -16,9 +16,19 @@
 }
 
 .project-input {
+  display: inline-block;
+}
 
+.project-input > label{
+  padding-top: 1.5em;
+  margin-right: 0.5em;
+  background: rgba(20,20,120, 0.25);
+  border-radius: 1em;
+  padding: 1em;
+  display: inline-block;
 }
 
 .project-input > div {
   margin: 1.5em;
+  position: relative;
 }

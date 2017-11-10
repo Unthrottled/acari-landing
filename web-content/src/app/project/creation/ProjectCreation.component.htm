@@ -2,35 +2,51 @@
     <div class="content-container">
         <div class="project-input">
             <label>
-                <file-choose (fileSelectedEmitter)="fileChosen($event)"></file-choose>
+                <div>
+                    <file-choose (fileSelectedEmitter)="fileChosen($event)"></file-choose>
+                </div>
                 Select Reach
             </label>
             <label>
-                <text-entry [(textValue)]="excerpt"></text-entry>
+                <div>
+                    <text-entry [(textValue)]="excerpt"></text-entry>
+                </div>
                 Excerpt
             </label>
             <label>
-                <text-entry [(textValue)]="description"></text-entry>
+                <div>
+                    <text-entry [(textValue)]="description"></text-entry>
+                </div>
                 Description
             </label>
             <label>
-                <input type="number" value="{{maxProjectCount | async}}" min="1" max="{{maxProjectCount | async}}"/>
+                <div>
+                    <input type="number" value="{{maxProjectCount | async}}" min="1" max="{{maxProjectCount | async}}"/>
+                </div>
                 Place In Line
             </label>
             <label>
-                <text-entry [(textValue)]="colorOne"></text-entry>
+                <div>
+                    <text-entry [(textValue)]="colorOne"></text-entry>
+                </div>
                 Gradient First Color
             </label>
             <label>
-                <text-entry [(textValue)]="colorTwo"></text-entry>
+                <div>
+                    <text-entry [(textValue)]="colorTwo"></text-entry>
+                </div>
                 Gradient Second Color
             </label>
             <label>
-                <text-entry [(textValue)]="descriptionTextColor"></text-entry>
+                <div>
+                    <text-entry [(textValue)]="descriptionTextColor"></text-entry>
+                </div>
                 Text Color
             </label>
             <label>
-                <text-entry [(textValue)]="url"></text-entry>
+                <div>
+                    <text-entry [(textValue)]="url"></text-entry>
+                </div>
                 Destination Url
             </label>
             <project-upload
