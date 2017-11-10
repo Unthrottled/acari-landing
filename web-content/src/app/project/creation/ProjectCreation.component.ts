@@ -24,7 +24,6 @@ export class ProjectCreationComponent implements OnInit {
     }
 
     private _reachBlob: any;
-    private _reachFile: File;
     private _colorOne: string = '#464646';
     private _colorTwo: string = '#8d85d6';
     private _descriptionTextColor: string = '#f5f5f5';
