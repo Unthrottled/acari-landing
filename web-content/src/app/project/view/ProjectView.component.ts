@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Project} from "../Project.model";
 import {RedirectService} from "../../util/RedirectService";
+import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: 'project-view',
@@ -31,8 +32,9 @@ export class ProjectViewComponent {
         return this.project.excerpt;
     }
 
-    get reachBinary(): any {
-        return this.project.reachBlob;
+    get reachBinary(): Observable<any> {
+        //todo: dis will change
+        return Observable.of(this.project.reachBlob);
     }
 
 

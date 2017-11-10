@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Project_model_1 = require("../Project.model");
 var RedirectService_1 = require("../../util/RedirectService");
+var Observable_1 = require("rxjs/Observable");
 var ProjectViewComponent = /** @class */ (function () {
     function ProjectViewComponent(redirectService) {
         this.redirectService = redirectService;
@@ -42,7 +43,7 @@ var ProjectViewComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectViewComponent.prototype, "reachBinary", {
         get: function () {
-            return this.project.reachBlob;
+            return Observable_1.Observable.of(this.project.reachBlob);
         },
         enumerable: true,
         configurable: true

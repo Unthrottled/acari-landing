@@ -1,7 +1,7 @@
 <div class="project-container" (click)="redirect()">
     <div class="project-reach-container"
-            *ngIf="reachBinary">
-        <img [src]="reachBinary" alt="HALO REACH"/>
+            *ngIf="reachBinary | async">
+        <img [src]="reachBinary | async" alt="HALO REACH"/>
     </div>
     <div class="project-description-container"
             [style.color]="textColor | safetyStyle"
