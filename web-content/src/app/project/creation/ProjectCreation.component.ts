@@ -6,6 +6,7 @@ import {ProjectService} from "../Project.service";
 import {Reach} from "../Reach.model";
 import {Background} from "../Background.model";
 import {Location} from '../Location.model';
+import {isNullOrUndefined} from "util";
 
 @Component({
     selector: 'project-creation',
@@ -97,7 +98,8 @@ export class ProjectCreationComponent {
     }
 
     get notUploadable(): Observable<boolean> {
-        return Observable.of(true);
+        return Observable.of(this.reachBlob)
+            .map(isNullOrUndefined);
     }
 
     get project(): Project {

@@ -17,6 +17,7 @@ var Project_service_1 = require("../Project.service");
 var Reach_model_1 = require("../Reach.model");
 var Background_model_1 = require("../Background.model");
 var Location_model_1 = require("../Location.model");
+var util_1 = require("util");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService) {
         this.projectService = projectService;
@@ -113,7 +114,8 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {
         get: function () {
-            return Observable_1.Observable.of(true);
+            return Observable_1.Observable.of(this.reachBlob)
+                .map(util_1.isNullOrUndefined);
         },
         enumerable: true,
         configurable: true
