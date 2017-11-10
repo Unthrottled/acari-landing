@@ -27,7 +27,7 @@ public class LandingRestController {
         return Mono.just("Hello Werld!\n");
     }
 
-    @PostMapping(value = "save", consumes = {
+    @PostMapping(value = "save/image", consumes = {
             MediaType.MULTIPART_FORM_DATA_VALUE,
             MediaType.IMAGE_PNG_VALUE,
             MediaType.IMAGE_JPEG_VALUE,
@@ -35,7 +35,7 @@ public class LandingRestController {
             MediaType.APPLICATION_FORM_URLENCODED_VALUE,
 
     })
-    Mono<String> createEntry(@RequestPart MultipartFile reach) {
+    public Mono<String> saveImage(@RequestPart MultipartFile reach) {
         return imageHandler.saveImage(reach);
     }
 }

@@ -16,7 +16,7 @@ var BackendAPIService = /** @class */ (function () {
         this.http = http;
     }
     BackendAPIService.prototype.postImage = function (formData) {
-        return this.http.post('./api/save', formData, {
+        return this.http.post('./api/save/image', formData, {
             reportProgress: true,
             observe: 'events',
             responseType: 'blob'
