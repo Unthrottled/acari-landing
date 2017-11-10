@@ -1,11 +1,9 @@
 export class Background {
-    private _image: Blob;
     private _backgroundStyle: string;
     private _textColor: string;
 
 
-    constructor(image: Blob, colorOne: string, textColor: string) {
-        this._image = image;
+    constructor(colorOne: string, textColor: string) {
         this._backgroundStyle = colorOne;
         this._textColor = textColor;
     }
@@ -17,14 +15,6 @@ export class Background {
 
     set textColor(value: string) {
         this._textColor = value;
-    }
-
-    get image(): Blob {
-        return this._image;
-    }
-
-    set image(value: Blob) {
-        this._image = value;
     }
 
     get backgroundStyle(): string {

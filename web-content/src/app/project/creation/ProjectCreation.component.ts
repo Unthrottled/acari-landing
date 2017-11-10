@@ -130,7 +130,7 @@ export class ProjectCreationComponent implements OnInit {
     }
 
     private buildBackground() {
-        return new Background(null, this.backgroundStyle, this.descriptionTextColor);
+        return new Background(this.backgroundStyle, this.descriptionTextColor);
     }
 
     private _backgroundStyle: string = this.buildStyle();

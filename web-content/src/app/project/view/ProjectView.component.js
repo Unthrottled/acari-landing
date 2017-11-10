@@ -43,6 +43,7 @@ var ProjectViewComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectViewComponent.prototype, "reachBinary", {
         get: function () {
+            //todo: dis will change
             return Observable_1.Observable.of(this.project.reachBlob);
         },
         enumerable: true,

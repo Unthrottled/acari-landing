@@ -144,7 +144,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         return new Location_model_1.Location(this.url);
     };
     ProjectCreationComponent.prototype.buildBackground = function () {
-        return new Background_model_1.Background(null, this.backgroundStyle, this.descriptionTextColor);
+        return new Background_model_1.Background(this.backgroundStyle, this.descriptionTextColor);
     };
     Object.defineProperty(ProjectCreationComponent.prototype, "backgroundStyle", {
         get: function () {
