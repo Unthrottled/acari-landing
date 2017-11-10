@@ -26,6 +26,18 @@ body {
   padding: 40px 50px;
 }
 
+.site-border {
+  background: #c14646;
+  background: -webkit-linear-gradient(left, rgba(150, 0, 19, 0.98), #d98c8c);
+  /*Safari 5.1-6*/
+  background: -o-linear-gradient(right, rgba(150, 0, 19, 0.98), #d98c8c);
+  /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right, rgba(150, 0, 19, 0.98), #d98c8c);
+  /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(150, 0, 19, 0.98), #d98c8c);
+  /*Standard*/
+  height: 0.5em; }
+
 
 .project-creation-container {
 }
