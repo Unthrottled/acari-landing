@@ -15,58 +15,28 @@ import {LocalReachService} from "./LocalReach.service";
     template: require('./ProjectCreation.component.htm')
 })
 export class ProjectCreationComponent implements OnInit {
-    ngOnInit(): void {
-        this.maxProjectCount.subscribe(lowestRank=> this.rank=lowestRank);
-        this.rebuildProject();
-    }
-
-    rebuildProject(): void{
-        this._project = new Project(this.buildDescription(),
-            this.buildReachBlob(),
-            this.buildBackground(),
-            this.buildLocation(),
-            this.buildProjectRank())
-    }
-
     constructor(private projectService: ProjectService,
                 private localReachService: LocalReachService) {
 
     }
 
-    private _project: Project;
+    private _project: Project = this.buildProject();
+
+    get project(): Project {
+        return this._project;
+    }
+
     private _reachFile: Observable<File> = Observable.empty();
+
+    get reachFile(): Observable<File> {
+        return this._reachFile;
+    }
+
+    set reachFile(value: Observable<File>) {
+        this._reachFile = value;
+    }
+
     private _colorOne: string = '#464646';
-    private _colorTwo: string = '#8d85d6';
-    private _descriptionTextColor: string = '#f5f5f5';
-    private _url: string = 'http://blog.acari.io';
-    private _rank: number;
-
-
-
-
-    get rank(): number {
-        return this._rank;
-    }
-
-    set rank(value: number) {
-        this._rank = value;
-    }
-
-    get url(): string {
-        return this._url;
-    }
-
-    set url(value: string) {
-        this._url = value;
-    }
-
-    get descriptionTextColor(): string {
-        return this._descriptionTextColor;
-    }
-
-    set descriptionTextColor(value: string) {
-        this._descriptionTextColor = value;
-    }
 
     get colorOne(): string {
         return this._colorOne;
@@ -77,6 +47,8 @@ export class ProjectCreationComponent implements OnInit {
         this.rebuildStyle();
     }
 
+    private _colorTwo: string = '#8d85d6';
+
     get colorTwo(): string {
         return this._colorTwo;
     }
@@ -86,12 +58,80 @@ export class ProjectCreationComponent implements OnInit {
         this.rebuildStyle();
     }
 
-    get reachFile(): Observable<File> {
-        return this._reachFile;
+    private _descriptionTextColor: string = '#f5f5f5';
+
+    get descriptionTextColor(): string {
+        return this._descriptionTextColor;
     }
 
-    set reachFile(value: Observable<File>) {
-        this._reachFile = value;
+    set descriptionTextColor(value: string) {
+        this._descriptionTextColor = value;
+        this.background = this.buildBackground();
+        this.rebuildProject();
+    }
+
+    private _url: string = 'http://blog.acari.io';
+
+    get url(): string {
+        return this._url;
+    }
+
+    set url(value: string) {
+        this._url = value;
+        this.location = this.buildLocation();
+        this.rebuildProject();
+    }
+
+    private _rank: number;
+
+    get rank(): number {
+        return this._rank;
+    }
+
+    set rank(value: number) {
+        this._rank = value;
+        this.projectRank = this.buildProjectRank();
+        this.rebuildProject();
+    }
+
+    private _location: Location = this.buildLocation();
+
+    get location(): Location {
+        return this._location;
+    }
+
+    set location(value: Location) {
+        this._location = value;
+    }
+
+    private _projectRank: ProjectRank = this.buildProjectRank();
+
+    get projectRank(): ProjectRank {
+        return this._projectRank;
+    }
+
+    set projectRank(value: ProjectRank) {
+        this._projectRank = value;
+    }
+
+    private _localReach: LocalReach = new LocalReach(Observable.empty());
+
+    get localReach(): LocalReach {
+        return this._localReach;
+    }
+
+    set localReach(value: LocalReach) {
+        this._localReach = value;
+    }
+
+    private _background: Background = this.buildBackground();
+
+    get background(): Background {
+        return this._background;
+    }
+
+    set background(value: Background) {
+        this._background = value;
     }
 
     private _excerpt: string = 'Lorem ipsum';
@@ -102,6 +142,19 @@ export class ProjectCreationComponent implements OnInit {
 
     set excerpt(value: string) {
         this._excerpt = value;
+        this.projectDescription = this.buildDescription();
+        this.rebuildProject();
+    }
+
+    private _projectDescription = this.buildDescription();
+
+
+    get projectDescription(): Description {
+        return this._projectDescription;
+    }
+
+    set projectDescription(value: Description) {
+        this._projectDescription = value;
     }
 
     private _description: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi libero, viverra vitae mi et, bibendum lobortis ipsum. Aenean vel sapien luctus, varius quam ac, bibendum nisl. Donec placerat turpis a leo auctor, non vestibulum ex tincidunt. Etiam id congue ligula. Donec vel eros tempus, condimentum erat in, faucibus erat. Ut hendrerit elementum justo eu commodo. \n' +
@@ -117,6 +170,8 @@ export class ProjectCreationComponent implements OnInit {
 
     set description(value: string) {
         this._description = value;
+        this.projectDescription = this.buildDescription();
+        this.rebuildProject();
     }
 
     get notUploadable(): Observable<boolean> {
@@ -125,8 +180,60 @@ export class ProjectCreationComponent implements OnInit {
             .map(isNullOrUndefined);
     }
 
-    get project(): Project {
-        return this._project;
+    private _backgroundStyle: string = this.buildStyle();
+
+    get backgroundStyle(): string {
+        return this._backgroundStyle;
+    }
+
+    set backgroundStyle(value: string) {
+        this._backgroundStyle = value;
+    }
+
+    get maxProjectCount(): Observable<number> {
+        return this.projectService
+            .projectCount()
+            .map(count => ++count);
+    }
+
+    ngOnInit(): void {
+        this.maxProjectCount.subscribe(lowestRank => this.rank = lowestRank);
+        this.rebuildProject();
+    }
+
+    rebuildProject(): void {
+        this._project = this.buildProject();
+    }
+
+    buildProject(): Project {
+        return new Project(this._projectDescription,
+    this.localReach,
+    this._background,
+    this._location,
+    this._projectRank)
+
+}
+
+    rebuildStyle(): void {
+        this.backgroundStyle = this.buildStyle();
+        this.background = this.buildBackground();
+        this.rebuildProject();
+    }
+
+    buildStyle(): string {
+        let rgba = this.colorOne;
+        let rgba2 = this.colorTwo;
+        return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
+    }
+
+    fileChosen(chosenFile: File): void {
+        this.reachFile = Observable.of(chosenFile);
+        this.localReach = this.buildReachBlob();
+        this.rebuildProject();
+    }
+
+    fileUploaded(success: boolean) {
+
     }
 
     private buildProjectRank() {
@@ -141,49 +248,11 @@ export class ProjectCreationComponent implements OnInit {
         return new Background(this.backgroundStyle, this.descriptionTextColor);
     }
 
-    private _backgroundStyle: string = this.buildStyle();
-
-    get backgroundStyle(): string {
-        return this._backgroundStyle;
-    }
-
-    set backgroundStyle(value: string){
-        this._backgroundStyle = value;
-    }
-
-    rebuildStyle(): void {
-        this.backgroundStyle = this.buildStyle();
-    }
-
-
-    buildStyle(): string {
-        let rgba = this.colorOne;
-        let rgba2 = this.colorTwo;
-        return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
-    }
-
-
-
     private buildReachBlob() {
         return this.localReachService.createReach(this.reachFile);
     }
 
     private buildDescription() {
         return new Description(this.excerpt, this.description);
-    }
-
-    fileChosen(chosenFile: File): void {
-        this.reachFile = Observable.of(chosenFile);
-        this.rebuildProject();
-    }
-
-    fileUploaded(success: boolean) {
-
-    }
-
-    get maxProjectCount(): Observable<number> {
-        return this.projectService
-            .projectCount()
-            .map(count=>++count);
     }
 }
