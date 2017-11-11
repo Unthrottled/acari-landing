@@ -1,30 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Observable_1 = require("rxjs/Observable");
-var Object_util_1 = require("../../util/Object.util");
+var ReplaySubject_1 = require("rxjs/ReplaySubject");
 var LocalReach = /** @class */ (function () {
-    function LocalReach(file) {
+    function LocalReach(file, ngZone) {
         var _this = this;
-        this.fileReader = new FileReader();
-        //todo:needngzone
-        this._rawFile = Observable_1.Observable.empty();
+        this.ngZone = ngZone;
+        this.repeat = new ReplaySubject_1.ReplaySubject(1);
         this._selectedFile = file;
-        //todo: replace this with the repeatable observable.
         var self = this;
         this._selectedFile
-            .filter(Object_util_1.isDefined)
             .subscribe(function (file) {
-            _this.fileReader.onloadend = function (x) {
-                self._rawFile = Observable_1.Observable.of(self.fileReader.result);
+            var fileReader = new FileReader();
+            fileReader.onload = function (event) {
+                _this.repeat.next(fileReader.result);
             };
-            _this.fileReader.readAsDataURL(file);
+            fileReader.readAsDataURL(file);
         });
+        this._rawFile = this.repeat;
     }
-    LocalReach.prototype.imageBinary = function () {
-        console.log(this._rawFile);
-        return this._rawFile
-            .filter(Object_util_1.isDefined);
-    };
     Object.defineProperty(LocalReach.prototype, "selectedFile", {
         get: function () {
             return this._selectedFile;
@@ -32,6 +25,13 @@ var LocalReach = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    LocalReach.prototype.imageBinary = function () {
+        return this._rawFile
+            .map(function (b) {
+            console.log('datboi' + b.toString().substr(0, 50));
+            return b;
+        });
+    };
     return LocalReach;
 }());
 exports.LocalReach = LocalReach;

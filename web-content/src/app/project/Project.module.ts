@@ -11,6 +11,7 @@ import {ProjectService} from "./Project.service";
 import {SafetyStylePipe} from "../util/SafetyStylePipe";
 import {WindowRef} from "../util/window";
 import {RedirectService} from "../util/RedirectService";
+import {LocalReachService} from "./creation/LocalReach.service";
 
 @NgModule({
     imports: [CommonModule, FormsModule],
@@ -32,7 +33,8 @@ import {RedirectService} from "../util/RedirectService";
     providers: [
         ProjectUploadService,
         ProjectService,
-        RedirectService
+        RedirectService,
+        LocalReachService
     ],
     schemas: []
 })

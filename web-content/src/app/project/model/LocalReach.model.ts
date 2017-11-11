@@ -1,36 +1,40 @@
-
 import {ReachInterface} from "./ReachInterface";
 import {Observable} from "rxjs/Observable";
-import {isDefined} from "../../util/Object.util";
+import {NgZone} from "@angular/core";
+import {Observer} from "rxjs/Observer";
+import {ReplaySubject} from "rxjs/ReplaySubject";
 
 export class LocalReach implements ReachInterface {
-    private fileReader: FileReader = new FileReader();
+    private repeat = new ReplaySubject<MSBaseReader>(1);
 
     //todo:needngzone
-    private _rawFile: Observable<any> = Observable.empty();
-    private _selectedFile: Observable<File>;
-    constructor(file: Observable<any>) {
+    private _rawFile: Observable<MSBaseReader>;
+
+    constructor(file: Observable<any>, private ngZone: NgZone) {
         this._selectedFile = file;
-        //todo: replace this with the repeatable observable.
         let self = this;
         this._selectedFile
-            .filter(isDefined)
-            .subscribe(file => {
-                this.fileReader.onloadend = x => {
-                    self._rawFile = Observable.of(self.fileReader.result);
+            .subscribe(file=>{
+                let fileReader = new FileReader();
+                fileReader.onload = event => {
+                    this.repeat.next(fileReader.result);
                 };
-                this.fileReader.readAsDataURL(file);
+                fileReader.readAsDataURL(file);
             });
+        this._rawFile = this.repeat;
     }
 
-    imageBinary(): Observable<any> {
-        console.log(this._rawFile);
-        return this._rawFile
-            .filter(isDefined);
-    }
+    private _selectedFile: Observable<File>;
 
     get selectedFile(): Observable<File> {
         return this._selectedFile;
+    }
+
+    imageBinary(): Observable<MSBaseReader> {
+        return this._rawFile
+            .map(b => {
+                return b;
+            });
     }
 
 }

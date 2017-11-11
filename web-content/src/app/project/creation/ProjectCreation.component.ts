@@ -8,6 +8,7 @@ import {Location} from '../model/Location.model';
 import {isNullOrUndefined} from "util";
 import {ProjectRank} from "../model/ProjectRank.model";
 import {LocalReach} from "../model/LocalReach.model";
+import {LocalReachService} from "./LocalReach.service";
 
 @Component({
     selector: 'project-creation',
@@ -16,12 +17,23 @@ import {LocalReach} from "../model/LocalReach.model";
 export class ProjectCreationComponent implements OnInit {
     ngOnInit(): void {
         this.maxProjectCount.subscribe(lowestRank=> this.rank=lowestRank);
+        this.rebuildProject();
     }
 
-    constructor(private projectService: ProjectService) {
+    rebuildProject(): void{
+        this._project = new Project(this.buildDescription(),
+            this.buildReachBlob(),
+            this.buildBackground(),
+            this.buildLocation(),
+            this.buildProjectRank())
+    }
+
+    constructor(private projectService: ProjectService,
+                private localReachService: LocalReachService) {
 
     }
 
+    private _project: Project;
     private _reachFile: Observable<File> = Observable.empty();
     private _colorOne: string = '#464646';
     private _colorTwo: string = '#8d85d6';
@@ -114,11 +126,7 @@ export class ProjectCreationComponent implements OnInit {
     }
 
     get project(): Project {
-        return new Project(this.buildDescription(),
-            this.buildReachBlob(),
-            this.buildBackground(),
-            this.buildLocation(),
-            this.buildProjectRank());
+        return this._project;
     }
 
     private buildProjectRank() {
@@ -157,7 +165,7 @@ export class ProjectCreationComponent implements OnInit {
 
 
     private buildReachBlob() {
-        return new LocalReach(this.reachFile);
+        return this.localReachService.createReach(this.reachFile);
     }
 
     private buildDescription() {
@@ -166,6 +174,7 @@ export class ProjectCreationComponent implements OnInit {
 
     fileChosen(chosenFile: File): void {
         this.reachFile = Observable.of(chosenFile);
+        this.rebuildProject();
     }
 
     fileUploaded(success: boolean) {
