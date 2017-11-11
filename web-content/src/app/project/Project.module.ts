@@ -9,9 +9,9 @@ import {FormsModule} from "@angular/forms";
 import {ProjectViewComponent} from "./view/ProjectView.component";
 import {ProjectService} from "./Project.service";
 import {SafetyStylePipe} from "../util/SafetyStylePipe";
-import {WindowRef} from "../util/window";
 import {RedirectService} from "../util/RedirectService";
 import {LocalReachService} from "./creation/LocalReach.service";
+import {RemoteReachService} from "./remote/RemoteReach.service";
 
 @NgModule({
     imports: [CommonModule, FormsModule],
@@ -34,7 +34,8 @@ import {LocalReachService} from "./creation/LocalReach.service";
         ProjectUploadService,
         ProjectService,
         RedirectService,
-        LocalReachService
+        LocalReachService,
+        RemoteReachService
     ],
     schemas: []
 })

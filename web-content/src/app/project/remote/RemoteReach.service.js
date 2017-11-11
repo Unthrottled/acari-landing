@@ -10,26 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/common/http");
-var BackendAPIService = /** @class */ (function () {
-    function BackendAPIService(http) {
-        this.http = http;
+var BackendAPI_service_1 = require("../../util/BackendAPI.service");
+var RemoteReach_model_1 = require("../model/RemoteReach.model");
+var RemoteReachService = /** @class */ (function () {
+    function RemoteReachService(backendAPI) {
+        this.backendAPI = backendAPI;
     }
-    BackendAPIService.prototype.postImage = function (formData) {
-        return this.http.post('./api/image/save', formData, {
-            responseType: 'text'
-        });
+    RemoteReachService.prototype.fetchReach = function (reachId) {
+        return new RemoteReach_model_1.RemoteReach(this.backendAPI.fetchImage(reachId));
     };
-    BackendAPIService.prototype.fetchImage = function (_id) {
-        return this.http.get('./api/image/get' + _id, {
-            responseType: 'blob'
-        });
-    };
-    BackendAPIService = __decorate([
+    RemoteReachService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.HttpClient])
-    ], BackendAPIService);
-    return BackendAPIService;
+        __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService])
+    ], RemoteReachService);
+    return RemoteReachService;
 }());
-exports.BackendAPIService = BackendAPIService;
-//# sourceMappingURL=BackendAPI.service.js.map
+exports.RemoteReachService = RemoteReachService;
+//# sourceMappingURL=RemoteReach.service.js.map

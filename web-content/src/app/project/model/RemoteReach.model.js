@@ -1,40 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Reach = /** @class */ (function () {
-    function Reach(reachBinary) {
-        this._rawFile = reachBinary;
+var RemoteReach = /** @class */ (function () {
+    function RemoteReach(file) {
+        this._rawFile = file;
     }
-    Object.defineProperty(Reach.prototype, "reachId", {
-        get: function () {
-            return this._reachId;
-        },
-        set: function (value) {
-            this._reachId = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Reach.prototype, "rawFile", {
-        get: function () {
-            return this._rawFile;
-        },
-        set: function (value) {
-            this._rawFile = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Reach.prototype, "selectedFile", {
-        get: function () {
-            return this._selectedFile;
-        },
-        set: function (value) {
-            this._selectedFile = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return Reach;
+    RemoteReach.prototype.imageBinary = function () {
+        return this._rawFile;
+    };
+    return RemoteReach;
 }());
-exports.Reach = Reach;
-//# sourceMappingURL=RemoteReach.model.js.mapjs.map
+exports.RemoteReach = RemoteReach;
+//# sourceMappingURL=RemoteReach.model.js.map

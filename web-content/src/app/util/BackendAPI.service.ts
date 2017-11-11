@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpEvent} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 
 
@@ -12,8 +12,14 @@ export class BackendAPIService {
 
 
     postImage(formData: FormData): Observable<string> {
-        return this.http.post('./api/save/image', formData, {
+        return this.http.post('./api/image/save', formData, {
             responseType: 'text'
+        });
+    }
+
+    fetchImage(_id: string): Observable<Blob> {
+        return this.http.get('./api/image/get' + _id, {
+            responseType: 'blob'
         });
     }
 }
