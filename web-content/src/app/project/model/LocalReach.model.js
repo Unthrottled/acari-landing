@@ -4,23 +4,25 @@ var Observable_1 = require("rxjs/Observable");
 var Object_util_1 = require("../../util/Object.util");
 var LocalReach = /** @class */ (function () {
     function LocalReach(file) {
+        var _this = this;
         this.fileReader = new FileReader();
+        //todo:needngzone
+        this._rawFile = Observable_1.Observable.empty();
         this._selectedFile = file;
         //todo: replace this with the repeatable observable.
-        this.load();
-    }
-    LocalReach.prototype.load = function () {
-        var _this = this;
         var self = this;
         this._selectedFile
             .filter(Object_util_1.isDefined)
             .subscribe(function (file) {
-            _this.fileReader.onloadend = function (x) { return self._rawFile = self.fileReader.result; };
+            _this.fileReader.onloadend = function (x) {
+                self._rawFile = Observable_1.Observable.of(self.fileReader.result);
+            };
             _this.fileReader.readAsDataURL(file);
         });
-    };
+    }
     LocalReach.prototype.imageBinary = function () {
-        return Observable_1.Observable.of(this._rawFile)
+        console.log(this._rawFile);
+        return this._rawFile
             .filter(Object_util_1.isDefined);
     };
     Object.defineProperty(LocalReach.prototype, "selectedFile", {
