@@ -4,6 +4,7 @@ import {Description} from "./Description.model";
 import {Background} from "./Background.model";
 import {ProjectRank} from "./ProjectRank.model";
 import {Location} from "./Location.model";
+import {Observable} from "rxjs/Observable";
 
 export class LocalProject extends Project {
 
@@ -15,7 +16,7 @@ export class LocalProject extends Project {
         super(description, localReach, background, location, rank);
     }
 
-    get reachFile(): File {
+    get reachFile(): Observable<File> {
         return this.localReach.selectedFile;
     }
 }

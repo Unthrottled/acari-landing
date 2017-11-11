@@ -7,8 +7,8 @@ export class LocalReach implements ReachInterface {
     private fileReader: FileReader = new FileReader();
 
     private _rawFile: any;
-    private _selectedFile: File;
-    constructor(file: any) {
+    private _selectedFile: Observable<File>;
+    constructor(file: Observable<any>) {
         this._selectedFile = file;
         //todo: replace this with the repeatable observable.
         this.load()
@@ -16,9 +16,14 @@ export class LocalReach implements ReachInterface {
 
     private load(): void {
         let self = this;
-        this.fileReader.onloadend = x => self._rawFile = self.fileReader.result;
-        this.fileReader.readAsDataURL(this._selectedFile);
+        this._selectedFile
+            .filter(isDefined)
+            .subscribe(file => {
+                this.fileReader.onloadend = x => self._rawFile = self.fileReader.result;
+                this.fileReader.readAsDataURL(file);
+            });
     }
+
 
 
     imageBinary(): Observable<any> {
@@ -26,7 +31,7 @@ export class LocalReach implements ReachInterface {
             .filter(isDefined);
     }
 
-    get selectedFile(): File {
+    get selectedFile(): Observable<File> {
         return this._selectedFile;
     }
 

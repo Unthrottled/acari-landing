@@ -22,6 +22,7 @@ var LocalReach_model_1 = require("../model/LocalReach.model");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService) {
         this.projectService = projectService;
+        this._reachFile = Observable_1.Observable.empty();
         this._colorOne = '#464646';
         this._colorTwo = '#8d85d6';
         this._descriptionTextColor = '#f5f5f5';
@@ -123,7 +124,8 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {
         get: function () {
-            return Observable_1.Observable.of(this.reachFile)
+            return this.reachFile
+                .defaultIfEmpty(null)
                 .map(util_1.isNullOrUndefined);
         },
         enumerable: true,
@@ -170,7 +172,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         return new Description_model_1.Description(this.excerpt, this.description);
     };
     ProjectCreationComponent.prototype.fileChosen = function (chosenFile) {
-        this.reachFile = chosenFile;
+        this.reachFile = Observable_1.Observable.of(chosenFile);
     };
     ProjectCreationComponent.prototype.fileUploaded = function (success) {
     };

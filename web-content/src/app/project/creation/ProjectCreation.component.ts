@@ -22,7 +22,7 @@ export class ProjectCreationComponent implements OnInit {
 
     }
 
-    private _reachFile: any;
+    private _reachFile: Observable<File> = Observable.empty();
     private _colorOne: string = '#464646';
     private _colorTwo: string = '#8d85d6';
     private _descriptionTextColor: string = '#f5f5f5';
@@ -74,11 +74,11 @@ export class ProjectCreationComponent implements OnInit {
         this.rebuildStyle();
     }
 
-    get reachFile(): File {
+    get reachFile(): Observable<File> {
         return this._reachFile;
     }
 
-    set reachFile(value: File) {
+    set reachFile(value: Observable<File>) {
         this._reachFile = value;
     }
 
@@ -108,7 +108,8 @@ export class ProjectCreationComponent implements OnInit {
     }
 
     get notUploadable(): Observable<boolean> {
-        return Observable.of(this.reachFile)
+        return this.reachFile
+            .defaultIfEmpty(null)
             .map(isNullOrUndefined);
     }
 
@@ -164,7 +165,7 @@ export class ProjectCreationComponent implements OnInit {
     }
 
     fileChosen(chosenFile: File): void {
-        this.reachFile = chosenFile;
+        this.reachFile = Observable.of(chosenFile);
     }
 
     fileUploaded(success: boolean) {

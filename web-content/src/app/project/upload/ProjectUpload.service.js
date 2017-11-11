@@ -11,15 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../../util/BackendAPI.service");
+var Object_util_1 = require("../../util/Object.util");
 var ProjectUploadService = /** @class */ (function () {
     function ProjectUploadService(backendAPIService) {
         this.backendAPIService = backendAPIService;
     }
     ProjectUploadService.prototype.pushFileToStorage = function (projectToUpload) {
-        var formData = new FormData();
-        formData.append('reach', projectToUpload.reachFile);
-        return this.backendAPIService.postImage(formData)
-            .map(function (imageId) { return imageId.length > 0; });
+        var _this = this;
+        return projectToUpload.reachFile
+            .filter(Object_util_1.isDefined)
+            .map(function (reachFile) {
+            var formData = new FormData();
+            formData.append('reach', reachFile);
+            return formData;
+        })
+            .flatMap(function (formData) {
+            return _this.backendAPIService.postImage(formData)
+                .map(function (imageId) { return imageId.length > 0; });
+        });
     };
     ProjectUploadService = __decorate([
         core_1.Injectable(),

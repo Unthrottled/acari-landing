@@ -10,9 +10,14 @@ var LocalReach = /** @class */ (function () {
         this.load();
     }
     LocalReach.prototype.load = function () {
+        var _this = this;
         var self = this;
-        this.fileReader.onloadend = function (x) { return self._rawFile = self.fileReader.result; };
-        this.fileReader.readAsDataURL(this._selectedFile);
+        this._selectedFile
+            .filter(Object_util_1.isDefined)
+            .subscribe(function (file) {
+            _this.fileReader.onloadend = function (x) { return self._rawFile = self.fileReader.result; };
+            _this.fileReader.readAsDataURL(file);
+        });
     };
     LocalReach.prototype.imageBinary = function () {
         return Observable_1.Observable.of(this._rawFile)
