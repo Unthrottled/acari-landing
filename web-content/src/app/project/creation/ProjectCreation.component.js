@@ -14,15 +14,14 @@ var Observable_1 = require("rxjs/Observable");
 var Project_model_1 = require("../model/Project.model");
 var Description_model_1 = require("../model/Description.model");
 var Project_service_1 = require("../Project.service");
-var Reach_model_1 = require("../model/Reach.model");
 var Background_model_1 = require("../model/Background.model");
 var Location_model_1 = require("../model/Location.model");
 var util_1 = require("util");
 var ProjectRank_model_1 = require("../model/ProjectRank.model");
+var LocalReach_model_1 = require("../model/LocalReach.model");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService) {
         this.projectService = projectService;
-        this.fileReader = new FileReader();
         this._colorOne = '#464646';
         this._colorTwo = '#8d85d6';
         this._descriptionTextColor = '#f5f5f5';
@@ -92,12 +91,12 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "reachBlob", {
+    Object.defineProperty(ProjectCreationComponent.prototype, "reachFile", {
         get: function () {
-            return this._reachBlob;
+            return this._reachFile;
         },
         set: function (value) {
-            this._reachBlob = value;
+            this._reachFile = value;
         },
         enumerable: true,
         configurable: true
@@ -124,7 +123,7 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {
         get: function () {
-            return Observable_1.Observable.of(this.reachBlob)
+            return Observable_1.Observable.of(this.reachFile)
                 .map(util_1.isNullOrUndefined);
         },
         enumerable: true,
@@ -165,15 +164,13 @@ var ProjectCreationComponent = /** @class */ (function () {
         return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
     };
     ProjectCreationComponent.prototype.buildReachBlob = function () {
-        return new Reach_model_1.Reach(this.reachBlob);
+        return new LocalReach_model_1.LocalReach(this.reachFile);
     };
     ProjectCreationComponent.prototype.buildDescription = function () {
         return new Description_model_1.Description(this.excerpt, this.description);
     };
     ProjectCreationComponent.prototype.fileChosen = function (chosenFile) {
-        var self = this;
-        this.fileReader.onloadend = function (x) { return self.reachBlob = self.fileReader.result; };
-        this.fileReader.readAsDataURL(chosenFile);
+        this.reachFile = chosenFile;
     };
     ProjectCreationComponent.prototype.fileUploaded = function (success) {
     };

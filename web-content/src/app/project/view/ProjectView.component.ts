@@ -33,8 +33,7 @@ export class ProjectViewComponent {
     }
 
     get reachBinary(): Observable<any> {
-        //todo: dis will change
-        return Observable.of(this.project.reachBlob);
+        return this.project.reachBlob;
     }
 
 

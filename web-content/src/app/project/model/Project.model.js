@@ -13,8 +13,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ExportableProject_1 = require("./ExportableProject");
 var Project = /** @class */ (function (_super) {
     __extends(Project, _super);
-    function Project() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Project(description, reach, background, location, rank) {
+        return _super.call(this, description, reach, background, location, rank) || this;
     }
     Object.defineProperty(Project.prototype, "url", {
         get: function () {
@@ -39,14 +39,7 @@ var Project = /** @class */ (function (_super) {
     });
     Object.defineProperty(Project.prototype, "reachBlob", {
         get: function () {
-            return this._selectedReach.rawFile;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Project.prototype, "reachFile", {
-        get: function () {
-            return this._selectedReach.selectedFile;
+            return this._selectedReach.imageBinary();
         },
         enumerable: true,
         configurable: true

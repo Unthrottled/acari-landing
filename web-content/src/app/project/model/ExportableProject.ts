@@ -2,10 +2,10 @@ import {Location} from "./Location.model";
 import {Description} from "./Description.model";
 import {Background} from "./Background.model";
 import {ProjectRank} from "./ProjectRank.model";
-import {Reach} from "./Reach.model";
+import {ReachInterface} from "./ReachInterface";
 
 export class ExportableProject {
-    protected _selectedReach: Reach;
+    protected _selectedReach: ReachInterface;
     protected _rank: ProjectRank;
     protected _background: Background;
     protected _description: Description;
@@ -13,7 +13,7 @@ export class ExportableProject {
 
 
     constructor(description: Description,
-                reach: Reach,
+                reach: ReachInterface,
                 background: Background,
                 location: Location,
                 rank: ProjectRank) {

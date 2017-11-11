@@ -1,6 +1,21 @@
 import {ExportableProject} from "./ExportableProject";
+import {Observable} from "rxjs/Observable";
+import {Description} from "./Description.model";
+import {ReachInterface} from "./ReachInterface";
+import {Location} from './Location.model'
+import {Background} from "./Background.model";
+import {ProjectRank} from "./ProjectRank.model";
 
 export class Project extends ExportableProject {
+
+
+    constructor(description: Description,
+                reach: ReachInterface,
+                background: Background,
+                location: Location,
+                rank: ProjectRank) {
+        super(description, reach, background, location, rank);
+    }
 
     get url(): string {
         return this._location.url;
@@ -16,12 +31,8 @@ export class Project extends ExportableProject {
     }
 
 
-    get reachBlob(): any {
-        return this._selectedReach.rawFile;
-    }
-
-    get reachFile(): File {
-        return this._selectedReach.selectedFile;
+    get reachBlob(): Observable<any> {
+        return this._selectedReach.imageBinary();
     }
 
     get backgroundColor(): string {

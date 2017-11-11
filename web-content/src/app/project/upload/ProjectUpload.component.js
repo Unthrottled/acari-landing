@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
 var ProjectUpload_service_1 = require("./ProjectUpload.service");
-var Project_model_1 = require("../model/Project.model");
+var LocalProject_model_1 = require("../model/LocalProject.model");
 var ProjectUploadComponent = /** @class */ (function () {
     function ProjectUploadComponent(uploadFileService) {
         this.uploadFileService = uploadFileService;
@@ -56,8 +56,8 @@ var ProjectUploadComponent = /** @class */ (function () {
     ], ProjectUploadComponent.prototype, "notUploadable", null);
     __decorate([
         core_1.Input(),
-        __metadata("design:type", Project_model_1.Project),
-        __metadata("design:paramtypes", [Project_model_1.Project])
+        __metadata("design:type", LocalProject_model_1.LocalProject),
+        __metadata("design:paramtypes", [LocalProject_model_1.LocalProject])
     ], ProjectUploadComponent.prototype, "project", null);
     ProjectUploadComponent = __decorate([
         core_1.Component({

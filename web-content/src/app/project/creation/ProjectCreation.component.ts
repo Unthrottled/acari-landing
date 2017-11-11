@@ -3,11 +3,11 @@ import {Observable} from "rxjs/Observable";
 import {Project} from "../model/Project.model";
 import {Description} from "../model/Description.model";
 import {ProjectService} from "../Project.service";
-import {Reach} from "../model/Reach.model";
 import {Background} from "../model/Background.model";
 import {Location} from '../model/Location.model';
 import {isNullOrUndefined} from "util";
 import {ProjectRank} from "../model/ProjectRank.model";
+import {LocalReach} from "../model/LocalReach.model";
 
 @Component({
     selector: 'project-creation',
@@ -17,13 +17,12 @@ export class ProjectCreationComponent implements OnInit {
     ngOnInit(): void {
         this.maxProjectCount.subscribe(lowestRank=> this.rank=lowestRank);
     }
-    private fileReader: FileReader = new FileReader();
 
     constructor(private projectService: ProjectService) {
 
     }
 
-    private _reachBlob: any;
+    private _reachFile: any;
     private _colorOne: string = '#464646';
     private _colorTwo: string = '#8d85d6';
     private _descriptionTextColor: string = '#f5f5f5';
@@ -75,12 +74,12 @@ export class ProjectCreationComponent implements OnInit {
         this.rebuildStyle();
     }
 
-    get reachBlob(): any {
-        return this._reachBlob;
+    get reachFile(): File {
+        return this._reachFile;
     }
 
-    set reachBlob(value: any) {
-        this._reachBlob = value;
+    set reachFile(value: File) {
+        this._reachFile = value;
     }
 
     private _excerpt: string = 'Lorem ipsum';
@@ -109,7 +108,7 @@ export class ProjectCreationComponent implements OnInit {
     }
 
     get notUploadable(): Observable<boolean> {
-        return Observable.of(this.reachBlob)
+        return Observable.of(this.reachFile)
             .map(isNullOrUndefined);
     }
 
@@ -155,8 +154,9 @@ export class ProjectCreationComponent implements OnInit {
     }
 
 
+
     private buildReachBlob() {
-        return new Reach(this.reachBlob);
+        return new LocalReach(this.reachFile);
     }
 
     private buildDescription() {
@@ -164,9 +164,7 @@ export class ProjectCreationComponent implements OnInit {
     }
 
     fileChosen(chosenFile: File): void {
-        let self = this;
-        this.fileReader.onloadend = x => self.reachBlob = self.fileReader.result;
-        this.fileReader.readAsDataURL(chosenFile);
+        this.reachFile = chosenFile;
     }
 
     fileUploaded(success: boolean) {
