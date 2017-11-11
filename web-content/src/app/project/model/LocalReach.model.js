@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Observable_1 = require("rxjs/Observable");
-var util_1 = require("@angular/compiler/src/util");
+var Object_util_1 = require("../../util/Object.util");
 var LocalReach = /** @class */ (function () {
     function LocalReach(file) {
         this.fileReader = new FileReader();
@@ -16,7 +16,7 @@ var LocalReach = /** @class */ (function () {
     };
     LocalReach.prototype.imageBinary = function () {
         return Observable_1.Observable.of(this._rawFile)
-            .filter(util_1.isDefined);
+            .filter(Object_util_1.isDefined);
     };
     Object.defineProperty(LocalReach.prototype, "selectedFile", {
         get: function () {

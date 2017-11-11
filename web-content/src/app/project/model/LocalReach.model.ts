@@ -1,7 +1,7 @@
 
 import {ReachInterface} from "./ReachInterface";
 import {Observable} from "rxjs/Observable";
-import {isDefined} from "@angular/compiler/src/util";
+import {isDefined} from "../../util/Object.util";
 
 export class LocalReach implements ReachInterface {
     private fileReader: FileReader = new FileReader();
