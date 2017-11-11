@@ -12,15 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var LocalReach_model_1 = require("../model/LocalReach.model");
 var LocalReachService = /** @class */ (function () {
-    function LocalReachService(ngZone) {
-        this.ngZone = ngZone;
+    function LocalReachService() {
     }
     LocalReachService.prototype.createReach = function (reachFile) {
-        return new LocalReach_model_1.LocalReach(reachFile, this.ngZone);
+        return new LocalReach_model_1.LocalReach(reachFile);
     };
     LocalReachService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [core_1.NgZone])
+        __metadata("design:paramtypes", [])
     ], LocalReachService);
     return LocalReachService;
 }());

@@ -2,9 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReplaySubject_1 = require("rxjs/ReplaySubject");
 var LocalReach = /** @class */ (function () {
-    function LocalReach(file, ngZone) {
+    function LocalReach(file) {
         var _this = this;
-        this.ngZone = ngZone;
         this.repeat = new ReplaySubject_1.ReplaySubject(1);
         this._selectedFile = file;
         var self = this;
@@ -26,11 +25,7 @@ var LocalReach = /** @class */ (function () {
         configurable: true
     });
     LocalReach.prototype.imageBinary = function () {
-        return this._rawFile
-            .map(function (b) {
-            console.log('datboi' + b.toString().substr(0, 50));
-            return b;
-        });
+        return this._rawFile;
     };
     return LocalReach;
 }());

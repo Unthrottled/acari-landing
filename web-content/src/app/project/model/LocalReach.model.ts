@@ -1,20 +1,17 @@
 import {ReachInterface} from "./ReachInterface";
 import {Observable} from "rxjs/Observable";
-import {NgZone} from "@angular/core";
-import {Observer} from "rxjs/Observer";
 import {ReplaySubject} from "rxjs/ReplaySubject";
 
 export class LocalReach implements ReachInterface {
     private repeat = new ReplaySubject<MSBaseReader>(1);
 
-    //todo:needngzone
     private _rawFile: Observable<MSBaseReader>;
 
-    constructor(file: Observable<any>, private ngZone: NgZone) {
+    constructor(file: Observable<any>) {
         this._selectedFile = file;
         let self = this;
         this._selectedFile
-            .subscribe(file=>{
+            .subscribe(file => {
                 let fileReader = new FileReader();
                 fileReader.onload = event => {
                     this.repeat.next(fileReader.result);
@@ -31,10 +28,7 @@ export class LocalReach implements ReachInterface {
     }
 
     imageBinary(): Observable<MSBaseReader> {
-        return this._rawFile
-            .map(b => {
-                return b;
-            });
+        return this._rawFile;
     }
 
 }
