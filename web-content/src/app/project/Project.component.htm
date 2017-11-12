@@ -1,6 +1,5 @@
-<div class="project-container">
-    <img [src]="reachImage"/>
-    <div class="description-container">
-
-    </div>
+<div [hidden]="cantEdit | async">
+    <project-creation [(project)]="project"></project-creation>
 </div>
+
+<project-view [project]="project"></project-view>
