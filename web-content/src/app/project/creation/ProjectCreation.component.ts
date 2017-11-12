@@ -7,7 +7,6 @@ import {Background} from "../model/Background.model";
 import {Location} from '../model/Location.model';
 import {isNullOrUndefined} from "util";
 import {ProjectRank} from "../model/ProjectRank.model";
-import {LocalReach} from "../model/LocalReach.model";
 import {LocalReachService} from "./LocalReach.service";
 import {ReachInterface} from "../model/ReachInterface";
 
@@ -16,6 +15,10 @@ import {ReachInterface} from "../model/ReachInterface";
     template: require('./ProjectCreation.component.htm')
 })
 export class ProjectCreationComponent implements OnInit {
+    @Output()
+    private projectChanged = new EventEmitter<Project>();
+    private _reach: ReachInterface;
+
     constructor(private projectService: ProjectService,
                 private localReachService: LocalReachService) {
 
@@ -27,9 +30,6 @@ export class ProjectCreationComponent implements OnInit {
     get project(): Project {
         return this._project;
     }
-
-    @Output()
-    private projectChanged = new EventEmitter<Project>();
 
     private _reachFile: Observable<File> = Observable.empty();
 
@@ -111,16 +111,6 @@ export class ProjectCreationComponent implements OnInit {
         this._projectRank = value;
     }
 
-    private _localReach: ReachInterface;
-
-    get localReach(): ReachInterface {
-        return this._localReach;
-    }
-
-    set localReach(value: ReachInterface) {
-        this._localReach = value;
-    }
-
     private _background: Background = this.buildBackground();
 
     get background(): Background {
@@ -192,12 +182,12 @@ export class ProjectCreationComponent implements OnInit {
 
     buildProject(): Project {
         return new Project(this._projectDescription,
-    this.localReach,
-    this._background,
-    this._location,
-    this._projectRank)
+            this._reach,
+            this._background,
+            this._location,
+            this._projectRank)
 
-}
+    }
 
     rebuildStyle(): void {
         this.backgroundStyle = this.buildStyle();
@@ -213,7 +203,7 @@ export class ProjectCreationComponent implements OnInit {
 
     fileChosen(chosenFile: File): void {
         this.reachFile = Observable.of(chosenFile);
-        this.localReach = this.buildReachBlob();
+        this._reach = this.buildReachBlob();
         this.rebuildProject();
     }
 

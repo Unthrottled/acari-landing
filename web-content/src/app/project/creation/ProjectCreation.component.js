@@ -20,8 +20,8 @@ var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService, localReachService) {
         this.projectService = projectService;
         this.localReachService = localReachService;
-        this._project = this.buildProject();
         this.projectChanged = new core_1.EventEmitter();
+        this._project = this.buildProject();
         this._reachFile = Observable_1.Observable.empty();
         this._colorOne = '#464646';
         this._colorTwo = '#8d85d6';
@@ -120,16 +120,6 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "localReach", {
-        get: function () {
-            return this._localReach;
-        },
-        set: function (value) {
-            this._localReach = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(ProjectCreationComponent.prototype, "background", {
         get: function () {
             return this._background;
@@ -208,7 +198,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         this.projectChanged.emit(this.project);
     };
     ProjectCreationComponent.prototype.buildProject = function () {
-        return new Project_model_1.Project(this._projectDescription, this.localReach, this._background, this._location, this._projectRank);
+        return new Project_model_1.Project(this._projectDescription, this._reach, this._background, this._location, this._projectRank);
     };
     ProjectCreationComponent.prototype.rebuildStyle = function () {
         this.backgroundStyle = this.buildStyle();
@@ -222,7 +212,7 @@ var ProjectCreationComponent = /** @class */ (function () {
     };
     ProjectCreationComponent.prototype.fileChosen = function (chosenFile) {
         this.reachFile = Observable_1.Observable.of(chosenFile);
-        this.localReach = this.buildReachBlob();
+        this._reach = this.buildReachBlob();
         this.rebuildProject();
     };
     ProjectCreationComponent.prototype.fileUploaded = function (success) {
@@ -234,14 +224,14 @@ var ProjectCreationComponent = /** @class */ (function () {
         return this.localReachService.createReach(this.reachFile);
     };
     __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], ProjectCreationComponent.prototype, "projectChanged", void 0);
+    __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),
         __metadata("design:paramtypes", [])
     ], ProjectCreationComponent.prototype, "project", null);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", Object)
-    ], ProjectCreationComponent.prototype, "projectChanged", void 0);
     ProjectCreationComponent = __decorate([
         core_1.Component({
             selector: 'project-creation',
