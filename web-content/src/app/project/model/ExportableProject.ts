@@ -29,6 +29,11 @@ export class ExportableProject {
         return this._selectedReach;
     }
 
+
+    set selectedReach(value: ReachInterface) {
+        this._selectedReach = value;
+    }
+
     get rank(): ProjectRank {
         return this._rank;
     }

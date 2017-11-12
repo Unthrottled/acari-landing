@@ -1,14 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Project} from "../model/Project.model";
-import {Description} from "../model/Description.model";
 import {ProjectService} from "../Project.service";
-import {Background} from "../model/Background.model";
-import {Location} from '../model/Location.model';
 import {isNullOrUndefined} from "util";
-import {ProjectRank} from "../model/ProjectRank.model";
 import {LocalReachService} from "./LocalReach.service";
-import {ReachInterface} from "../model/ReachInterface";
 
 @Component({
     selector: 'project-creation',
@@ -28,16 +23,6 @@ export class ProjectCreationComponent implements OnInit {
     @Input()
     get project(): Project {
         return this._project;
-    }
-
-    private _reachFile: Observable<File> = Observable.empty();
-
-    get reachFile(): Observable<File> {
-        return this._reachFile;
-    }
-
-    set reachFile(value: Observable<File>) {
-        this._reachFile = value;
     }
 
     get colorOne(): string {
@@ -81,53 +66,12 @@ export class ProjectCreationComponent implements OnInit {
         this.project.rank.rank = value;
     }
 
-    private _location: Location;
-
-    get location(): Location {
-        return this._location;
-    }
-
-    set location(value: Location) {
-        this._location = value;
-    }
-
-    private _projectRank: ProjectRank;
-
-    get projectRank(): ProjectRank {
-        return this._projectRank;
-    }
-
-    set projectRank(value: ProjectRank) {
-        this._projectRank = value;
-    }
-
-    private _localReach: ReachInterface;
-
-    get localReach(): ReachInterface {
-        return this._localReach;
-    }
-
-    set localReach(value: ReachInterface) {
-        this._localReach = value;
-    }
-
     get excerpt(): string {
         return this._project.excerpt;
     }
 
     set excerpt(value: string) {
         this._project.description.excerpt = value;
-    }
-
-    private _projectDescription: Description;
-
-
-    get projectDescription(): Description {
-        return this._projectDescription;
-    }
-
-    set projectDescription(value: Description) {
-        this._projectDescription = value;
     }
 
     get description(): string {
@@ -139,7 +83,7 @@ export class ProjectCreationComponent implements OnInit {
     }
 
     get notUploadable(): Observable<boolean> {
-        return this.reachFile
+        return this._project.reachBlob
             .defaultIfEmpty(null)
             .map(isNullOrUndefined);
     }
@@ -156,34 +100,22 @@ export class ProjectCreationComponent implements OnInit {
 
     ngOnInit(): void {
         this.maxProjectCount.subscribe(lowestRank => this.rank = lowestRank);
-        this.rebuildProject();
     }
 
     rebuildProject(): void {
-        this._project = this.buildProject();
         this.projectChanged.emit(this.project);
     }
 
-    buildProject(): Project {
-        return new Project(this._projectDescription,
-            this.localReach,
-            undefined,
-            this._location,
-            this._projectRank)
-
-    }
 
     fileChosen(chosenFile: File): void {
-        this.reachFile = Observable.of(chosenFile);
-        this.localReach = this.buildReachBlob();
-        this.rebuildProject();
+        this._project.selectedReach = this.buildReachBlob(Observable.of(chosenFile));
     }
 
     fileUploaded(success: boolean) {
 
     }
 
-    private buildReachBlob() {
-        return this.localReachService.createReach(this.reachFile);
+    private buildReachBlob(reachFile: Observable<File>) {
+        return this.localReachService.createReach(reachFile);
     }
 }

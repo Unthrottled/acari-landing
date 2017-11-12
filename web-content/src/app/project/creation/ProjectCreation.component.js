@@ -21,21 +21,10 @@ var ProjectCreationComponent = /** @class */ (function () {
         this.localReachService = localReachService;
         this.projectChanged = new core_1.EventEmitter();
         this._project = new Project_model_1.Project();
-        this._reachFile = Observable_1.Observable.empty();
     }
     Object.defineProperty(ProjectCreationComponent.prototype, "project", {
         get: function () {
             return this._project;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(ProjectCreationComponent.prototype, "reachFile", {
-        get: function () {
-            return this._reachFile;
-        },
-        set: function (value) {
-            this._reachFile = value;
         },
         enumerable: true,
         configurable: true
@@ -90,52 +79,12 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "location", {
-        get: function () {
-            return this._location;
-        },
-        set: function (value) {
-            this._location = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(ProjectCreationComponent.prototype, "projectRank", {
-        get: function () {
-            return this._projectRank;
-        },
-        set: function (value) {
-            this._projectRank = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(ProjectCreationComponent.prototype, "localReach", {
-        get: function () {
-            return this._localReach;
-        },
-        set: function (value) {
-            this._localReach = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(ProjectCreationComponent.prototype, "excerpt", {
         get: function () {
             return this._project.excerpt;
         },
         set: function (value) {
             this._project.description.excerpt = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(ProjectCreationComponent.prototype, "projectDescription", {
-        get: function () {
-            return this._projectDescription;
-        },
-        set: function (value) {
-            this._projectDescription = value;
         },
         enumerable: true,
         configurable: true
@@ -152,7 +101,7 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {
         get: function () {
-            return this.reachFile
+            return this._project.reachBlob
                 .defaultIfEmpty(null)
                 .map(util_1.isNullOrUndefined);
         },
@@ -178,24 +127,17 @@ var ProjectCreationComponent = /** @class */ (function () {
     ProjectCreationComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.maxProjectCount.subscribe(function (lowestRank) { return _this.rank = lowestRank; });
-        this.rebuildProject();
     };
     ProjectCreationComponent.prototype.rebuildProject = function () {
-        this._project = this.buildProject();
         this.projectChanged.emit(this.project);
     };
-    ProjectCreationComponent.prototype.buildProject = function () {
-        return new Project_model_1.Project(this._projectDescription, this.localReach, undefined, this._location, this._projectRank);
-    };
     ProjectCreationComponent.prototype.fileChosen = function (chosenFile) {
-        this.reachFile = Observable_1.Observable.of(chosenFile);
-        this.localReach = this.buildReachBlob();
-        this.rebuildProject();
+        this._project.selectedReach = this.buildReachBlob(Observable_1.Observable.of(chosenFile));
     };
     ProjectCreationComponent.prototype.fileUploaded = function (success) {
     };
-    ProjectCreationComponent.prototype.buildReachBlob = function () {
-        return this.localReachService.createReach(this.reachFile);
+    ProjectCreationComponent.prototype.buildReachBlob = function (reachFile) {
+        return this.localReachService.createReach(reachFile);
     };
     __decorate([
         core_1.Output(),
