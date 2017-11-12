@@ -5,7 +5,7 @@ import {Observable} from "rxjs/Observable";
 
 
 @Component({
-    selector: '_project',
+    selector: 'project',
     template: require('./Project.component.htm')
 })
 export class ProjectComponent {

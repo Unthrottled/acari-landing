@@ -26,6 +26,9 @@ var ProjectCreationComponent = /** @class */ (function () {
         get: function () {
             return this._project;
         },
+        set: function (value) {
+            this._project = value;
+        },
         enumerable: true,
         configurable: true
     });
@@ -154,7 +157,7 @@ var ProjectCreationComponent = /** @class */ (function () {
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [Project_model_1.Project])
     ], ProjectCreationComponent.prototype, "project", null);
     ProjectCreationComponent = __decorate([
         core_1.Component({

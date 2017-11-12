@@ -40,7 +40,7 @@ var ProjectComponent = /** @class */ (function () {
     ], ProjectComponent.prototype, "project", null);
     ProjectComponent = __decorate([
         core_1.Component({
-            selector: '_project',
+            selector: 'project',
             template: require('./Project.component.htm')
         })
     ], ProjectComponent);

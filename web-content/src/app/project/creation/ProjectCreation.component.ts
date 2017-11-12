@@ -25,6 +25,10 @@ export class ProjectCreationComponent implements OnInit {
         return this._project;
     }
 
+    set project(value: Project) {
+        this._project = value;
+    }
+
     get colorOne(): string {
         return this.project.background.colorOne;
     }
