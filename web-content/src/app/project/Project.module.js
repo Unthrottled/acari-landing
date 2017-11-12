@@ -20,6 +20,7 @@ var SafetyStylePipe_1 = require("../util/SafetyStylePipe");
 var RedirectService_1 = require("../util/RedirectService");
 var LocalReach_service_1 = require("./creation/LocalReach.service");
 var RemoteReach_service_1 = require("./remote/RemoteReach.service");
+var ProjectList_component_1 = require("./ProjectList.component");
 var ProjectModule = /** @class */ (function () {
     function ProjectModule() {
     }
@@ -31,6 +32,7 @@ var ProjectModule = /** @class */ (function () {
                 ProjectUpload_component_1.ProjectUploadComponent,
                 ProjectView_component_1.ProjectViewComponent,
                 TextEntry_component_1.TextEntryComponent,
+                ProjectList_component_1.ProjectListComponent,
                 SafetyStylePipe_1.SafetyStylePipe],
             declarations: [
                 FileChoose_component_1.FileChooseComponent,
@@ -38,7 +40,8 @@ var ProjectModule = /** @class */ (function () {
                 ProjectView_component_1.ProjectViewComponent,
                 ProjectUpload_component_1.ProjectUploadComponent,
                 TextEntry_component_1.TextEntryComponent,
-                SafetyStylePipe_1.SafetyStylePipe
+                SafetyStylePipe_1.SafetyStylePipe,
+                ProjectList_component_1.ProjectListComponent
             ],
             bootstrap: [],
             providers: [
