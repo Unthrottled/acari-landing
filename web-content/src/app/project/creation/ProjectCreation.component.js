@@ -15,7 +15,6 @@ var Project_model_1 = require("../model/Project.model");
 var Project_service_1 = require("../Project.service");
 var Background_model_1 = require("../model/Background.model");
 var util_1 = require("util");
-var ProjectRank_model_1 = require("../model/ProjectRank.model");
 var LocalReach_service_1 = require("./LocalReach.service");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService, localReachService) {
@@ -27,7 +26,6 @@ var ProjectCreationComponent = /** @class */ (function () {
         this._colorOne = '#464646';
         this._colorTwo = '#8d85d6';
         this._descriptionTextColor = '#f5f5f5';
-        this._projectRank = this.buildProjectRank();
         this._background = this.buildBackground();
         this._backgroundStyle = this.buildStyle();
     }
@@ -94,12 +92,10 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "rank", {
         get: function () {
-            return this._rank;
+            return this.project.rank.rank;
         },
         set: function (value) {
-            this._rank = value;
-            this.projectRank = this.buildProjectRank();
-            this.rebuildProject();
+            this.project.rank.rank = value;
         },
         enumerable: true,
         configurable: true
@@ -230,9 +226,6 @@ var ProjectCreationComponent = /** @class */ (function () {
         this.rebuildProject();
     };
     ProjectCreationComponent.prototype.fileUploaded = function (success) {
-    };
-    ProjectCreationComponent.prototype.buildProjectRank = function () {
-        return new ProjectRank_model_1.ProjectRank(this.rank);
     };
     ProjectCreationComponent.prototype.buildBackground = function () {
         return new Background_model_1.Background(this.backgroundStyle, this.descriptionTextColor);

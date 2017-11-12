@@ -13,6 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ExportableProject_1 = require("./ExportableProject");
 var Description_model_1 = require("./Description.model");
 var Location_model_1 = require("./Location.model");
+var ProjectRank_model_1 = require("./ProjectRank.model");
 var LocalReach_model_1 = require("./LocalReach.model");
 var Project = /** @class */ (function (_super) {
     __extends(Project, _super);
@@ -20,6 +21,7 @@ var Project = /** @class */ (function (_super) {
         if (description === void 0) { description = new Description_model_1.Description(); }
         if (reach === void 0) { reach = new LocalReach_model_1.LocalReach(); }
         if (location === void 0) { location = new Location_model_1.Location(); }
+        if (rank === void 0) { rank = new ProjectRank_model_1.ProjectRank(); }
         return _super.call(this, description, reach, background, location, rank) || this;
     }
     Object.defineProperty(Project.prototype, "url", {

@@ -14,7 +14,7 @@ export class Project extends ExportableProject {
                 reach: ReachInterface = new LocalReach(),
                 background: Background,
                 location: Location = new Location(),
-                rank: ProjectRank) {
+                rank: ProjectRank = new ProjectRank()) {
         super(description, reach, background, location, rank);
     }
 

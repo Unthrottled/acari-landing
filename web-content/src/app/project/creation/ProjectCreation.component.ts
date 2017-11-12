@@ -83,16 +83,12 @@ export class ProjectCreationComponent implements OnInit {
         this.project.location.url = value;
     }
 
-    private _rank: number;
-
     get rank(): number {
-        return this._rank;
+        return this.project.rank.rank;
     }
 
     set rank(value: number) {
-        this._rank = value;
-        this.projectRank = this.buildProjectRank();
-        this.rebuildProject();
+        this.project.rank.rank = value;
     }
 
     private _location: Location;
@@ -105,7 +101,7 @@ export class ProjectCreationComponent implements OnInit {
         this._location = value;
     }
 
-    private _projectRank: ProjectRank = this.buildProjectRank();
+    private _projectRank: ProjectRank;
 
     get projectRank(): ProjectRank {
         return this._projectRank;
@@ -223,10 +219,6 @@ export class ProjectCreationComponent implements OnInit {
 
     fileUploaded(success: boolean) {
 
-    }
-
-    private buildProjectRank() {
-        return new ProjectRank(this.rank);
     }
 
     private buildBackground() {
