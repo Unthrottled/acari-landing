@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var Observable_1 = require("rxjs/Observable");
 var ReplaySubject_1 = require("rxjs/ReplaySubject");
 var LocalReach = /** @class */ (function () {
     function LocalReach(file) {
+        if (file === void 0) { file = Observable_1.Observable.empty(); }
         var _this = this;
         this.repeat = new ReplaySubject_1.ReplaySubject(1);
         this._selectedFile = file;

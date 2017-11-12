@@ -7,7 +7,7 @@ export class LocalReach implements ReachInterface {
 
     private _rawFile: Observable<MSBaseReader>;
 
-    constructor(file: Observable<any>) {
+    constructor(file: Observable<any> = Observable.empty<any>()) {
         this._selectedFile = file;
         let self = this;
         this._selectedFile

@@ -9,6 +9,7 @@ import {isNullOrUndefined} from "util";
 import {ProjectRank} from "../model/ProjectRank.model";
 import {LocalReach} from "../model/LocalReach.model";
 import {LocalReachService} from "./LocalReach.service";
+import {ReachInterface} from "../model/ReachInterface";
 
 @Component({
     selector: 'project-creation',
@@ -94,7 +95,7 @@ export class ProjectCreationComponent implements OnInit {
         this.rebuildProject();
     }
 
-    private _location: Location = this.buildLocation();
+    private _location: Location;
 
     get location(): Location {
         return this._location;
@@ -114,13 +115,13 @@ export class ProjectCreationComponent implements OnInit {
         this._projectRank = value;
     }
 
-    private _localReach: LocalReach = new LocalReach(Observable.empty());
+    private _localReach: ReachInterface;
 
-    get localReach(): LocalReach {
+    get localReach(): ReachInterface {
         return this._localReach;
     }
 
-    set localReach(value: LocalReach) {
+    set localReach(value: ReachInterface) {
         this._localReach = value;
     }
 
@@ -142,7 +143,7 @@ export class ProjectCreationComponent implements OnInit {
         this._project.description.excerpt = value;
     }
 
-    private _projectDescription = this.buildDescription();
+    private _projectDescription: Description;
 
 
     get projectDescription(): Description {
@@ -228,19 +229,11 @@ export class ProjectCreationComponent implements OnInit {
         return new ProjectRank(this.rank);
     }
 
-    private buildLocation() {
-        return new Location(this.url);
-    }
-
     private buildBackground() {
         return new Background(this.backgroundStyle, this.descriptionTextColor);
     }
 
     private buildReachBlob() {
         return this.localReachService.createReach(this.reachFile);
-    }
-
-    private buildDescription() {
-        return new Description(this.excerpt, this.description);
     }
 }

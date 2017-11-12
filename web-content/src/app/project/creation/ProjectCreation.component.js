@@ -12,13 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
 var Project_model_1 = require("../model/Project.model");
-var Description_model_1 = require("../model/Description.model");
 var Project_service_1 = require("../Project.service");
 var Background_model_1 = require("../model/Background.model");
-var Location_model_1 = require("../model/Location.model");
 var util_1 = require("util");
 var ProjectRank_model_1 = require("../model/ProjectRank.model");
-var LocalReach_model_1 = require("../model/LocalReach.model");
 var LocalReach_service_1 = require("./LocalReach.service");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService, localReachService) {
@@ -30,11 +27,8 @@ var ProjectCreationComponent = /** @class */ (function () {
         this._colorOne = '#464646';
         this._colorTwo = '#8d85d6';
         this._descriptionTextColor = '#f5f5f5';
-        this._location = this.buildLocation();
         this._projectRank = this.buildProjectRank();
-        this._localReach = new LocalReach_model_1.LocalReach(Observable_1.Observable.empty());
         this._background = this.buildBackground();
-        this._projectDescription = this.buildDescription();
         this._backgroundStyle = this.buildStyle();
     }
     Object.defineProperty(ProjectCreationComponent.prototype, "project", {
@@ -240,17 +234,11 @@ var ProjectCreationComponent = /** @class */ (function () {
     ProjectCreationComponent.prototype.buildProjectRank = function () {
         return new ProjectRank_model_1.ProjectRank(this.rank);
     };
-    ProjectCreationComponent.prototype.buildLocation = function () {
-        return new Location_model_1.Location(this.url);
-    };
     ProjectCreationComponent.prototype.buildBackground = function () {
         return new Background_model_1.Background(this.backgroundStyle, this.descriptionTextColor);
     };
     ProjectCreationComponent.prototype.buildReachBlob = function () {
         return this.localReachService.createReach(this.reachFile);
-    };
-    ProjectCreationComponent.prototype.buildDescription = function () {
-        return new Description_model_1.Description(this.excerpt, this.description);
     };
     __decorate([
         core_1.Input(),

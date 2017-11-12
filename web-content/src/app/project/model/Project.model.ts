@@ -5,12 +5,13 @@ import {ReachInterface} from "./ReachInterface";
 import {Location} from './Location.model'
 import {Background} from "./Background.model";
 import {ProjectRank} from "./ProjectRank.model";
+import {LocalReach} from "./LocalReach.model";
 
 export class Project extends ExportableProject {
 
 
     constructor(description: Description = new Description(),
-                reach: ReachInterface,
+                reach: ReachInterface = new LocalReach(),
                 background: Background,
                 location: Location = new Location(),
                 rank: ProjectRank) {

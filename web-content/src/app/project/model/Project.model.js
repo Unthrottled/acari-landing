@@ -13,10 +13,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ExportableProject_1 = require("./ExportableProject");
 var Description_model_1 = require("./Description.model");
 var Location_model_1 = require("./Location.model");
+var LocalReach_model_1 = require("./LocalReach.model");
 var Project = /** @class */ (function (_super) {
     __extends(Project, _super);
     function Project(description, reach, background, location, rank) {
         if (description === void 0) { description = new Description_model_1.Description(); }
+        if (reach === void 0) { reach = new LocalReach_model_1.LocalReach(); }
         if (location === void 0) { location = new Location_model_1.Location(); }
         return _super.call(this, description, reach, background, location, rank) || this;
     }
