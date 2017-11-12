@@ -8,6 +8,41 @@ var ExportableProject = /** @class */ (function () {
         this._location = location;
         this._rank = rank;
     }
+    Object.defineProperty(ExportableProject.prototype, "selectedReach", {
+        get: function () {
+            return this._selectedReach;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ExportableProject.prototype, "rank", {
+        get: function () {
+            return this._rank;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ExportableProject.prototype, "background", {
+        get: function () {
+            return this._background;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ExportableProject.prototype, "description", {
+        get: function () {
+            return this._description;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ExportableProject.prototype, "location", {
+        get: function () {
+            return this._location;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return ExportableProject;
 }());
 exports.ExportableProject = ExportableProject;

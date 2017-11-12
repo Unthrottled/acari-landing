@@ -5,11 +5,11 @@ import {ProjectRank} from "./ProjectRank.model";
 import {ReachInterface} from "./ReachInterface";
 
 export class ExportableProject {
-    protected _selectedReach: ReachInterface;
-    protected _rank: ProjectRank;
-    protected _background: Background;
-    protected _description: Description;
-    protected _location: Location;
+    private _selectedReach: ReachInterface;
+    private _rank: ProjectRank;
+    private _background: Background;
+    private _description: Description;
+    private _location: Location;
 
 
     constructor(description: Description,
@@ -22,5 +22,26 @@ export class ExportableProject {
         this._background = background;
         this._location = location;
         this._rank = rank;
+    }
+
+
+    get selectedReach(): ReachInterface {
+        return this._selectedReach;
+    }
+
+    get rank(): ProjectRank {
+        return this._rank;
+    }
+
+    get background(): Background {
+        return this._background;
+    }
+
+    get description(): Description {
+        return this._description;
+    }
+
+    get location(): Location {
+        return this._location;
     }
 }

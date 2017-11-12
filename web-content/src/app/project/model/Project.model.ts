@@ -9,7 +9,7 @@ import {ProjectRank} from "./ProjectRank.model";
 export class Project extends ExportableProject {
 
 
-    constructor(description: Description,
+    constructor(description: Description = new Description(),
                 reach: ReachInterface,
                 background: Background,
                 location: Location,
@@ -18,28 +18,28 @@ export class Project extends ExportableProject {
     }
 
     get url(): string {
-        return this._location.url;
+        return this.location.url;
     }
 
     get preachySpeechy(): string{
-        return this._description.preachySpeechy;
+        return this.description.preachySpeechy;
     }
 
 
     get excerpt(): string{
-        return this._description.excerpt;
+        return this.description.excerpt;
     }
 
 
     get reachBlob(): Observable<any> {
-        return this._selectedReach.imageBinary();
+        return this.selectedReach.imageBinary();
     }
 
     get backgroundColor(): string {
-        return this._background.backgroundStyle;
+        return this.background.backgroundStyle;
     }
 
     get descriptionTextColor(): string {
-        return this._background.textColor;
+        return this.background.textColor;
     }
 }

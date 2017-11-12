@@ -25,6 +25,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         this.projectService = projectService;
         this.localReachService = localReachService;
         this._project = this.buildProject();
+        this.projectChanged = new core_1.EventEmitter();
         this._reachFile = Observable_1.Observable.empty();
         this._colorOne = '#464646';
         this._colorTwo = '#8d85d6';
@@ -34,14 +35,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         this._projectRank = this.buildProjectRank();
         this._localReach = new LocalReach_model_1.LocalReach(Observable_1.Observable.empty());
         this._background = this.buildBackground();
-        this._excerpt = 'Lorem ipsum';
         this._projectDescription = this.buildDescription();
-        this._description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi libero, viverra vitae mi et, bibendum lobortis ipsum. Aenean vel sapien luctus, varius quam ac, bibendum nisl. Donec placerat turpis a leo auctor, non vestibulum ex tincidunt. Etiam id congue ligula. Donec vel eros tempus, condimentum erat in, faucibus erat. Ut hendrerit elementum justo eu commodo. \n' +
-            '\n' +
-            '            Suspendisse vestibulum, justo ut ultricies convallis, elit ante lobortis diam, eu ullamcorper tortor libero sit amet nisi. Curabitur vitae magna elementum, dictum lacus vel, volutpat neque. Cras mauris purus, interdum vel arcu quis, mollis aliquam sem. Nunc posuere ipsum non dapibus porta. Pellentesque tristique aliquet nunc eget maximus. \n' +
-            '\n' +
-            '            Proin faucibus tellus odio, a malesuada felis dictum ut.\n' +
-            ' Integer venenatis in arcu id gravida. Nulla dapibus augue sapien, id tincidunt enim varius vel.';
         this._backgroundStyle = this.buildStyle();
     }
     Object.defineProperty(ProjectCreationComponent.prototype, "project", {
@@ -161,12 +155,10 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "excerpt", {
         get: function () {
-            return this._excerpt;
+            return this._project.excerpt;
         },
         set: function (value) {
-            this._excerpt = value;
-            this.projectDescription = this.buildDescription();
-            this.rebuildProject();
+            this._project.description.excerpt = value;
         },
         enumerable: true,
         configurable: true
@@ -183,12 +175,10 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "description", {
         get: function () {
-            return this._description;
+            return this._project.preachySpeechy;
         },
         set: function (value) {
-            this._description = value;
-            this.projectDescription = this.buildDescription();
-            this.rebuildProject();
+            this._project.description.preachySpeechy = value;
         },
         enumerable: true,
         configurable: true
@@ -228,6 +218,7 @@ var ProjectCreationComponent = /** @class */ (function () {
     };
     ProjectCreationComponent.prototype.rebuildProject = function () {
         this._project = this.buildProject();
+        this.projectChanged.emit(this.project);
     };
     ProjectCreationComponent.prototype.buildProject = function () {
         return new Project_model_1.Project(this._projectDescription, this.localReach, this._background, this._location, this._projectRank);
@@ -264,6 +255,15 @@ var ProjectCreationComponent = /** @class */ (function () {
     ProjectCreationComponent.prototype.buildDescription = function () {
         return new Description_model_1.Description(this.excerpt, this.description);
     };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Project_model_1.Project),
+        __metadata("design:paramtypes", [])
+    ], ProjectCreationComponent.prototype, "project", null);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], ProjectCreationComponent.prototype, "projectChanged", void 0);
     ProjectCreationComponent = __decorate([
         core_1.Component({
             selector: 'project-creation',

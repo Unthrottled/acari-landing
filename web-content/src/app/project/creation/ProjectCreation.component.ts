@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Project} from "../model/Project.model";
 import {Description} from "../model/Description.model";
@@ -22,9 +22,13 @@ export class ProjectCreationComponent implements OnInit {
 
     private _project: Project = this.buildProject();
 
+    @Input()
     get project(): Project {
         return this._project;
     }
+
+    @Output()
+    private projectChanged = new EventEmitter<Project>();
 
     private _reachFile: Observable<File> = Observable.empty();
 
@@ -134,16 +138,12 @@ export class ProjectCreationComponent implements OnInit {
         this._background = value;
     }
 
-    private _excerpt: string = 'Lorem ipsum';
-
     get excerpt(): string {
-        return this._excerpt;
+        return this._project.excerpt;
     }
 
     set excerpt(value: string) {
-        this._excerpt = value;
-        this.projectDescription = this.buildDescription();
-        this.rebuildProject();
+        this._project.description.excerpt = value;
     }
 
     private _projectDescription = this.buildDescription();
@@ -157,21 +157,12 @@ export class ProjectCreationComponent implements OnInit {
         this._projectDescription = value;
     }
 
-    private _description: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi libero, viverra vitae mi et, bibendum lobortis ipsum. Aenean vel sapien luctus, varius quam ac, bibendum nisl. Donec placerat turpis a leo auctor, non vestibulum ex tincidunt. Etiam id congue ligula. Donec vel eros tempus, condimentum erat in, faucibus erat. Ut hendrerit elementum justo eu commodo. \n' +
-        '\n' +
-        '            Suspendisse vestibulum, justo ut ultricies convallis, elit ante lobortis diam, eu ullamcorper tortor libero sit amet nisi. Curabitur vitae magna elementum, dictum lacus vel, volutpat neque. Cras mauris purus, interdum vel arcu quis, mollis aliquam sem. Nunc posuere ipsum non dapibus porta. Pellentesque tristique aliquet nunc eget maximus. \n' +
-        '\n' +
-        '            Proin faucibus tellus odio, a malesuada felis dictum ut.\n' +
-        ' Integer venenatis in arcu id gravida. Nulla dapibus augue sapien, id tincidunt enim varius vel.';
-
     get description(): string {
-        return this._description;
+        return this._project.preachySpeechy;
     }
 
     set description(value: string) {
-        this._description = value;
-        this.projectDescription = this.buildDescription();
-        this.rebuildProject();
+        this._project.description.preachySpeechy = value;
     }
 
     get notUploadable(): Observable<boolean> {
@@ -203,6 +194,7 @@ export class ProjectCreationComponent implements OnInit {
 
     rebuildProject(): void {
         this._project = this.buildProject();
+        this.projectChanged.emit(this.project);
     }
 
     buildProject(): Project {

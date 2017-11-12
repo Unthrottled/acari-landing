@@ -11,49 +11,51 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var ExportableProject_1 = require("./ExportableProject");
+var Description_model_1 = require("./Description.model");
 var Project = /** @class */ (function (_super) {
     __extends(Project, _super);
     function Project(description, reach, background, location, rank) {
+        if (description === void 0) { description = new Description_model_1.Description(); }
         return _super.call(this, description, reach, background, location, rank) || this;
     }
     Object.defineProperty(Project.prototype, "url", {
         get: function () {
-            return this._location.url;
+            return this.location.url;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(Project.prototype, "preachySpeechy", {
         get: function () {
-            return this._description.preachySpeechy;
+            return this.description.preachySpeechy;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(Project.prototype, "excerpt", {
         get: function () {
-            return this._description.excerpt;
+            return this.description.excerpt;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(Project.prototype, "reachBlob", {
         get: function () {
-            return this._selectedReach.imageBinary();
+            return this.selectedReach.imageBinary();
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(Project.prototype, "backgroundColor", {
         get: function () {
-            return this._background.backgroundStyle;
+            return this.background.backgroundStyle;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(Project.prototype, "descriptionTextColor", {
         get: function () {
-            return this._background.textColor;
+            return this.background.textColor;
         },
         enumerable: true,
         configurable: true
