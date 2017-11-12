@@ -35,6 +35,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         },
         set: function (value) {
             this._project.background.colorOne = value;
+            this.emitProject();
         },
         enumerable: true,
         configurable: true
@@ -45,6 +46,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         },
         set: function (value) {
             this._project.background.colorTwo = value;
+            this.emitProject();
         },
         enumerable: true,
         configurable: true
@@ -55,6 +57,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         },
         set: function (value) {
             this._project.background.textColor = value;
+            this.emitProject();
         },
         enumerable: true,
         configurable: true
@@ -65,6 +68,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         },
         set: function (value) {
             this.project.location.url = value;
+            this.emitProject();
         },
         enumerable: true,
         configurable: true
@@ -75,6 +79,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         },
         set: function (value) {
             this.project.rank.rank = value;
+            this.emitProject();
         },
         enumerable: true,
         configurable: true
@@ -85,6 +90,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         },
         set: function (value) {
             this._project.description.excerpt = value;
+            this.emitProject();
         },
         enumerable: true,
         configurable: true
@@ -95,6 +101,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         },
         set: function (value) {
             this._project.description.preachySpeechy = value;
+            this.emitProject();
         },
         enumerable: true,
         configurable: true
@@ -128,11 +135,12 @@ var ProjectCreationComponent = /** @class */ (function () {
         var _this = this;
         this.maxProjectCount.subscribe(function (lowestRank) { return _this.rank = lowestRank; });
     };
-    ProjectCreationComponent.prototype.rebuildProject = function () {
+    ProjectCreationComponent.prototype.emitProject = function () {
         this.projectChanged.emit(this.project);
     };
     ProjectCreationComponent.prototype.fileChosen = function (chosenFile) {
         this._project.selectedReach = this.buildReachBlob(Observable_1.Observable.of(chosenFile));
+        this.emitProject();
     };
     ProjectCreationComponent.prototype.fileUploaded = function (success) {
     };

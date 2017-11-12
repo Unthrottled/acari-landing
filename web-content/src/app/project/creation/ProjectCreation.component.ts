@@ -31,6 +31,7 @@ export class ProjectCreationComponent implements OnInit {
 
     set colorOne(value: string) {
         this._project.background.colorOne = value;
+        this.emitProject();
     }
 
 
@@ -40,6 +41,7 @@ export class ProjectCreationComponent implements OnInit {
 
     set colorTwo(value: string) {
         this._project.background.colorTwo = value;
+        this.emitProject();
     }
 
     get descriptionTextColor(): string {
@@ -48,6 +50,7 @@ export class ProjectCreationComponent implements OnInit {
 
     set descriptionTextColor(value: string) {
         this._project.background.textColor = value;
+        this.emitProject();
     }
 
     get url(): string {
@@ -56,6 +59,7 @@ export class ProjectCreationComponent implements OnInit {
 
     set url(value: string) {
         this.project.location.url = value;
+        this.emitProject();
     }
 
     get rank(): number {
@@ -64,6 +68,7 @@ export class ProjectCreationComponent implements OnInit {
 
     set rank(value: number) {
         this.project.rank.rank = value;
+        this.emitProject();
     }
 
     get excerpt(): string {
@@ -72,6 +77,7 @@ export class ProjectCreationComponent implements OnInit {
 
     set excerpt(value: string) {
         this._project.description.excerpt = value;
+        this.emitProject();
     }
 
     get description(): string {
@@ -80,6 +86,7 @@ export class ProjectCreationComponent implements OnInit {
 
     set description(value: string) {
         this._project.description.preachySpeechy = value;
+        this.emitProject();
     }
 
     get notUploadable(): Observable<boolean> {
@@ -102,13 +109,14 @@ export class ProjectCreationComponent implements OnInit {
         this.maxProjectCount.subscribe(lowestRank => this.rank = lowestRank);
     }
 
-    rebuildProject(): void {
+    emitProject(): void {
         this.projectChanged.emit(this.project);
     }
 
 
     fileChosen(chosenFile: File): void {
         this._project.selectedReach = this.buildReachBlob(Observable.of(chosenFile));
+        this.emitProject();
     }
 
     fileUploaded(success: boolean) {
