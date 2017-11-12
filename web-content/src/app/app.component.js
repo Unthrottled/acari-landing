@@ -8,9 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("./app.component.htm");
+var Project_model_1 = require("./project/model/Project.model");
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
+        this._projectList = [];
     }
+    Object.defineProperty(AppComponent.prototype, "projectList", {
+        get: function () {
+            return this._projectList;
+        },
+        set: function (value) {
+            this._projectList = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AppComponent.prototype.addProject = function () {
+        this.projectList.push(new Project_model_1.Project());
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'angular-application',
