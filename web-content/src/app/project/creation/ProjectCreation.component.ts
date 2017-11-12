@@ -7,7 +7,6 @@ import {Background} from "../model/Background.model";
 import {Location} from '../model/Location.model';
 import {isNullOrUndefined} from "util";
 import {ProjectRank} from "../model/ProjectRank.model";
-import {LocalReach} from "../model/LocalReach.model";
 import {LocalReachService} from "./LocalReach.service";
 import {ReachInterface} from "../model/ReachInterface";
 
@@ -16,20 +15,20 @@ import {ReachInterface} from "../model/ReachInterface";
     template: require('./ProjectCreation.component.htm')
 })
 export class ProjectCreationComponent implements OnInit {
+    @Output()
+    private projectChanged = new EventEmitter<Project>();
+
     constructor(private projectService: ProjectService,
                 private localReachService: LocalReachService) {
 
     }
 
-    private _project: Project = this.buildProject();
+    private _project: Project = new Project();
 
     @Input()
     get project(): Project {
         return this._project;
     }
-
-    @Output()
-    private projectChanged = new EventEmitter<Project>();
 
     private _reachFile: Observable<File> = Observable.empty();
 
@@ -41,38 +40,29 @@ export class ProjectCreationComponent implements OnInit {
         this._reachFile = value;
     }
 
-    private _colorOne: string = '#464646';
-
     get colorOne(): string {
-        return this._colorOne;
+        return this.project.background.colorOne;
     }
 
     set colorOne(value: string) {
-        this._colorOne = value;
-        this.rebuildStyle();
+        this._project.background.colorOne = value;
     }
 
-    private _colorTwo: string = '#8d85d6';
 
     get colorTwo(): string {
-        return this._colorTwo;
+        return this._project.background.colorTwo;
     }
 
     set colorTwo(value: string) {
-        this._colorTwo = value;
-        this.rebuildStyle();
+        this._project.background.colorTwo = value;
     }
 
-    private _descriptionTextColor: string = '#f5f5f5';
-
     get descriptionTextColor(): string {
-        return this._descriptionTextColor;
+        return this._project.background.textColor;
     }
 
     set descriptionTextColor(value: string) {
-        this._descriptionTextColor = value;
-        this.background = this.buildBackground();
-        this.rebuildProject();
+        this._project.background.textColor = value;
     }
 
     get url(): string {
@@ -121,16 +111,6 @@ export class ProjectCreationComponent implements OnInit {
         this._localReach = value;
     }
 
-    private _background: Background = this.buildBackground();
-
-    get background(): Background {
-        return this._background;
-    }
-
-    set background(value: Background) {
-        this._background = value;
-    }
-
     get excerpt(): string {
         return this._project.excerpt;
     }
@@ -164,14 +144,8 @@ export class ProjectCreationComponent implements OnInit {
             .map(isNullOrUndefined);
     }
 
-    private _backgroundStyle: string = this.buildStyle();
-
     get backgroundStyle(): string {
-        return this._backgroundStyle;
-    }
-
-    set backgroundStyle(value: string) {
-        this._backgroundStyle = value;
+        return this._project.background.backgroundStyle;
     }
 
     get maxProjectCount(): Observable<number> {
@@ -192,23 +166,11 @@ export class ProjectCreationComponent implements OnInit {
 
     buildProject(): Project {
         return new Project(this._projectDescription,
-    this.localReach,
-    this._background,
-    this._location,
-    this._projectRank)
+            this.localReach,
+            undefined,
+            this._location,
+            this._projectRank)
 
-}
-
-    rebuildStyle(): void {
-        this.backgroundStyle = this.buildStyle();
-        this.background = this.buildBackground();
-        this.rebuildProject();
-    }
-
-    buildStyle(): string {
-        let rgba = this.colorOne;
-        let rgba2 = this.colorTwo;
-        return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
     }
 
     fileChosen(chosenFile: File): void {
@@ -219,10 +181,6 @@ export class ProjectCreationComponent implements OnInit {
 
     fileUploaded(success: boolean) {
 
-    }
-
-    private buildBackground() {
-        return new Background(this.backgroundStyle, this.descriptionTextColor);
     }
 
     private buildReachBlob() {

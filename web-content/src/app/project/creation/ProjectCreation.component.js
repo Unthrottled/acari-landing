@@ -13,21 +13,15 @@ var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
 var Project_model_1 = require("../model/Project.model");
 var Project_service_1 = require("../Project.service");
-var Background_model_1 = require("../model/Background.model");
 var util_1 = require("util");
 var LocalReach_service_1 = require("./LocalReach.service");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService, localReachService) {
         this.projectService = projectService;
         this.localReachService = localReachService;
-        this._project = this.buildProject();
         this.projectChanged = new core_1.EventEmitter();
+        this._project = new Project_model_1.Project();
         this._reachFile = Observable_1.Observable.empty();
-        this._colorOne = '#464646';
-        this._colorTwo = '#8d85d6';
-        this._descriptionTextColor = '#f5f5f5';
-        this._background = this.buildBackground();
-        this._backgroundStyle = this.buildStyle();
     }
     Object.defineProperty(ProjectCreationComponent.prototype, "project", {
         get: function () {
@@ -48,34 +42,30 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "colorOne", {
         get: function () {
-            return this._colorOne;
+            return this.project.background.colorOne;
         },
         set: function (value) {
-            this._colorOne = value;
-            this.rebuildStyle();
+            this._project.background.colorOne = value;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "colorTwo", {
         get: function () {
-            return this._colorTwo;
+            return this._project.background.colorTwo;
         },
         set: function (value) {
-            this._colorTwo = value;
-            this.rebuildStyle();
+            this._project.background.colorTwo = value;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "descriptionTextColor", {
         get: function () {
-            return this._descriptionTextColor;
+            return this._project.background.textColor;
         },
         set: function (value) {
-            this._descriptionTextColor = value;
-            this.background = this.buildBackground();
-            this.rebuildProject();
+            this._project.background.textColor = value;
         },
         enumerable: true,
         configurable: true
@@ -130,16 +120,6 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "background", {
-        get: function () {
-            return this._background;
-        },
-        set: function (value) {
-            this._background = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(ProjectCreationComponent.prototype, "excerpt", {
         get: function () {
             return this._project.excerpt;
@@ -181,10 +161,7 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "backgroundStyle", {
         get: function () {
-            return this._backgroundStyle;
-        },
-        set: function (value) {
-            this._backgroundStyle = value;
+            return this._project.background.backgroundStyle;
         },
         enumerable: true,
         configurable: true
@@ -208,17 +185,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         this.projectChanged.emit(this.project);
     };
     ProjectCreationComponent.prototype.buildProject = function () {
-        return new Project_model_1.Project(this._projectDescription, this.localReach, this._background, this._location, this._projectRank);
-    };
-    ProjectCreationComponent.prototype.rebuildStyle = function () {
-        this.backgroundStyle = this.buildStyle();
-        this.background = this.buildBackground();
-        this.rebuildProject();
-    };
-    ProjectCreationComponent.prototype.buildStyle = function () {
-        var rgba = this.colorOne;
-        var rgba2 = this.colorTwo;
-        return "linear-gradient(to right, " + rgba + ", " + rgba2 + ")";
+        return new Project_model_1.Project(this._projectDescription, this.localReach, undefined, this._location, this._projectRank);
     };
     ProjectCreationComponent.prototype.fileChosen = function (chosenFile) {
         this.reachFile = Observable_1.Observable.of(chosenFile);
@@ -227,21 +194,18 @@ var ProjectCreationComponent = /** @class */ (function () {
     };
     ProjectCreationComponent.prototype.fileUploaded = function (success) {
     };
-    ProjectCreationComponent.prototype.buildBackground = function () {
-        return new Background_model_1.Background(this.backgroundStyle, this.descriptionTextColor);
-    };
     ProjectCreationComponent.prototype.buildReachBlob = function () {
         return this.localReachService.createReach(this.reachFile);
     };
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], ProjectCreationComponent.prototype, "projectChanged", void 0);
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),
         __metadata("design:paramtypes", [])
     ], ProjectCreationComponent.prototype, "project", null);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", Object)
-    ], ProjectCreationComponent.prototype, "projectChanged", void 0);
     ProjectCreationComponent = __decorate([
         core_1.Component({
             selector: 'project-creation',
