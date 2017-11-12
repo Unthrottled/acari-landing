@@ -74,16 +74,12 @@ export class ProjectCreationComponent implements OnInit {
         this.rebuildProject();
     }
 
-    private _url: string = 'http://blog.acari.io';
-
     get url(): string {
-        return this._url;
+        return this.project.location.url;
     }
 
     set url(value: string) {
-        this._url = value;
-        this.location = this.buildLocation();
-        this.rebuildProject();
+        this.project.location.url = value;
     }
 
     private _rank: number;

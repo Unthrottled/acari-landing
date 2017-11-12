@@ -30,7 +30,6 @@ var ProjectCreationComponent = /** @class */ (function () {
         this._colorOne = '#464646';
         this._colorTwo = '#8d85d6';
         this._descriptionTextColor = '#f5f5f5';
-        this._url = 'http://blog.acari.io';
         this._location = this.buildLocation();
         this._projectRank = this.buildProjectRank();
         this._localReach = new LocalReach_model_1.LocalReach(Observable_1.Observable.empty());
@@ -91,12 +90,10 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectCreationComponent.prototype, "url", {
         get: function () {
-            return this._url;
+            return this.project.location.url;
         },
         set: function (value) {
-            this._url = value;
-            this.location = this.buildLocation();
-            this.rebuildProject();
+            this.project.location.url = value;
         },
         enumerable: true,
         configurable: true

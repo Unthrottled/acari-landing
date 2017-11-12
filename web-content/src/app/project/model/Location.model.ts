@@ -1,8 +1,9 @@
 export class Location {
     private _url: string;
+    private static defaultUrl: string = 'http://blog.acari.io';
 
 
-    constructor(url: string) {
+    constructor(url: string = Location.defaultUrl) {
         this._url = url;
     }
 

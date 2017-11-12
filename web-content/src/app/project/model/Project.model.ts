@@ -12,7 +12,7 @@ export class Project extends ExportableProject {
     constructor(description: Description = new Description(),
                 reach: ReachInterface,
                 background: Background,
-                location: Location,
+                location: Location = new Location(),
                 rank: ProjectRank) {
         super(description, reach, background, location, rank);
     }
