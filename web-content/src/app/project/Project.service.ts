@@ -33,14 +33,14 @@ export class ProjectService {
         return new Project();
     }
 
-    changePlaces() {
+    changePlaces(newIndex: number, previousIndex: number): void {
+        let i = newIndex - 1;
+        let previousMinusOne = previousIndex - 1 ;
+        console.log(newIndex + " " + previousIndex);
+        while (i < previousMinusOne){
+            this.projectList[i].projectRank++;
+        }
         //sure would be nice if javascript had the comparable interface...
-        this.projectList.sort((a,b)=>{
-            console.log(a);
-            console.log(b);
-            let number = a.projectRank - b.projectRank;
-            console.log(number);
-            return number;
-        });
+        this.projectList.sort((a,b)=>a.projectRank - b.projectRank);
     }
 }

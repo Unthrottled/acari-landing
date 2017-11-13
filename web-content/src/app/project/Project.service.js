@@ -38,15 +38,15 @@ var ProjectService = /** @class */ (function () {
     ProjectService.prototype.createProject = function () {
         return new Project_model_1.Project();
     };
-    ProjectService.prototype.changePlaces = function () {
+    ProjectService.prototype.changePlaces = function (newIndex, previousIndex) {
+        var i = newIndex - 1;
+        var previousMinusOne = previousIndex - 1;
+        console.log(newIndex + " " + previousIndex);
+        while (i < previousMinusOne) {
+            this.projectList[i].projectRank++;
+        }
         //sure would be nice if javascript had the comparable interface...
-        this.projectList.sort(function (a, b) {
-            console.log(a);
-            console.log(b);
-            var number = a.projectRank - b.projectRank;
-            console.log(number);
-            return number;
-        });
+        this.projectList.sort(function (a, b) { return a.projectRank - b.projectRank; });
     };
     ProjectService = __decorate([
         core_1.Injectable(),

@@ -81,6 +81,7 @@ var ProjectCreationComponent = /** @class */ (function () {
             return this.project.rank.rank;
         },
         set: function (value) {
+            this._oldRank = this.project.rank.rank;
             this.project.rank.rank = value;
             this.emitProject();
         },
@@ -110,7 +111,9 @@ var ProjectCreationComponent = /** @class */ (function () {
         configurable: true
     });
     ProjectCreationComponent.prototype.changeRank = function () {
-        this.projectService.changePlaces();
+        this.projectService.changePlaces(this.rank, this._oldRank);
+    };
+    ProjectCreationComponent.prototype.newRank = function (rank) {
     };
     Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {
         get: function () {
