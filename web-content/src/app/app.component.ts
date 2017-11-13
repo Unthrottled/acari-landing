@@ -19,6 +19,6 @@ export class AppComponent {
     }
 
     addProject(): void {
-        this.projectList.push(new Project());
+        this.projectList.unshift(new Project());
     }
 }

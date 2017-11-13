@@ -50,6 +50,11 @@ var ProjectComponent = /** @class */ (function () {
     });
     __decorate([
         core_1.Input(),
+        __metadata("design:type", Observable_1.Observable),
+        __metadata("design:paramtypes", [Observable_1.Observable])
+    ], ProjectComponent.prototype, "hideEdit", null);
+    __decorate([
+        core_1.Input(),
         __metadata("design:type", Project_model_1.Project),
         __metadata("design:paramtypes", [Project_model_1.Project])
     ], ProjectComponent.prototype, "project", null);

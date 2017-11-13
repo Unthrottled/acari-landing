@@ -24,7 +24,7 @@ var AppComponent = /** @class */ (function () {
         configurable: true
     });
     AppComponent.prototype.addProject = function () {
-        this.projectList.push(new Project_model_1.Project());
+        this.projectList.unshift(new Project_model_1.Project());
     };
     AppComponent = __decorate([
         core_1.Component({
