@@ -23,7 +23,8 @@
                 <div>
                     <input type="number"
                            (change)="changeRank($event)"
-                           [(ngModel)]="rank"
+                           [ngModel]="rank"
+                           (ngModelChange)="newRank($event)"
                            min="1"
                            max="{{maxProjectCount | async}}"/>
                 </div>

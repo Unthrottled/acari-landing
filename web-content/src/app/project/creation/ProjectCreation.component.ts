@@ -74,10 +74,7 @@ export class ProjectCreationComponent implements OnInit {
 
 
     set rank(value: number) {
-        this._oldRank = this.project.rank.rank;
-        console.log(this._oldRank);
         this.project.rank.rank = value;
-        console.log(this._oldRank);
         this.emitProject();
     }
 
@@ -104,7 +101,8 @@ export class ProjectCreationComponent implements OnInit {
     }
 
     newRank(rank: number){
-
+        this._oldRank = this.rank;
+        this.project.projectRank = rank;
     }
 
     get notUploadable(): Observable<boolean> {
