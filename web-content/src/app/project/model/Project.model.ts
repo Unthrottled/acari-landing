@@ -26,11 +26,17 @@ export class Project extends ExportableProject {
         return this.description.preachySpeechy;
     }
 
+    get projectRank(): number {
+        return this.rank.rank;
+    }
+
+    set projectRank(value: number) {
+        this.rank.rank = value;
+    }
 
     get excerpt(): string{
         return this.description.excerpt;
     }
-
 
     get reachBlob(): Observable<any> {
         return this.selectedReach.imageBinary();

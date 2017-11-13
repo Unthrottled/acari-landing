@@ -40,6 +40,16 @@ var Project = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Project.prototype, "projectRank", {
+        get: function () {
+            return this.rank.rank;
+        },
+        set: function (value) {
+            this.rank.rank = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Project.prototype, "excerpt", {
         get: function () {
             return this.description.excerpt;

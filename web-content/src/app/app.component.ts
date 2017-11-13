@@ -1,24 +1,23 @@
 import {Component} from "@angular/core";
 import "./app.component.htm";
 import {Project} from "./project/model/Project.model";
+import {ProjectService} from "./project/Project.service";
 
 @Component({
     selector: 'angular-application',
     template: require('./app.component.htm')
 })
 export class AppComponent {
-    private _projectList: Project[] = [];
 
 
-    get projectList(): Project[] {
-        return this._projectList;
+    constructor(private projectService: ProjectService) {
     }
 
-    set projectList(value: Project[]) {
-        this._projectList = value;
+    get projectList(): Project[] {
+        return this.projectService.projectList;
     }
 
     addProject(): void {
-        this.projectList.unshift(new Project());
+        this.projectService.addProject();
     }
 }

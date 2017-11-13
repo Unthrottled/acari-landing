@@ -12,6 +12,8 @@ import {LocalReachService} from "./LocalReach.service";
 export class ProjectCreationComponent implements OnInit {
     @Output()
     private projectChanged = new EventEmitter<Project>();
+    @Output()
+    private changePlaces = new EventEmitter<void>();
 
     constructor(private projectService: ProjectService,
                 private localReachService: LocalReachService) {
@@ -93,6 +95,10 @@ export class ProjectCreationComponent implements OnInit {
         this.emitProject();
     }
 
+    changeRank(newRank: number): void {
+        this.rank = newRank;
+    }
+
     get notUploadable(): Observable<boolean> {
         return this._project.reachBlob
             .defaultIfEmpty(null)
@@ -105,12 +111,11 @@ export class ProjectCreationComponent implements OnInit {
 
     get maxProjectCount(): Observable<number> {
         return this.projectService
-            .projectCount()
-            .map(count => ++count);
+            .projectCount();
     }
 
     ngOnInit(): void {
-        this.maxProjectCount.subscribe(lowestRank => this.rank = lowestRank);
+
     }
 
     emitProject(): void {

@@ -20,6 +20,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         this.projectService = projectService;
         this.localReachService = localReachService;
         this.projectChanged = new core_1.EventEmitter();
+        this.changePlaces = new core_1.EventEmitter();
         this._project = new Project_model_1.Project();
     }
     Object.defineProperty(ProjectCreationComponent.prototype, "project", {
@@ -109,6 +110,9 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    ProjectCreationComponent.prototype.changeRank = function (newRank) {
+        this.rank = newRank;
+    };
     Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {
         get: function () {
             return this._project.reachBlob
@@ -128,15 +132,12 @@ var ProjectCreationComponent = /** @class */ (function () {
     Object.defineProperty(ProjectCreationComponent.prototype, "maxProjectCount", {
         get: function () {
             return this.projectService
-                .projectCount()
-                .map(function (count) { return ++count; });
+                .projectCount();
         },
         enumerable: true,
         configurable: true
     });
     ProjectCreationComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.maxProjectCount.subscribe(function (lowestRank) { return _this.rank = lowestRank; });
     };
     ProjectCreationComponent.prototype.emitProject = function () {
         this.projectChanged.emit(this.project);
@@ -154,6 +155,10 @@ var ProjectCreationComponent = /** @class */ (function () {
         core_1.Output(),
         __metadata("design:type", Object)
     ], ProjectCreationComponent.prototype, "projectChanged", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], ProjectCreationComponent.prototype, "changePlaces", void 0);
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),

@@ -12,12 +12,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../util/BackendAPI.service");
 var Observable_1 = require("rxjs/Observable");
+var Project_model_1 = require("./model/Project.model");
 var ProjectService = /** @class */ (function () {
     function ProjectService(backendAPIService) {
         this.backendAPIService = backendAPIService;
+        this._projectList = [];
     }
+    Object.defineProperty(ProjectService.prototype, "projectList", {
+        get: function () {
+            return this._projectList;
+        },
+        set: function (value) {
+            this._projectList = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     ProjectService.prototype.projectCount = function () {
-        return Observable_1.Observable.of(0);
+        return Observable_1.Observable.of(this.projectList.length);
+    };
+    ProjectService.prototype.addProject = function () {
+        this.projectList.forEach(function (project) { return project.projectRank++; });
+        this.projectList.unshift(this.createProject());
+    };
+    ProjectService.prototype.createProject = function () {
+        return new Project_model_1.Project();
     };
     ProjectService = __decorate([
         core_1.Injectable(),
