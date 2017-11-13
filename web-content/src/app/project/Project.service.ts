@@ -31,7 +31,6 @@ export class ProjectService {
 
     promoteProject(projectToPromote: Project): void {
         let projectToPromoteIndex = projectToPromote.projectRank - 1;//project passed in
-        console.log(projectToPromoteIndex);
         if (projectToPromoteIndex > 0) {
             let projectToDemoteIndex = projectToPromoteIndex - 1;
             this.projectList[projectToPromoteIndex].projectRank--;
@@ -42,7 +41,6 @@ export class ProjectService {
 
     demoteProject(projectToDemote: Project): void {
         let projectToPromoteIndex = projectToDemote.projectRank;
-        console.log(projectToPromoteIndex);
         if (projectToPromoteIndex < this.projectList.length) {
             let projectToDemoteIndex = projectToPromoteIndex - 1;//project passed in
             this.projectList[projectToPromoteIndex].projectRank--;

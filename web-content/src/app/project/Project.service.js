@@ -37,7 +37,6 @@ var ProjectService = /** @class */ (function () {
     };
     ProjectService.prototype.promoteProject = function (projectToPromote) {
         var projectToPromoteIndex = projectToPromote.projectRank - 1; //project passed in
-        console.log(projectToPromoteIndex);
         if (projectToPromoteIndex > 0) {
             var projectToDemoteIndex = projectToPromoteIndex - 1;
             this.projectList[projectToPromoteIndex].projectRank--;
@@ -47,7 +46,6 @@ var ProjectService = /** @class */ (function () {
     };
     ProjectService.prototype.demoteProject = function (projectToDemote) {
         var projectToPromoteIndex = projectToDemote.projectRank;
-        console.log(projectToPromoteIndex);
         if (projectToPromoteIndex < this.projectList.length) {
             var projectToDemoteIndex = projectToPromoteIndex - 1; //project passed in
             this.projectList[projectToPromoteIndex].projectRank--;
