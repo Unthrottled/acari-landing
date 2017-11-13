@@ -38,6 +38,10 @@ var ProjectService = /** @class */ (function () {
     ProjectService.prototype.createProject = function () {
         return new Project_model_1.Project();
     };
+    ProjectService.prototype.changePlaces = function () {
+        //sure would be nice if javascript had the comparable interface...
+        this.projectList = this.projectList.sort(function (a, b) { return a.projectRank - b.projectRank; });
+    };
     ProjectService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService])

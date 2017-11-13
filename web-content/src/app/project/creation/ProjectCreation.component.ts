@@ -12,8 +12,6 @@ import {LocalReachService} from "./LocalReach.service";
 export class ProjectCreationComponent implements OnInit {
     @Output()
     private projectChanged = new EventEmitter<Project>();
-    @Output()
-    private changePlaces = new EventEmitter<void>();
 
     constructor(private projectService: ProjectService,
                 private localReachService: LocalReachService) {
@@ -97,6 +95,8 @@ export class ProjectCreationComponent implements OnInit {
 
     changeRank(newRank: number): void {
         this.rank = newRank;
+        console.log('change places!');
+        this.projectService.changePlaces();
     }
 
     get notUploadable(): Observable<boolean> {

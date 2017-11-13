@@ -32,4 +32,9 @@ export class ProjectService {
     private createProject(): Project {
         return new Project();
     }
+
+    changePlaces() {
+        //sure would be nice if javascript had the comparable interface...
+        this.projectList.sort((a,b)=>a.projectRank - b.projectRank);
+    }
 }

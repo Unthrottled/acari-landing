@@ -20,7 +20,6 @@ var ProjectCreationComponent = /** @class */ (function () {
         this.projectService = projectService;
         this.localReachService = localReachService;
         this.projectChanged = new core_1.EventEmitter();
-        this.changePlaces = new core_1.EventEmitter();
         this._project = new Project_model_1.Project();
     }
     Object.defineProperty(ProjectCreationComponent.prototype, "project", {
@@ -112,6 +111,8 @@ var ProjectCreationComponent = /** @class */ (function () {
     });
     ProjectCreationComponent.prototype.changeRank = function (newRank) {
         this.rank = newRank;
+        console.log('change places!');
+        this.projectService.changePlaces();
     };
     Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {
         get: function () {
@@ -155,10 +156,6 @@ var ProjectCreationComponent = /** @class */ (function () {
         core_1.Output(),
         __metadata("design:type", Object)
     ], ProjectCreationComponent.prototype, "projectChanged", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", Object)
-    ], ProjectCreationComponent.prototype, "changePlaces", void 0);
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),
