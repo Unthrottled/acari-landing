@@ -102,9 +102,7 @@ export class ProjectCreationComponent implements OnInit {
     }
 
     get notUploadable(): Observable<boolean> {
-        return this._project.reachBlob
-            .defaultIfEmpty(null)
-            .map(isNullOrUndefined);
+        return this._project.loadedReach.map(b=>!b);
     }
 
     get backgroundStyle(): string {

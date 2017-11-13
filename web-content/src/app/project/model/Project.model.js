@@ -64,6 +64,13 @@ var Project = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Project.prototype, "loadedReach", {
+        get: function () {
+            return this.selectedReach.isLoaded();
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Project.prototype, "backgroundColor", {
         get: function () {
             return this.background.backgroundStyle;

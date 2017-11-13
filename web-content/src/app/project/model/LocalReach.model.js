@@ -6,6 +6,7 @@ var LocalReach = /** @class */ (function () {
     function LocalReach(file) {
         if (file === void 0) { file = Observable_1.Observable.empty(); }
         var _this = this;
+        this._loaded = false;
         this.repeat = new ReplaySubject_1.ReplaySubject(1);
         this._selectedFile = file;
         var self = this;
@@ -14,11 +15,15 @@ var LocalReach = /** @class */ (function () {
             var fileReader = new FileReader();
             fileReader.onload = function (event) {
                 _this.repeat.next(fileReader.result);
+                _this._loaded = true;
             };
             fileReader.readAsDataURL(file);
         });
         this._rawFile = this.repeat;
     }
+    LocalReach.prototype.isLoaded = function () {
+        return Observable_1.Observable.of(this._loaded);
+    };
     Object.defineProperty(LocalReach.prototype, "selectedFile", {
         get: function () {
             return this._selectedFile;

@@ -13,7 +13,6 @@ var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
 var Project_model_1 = require("../model/Project.model");
 var Project_service_1 = require("../Project.service");
-var util_1 = require("util");
 var LocalReach_service_1 = require("./LocalReach.service");
 var ProjectCreationComponent = /** @class */ (function () {
     function ProjectCreationComponent(projectService, localReachService) {
@@ -115,9 +114,7 @@ var ProjectCreationComponent = /** @class */ (function () {
     };
     Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {
         get: function () {
-            return this._project.reachBlob
-                .defaultIfEmpty(null)
-                .map(util_1.isNullOrUndefined);
+            return this._project.loadedReach.map(function (b) { return !b; });
         },
         enumerable: true,
         configurable: true

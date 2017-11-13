@@ -42,6 +42,10 @@ export class Project extends ExportableProject {
         return this.selectedReach.imageBinary();
     }
 
+    get loadedReach(): Observable<boolean> {
+        return this.selectedReach.isLoaded();
+    }
+
     get backgroundColor(): string {
         return this.background.backgroundStyle;
     }

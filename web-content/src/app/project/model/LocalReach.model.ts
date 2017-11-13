@@ -3,6 +3,11 @@ import {Observable} from "rxjs/Observable";
 import {ReplaySubject} from "rxjs/ReplaySubject";
 
 export class LocalReach implements ReachInterface {
+    private _loaded: boolean = false;
+
+    isLoaded(): Observable<boolean> {
+        return Observable.of(this._loaded);
+    }
     private repeat = new ReplaySubject<MSBaseReader>(1);
 
     private _rawFile: Observable<MSBaseReader>;
@@ -15,6 +20,7 @@ export class LocalReach implements ReachInterface {
                 let fileReader = new FileReader();
                 fileReader.onload = event => {
                     this.repeat.next(fileReader.result);
+                    this._loaded = true;
                 };
                 fileReader.readAsDataURL(file);
             });
