@@ -1,4 +1,4 @@
-<div [hidden]="cantEdit | async">
+<div class="edit-container" [hidden]="cantEdit | async">
     <button (click)="toggleEdit()"
     class="btn-lg btn btn-info">Edit</button>
     <div [hidden]="hideEdit | async">
