@@ -39,10 +39,13 @@ var ProjectService = /** @class */ (function () {
         var projectToPromoteIndex = projectToPromote.projectRank - 1; //project passed in
         if (projectToPromoteIndex > 0) {
             var projectToDemoteIndex = projectToPromoteIndex - 1;
-            this.projectList[projectToPromoteIndex].projectRank--;
-            this.projectList[projectToDemoteIndex].projectRank++;
-            this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
+            this.promoteDemote(projectToPromoteIndex, projectToDemoteIndex);
         }
+    };
+    ProjectService.prototype.promoteDemote = function (projectToPromoteIndex, projectToDemoteIndex) {
+        this.projectList[projectToPromoteIndex].projectRank--;
+        this.projectList[projectToDemoteIndex].projectRank++;
+        this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
     };
     ProjectService.prototype.demoteProject = function (projectToDemote) {
         var projectToPromoteIndex = projectToDemote.projectRank;

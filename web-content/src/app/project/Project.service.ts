@@ -33,10 +33,14 @@ export class ProjectService {
         let projectToPromoteIndex = projectToPromote.projectRank - 1;//project passed in
         if (projectToPromoteIndex > 0) {
             let projectToDemoteIndex = projectToPromoteIndex - 1;
-            this.projectList[projectToPromoteIndex].projectRank--;
-            this.projectList[projectToDemoteIndex].projectRank++;
-            this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
+            this.promoteDemote(projectToPromoteIndex, projectToDemoteIndex);
         }
+    }
+
+    private promoteDemote(projectToPromoteIndex: number, projectToDemoteIndex: number) {
+        this.projectList[projectToPromoteIndex].projectRank--;
+        this.projectList[projectToDemoteIndex].projectRank++;
+        this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
     }
 
     demoteProject(projectToDemote: Project): void {
