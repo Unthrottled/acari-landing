@@ -109,9 +109,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    ProjectCreationComponent.prototype.changeRank = function (newRank) {
-        this.rank = newRank;
-        console.log('change places!');
+    ProjectCreationComponent.prototype.changeRank = function () {
         this.projectService.changePlaces();
     };
     Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {

@@ -40,7 +40,13 @@ var ProjectService = /** @class */ (function () {
     };
     ProjectService.prototype.changePlaces = function () {
         //sure would be nice if javascript had the comparable interface...
-        this.projectList = this.projectList.sort(function (a, b) { return a.projectRank - b.projectRank; });
+        this.projectList.sort(function (a, b) {
+            console.log(a);
+            console.log(b);
+            var number = a.projectRank - b.projectRank;
+            console.log(number);
+            return number;
+        });
     };
     ProjectService = __decorate([
         core_1.Injectable(),

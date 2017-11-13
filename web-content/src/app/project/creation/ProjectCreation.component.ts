@@ -93,9 +93,7 @@ export class ProjectCreationComponent implements OnInit {
         this.emitProject();
     }
 
-    changeRank(newRank: number): void {
-        this.rank = newRank;
-        console.log('change places!');
+    changeRank(): void {
         this.projectService.changePlaces();
     }
 

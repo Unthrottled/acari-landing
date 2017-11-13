@@ -35,6 +35,12 @@ export class ProjectService {
 
     changePlaces() {
         //sure would be nice if javascript had the comparable interface...
-        this.projectList.sort((a,b)=>a.projectRank - b.projectRank);
+        this.projectList.sort((a,b)=>{
+            console.log(a);
+            console.log(b);
+            let number = a.projectRank - b.projectRank;
+            console.log(number);
+            return number;
+        });
     }
 }
