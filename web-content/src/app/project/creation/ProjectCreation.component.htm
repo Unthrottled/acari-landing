@@ -21,12 +21,8 @@
             </label>
             <label>
                 <div>
-                    <input type="number"
-                           (change)="changeRank($event)"
-                           [ngModel]="rank"
-                           (ngModelChange)="newRank($event)"
-                           min="1"
-                           max="{{maxProjectCount | async}}"/>
+                    <button>&#8593;</button>
+                    <button>&#8595;</button>
                 </div>
                 Place In Line
             </label>
