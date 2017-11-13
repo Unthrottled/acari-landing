@@ -11,7 +11,22 @@ import {Observable} from "rxjs/Observable";
 export class ProjectComponent {
 
     private _project: Project;
+    private _hideEdit: Observable<boolean> = Observable.of(true);
 
+
+    @Input()
+    get hideEdit(): Observable<boolean> {
+        return this._hideEdit;
+    }
+
+    set hideEdit(value: Observable<boolean>) {
+        this._hideEdit = value;
+    }
+
+    toggleEdit(): void {
+        this._hideEdit = this.hideEdit
+            .map(b=>!b);
+    }
 
     @Input()
     get project(): Project {

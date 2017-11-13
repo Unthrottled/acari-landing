@@ -1,5 +1,9 @@
 <div [hidden]="cantEdit | async">
-    <project-creation [(project)]="project"></project-creation>
+    <button (click)="toggleEdit()"
+    class="btn-lg btn btn-info">Edit</button>
+    <div [hidden]="hideEdit | async">
+        <project-creation [(project)]="project"></project-creation>
+    </div>
 </div>
 
 <project-view [project]="project"></project-view>

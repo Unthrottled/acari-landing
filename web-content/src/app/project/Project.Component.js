@@ -15,7 +15,22 @@ var Project_model_1 = require("./model/Project.model");
 var Observable_1 = require("rxjs/Observable");
 var ProjectComponent = /** @class */ (function () {
     function ProjectComponent() {
+        this._hideEdit = Observable_1.Observable.of(true);
     }
+    Object.defineProperty(ProjectComponent.prototype, "hideEdit", {
+        get: function () {
+            return this._hideEdit;
+        },
+        set: function (value) {
+            this._hideEdit = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ProjectComponent.prototype.toggleEdit = function () {
+        this._hideEdit = this.hideEdit
+            .map(function (b) { return !b; });
+    };
     Object.defineProperty(ProjectComponent.prototype, "project", {
         get: function () {
             return this._project;
