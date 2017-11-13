@@ -1,5 +1,11 @@
 <div class="site-border"></div>
 <div class="app-container">
-        <project-creation></project-creation>
+    <!--todo: componentize dis-->
+    <div>
+        <button class="btn btn-lg btn-primary"
+                (click)="addProject()">Add project
+        </button>
+    </div>
+    <project-list [projectList]="projectList"></project-list>
 </div>
 

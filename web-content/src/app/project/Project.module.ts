@@ -12,6 +12,8 @@ import {SafetyStylePipe} from "../util/SafetyStylePipe";
 import {RedirectService} from "../util/RedirectService";
 import {LocalReachService} from "./creation/LocalReach.service";
 import {RemoteReachService} from "./remote/RemoteReach.service";
+import {ProjectListComponent} from "./ProjectList.component";
+import {ProjectComponent} from "./Project.Component";
 
 @NgModule({
     imports: [CommonModule, FormsModule],
@@ -20,6 +22,8 @@ import {RemoteReachService} from "./remote/RemoteReach.service";
         ProjectUploadComponent,
         ProjectViewComponent,
         TextEntryComponent,
+        ProjectListComponent,
+        ProjectComponent,
         SafetyStylePipe],
     declarations: [
         FileChooseComponent,
@@ -27,7 +31,9 @@ import {RemoteReachService} from "./remote/RemoteReach.service";
         ProjectViewComponent,
         ProjectUploadComponent,
         TextEntryComponent,
-        SafetyStylePipe
+        SafetyStylePipe,
+        ProjectComponent,
+        ProjectListComponent
     ],
     bootstrap: [],
     providers: [

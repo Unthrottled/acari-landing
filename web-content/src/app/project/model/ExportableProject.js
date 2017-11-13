@@ -12,6 +12,9 @@ var ExportableProject = /** @class */ (function () {
         get: function () {
             return this._selectedReach;
         },
+        set: function (value) {
+            this._selectedReach = value;
+        },
         enumerable: true,
         configurable: true
     });
