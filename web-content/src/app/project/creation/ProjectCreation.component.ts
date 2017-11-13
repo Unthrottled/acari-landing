@@ -96,10 +96,6 @@ export class ProjectCreationComponent implements OnInit {
         this.emitProject();
     }
 
-    changeRank(): void {
-        this.projectService.changePlaces(this.rank, this._oldRank);
-    }
-
     newRank(rank: number){
         this._oldRank = this.rank;
         this.project.projectRank = rank;
@@ -136,6 +132,14 @@ export class ProjectCreationComponent implements OnInit {
 
     fileUploaded(success: boolean) {
 
+    }
+
+    promoteMe(): void {
+        this.projectService.promoteProject(this._project);
+    }
+
+    demoteMe(): void {
+        this.projectService.demoteProject(this._project);
     }
 
     private buildReachBlob(reachFile: Observable<File>) {

@@ -29,18 +29,36 @@ export class ProjectService {
         this.projectList.unshift(this.createProject());
     }
 
+    promoteProject(projectToPromote: Project): void {
+        let projectToPromoteIndex = projectToPromote.projectRank - 1;//project passed in
+        console.log(projectToPromoteIndex);
+        if (projectToPromoteIndex > 0) {
+            let projectToDemoteIndex = projectToPromoteIndex - 1;
+            this.projectList[projectToPromoteIndex].projectRank--;
+            this.projectList[projectToDemoteIndex].projectRank++;
+            this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
+        }
+    }
+
+    demoteProject(projectToDemote: Project): void {
+        let projectToPromoteIndex = projectToDemote.projectRank;
+        console.log(projectToPromoteIndex);
+        if (projectToPromoteIndex < this.projectList.length) {
+            let projectToDemoteIndex = projectToPromoteIndex - 1;//project passed in
+            this.projectList[projectToPromoteIndex].projectRank--;
+            this.projectList[projectToDemoteIndex].projectRank++;
+            this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
+        }
+    }
+
     private createProject(): Project {
         return new Project();
     }
 
-    changePlaces(newIndex: number, previousIndex: number): void {
-        let i = newIndex - 1;
-        let previousMinusOne = previousIndex - 1 ;
-        console.log(newIndex + " " + previousIndex);
-        while (i < previousMinusOne){
-            this.projectList[i].projectRank++;
-        }
-        //sure would be nice if javascript had the comparable interface...
-        this.projectList.sort((a,b)=>a.projectRank - b.projectRank);
+
+    private CHANGE_PLACES(indexOne: number, indexTwo: number) {
+        let placeHolder = this.projectList[indexOne];
+        this.projectList[indexOne] = this.projectList[indexTwo];
+        this.projectList[indexTwo] = placeHolder;
     }
 }

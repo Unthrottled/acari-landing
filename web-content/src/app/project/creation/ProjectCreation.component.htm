@@ -21,10 +21,17 @@
             </label>
             <label>
                 <div>
-                    <button>&#8593;</button>
-                    <button>&#8595;</button>
+                    <button (click)="promoteMe()"
+                            class="btn btn-sm btn-warning">&#8593;</button>
                 </div>
-                Place In Line
+                Promote
+            </label>
+            <label>
+                <div>
+                    <button (click)="demoteMe()"
+                            class="btn btn-sm btn-warning">&#8595;</button>
+                </div>
+                Demote
             </label>
             <label>
                 <div>

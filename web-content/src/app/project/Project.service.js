@@ -35,18 +35,33 @@ var ProjectService = /** @class */ (function () {
         this.projectList.forEach(function (project) { return project.projectRank++; });
         this.projectList.unshift(this.createProject());
     };
+    ProjectService.prototype.promoteProject = function (projectToPromote) {
+        var projectToPromoteIndex = projectToPromote.projectRank - 1; //project passed in
+        console.log(projectToPromoteIndex);
+        if (projectToPromoteIndex > 0) {
+            var projectToDemoteIndex = projectToPromoteIndex - 1;
+            this.projectList[projectToPromoteIndex].projectRank--;
+            this.projectList[projectToDemoteIndex].projectRank++;
+            this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
+        }
+    };
+    ProjectService.prototype.demoteProject = function (projectToDemote) {
+        var projectToPromoteIndex = projectToDemote.projectRank;
+        console.log(projectToPromoteIndex);
+        if (projectToPromoteIndex < this.projectList.length) {
+            var projectToDemoteIndex = projectToPromoteIndex - 1; //project passed in
+            this.projectList[projectToPromoteIndex].projectRank--;
+            this.projectList[projectToDemoteIndex].projectRank++;
+            this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
+        }
+    };
     ProjectService.prototype.createProject = function () {
         return new Project_model_1.Project();
     };
-    ProjectService.prototype.changePlaces = function (newIndex, previousIndex) {
-        var i = newIndex - 1;
-        var previousMinusOne = previousIndex - 1;
-        console.log(newIndex + " " + previousIndex);
-        while (i < previousMinusOne) {
-            this.projectList[i].projectRank++;
-        }
-        //sure would be nice if javascript had the comparable interface...
-        this.projectList.sort(function (a, b) { return a.projectRank - b.projectRank; });
+    ProjectService.prototype.CHANGE_PLACES = function (indexOne, indexTwo) {
+        var placeHolder = this.projectList[indexOne];
+        this.projectList[indexOne] = this.projectList[indexTwo];
+        this.projectList[indexTwo] = placeHolder;
     };
     ProjectService = __decorate([
         core_1.Injectable(),

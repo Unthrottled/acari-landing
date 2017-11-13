@@ -109,9 +109,6 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    ProjectCreationComponent.prototype.changeRank = function () {
-        this.projectService.changePlaces(this.rank, this._oldRank);
-    };
     ProjectCreationComponent.prototype.newRank = function (rank) {
         this._oldRank = this.rank;
         this.project.projectRank = rank;
@@ -150,6 +147,12 @@ var ProjectCreationComponent = /** @class */ (function () {
         this.emitProject();
     };
     ProjectCreationComponent.prototype.fileUploaded = function (success) {
+    };
+    ProjectCreationComponent.prototype.promoteMe = function () {
+        this.projectService.promoteProject(this._project);
+    };
+    ProjectCreationComponent.prototype.demoteMe = function () {
+        this.projectService.demoteProject(this._project);
     };
     ProjectCreationComponent.prototype.buildReachBlob = function (reachFile) {
         return this.localReachService.createReach(reachFile);
