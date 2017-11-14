@@ -10,6 +10,8 @@ import {LocalProject} from "../model/LocalProject.model";
 })
 export class ProjectUploadComponent {
 
+    // TODO: MOVE DIS TO SOME BETTER PLACE
+
     @Output()
     private uploadSuccess = new EventEmitter<boolean>();
 

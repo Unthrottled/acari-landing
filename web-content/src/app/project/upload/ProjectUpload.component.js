@@ -16,6 +16,7 @@ var LocalProject_model_1 = require("../model/LocalProject.model");
 var ProjectUploadComponent = /** @class */ (function () {
     function ProjectUploadComponent(uploadFileService) {
         this.uploadFileService = uploadFileService;
+        // TODO: MOVE DIS TO SOME BETTER PLACE
         this.uploadSuccess = new core_1.EventEmitter();
         this._notUploadable = Observable_1.Observable.of(true);
     }
