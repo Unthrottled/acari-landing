@@ -2,7 +2,7 @@ import {FileChooseComponent} from "./reach/FileChoose.component";
 import {ProjectUploadService} from "./upload/ProjectUpload.service";
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ProjectCreationComponent} from "./creation/ProjectCreation.component";
+import {ProjectManipulationComponent} from "./creation/ProjectManipulation.component";
 import {ProjectUploadComponent} from "./upload/ProjectUpload.component";
 import {TextEntryComponent} from "./textEntry/TextEntry.component";
 import {FormsModule} from "@angular/forms";
@@ -18,7 +18,7 @@ import {ProjectComponent} from "./Project.Component";
 @NgModule({
     imports: [CommonModule, FormsModule],
     exports: [FileChooseComponent,
-        ProjectCreationComponent,
+        ProjectManipulationComponent,
         ProjectUploadComponent,
         ProjectViewComponent,
         TextEntryComponent,
@@ -27,7 +27,7 @@ import {ProjectComponent} from "./Project.Component";
         SafetyStylePipe],
     declarations: [
         FileChooseComponent,
-        ProjectCreationComponent,
+        ProjectManipulationComponent,
         ProjectViewComponent,
         ProjectUploadComponent,
         TextEntryComponent,

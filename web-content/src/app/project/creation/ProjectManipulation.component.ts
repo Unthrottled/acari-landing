@@ -2,16 +2,16 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Project} from "../model/Project.model";
 import {ProjectService} from "../Project.service";
-import {isNullOrUndefined} from "util";
 import {LocalReachService} from "./LocalReach.service";
 
 @Component({
     selector: 'project-creation',
-    template: require('./ProjectCreation.component.htm')
+    template: require('./ProjectManipulation.component.htm')
 })
-export class ProjectCreationComponent implements OnInit {
+export class ProjectManipulationComponent implements OnInit {
     @Output()
     private projectChanged = new EventEmitter<Project>();
+    private _oldRank: number;
 
     constructor(private projectService: ProjectService,
                 private localReachService: LocalReachService) {
@@ -37,7 +37,6 @@ export class ProjectCreationComponent implements OnInit {
         this._project.background.colorOne = value;
         this.emitProject();
     }
-
 
     get colorTwo(): string {
         return this._project.background.colorTwo;
@@ -70,9 +69,6 @@ export class ProjectCreationComponent implements OnInit {
         return this.project.rank.rank;
     }
 
-    private _oldRank: number;
-
-
     set rank(value: number) {
         this.project.rank.rank = value;
         this.emitProject();
@@ -96,13 +92,8 @@ export class ProjectCreationComponent implements OnInit {
         this.emitProject();
     }
 
-    newRank(rank: number){
-        this._oldRank = this.rank;
-        this.project.projectRank = rank;
-    }
-
     get notUploadable(): Observable<boolean> {
-        return this._project.loadedReach.map(b=>!b);
+        return this._project.loadedReach.map(b => !b);
     }
 
     get backgroundStyle(): string {
@@ -112,6 +103,11 @@ export class ProjectCreationComponent implements OnInit {
     get maxProjectCount(): Observable<number> {
         return this.projectService
             .projectCount();
+    }
+
+    newRank(rank: number) {
+        this._oldRank = this.rank;
+        this.project.projectRank = rank;
     }
 
     ngOnInit(): void {

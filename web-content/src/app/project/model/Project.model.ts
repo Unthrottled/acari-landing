@@ -9,7 +9,6 @@ import {LocalReach} from "./LocalReach.model";
 
 export class Project extends ExportableProject {
 
-
     constructor(description: Description = new Description(),
                 reach: ReachInterface = new LocalReach(),
                 background: Background = new Background(),

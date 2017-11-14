@@ -14,14 +14,14 @@ var Observable_1 = require("rxjs/Observable");
 var Project_model_1 = require("../model/Project.model");
 var Project_service_1 = require("../Project.service");
 var LocalReach_service_1 = require("./LocalReach.service");
-var ProjectCreationComponent = /** @class */ (function () {
-    function ProjectCreationComponent(projectService, localReachService) {
+var ProjectManipulationComponent = /** @class */ (function () {
+    function ProjectManipulationComponent(projectService, localReachService) {
         this.projectService = projectService;
         this.localReachService = localReachService;
         this.projectChanged = new core_1.EventEmitter();
         this._project = new Project_model_1.Project();
     }
-    Object.defineProperty(ProjectCreationComponent.prototype, "project", {
+    Object.defineProperty(ProjectManipulationComponent.prototype, "project", {
         get: function () {
             return this._project;
         },
@@ -31,7 +31,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "colorOne", {
+    Object.defineProperty(ProjectManipulationComponent.prototype, "colorOne", {
         get: function () {
             return this.project.background.colorOne;
         },
@@ -42,7 +42,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "colorTwo", {
+    Object.defineProperty(ProjectManipulationComponent.prototype, "colorTwo", {
         get: function () {
             return this._project.background.colorTwo;
         },
@@ -53,7 +53,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "descriptionTextColor", {
+    Object.defineProperty(ProjectManipulationComponent.prototype, "descriptionTextColor", {
         get: function () {
             return this._project.background.textColor;
         },
@@ -64,7 +64,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "url", {
+    Object.defineProperty(ProjectManipulationComponent.prototype, "url", {
         get: function () {
             return this.project.location.url;
         },
@@ -75,7 +75,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "rank", {
+    Object.defineProperty(ProjectManipulationComponent.prototype, "rank", {
         get: function () {
             return this.project.rank.rank;
         },
@@ -86,7 +86,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "excerpt", {
+    Object.defineProperty(ProjectManipulationComponent.prototype, "excerpt", {
         get: function () {
             return this._project.excerpt;
         },
@@ -97,7 +97,7 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "description", {
+    Object.defineProperty(ProjectManipulationComponent.prototype, "description", {
         get: function () {
             return this._project.preachySpeechy;
         },
@@ -108,25 +108,21 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    ProjectCreationComponent.prototype.newRank = function (rank) {
-        this._oldRank = this.rank;
-        this.project.projectRank = rank;
-    };
-    Object.defineProperty(ProjectCreationComponent.prototype, "notUploadable", {
+    Object.defineProperty(ProjectManipulationComponent.prototype, "notUploadable", {
         get: function () {
             return this._project.loadedReach.map(function (b) { return !b; });
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "backgroundStyle", {
+    Object.defineProperty(ProjectManipulationComponent.prototype, "backgroundStyle", {
         get: function () {
             return this._project.background.backgroundStyle;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ProjectCreationComponent.prototype, "maxProjectCount", {
+    Object.defineProperty(ProjectManipulationComponent.prototype, "maxProjectCount", {
         get: function () {
             return this.projectService
                 .projectCount();
@@ -134,44 +130,48 @@ var ProjectCreationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    ProjectCreationComponent.prototype.ngOnInit = function () {
+    ProjectManipulationComponent.prototype.newRank = function (rank) {
+        this._oldRank = this.rank;
+        this.project.projectRank = rank;
     };
-    ProjectCreationComponent.prototype.emitProject = function () {
+    ProjectManipulationComponent.prototype.ngOnInit = function () {
+    };
+    ProjectManipulationComponent.prototype.emitProject = function () {
         this.projectChanged.emit(this.project);
     };
-    ProjectCreationComponent.prototype.fileChosen = function (chosenFile) {
+    ProjectManipulationComponent.prototype.fileChosen = function (chosenFile) {
         this._project.selectedReach = this.buildReachBlob(Observable_1.Observable.of(chosenFile));
         this.emitProject();
     };
-    ProjectCreationComponent.prototype.fileUploaded = function (success) {
+    ProjectManipulationComponent.prototype.fileUploaded = function (success) {
     };
-    ProjectCreationComponent.prototype.promoteMe = function () {
+    ProjectManipulationComponent.prototype.promoteMe = function () {
         this.projectService.promoteProject(this._project);
     };
-    ProjectCreationComponent.prototype.demoteMe = function () {
+    ProjectManipulationComponent.prototype.demoteMe = function () {
         this.projectService.demoteProject(this._project);
     };
-    ProjectCreationComponent.prototype.buildReachBlob = function (reachFile) {
+    ProjectManipulationComponent.prototype.buildReachBlob = function (reachFile) {
         return this.localReachService.createReach(reachFile);
     };
     __decorate([
         core_1.Output(),
         __metadata("design:type", Object)
-    ], ProjectCreationComponent.prototype, "projectChanged", void 0);
+    ], ProjectManipulationComponent.prototype, "projectChanged", void 0);
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),
         __metadata("design:paramtypes", [Project_model_1.Project])
-    ], ProjectCreationComponent.prototype, "project", null);
-    ProjectCreationComponent = __decorate([
+    ], ProjectManipulationComponent.prototype, "project", null);
+    ProjectManipulationComponent = __decorate([
         core_1.Component({
             selector: 'project-creation',
-            template: require('./ProjectCreation.component.htm')
+            template: require('./ProjectManipulation.component.htm')
         }),
         __metadata("design:paramtypes", [Project_service_1.ProjectService,
             LocalReach_service_1.LocalReachService])
-    ], ProjectCreationComponent);
-    return ProjectCreationComponent;
+    ], ProjectManipulationComponent);
+    return ProjectManipulationComponent;
 }());
-exports.ProjectCreationComponent = ProjectCreationComponent;
-//# sourceMappingURL=ProjectCreation.component.js.map
+exports.ProjectManipulationComponent = ProjectManipulationComponent;
+//# sourceMappingURL=ProjectManipulation.component.js.map
