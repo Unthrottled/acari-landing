@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {Project} from "./model/Project.model";
 import {LocalProject} from "./model/LocalProject.model";
 import {LocalProjectService} from "./LocalProjectService";
+import {RemoteProject} from "./model/RemoteProject.model";
 
 @Injectable()
 export class ProjectService {
@@ -30,6 +31,14 @@ export class ProjectService {
     addProject(): void {
         this.projectList.forEach(project => project.projectRank++);
         this.projectList.unshift(this.createProject());
+    }
+
+    removeProject(projectToRemove: Project): void {
+        if(projectToRemove instanceof RemoteProject){
+
+        } else if(projectToRemove instanceof LocalProject) {
+
+        }
     }
 
     promoteProject(projectToPromote: Project): void {

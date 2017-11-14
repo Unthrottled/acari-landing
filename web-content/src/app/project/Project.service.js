@@ -12,7 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../util/BackendAPI.service");
 var Observable_1 = require("rxjs/Observable");
+var LocalProject_model_1 = require("./model/LocalProject.model");
 var LocalProjectService_1 = require("./LocalProjectService");
+var RemoteProject_model_1 = require("./model/RemoteProject.model");
 var ProjectService = /** @class */ (function () {
     function ProjectService(backendAPIService, localProjectService) {
         this.backendAPIService = backendAPIService;
@@ -35,6 +37,12 @@ var ProjectService = /** @class */ (function () {
     ProjectService.prototype.addProject = function () {
         this.projectList.forEach(function (project) { return project.projectRank++; });
         this.projectList.unshift(this.createProject());
+    };
+    ProjectService.prototype.removeProject = function (projectToRemove) {
+        if (projectToRemove instanceof RemoteProject_model_1.RemoteProject) {
+        }
+        else if (projectToRemove instanceof LocalProject_model_1.LocalProject) {
+        }
     };
     ProjectService.prototype.promoteProject = function (projectToPromote) {
         var projectToPromoteIndex = projectToPromote.projectRank - 1; //project passed in

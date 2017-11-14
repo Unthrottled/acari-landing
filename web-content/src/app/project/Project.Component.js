@@ -15,30 +15,28 @@ var Project_model_1 = require("./model/Project.model");
 var Observable_1 = require("rxjs/Observable");
 var RemoteProject_model_1 = require("./model/RemoteProject.model");
 var LocalProject_model_1 = require("./model/LocalProject.model");
+var Project_service_1 = require("./Project.service");
 var ProjectComponent = /** @class */ (function () {
-    function ProjectComponent() {
+    function ProjectComponent(projectService) {
+        this.projectService = projectService;
         this._hideEdit = Observable_1.Observable.of(true);
     }
-    Object.defineProperty(ProjectComponent.prototype, "hideEdit", {
-        get: function () {
-            return this._hideEdit;
-        },
-        set: function (value) {
-            this._hideEdit = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    ProjectComponent.prototype.toggleEdit = function () {
-        this._hideEdit = this.hideEdit
-            .map(function (b) { return !b; });
-    };
     Object.defineProperty(ProjectComponent.prototype, "project", {
         get: function () {
             return this._project;
         },
         set: function (value) {
             this._project = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ProjectComponent.prototype, "hideEdit", {
+        get: function () {
+            return this._hideEdit;
+        },
+        set: function (value) {
+            this._hideEdit = value;
         },
         enumerable: true,
         configurable: true
@@ -50,7 +48,12 @@ var ProjectComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    ProjectComponent.prototype.toggleEdit = function () {
+        this._hideEdit = this.hideEdit
+            .map(function (b) { return !b; });
+    };
     ProjectComponent.prototype.removeProject = function () {
+        this.projectService.removeProject(this._project);
     };
     ProjectComponent.prototype.isRemoteProject = function () {
         return this.project instanceof RemoteProject_model_1.RemoteProject;
@@ -60,19 +63,20 @@ var ProjectComponent = /** @class */ (function () {
     };
     __decorate([
         core_1.Input(),
-        __metadata("design:type", Observable_1.Observable),
-        __metadata("design:paramtypes", [Observable_1.Observable])
-    ], ProjectComponent.prototype, "hideEdit", null);
-    __decorate([
-        core_1.Input(),
         __metadata("design:type", Project_model_1.Project),
         __metadata("design:paramtypes", [Project_model_1.Project])
     ], ProjectComponent.prototype, "project", null);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Observable_1.Observable),
+        __metadata("design:paramtypes", [Observable_1.Observable])
+    ], ProjectComponent.prototype, "hideEdit", null);
     ProjectComponent = __decorate([
         core_1.Component({
             selector: 'project',
             template: require('./Project.component.htm')
-        })
+        }),
+        __metadata("design:paramtypes", [Project_service_1.ProjectService])
     ], ProjectComponent);
     return ProjectComponent;
 }());
