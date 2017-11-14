@@ -37,8 +37,12 @@ export class ProjectService {
         if(projectToRemove instanceof RemoteProject){
 
         } else if(projectToRemove instanceof LocalProject) {
-
+            this.removeLocal(projectToRemove);
         }
+    }
+
+    private removeLocal(projectToRemove: LocalProject) {
+        this.projectList.splice(projectToRemove.projectRank - 1, 1);
     }
 
     promoteProject(projectToPromote: Project): void {

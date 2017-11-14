@@ -42,7 +42,11 @@ var ProjectService = /** @class */ (function () {
         if (projectToRemove instanceof RemoteProject_model_1.RemoteProject) {
         }
         else if (projectToRemove instanceof LocalProject_model_1.LocalProject) {
+            this.removeLocal(projectToRemove);
         }
+    };
+    ProjectService.prototype.removeLocal = function (projectToRemove) {
+        this.projectList.splice(projectToRemove.projectRank - 1, 1);
     };
     ProjectService.prototype.promoteProject = function (projectToPromote) {
         var projectToPromoteIndex = projectToPromote.projectRank - 1; //project passed in
