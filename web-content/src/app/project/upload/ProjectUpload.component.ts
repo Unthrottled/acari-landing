@@ -9,13 +9,11 @@ import {LocalProject} from "../model/LocalProject.model";
     template: require('./ProjectUpload.component.htm')
 })
 export class ProjectUploadComponent {
-
-    // TODO: MOVE DIS TO SOME BETTER PLACE
-
+    //TODO: THIS SHOULD REALLY BE A BUTTON AND DAT'S IT.
     @Output()
     private uploadRequest = new EventEmitter<boolean>();
 
-    constructor(private uploadFileService: ProjectUploadService) {
+    constructor() {
     }
 
     private _notUploadable: boolean = true;

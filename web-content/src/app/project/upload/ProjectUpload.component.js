@@ -10,12 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var ProjectUpload_service_1 = require("./ProjectUpload.service");
 var LocalProject_model_1 = require("../model/LocalProject.model");
 var ProjectUploadComponent = /** @class */ (function () {
-    function ProjectUploadComponent(uploadFileService) {
-        this.uploadFileService = uploadFileService;
-        // TODO: MOVE DIS TO SOME BETTER PLACE
+    function ProjectUploadComponent() {
+        //TODO: THIS SHOULD REALLY BE A BUTTON AND DAT'S IT.
         this.uploadRequest = new core_1.EventEmitter();
         this._notUploadable = true;
     }
@@ -61,7 +59,7 @@ var ProjectUploadComponent = /** @class */ (function () {
             selector: 'project-upload',
             template: require('./ProjectUpload.component.htm')
         }),
-        __metadata("design:paramtypes", [ProjectUpload_service_1.ProjectUploadService])
+        __metadata("design:paramtypes", [])
     ], ProjectUploadComponent);
     return ProjectUploadComponent;
 }());
