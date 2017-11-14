@@ -3,7 +3,7 @@ import {Observable} from "rxjs/Observable";
 import {Project} from "../model/Project.model";
 import {ProjectService} from "../Project.service";
 import {LocalReachService} from "./LocalReach.service";
-import {LocalProjectService} from "../LocalProjectService";
+import {LocalProjectFactory} from "../LocalProject.factory";
 
 export class ProjectManipulationComponent implements OnInit {
     @Output()
@@ -12,7 +12,7 @@ export class ProjectManipulationComponent implements OnInit {
 
     constructor(private projectService: ProjectService,
                 private localReachService: LocalReachService,
-                private localProjectService: LocalProjectService) {
+                private localProjectService: LocalProjectFactory) {
 
     }
 

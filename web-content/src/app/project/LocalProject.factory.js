@@ -11,17 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var LocalProject_model_1 = require("./model/LocalProject.model");
-var LocalProjectService = /** @class */ (function () {
-    function LocalProjectService() {
+var LocalProjectFactory = /** @class */ (function () {
+    function LocalProjectFactory() {
     }
-    LocalProjectService.prototype.createProject = function () {
+    LocalProjectFactory.prototype.createProject = function () {
         return new LocalProject_model_1.LocalProject();
     };
-    LocalProjectService = __decorate([
+    LocalProjectFactory = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [])
-    ], LocalProjectService);
-    return LocalProjectService;
+    ], LocalProjectFactory);
+    return LocalProjectFactory;
 }());
-exports.LocalProjectService = LocalProjectService;
-//# sourceMappingURL=LocalProjectService.js.map
+exports.LocalProjectFactory = LocalProjectFactory;
+//# sourceMappingURL=LocalProject.factory.js.map

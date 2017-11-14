@@ -13,12 +13,12 @@ var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../util/BackendAPI.service");
 var Observable_1 = require("rxjs/Observable");
 var LocalProject_model_1 = require("./model/LocalProject.model");
-var LocalProjectService_1 = require("./LocalProjectService");
+var LocalProject_factory_1 = require("./LocalProject.factory");
 var RemoteProject_model_1 = require("./model/RemoteProject.model");
 var ProjectService = /** @class */ (function () {
-    function ProjectService(backendAPIService, localProjectService) {
+    function ProjectService(backendAPIService, localProjectFactory) {
         this.backendAPIService = backendAPIService;
-        this.localProjectService = localProjectService;
+        this.localProjectFactory = localProjectFactory;
         this._projectList = [];
     }
     Object.defineProperty(ProjectService.prototype, "projectList", {
@@ -66,7 +66,7 @@ var ProjectService = /** @class */ (function () {
         this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
     };
     ProjectService.prototype.createProject = function () {
-        return this.localProjectService.createProject();
+        return this.localProjectFactory.createProject();
     };
     ProjectService.prototype.CHANGE_PLACES = function (indexOne, indexTwo) {
         var placeHolder = this.projectList[indexOne];
@@ -76,7 +76,7 @@ var ProjectService = /** @class */ (function () {
     ProjectService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService,
-            LocalProjectService_1.LocalProjectService])
+            LocalProject_factory_1.LocalProjectFactory])
     ], ProjectService);
     return ProjectService;
 }());

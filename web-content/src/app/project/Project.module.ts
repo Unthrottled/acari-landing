@@ -13,7 +13,7 @@ import {LocalReachService} from "./creation/LocalReach.service";
 import {RemoteReachService} from "./remote/RemoteReach.service";
 import {ProjectListComponent} from "./ProjectList.component";
 import {ProjectComponent} from "./Project.Component";
-import {LocalProjectService} from "./LocalProjectService";
+import {LocalProjectFactory} from "./LocalProject.factory";
 import {LocalProjectManipulationComponent} from "./creation/LocalProjectManipulation.component";
 import {RemoteProjectManipulationComponent} from "./creation/RemoteProjectManipulation.component";
 
@@ -44,7 +44,7 @@ import {RemoteProjectManipulationComponent} from "./creation/RemoteProjectManipu
         ProjectUploadService,
         ProjectService,
         RedirectService,
-        LocalProjectService,
+        LocalProjectFactory,
         LocalReachService,
         RemoteReachService
     ],

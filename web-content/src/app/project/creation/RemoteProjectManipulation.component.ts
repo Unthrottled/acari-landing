@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ProjectService} from "../Project.service";
 import {LocalReachService} from "./LocalReach.service";
-import {LocalProjectService} from "../LocalProjectService";
+import {LocalProjectFactory} from "../LocalProject.factory";
 import {ProjectManipulationComponent} from "./ProjectManipulation.component";
 
 @Component({
@@ -12,7 +12,7 @@ export class RemoteProjectManipulationComponent extends ProjectManipulationCompo
 
     constructor(projectService: ProjectService,
                 localReachService: LocalReachService,
-                localProjectService: LocalProjectService) {
+                localProjectService: LocalProjectFactory) {
         super(projectService, localReachService, localProjectService);
 
     }

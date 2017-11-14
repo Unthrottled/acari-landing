@@ -3,14 +3,14 @@ import {BackendAPIService} from "../util/BackendAPI.service";
 import {Observable} from "rxjs/Observable";
 import {Project} from "./model/Project.model";
 import {LocalProject} from "./model/LocalProject.model";
-import {LocalProjectService} from "./LocalProjectService";
+import {LocalProjectFactory} from "./LocalProject.factory";
 import {RemoteProject} from "./model/RemoteProject.model";
 
 @Injectable()
 export class ProjectService {
 
     constructor(private backendAPIService: BackendAPIService,
-                private localProjectService: LocalProjectService) {
+                private localProjectFactory: LocalProjectFactory) {
 
     }
 
@@ -66,7 +66,7 @@ export class ProjectService {
     }
 
     private createProject(): LocalProject {
-        return this.localProjectService.createProject();
+        return this.localProjectFactory.createProject();
     }
 
 

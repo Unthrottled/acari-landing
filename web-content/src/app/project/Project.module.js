@@ -21,7 +21,7 @@ var LocalReach_service_1 = require("./creation/LocalReach.service");
 var RemoteReach_service_1 = require("./remote/RemoteReach.service");
 var ProjectList_component_1 = require("./ProjectList.component");
 var Project_Component_1 = require("./Project.Component");
-var LocalProjectService_1 = require("./LocalProjectService");
+var LocalProject_factory_1 = require("./LocalProject.factory");
 var LocalProjectManipulation_component_1 = require("./creation/LocalProjectManipulation.component");
 var RemoteProjectManipulation_component_1 = require("./creation/RemoteProjectManipulation.component");
 var ProjectModule = /** @class */ (function () {
@@ -55,7 +55,7 @@ var ProjectModule = /** @class */ (function () {
                 ProjectUpload_service_1.ProjectUploadService,
                 Project_service_1.ProjectService,
                 RedirectService_1.RedirectService,
-                LocalProjectService_1.LocalProjectService,
+                LocalProject_factory_1.LocalProjectFactory,
                 LocalReach_service_1.LocalReachService,
                 RemoteReach_service_1.RemoteReachService
             ],
