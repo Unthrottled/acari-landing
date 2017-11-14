@@ -110,7 +110,7 @@ var ProjectManipulationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectManipulationComponent.prototype, "notUploadable", {
         get: function () {
-            return this._project.loadedReach.map(function (b) { return !b; });
+            return !this._project.isUploadable;
         },
         enumerable: true,
         configurable: true

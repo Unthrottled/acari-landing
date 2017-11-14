@@ -92,8 +92,8 @@ export class ProjectManipulationComponent implements OnInit {
         this.emitProject();
     }
 
-    get notUploadable(): Observable<boolean> {
-        return this._project.loadedReach.map(b => !b);
+    get notUploadable(): boolean {
+        return !this._project.isUploadable;
     }
 
     get backgroundStyle(): string {

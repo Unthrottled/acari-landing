@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var Observable_1 = require("rxjs/Observable");
 var ProjectUpload_service_1 = require("./ProjectUpload.service");
 var LocalProject_model_1 = require("../model/LocalProject.model");
 var ProjectUploadComponent = /** @class */ (function () {
@@ -18,7 +17,7 @@ var ProjectUploadComponent = /** @class */ (function () {
         this.uploadFileService = uploadFileService;
         // TODO: MOVE DIS TO SOME BETTER PLACE
         this.uploadRequest = new core_1.EventEmitter();
-        this._notUploadable = Observable_1.Observable.of(true);
+        this._notUploadable = true;
     }
     Object.defineProperty(ProjectUploadComponent.prototype, "notUploadable", {
         get: function () {
@@ -49,8 +48,8 @@ var ProjectUploadComponent = /** @class */ (function () {
     ], ProjectUploadComponent.prototype, "uploadRequest", void 0);
     __decorate([
         core_1.Input(),
-        __metadata("design:type", Observable_1.Observable),
-        __metadata("design:paramtypes", [Observable_1.Observable])
+        __metadata("design:type", Boolean),
+        __metadata("design:paramtypes", [Boolean])
     ], ProjectUploadComponent.prototype, "notUploadable", null);
     __decorate([
         core_1.Input(),

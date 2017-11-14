@@ -64,7 +64,7 @@ var Project = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Project.prototype, "loadedReach", {
+    Object.defineProperty(Project.prototype, "isUploadable", {
         get: function () {
             return this.selectedReach.isLoaded();
         },

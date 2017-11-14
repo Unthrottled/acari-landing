@@ -5,8 +5,8 @@ import {ReplaySubject} from "rxjs/ReplaySubject";
 export class LocalReach implements ReachInterface {
     private _loaded: boolean = false;
 
-    isLoaded(): Observable<boolean> {
-        return Observable.of(this._loaded);
+    isLoaded(): boolean {
+        return this._loaded;
     }
     private repeat = new ReplaySubject<MSBaseReader>(1);
 

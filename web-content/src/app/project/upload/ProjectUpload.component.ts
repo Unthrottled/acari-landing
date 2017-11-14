@@ -18,14 +18,14 @@ export class ProjectUploadComponent {
     constructor(private uploadFileService: ProjectUploadService) {
     }
 
-    private _notUploadable: Observable<boolean> = Observable.of(true);
+    private _notUploadable: boolean = true;
 
     @Input()
-    get notUploadable(): Observable<boolean> {
+    get notUploadable(): boolean {
         return this._notUploadable;
     }
 
-    set notUploadable(value: Observable<boolean>) {
+    set notUploadable(value: boolean) {
         this._notUploadable = value;
     }
 

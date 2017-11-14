@@ -22,7 +22,7 @@ var LocalReach = /** @class */ (function () {
         this._rawFile = this.repeat;
     }
     LocalReach.prototype.isLoaded = function () {
-        return Observable_1.Observable.of(this._loaded);
+        return this._loaded;
     };
     Object.defineProperty(LocalReach.prototype, "selectedFile", {
         get: function () {

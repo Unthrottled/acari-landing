@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Observable_1 = require("rxjs/Observable");
 var ReplaySubject_1 = require("rxjs/ReplaySubject");
 var RemoteReach = /** @class */ (function () {
     function RemoteReach(file) {
@@ -14,7 +13,7 @@ var RemoteReach = /** @class */ (function () {
         this._rawFile = file;
     }
     RemoteReach.prototype.isLoaded = function () {
-        return Observable_1.Observable.of(this.loaded);
+        return this.loaded;
     };
     RemoteReach.prototype.imageBinary = function () {
         return this._rawFile;

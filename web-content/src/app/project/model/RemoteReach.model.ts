@@ -17,8 +17,8 @@ export class RemoteReach implements ReachInterface {
         this._rawFile = file;
     }
 
-    isLoaded(): Observable<boolean> {
-        return Observable.of(this.loaded);
+    isLoaded(): boolean {
+        return this.loaded;
     }
 
     imageBinary(): Observable<Blob> {

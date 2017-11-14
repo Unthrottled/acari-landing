@@ -41,7 +41,7 @@ export abstract class Project extends ExportableProject {
         return this.selectedReach.imageBinary();
     }
 
-    get loadedReach(): Observable<boolean> {
+    get isUploadable(): boolean {
         return this.selectedReach.isLoaded();
     }
 
