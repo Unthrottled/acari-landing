@@ -67,6 +67,11 @@ export class ProjectService {
         }
     }
 
+    saveAllProjects(): Observable<boolean> {
+
+        return Observable.of(true);
+    }
+
     private promoteDemote(projectToPromoteIndex: number, projectToDemoteIndex: number) {
         this.projectList[projectToPromoteIndex].projectRank--;
         this.projectList[projectToDemoteIndex].projectRank++;

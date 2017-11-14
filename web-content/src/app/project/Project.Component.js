@@ -61,9 +61,8 @@ var ProjectComponent = /** @class */ (function () {
     ProjectComponent.prototype.isLocalProject = function () {
         return this.project instanceof LocalProject_model_1.LocalProject;
     };
-    ProjectComponent.prototype.updateProject = function () {
-    };
-    ProjectComponent.prototype.saveProject = function () {
+    ProjectComponent.prototype.saveAllProjects = function () {
+        this.projectService.saveAllProjects();
     };
     __decorate([
         core_1.Input(),

@@ -68,6 +68,9 @@ var ProjectService = /** @class */ (function () {
             this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
         }
     };
+    ProjectService.prototype.saveAllProjects = function () {
+        return Observable_1.Observable.of(true);
+    };
     ProjectService.prototype.promoteDemote = function (projectToPromoteIndex, projectToDemoteIndex) {
         this.projectList[projectToPromoteIndex].projectRank--;
         this.projectList[projectToDemoteIndex].projectRank++;

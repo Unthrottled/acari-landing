@@ -8,12 +8,12 @@
     <div [hidden]="hideEdit | async">
         <div *ngIf="isLocalProject()">
             <local-project-manipulation [(project)]="project"
-                                        (onUpdate)="saveProject()"
+                                        (onUpdate)="saveAllProjects()"
             ></local-project-manipulation>
         </div>
         <div *ngIf="isRemoteProject()">
             <remote-project-manipulation [(project)]="project"
-                                         (onUpdate)="updateProject()"></remote-project-manipulation>
+                                         (onUpdate)="saveAllProjects()"></remote-project-manipulation>
         </div>
     </div>
 </div>

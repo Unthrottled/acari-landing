@@ -5,6 +5,7 @@ import {Observable} from "rxjs/Observable";
 import {RemoteProject} from "./model/RemoteProject.model";
 import {LocalProject} from "./model/LocalProject.model";
 import {ProjectService} from "./Project.service";
+import {ProjectUploadService} from "./upload/ProjectUpload.service";
 
 
 @Component({
@@ -59,11 +60,7 @@ export class ProjectComponent {
         return this.project instanceof LocalProject;
     }
 
-    updateProject(): void {
-
-    }
-
-    saveProject(): void {
-
+    saveAllProjects(): void {
+        this.projectService.saveAllProjects();
     }
 }
