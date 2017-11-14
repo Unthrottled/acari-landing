@@ -28,10 +28,6 @@ var LocalProject = /** @class */ (function (_super) {
         _this.localReach = localReach;
         return _this;
     }
-    LocalProject.prototype.remove = function () {
-    };
-    LocalProject.prototype.update = function () {
-    };
     Object.defineProperty(LocalProject.prototype, "reachFile", {
         get: function () {
             return this.localReach.selectedFile;

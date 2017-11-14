@@ -52,7 +52,4 @@ export abstract class Project extends ExportableProject {
     get descriptionTextColor(): string {
         return this.background.textColor;
     }
-
-    abstract remove(): void;
-    abstract update(): void;
 }
