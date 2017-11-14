@@ -14,12 +14,14 @@ var Observable_1 = require("rxjs/Observable");
 var Project_model_1 = require("../model/Project.model");
 var Project_service_1 = require("../Project.service");
 var LocalReach_service_1 = require("./LocalReach.service");
+var LocalProjectService_1 = require("../LocalProjectService");
 var ProjectManipulationComponent = /** @class */ (function () {
-    function ProjectManipulationComponent(projectService, localReachService) {
+    function ProjectManipulationComponent(projectService, localReachService, localProjectService) {
         this.projectService = projectService;
         this.localReachService = localReachService;
+        this.localProjectService = localProjectService;
         this.projectChanged = new core_1.EventEmitter();
-        this._project = new Project_model_1.Project();
+        this._project = this.localProjectService.createProject();
     }
     Object.defineProperty(ProjectManipulationComponent.prototype, "project", {
         get: function () {
@@ -169,7 +171,8 @@ var ProjectManipulationComponent = /** @class */ (function () {
             template: require('./ProjectManipulation.component.htm')
         }),
         __metadata("design:paramtypes", [Project_service_1.ProjectService,
-            LocalReach_service_1.LocalReachService])
+            LocalReach_service_1.LocalReachService,
+            LocalProjectService_1.LocalProjectService])
     ], ProjectManipulationComponent);
     return ProjectManipulationComponent;
 }());

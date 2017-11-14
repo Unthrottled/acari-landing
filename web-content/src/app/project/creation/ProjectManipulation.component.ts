@@ -3,6 +3,7 @@ import {Observable} from "rxjs/Observable";
 import {Project} from "../model/Project.model";
 import {ProjectService} from "../Project.service";
 import {LocalReachService} from "./LocalReach.service";
+import {LocalProjectService} from "../LocalProjectService";
 
 @Component({
     selector: 'project-creation',
@@ -14,11 +15,12 @@ export class ProjectManipulationComponent implements OnInit {
     private _oldRank: number;
 
     constructor(private projectService: ProjectService,
-                private localReachService: LocalReachService) {
+                private localReachService: LocalReachService,
+                private localProjectService: LocalProjectService) {
 
     }
 
-    private _project: Project = new Project();
+    private _project: Project = this.localProjectService.createProject();
 
     @Input()
     get project(): Project {

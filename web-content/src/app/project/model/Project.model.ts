@@ -7,7 +7,7 @@ import {Background} from "./Background.model";
 import {ProjectRank} from "./ProjectRank.model";
 import {LocalReach} from "./LocalReach.model";
 
-export class Project extends ExportableProject {
+export abstract class Project extends ExportableProject {
 
     constructor(description: Description = new Description(),
                 reach: ReachInterface = new LocalReach(),
@@ -52,4 +52,7 @@ export class Project extends ExportableProject {
     get descriptionTextColor(): string {
         return this.background.textColor;
     }
+
+    abstract remove(): void;
+    abstract update(): void;
 }
