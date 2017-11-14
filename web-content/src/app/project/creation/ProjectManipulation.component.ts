@@ -1,14 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Project} from "../model/Project.model";
 import {ProjectService} from "../Project.service";
 import {LocalReachService} from "./LocalReach.service";
 import {LocalProjectService} from "../LocalProjectService";
 
-@Component({
-    selector: 'project-creation',
-    template: require('./ProjectManipulation.component.htm')
-})
 export class ProjectManipulationComponent implements OnInit {
     @Output()
     private projectChanged = new EventEmitter<Project>();

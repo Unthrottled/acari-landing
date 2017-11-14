@@ -2,7 +2,6 @@ import {FileChooseComponent} from "./reach/FileChoose.component";
 import {ProjectUploadService} from "./upload/ProjectUpload.service";
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {ProjectManipulationComponent} from "./creation/ProjectManipulation.component";
 import {ProjectUploadComponent} from "./upload/ProjectUpload.component";
 import {TextEntryComponent} from "./textEntry/TextEntry.component";
 import {FormsModule} from "@angular/forms";
@@ -15,11 +14,14 @@ import {RemoteReachService} from "./remote/RemoteReach.service";
 import {ProjectListComponent} from "./ProjectList.component";
 import {ProjectComponent} from "./Project.Component";
 import {LocalProjectService} from "./LocalProjectService";
+import {LocalProjectManipulationComponent} from "./creation/LocalProjectManipulation.component";
+import {RemoteProjectManipulationComponent} from "./creation/RemoteProjectManipulation.component";
 
 @NgModule({
     imports: [CommonModule, FormsModule],
     exports: [FileChooseComponent,
-        ProjectManipulationComponent,
+        LocalProjectManipulationComponent,
+        RemoteProjectManipulationComponent,
         ProjectUploadComponent,
         ProjectViewComponent,
         TextEntryComponent,
@@ -28,7 +30,8 @@ import {LocalProjectService} from "./LocalProjectService";
         SafetyStylePipe],
     declarations: [
         FileChooseComponent,
-        ProjectManipulationComponent,
+        LocalProjectManipulationComponent,
+        RemoteProjectManipulationComponent,
         ProjectViewComponent,
         ProjectUploadComponent,
         TextEntryComponent,

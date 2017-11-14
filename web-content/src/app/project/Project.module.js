@@ -10,7 +10,6 @@ var FileChoose_component_1 = require("./reach/FileChoose.component");
 var ProjectUpload_service_1 = require("./upload/ProjectUpload.service");
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
-var ProjectManipulation_component_1 = require("./creation/ProjectManipulation.component");
 var ProjectUpload_component_1 = require("./upload/ProjectUpload.component");
 var TextEntry_component_1 = require("./textEntry/TextEntry.component");
 var forms_1 = require("@angular/forms");
@@ -23,6 +22,8 @@ var RemoteReach_service_1 = require("./remote/RemoteReach.service");
 var ProjectList_component_1 = require("./ProjectList.component");
 var Project_Component_1 = require("./Project.Component");
 var LocalProjectService_1 = require("./LocalProjectService");
+var LocalProjectManipulation_component_1 = require("./creation/LocalProjectManipulation.component");
+var RemoteProjectManipulation_component_1 = require("./creation/RemoteProjectManipulation.component");
 var ProjectModule = /** @class */ (function () {
     function ProjectModule() {
     }
@@ -30,7 +31,8 @@ var ProjectModule = /** @class */ (function () {
         core_1.NgModule({
             imports: [common_1.CommonModule, forms_1.FormsModule],
             exports: [FileChoose_component_1.FileChooseComponent,
-                ProjectManipulation_component_1.ProjectManipulationComponent,
+                LocalProjectManipulation_component_1.LocalProjectManipulationComponent,
+                RemoteProjectManipulation_component_1.RemoteProjectManipulationComponent,
                 ProjectUpload_component_1.ProjectUploadComponent,
                 ProjectView_component_1.ProjectViewComponent,
                 TextEntry_component_1.TextEntryComponent,
@@ -39,7 +41,8 @@ var ProjectModule = /** @class */ (function () {
                 SafetyStylePipe_1.SafetyStylePipe],
             declarations: [
                 FileChoose_component_1.FileChooseComponent,
-                ProjectManipulation_component_1.ProjectManipulationComponent,
+                LocalProjectManipulation_component_1.LocalProjectManipulationComponent,
+                RemoteProjectManipulation_component_1.RemoteProjectManipulationComponent,
                 ProjectView_component_1.ProjectViewComponent,
                 ProjectUpload_component_1.ProjectUploadComponent,
                 TextEntry_component_1.TextEntryComponent,

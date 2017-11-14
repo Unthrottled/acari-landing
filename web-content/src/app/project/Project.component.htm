@@ -6,7 +6,12 @@
         Remove
     </button>
     <div [hidden]="hideEdit | async">
-        <project-creation [(project)]="project"></project-creation>
+        <div *ngIf="isLocalProject()">
+            <local-project-manipulation [(project)]="project"></local-project-manipulation>
+        </div>
+        <div *ngIf="isRemoteProject()">
+            <remote-project-manipulation [(project)]="project"></remote-project-manipulation>
+        </div>
     </div>
 </div>
 

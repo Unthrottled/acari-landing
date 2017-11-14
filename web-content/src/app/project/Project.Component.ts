@@ -2,6 +2,8 @@ import {Component, Input} from "@angular/core";
 import "./Project.component.htm";
 import {Project} from "./model/Project.model";
 import {Observable} from "rxjs/Observable";
+import {RemoteProject} from "./model/RemoteProject.model";
+import {LocalProject} from "./model/LocalProject.model";
 
 
 @Component({
@@ -43,5 +45,13 @@ export class ProjectComponent {
 
     removeProject(): void{
 
+    }
+
+    isRemoteProject(): boolean {
+        return this.project instanceof RemoteProject;
+    }
+
+    isLocalProject(): boolean {
+        return this.project instanceof LocalProject;
     }
 }

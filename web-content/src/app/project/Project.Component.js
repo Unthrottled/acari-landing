@@ -13,6 +13,8 @@ var core_1 = require("@angular/core");
 require("./Project.component.htm");
 var Project_model_1 = require("./model/Project.model");
 var Observable_1 = require("rxjs/Observable");
+var RemoteProject_model_1 = require("./model/RemoteProject.model");
+var LocalProject_model_1 = require("./model/LocalProject.model");
 var ProjectComponent = /** @class */ (function () {
     function ProjectComponent() {
         this._hideEdit = Observable_1.Observable.of(true);
@@ -49,6 +51,12 @@ var ProjectComponent = /** @class */ (function () {
         configurable: true
     });
     ProjectComponent.prototype.removeProject = function () {
+    };
+    ProjectComponent.prototype.isRemoteProject = function () {
+        return this.project instanceof RemoteProject_model_1.RemoteProject;
+    };
+    ProjectComponent.prototype.isLocalProject = function () {
+        return this.project instanceof LocalProject_model_1.LocalProject;
     };
     __decorate([
         core_1.Input(),

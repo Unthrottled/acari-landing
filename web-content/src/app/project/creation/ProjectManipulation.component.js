@@ -12,9 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
 var Project_model_1 = require("../model/Project.model");
-var Project_service_1 = require("../Project.service");
-var LocalReach_service_1 = require("./LocalReach.service");
-var LocalProjectService_1 = require("../LocalProjectService");
 var ProjectManipulationComponent = /** @class */ (function () {
     function ProjectManipulationComponent(projectService, localReachService, localProjectService) {
         this.projectService = projectService;
@@ -165,15 +162,6 @@ var ProjectManipulationComponent = /** @class */ (function () {
         __metadata("design:type", Project_model_1.Project),
         __metadata("design:paramtypes", [Project_model_1.Project])
     ], ProjectManipulationComponent.prototype, "project", null);
-    ProjectManipulationComponent = __decorate([
-        core_1.Component({
-            selector: 'project-creation',
-            template: require('./ProjectManipulation.component.htm')
-        }),
-        __metadata("design:paramtypes", [Project_service_1.ProjectService,
-            LocalReach_service_1.LocalReachService,
-            LocalProjectService_1.LocalProjectService])
-    ], ProjectManipulationComponent);
     return ProjectManipulationComponent;
 }());
 exports.ProjectManipulationComponent = ProjectManipulationComponent;
