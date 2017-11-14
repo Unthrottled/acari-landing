@@ -9,13 +9,13 @@ import {ProjectViewComponent} from "./view/ProjectView.component";
 import {ProjectService} from "./Project.service";
 import {SafetyStylePipe} from "../util/SafetyStylePipe";
 import {RedirectService} from "../util/RedirectService";
-import {LocalReachService} from "./creation/LocalReach.service";
+import {LocalReachService} from "./manipulation/LocalReach.service";
 import {RemoteReachService} from "./remote/RemoteReach.service";
 import {ProjectListComponent} from "./ProjectList.component";
 import {ProjectComponent} from "./Project.Component";
 import {LocalProjectFactory} from "./LocalProject.factory";
-import {LocalProjectManipulationComponent} from "./creation/LocalProjectManipulation.component";
-import {RemoteProjectManipulationComponent} from "./creation/RemoteProjectManipulation.component";
+import {LocalProjectManipulationComponent} from "./manipulation/LocalProjectManipulation.component";
+import {RemoteProjectManipulationComponent} from "./manipulation/RemoteProjectManipulation.component";
 
 @NgModule({
     imports: [CommonModule, FormsModule],
