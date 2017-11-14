@@ -42,7 +42,11 @@ export class ProjectService {
     }
 
     private removeLocal(projectToRemove: LocalProject) {
-        this.projectList.splice(projectToRemove.projectRank - 1, 1);
+        let start = projectToRemove.projectRank - 1;
+        this.projectList.splice(start, 1);
+        //promotions!!
+        for (let i = start; i < this.projectList.length; i++)
+            this.projectList[i].projectRank--;
     }
 
     promoteProject(projectToPromote: Project): void {

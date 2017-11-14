@@ -46,7 +46,11 @@ var ProjectService = /** @class */ (function () {
         }
     };
     ProjectService.prototype.removeLocal = function (projectToRemove) {
-        this.projectList.splice(projectToRemove.projectRank - 1, 1);
+        var start = projectToRemove.projectRank - 1;
+        this.projectList.splice(start, 1);
+        //promotions!!
+        for (var i = start; i < this.projectList.length; i++)
+            this.projectList[i].projectRank--;
     };
     ProjectService.prototype.promoteProject = function (projectToPromote) {
         var projectToPromoteIndex = projectToPromote.projectRank - 1; //project passed in
