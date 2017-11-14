@@ -12,10 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../util/BackendAPI.service");
 var Observable_1 = require("rxjs/Observable");
-var Project_model_1 = require("./model/Project.model");
+var LocalProjectService_1 = require("./LocalProjectService");
 var ProjectService = /** @class */ (function () {
-    function ProjectService(backendAPIService) {
+    function ProjectService(backendAPIService, localProjectService) {
         this.backendAPIService = backendAPIService;
+        this.localProjectService = localProjectService;
         this._projectList = [];
     }
     Object.defineProperty(ProjectService.prototype, "projectList", {
@@ -42,11 +43,6 @@ var ProjectService = /** @class */ (function () {
             this.promoteDemote(projectToPromoteIndex, projectToDemoteIndex);
         }
     };
-    ProjectService.prototype.promoteDemote = function (projectToPromoteIndex, projectToDemoteIndex) {
-        this.projectList[projectToPromoteIndex].projectRank--;
-        this.projectList[projectToDemoteIndex].projectRank++;
-        this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
-    };
     ProjectService.prototype.demoteProject = function (projectToDemote) {
         var projectToPromoteIndex = projectToDemote.projectRank;
         if (projectToPromoteIndex < this.projectList.length) {
@@ -56,8 +52,13 @@ var ProjectService = /** @class */ (function () {
             this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
         }
     };
+    ProjectService.prototype.promoteDemote = function (projectToPromoteIndex, projectToDemoteIndex) {
+        this.projectList[projectToPromoteIndex].projectRank--;
+        this.projectList[projectToDemoteIndex].projectRank++;
+        this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
+    };
     ProjectService.prototype.createProject = function () {
-        return new Project_model_1.Project();
+        return this.localProjectService.createProject();
     };
     ProjectService.prototype.CHANGE_PLACES = function (indexOne, indexTwo) {
         var placeHolder = this.projectList[indexOne];
@@ -66,7 +67,8 @@ var ProjectService = /** @class */ (function () {
     };
     ProjectService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService])
+        __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService,
+            LocalProjectService_1.LocalProjectService])
     ], ProjectService);
     return ProjectService;
 }());

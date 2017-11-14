@@ -8,11 +8,11 @@ import {Observable} from "rxjs/Observable";
 
 export class LocalProject extends Project {
 
-    constructor(description: Description,
-                private localReach: LocalReach,
-                background: Background,
-                location: Location,
-                rank: ProjectRank) {
+    constructor(description: Description = new Description(),
+                private localReach: LocalReach = new LocalReach(),
+                background: Background = new Background(),
+                location: Location = new Location(),
+                rank: ProjectRank = new ProjectRank()) {
         super(description, localReach, background, location, rank);
     }
 

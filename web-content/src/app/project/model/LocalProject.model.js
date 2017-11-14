@@ -11,9 +11,19 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Project_model_1 = require("./Project.model");
+var LocalReach_model_1 = require("./LocalReach.model");
+var Description_model_1 = require("./Description.model");
+var Background_model_1 = require("./Background.model");
+var ProjectRank_model_1 = require("./ProjectRank.model");
+var Location_model_1 = require("./Location.model");
 var LocalProject = /** @class */ (function (_super) {
     __extends(LocalProject, _super);
     function LocalProject(description, localReach, background, location, rank) {
+        if (description === void 0) { description = new Description_model_1.Description(); }
+        if (localReach === void 0) { localReach = new LocalReach_model_1.LocalReach(); }
+        if (background === void 0) { background = new Background_model_1.Background(); }
+        if (location === void 0) { location = new Location_model_1.Location(); }
+        if (rank === void 0) { rank = new ProjectRank_model_1.ProjectRank(); }
         var _this = _super.call(this, description, localReach, background, location, rank) || this;
         _this.localReach = localReach;
         return _this;

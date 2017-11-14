@@ -2,11 +2,14 @@ import {Injectable} from "@angular/core";
 import {BackendAPIService} from "../util/BackendAPI.service";
 import {Observable} from "rxjs/Observable";
 import {Project} from "./model/Project.model";
+import {LocalProject} from "./model/LocalProject.model";
+import {LocalProjectService} from "./LocalProjectService";
 
 @Injectable()
 export class ProjectService {
 
-    constructor(private backendAPIService: BackendAPIService) {
+    constructor(private backendAPIService: BackendAPIService,
+                private localProjectService: LocalProjectService) {
 
     }
 
@@ -37,12 +40,6 @@ export class ProjectService {
         }
     }
 
-    private promoteDemote(projectToPromoteIndex: number, projectToDemoteIndex: number) {
-        this.projectList[projectToPromoteIndex].projectRank--;
-        this.projectList[projectToDemoteIndex].projectRank++;
-        this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
-    }
-
     demoteProject(projectToDemote: Project): void {
         let projectToPromoteIndex = projectToDemote.projectRank;
         if (projectToPromoteIndex < this.projectList.length) {
@@ -53,8 +50,14 @@ export class ProjectService {
         }
     }
 
-    private createProject(): Project {
-        return new Project();
+    private promoteDemote(projectToPromoteIndex: number, projectToDemoteIndex: number) {
+        this.projectList[projectToPromoteIndex].projectRank--;
+        this.projectList[projectToDemoteIndex].projectRank++;
+        this.CHANGE_PLACES(projectToDemoteIndex, projectToPromoteIndex);
+    }
+
+    private createProject(): LocalProject {
+        return this.localProjectService.createProject();
     }
 
 

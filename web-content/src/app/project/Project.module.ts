@@ -14,6 +14,7 @@ import {LocalReachService} from "./creation/LocalReach.service";
 import {RemoteReachService} from "./remote/RemoteReach.service";
 import {ProjectListComponent} from "./ProjectList.component";
 import {ProjectComponent} from "./Project.Component";
+import {LocalProjectService} from "./LocalProjectService";
 
 @NgModule({
     imports: [CommonModule, FormsModule],
@@ -40,6 +41,7 @@ import {ProjectComponent} from "./Project.Component";
         ProjectUploadService,
         ProjectService,
         RedirectService,
+        LocalProjectService,
         LocalReachService,
         RemoteReachService
     ],
