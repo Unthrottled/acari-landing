@@ -18,6 +18,7 @@ var ProjectManipulationComponent = /** @class */ (function () {
         this.localReachService = localReachService;
         this.localProjectService = localProjectService;
         this.projectChanged = new core_1.EventEmitter();
+        this.onUpdate = new core_1.EventEmitter();
         this._project = this.localProjectService.createProject();
     }
     Object.defineProperty(ProjectManipulationComponent.prototype, "project", {
@@ -142,7 +143,8 @@ var ProjectManipulationComponent = /** @class */ (function () {
         this._project.selectedReach = this.buildReachBlob(Observable_1.Observable.of(chosenFile));
         this.emitProject();
     };
-    ProjectManipulationComponent.prototype.fileUploaded = function (success) {
+    ProjectManipulationComponent.prototype.fileUploadRequest = function () {
+        this.onUpdate.emit();
     };
     ProjectManipulationComponent.prototype.promoteMe = function () {
         this.projectService.promoteProject(this._project);
@@ -157,6 +159,10 @@ var ProjectManipulationComponent = /** @class */ (function () {
         core_1.Output(),
         __metadata("design:type", Object)
     ], ProjectManipulationComponent.prototype, "projectChanged", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], ProjectManipulationComponent.prototype, "onUpdate", void 0);
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),

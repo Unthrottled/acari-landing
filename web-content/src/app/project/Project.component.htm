@@ -7,10 +7,13 @@
     </button>
     <div [hidden]="hideEdit | async">
         <div *ngIf="isLocalProject()">
-            <local-project-manipulation [(project)]="project"></local-project-manipulation>
+            <local-project-manipulation [(project)]="project"
+                                        (onUpdate)="saveProject()"
+            ></local-project-manipulation>
         </div>
         <div *ngIf="isRemoteProject()">
-            <remote-project-manipulation [(project)]="project"></remote-project-manipulation>
+            <remote-project-manipulation [(project)]="project"
+                                         (onUpdate)="updateProject()"></remote-project-manipulation>
         </div>
     </div>
 </div>

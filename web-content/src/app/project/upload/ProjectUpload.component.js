@@ -17,7 +17,7 @@ var ProjectUploadComponent = /** @class */ (function () {
     function ProjectUploadComponent(uploadFileService) {
         this.uploadFileService = uploadFileService;
         // TODO: MOVE DIS TO SOME BETTER PLACE
-        this.uploadSuccess = new core_1.EventEmitter();
+        this.uploadRequest = new core_1.EventEmitter();
         this._notUploadable = Observable_1.Observable.of(true);
     }
     Object.defineProperty(ProjectUploadComponent.prototype, "notUploadable", {
@@ -41,15 +41,12 @@ var ProjectUploadComponent = /** @class */ (function () {
         configurable: true
     });
     ProjectUploadComponent.prototype.upload = function () {
-        var _this = this;
-        this.uploadFileService.pushFileToStorage(this._project)
-            .subscribe(function () {
-        }, function () { return _this.uploadSuccess.emit(false); }, function () { return _this.uploadSuccess.emit(true); });
+        this.uploadRequest.emit();
     };
     __decorate([
         core_1.Output(),
         __metadata("design:type", Object)
-    ], ProjectUploadComponent.prototype, "uploadSuccess", void 0);
+    ], ProjectUploadComponent.prototype, "uploadRequest", void 0);
     __decorate([
         core_1.Input(),
         __metadata("design:type", Observable_1.Observable),

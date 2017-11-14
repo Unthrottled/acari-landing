@@ -8,6 +8,8 @@ import {LocalProjectFactory} from "../LocalProject.factory";
 export class ProjectManipulationComponent implements OnInit {
     @Output()
     private projectChanged = new EventEmitter<Project>();
+    @Output()
+    private onUpdate = new EventEmitter<void>();
     private _oldRank: number;
 
     constructor(private projectService: ProjectService,
@@ -122,8 +124,8 @@ export class ProjectManipulationComponent implements OnInit {
         this.emitProject();
     }
 
-    fileUploaded(success: boolean) {
-
+    fileUploadRequest() {
+        this.onUpdate.emit();
     }
 
     promoteMe(): void {

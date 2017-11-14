@@ -58,4 +58,12 @@ export class ProjectComponent {
     isLocalProject(): boolean {
         return this.project instanceof LocalProject;
     }
+
+    updateProject(): void {
+
+    }
+
+    saveProject(): void {
+
+    }
 }

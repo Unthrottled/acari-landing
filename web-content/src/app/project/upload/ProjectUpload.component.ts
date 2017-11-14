@@ -13,7 +13,7 @@ export class ProjectUploadComponent {
     // TODO: MOVE DIS TO SOME BETTER PLACE
 
     @Output()
-    private uploadSuccess = new EventEmitter<boolean>();
+    private uploadRequest = new EventEmitter<boolean>();
 
     constructor(private uploadFileService: ProjectUploadService) {
     }
@@ -41,9 +41,6 @@ export class ProjectUploadComponent {
     }
 
     upload(): void {
-        this.uploadFileService.pushFileToStorage(this._project)
-            .subscribe(() => {
-                }, () => this.uploadSuccess.emit(false)
-                , () => this.uploadSuccess.emit(true));
+        this.uploadRequest.emit();
     }
 }
