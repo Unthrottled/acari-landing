@@ -1,6 +1,10 @@
 <div class="edit-container" [hidden]="cantEdit | async">
     <button (click)="toggleEdit()"
     class="btn-lg btn btn-info">Edit</button>
+    <button (click)="removeProject()"
+    class="btn-lg btn btn-danger">
+        Remove
+    </button>
     <div [hidden]="hideEdit | async">
         <project-creation [(project)]="project"></project-creation>
     </div>

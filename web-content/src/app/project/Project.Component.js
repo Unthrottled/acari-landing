@@ -48,6 +48,8 @@ var ProjectComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    ProjectComponent.prototype.removeProject = function () {
+    };
     __decorate([
         core_1.Input(),
         __metadata("design:type", Observable_1.Observable),

@@ -40,4 +40,8 @@ export class ProjectComponent {
     get cantEdit(): Observable<boolean>{
         return Observable.of(false);
     }
+
+    removeProject(): void{
+
+    }
 }
