@@ -2,10 +2,7 @@ import {Component, Input} from "@angular/core";
 import "./Project.component.htm";
 import {Project} from "./model/Project.model";
 import {Observable} from "rxjs/Observable";
-import {RemoteProject} from "./model/RemoteProject.model";
-import {LocalProject} from "./model/LocalProject.model";
 import {ProjectService} from "./Project.service";
-import {ProjectUploadService} from "./upload/ProjectUpload.service";
 
 
 @Component({

@@ -6,6 +6,7 @@
         Remove
     </button>
     <div [hidden]="hideEdit | async">
+        <!--TODO: I THINK I DO NOT NEED TO DO DIS-->
         <div *ngIf="isLocalProject()">
             <local-project-manipulation [(project)]="project"
                                         (onUpdate)="saveAllProjects()"
