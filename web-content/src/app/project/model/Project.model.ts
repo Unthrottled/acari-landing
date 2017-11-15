@@ -8,6 +8,7 @@ import {ProjectRank} from "./ProjectRank.model";
 import {LocalReach} from "./LocalReach.model";
 
 export abstract class Project extends ExportableProject {
+    private _dirty: boolean = false;
 
     constructor(description: Description = new Description(),
                 reach: ReachInterface = new LocalReach(),
@@ -17,12 +18,53 @@ export abstract class Project extends ExportableProject {
         super(description, reach, background, location, rank);
     }
 
+    get dirtyGurl(): boolean {
+        return this._dirty;
+    }
+
     get url(): string {
         return this.location.url;
     }
 
-    get preachySpeechy(): string{
+    set url(value: string) {
+        this.thatGurlIsFreaky();
+        this.location.url = value;
+    }
+
+    get textColor(): string {
+        return this.background.textColor;
+    }
+
+    set textColor(value: string) {
+        this.thatGurlIsFreaky();
+        this.background.textColor = value;
+    }
+
+    get colorTwo(): string {
+        return this.background.colorTwo;
+    }
+
+    set colorTwo(value: string) {
+        this.thatGurlIsFreaky();
+        this.background.colorTwo = value;
+    }
+
+    get colorOne(): string {
+        return this.background.colorOne;
+    }
+
+    set colorOne(value: string) {
+        this.thatGurlIsFreaky();
+        this.background.colorOne = value;
+    }
+
+    get preachySpeechy(): string {
         return this.description.preachySpeechy;
+    }
+
+    set preachySpeechy(value: string) {
+        this.thatGurlIsFreaky();
+        this.description.preachySpeechy = value;
     }
 
     get projectRank(): number {
@@ -30,11 +72,17 @@ export abstract class Project extends ExportableProject {
     }
 
     set projectRank(value: number) {
+        this.thatGurlIsFreaky();
         this.rank.rank = value;
     }
 
-    get excerpt(): string{
+    get excerpt(): string {
         return this.description.excerpt;
+    }
+
+    set excerpt(value: string) {
+        this.thatGurlIsFreaky();
+        this.description.excerpt = value;
     }
 
     get reachBlob(): Observable<any> {
@@ -51,5 +99,14 @@ export abstract class Project extends ExportableProject {
 
     get descriptionTextColor(): string {
         return this.background.textColor;
+    }
+
+    set descriptionTextColor(value: string) {
+        this.thatGurlIsFreaky();
+        this.background.textColor = value;
+    }
+
+    private thatGurlIsFreaky(): void {
+
     }
 }

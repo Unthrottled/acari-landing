@@ -33,10 +33,10 @@ var ProjectManipulationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectManipulationComponent.prototype, "colorOne", {
         get: function () {
-            return this.project.background.colorOne;
+            return this.project.colorOne;
         },
         set: function (value) {
-            this._project.background.colorOne = value;
+            this._project.colorOne = value;
             this.emitProject();
         },
         enumerable: true,
@@ -44,10 +44,10 @@ var ProjectManipulationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectManipulationComponent.prototype, "colorTwo", {
         get: function () {
-            return this._project.background.colorTwo;
+            return this._project.colorTwo;
         },
         set: function (value) {
-            this._project.background.colorTwo = value;
+            this._project.colorTwo = value;
             this.emitProject();
         },
         enumerable: true,
@@ -55,10 +55,10 @@ var ProjectManipulationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectManipulationComponent.prototype, "descriptionTextColor", {
         get: function () {
-            return this._project.background.textColor;
+            return this._project.textColor;
         },
         set: function (value) {
-            this._project.background.textColor = value;
+            this._project.textColor = value;
             this.emitProject();
         },
         enumerable: true,
@@ -66,10 +66,10 @@ var ProjectManipulationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectManipulationComponent.prototype, "url", {
         get: function () {
-            return this.project.location.url;
+            return this.project.url;
         },
         set: function (value) {
-            this.project.location.url = value;
+            this.project.url = value;
             this.emitProject();
         },
         enumerable: true,
@@ -77,10 +77,10 @@ var ProjectManipulationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectManipulationComponent.prototype, "rank", {
         get: function () {
-            return this.project.rank.rank;
+            return this.project.projectRank;
         },
         set: function (value) {
-            this.project.rank.rank = value;
+            this.project.projectRank = value;
             this.emitProject();
         },
         enumerable: true,
@@ -91,7 +91,7 @@ var ProjectManipulationComponent = /** @class */ (function () {
             return this._project.excerpt;
         },
         set: function (value) {
-            this._project.description.excerpt = value;
+            this._project.excerpt = value;
             this.emitProject();
         },
         enumerable: true,
@@ -102,7 +102,7 @@ var ProjectManipulationComponent = /** @class */ (function () {
             return this._project.preachySpeechy;
         },
         set: function (value) {
-            this._project.description.preachySpeechy = value;
+            this._project.preachySpeechy = value;
             this.emitProject();
         },
         enumerable: true,

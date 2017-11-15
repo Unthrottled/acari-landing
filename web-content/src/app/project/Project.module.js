@@ -17,13 +17,13 @@ var ProjectView_component_1 = require("./view/ProjectView.component");
 var Project_service_1 = require("./Project.service");
 var SafetyStylePipe_1 = require("../util/SafetyStylePipe");
 var RedirectService_1 = require("../util/RedirectService");
-var LocalReach_service_1 = require("./creation/LocalReach.service");
+var LocalReach_service_1 = require("./manipulation/LocalReach.service");
 var RemoteReach_service_1 = require("./remote/RemoteReach.service");
 var ProjectList_component_1 = require("./ProjectList.component");
 var Project_Component_1 = require("./Project.Component");
 var LocalProject_factory_1 = require("./LocalProject.factory");
-var LocalProjectManipulation_component_1 = require("./creation/LocalProjectManipulation.component");
-var RemoteProjectManipulation_component_1 = require("./creation/RemoteProjectManipulation.component");
+var LocalProjectManipulation_component_1 = require("./manipulation/LocalProjectManipulation.component");
+var RemoteProjectManipulation_component_1 = require("./manipulation/RemoteProjectManipulation.component");
 var ProjectModule = /** @class */ (function () {
     function ProjectModule() {
     }

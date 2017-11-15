@@ -30,47 +30,47 @@ export class ProjectManipulationComponent implements OnInit {
     }
 
     get colorOne(): string {
-        return this.project.background.colorOne;
+        return this.project.colorOne;
     }
 
     set colorOne(value: string) {
-        this._project.background.colorOne = value;
+        this._project.colorOne = value;
         this.emitProject();
     }
 
     get colorTwo(): string {
-        return this._project.background.colorTwo;
+        return this._project.colorTwo;
     }
 
     set colorTwo(value: string) {
-        this._project.background.colorTwo = value;
+        this._project.colorTwo = value;
         this.emitProject();
     }
 
     get descriptionTextColor(): string {
-        return this._project.background.textColor;
+        return this._project.textColor;
     }
 
     set descriptionTextColor(value: string) {
-        this._project.background.textColor = value;
+        this._project.textColor = value;
         this.emitProject();
     }
 
     get url(): string {
-        return this.project.location.url;
+        return this.project.url;
     }
 
     set url(value: string) {
-        this.project.location.url = value;
+        this.project.url = value;
         this.emitProject();
     }
 
     get rank(): number {
-        return this.project.rank.rank;
+        return this.project.projectRank;
     }
 
     set rank(value: number) {
-        this.project.rank.rank = value;
+        this.project.projectRank = value;
         this.emitProject();
     }
 
@@ -79,7 +79,7 @@ export class ProjectManipulationComponent implements OnInit {
     }
 
     set excerpt(value: string) {
-        this._project.description.excerpt = value;
+        this._project.excerpt = value;
         this.emitProject();
     }
 
@@ -88,7 +88,7 @@ export class ProjectManipulationComponent implements OnInit {
     }
 
     set description(value: string) {
-        this._project.description.preachySpeechy = value;
+        this._project.preachySpeechy = value;
         this.emitProject();
     }
 

@@ -24,11 +24,57 @@ var Project = /** @class */ (function (_super) {
         if (background === void 0) { background = new Background_model_1.Background(); }
         if (location === void 0) { location = new Location_model_1.Location(); }
         if (rank === void 0) { rank = new ProjectRank_model_1.ProjectRank(); }
-        return _super.call(this, description, reach, background, location, rank) || this;
+        var _this = _super.call(this, description, reach, background, location, rank) || this;
+        _this._dirty = false;
+        return _this;
     }
+    Object.defineProperty(Project.prototype, "dirtyGurl", {
+        get: function () {
+            return this._dirty;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Project.prototype, "url", {
         get: function () {
             return this.location.url;
+        },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this.location.url = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "textColor", {
+        get: function () {
+            return this.background.textColor;
+        },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this.background.textColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "colorTwo", {
+        get: function () {
+            return this.background.colorTwo;
+        },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this.background.colorTwo = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "colorOne", {
+        get: function () {
+            return this.background.colorOne;
+        },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this.background.colorOne = value;
         },
         enumerable: true,
         configurable: true
@@ -36,6 +82,10 @@ var Project = /** @class */ (function (_super) {
     Object.defineProperty(Project.prototype, "preachySpeechy", {
         get: function () {
             return this.description.preachySpeechy;
+        },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this.description.preachySpeechy = value;
         },
         enumerable: true,
         configurable: true
@@ -45,6 +95,7 @@ var Project = /** @class */ (function (_super) {
             return this.rank.rank;
         },
         set: function (value) {
+            this.thatGurlIsFreaky();
             this.rank.rank = value;
         },
         enumerable: true,
@@ -53,6 +104,10 @@ var Project = /** @class */ (function (_super) {
     Object.defineProperty(Project.prototype, "excerpt", {
         get: function () {
             return this.description.excerpt;
+        },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this.description.excerpt = value;
         },
         enumerable: true,
         configurable: true
@@ -82,9 +137,15 @@ var Project = /** @class */ (function (_super) {
         get: function () {
             return this.background.textColor;
         },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this.background.textColor = value;
+        },
         enumerable: true,
         configurable: true
     });
+    Project.prototype.thatGurlIsFreaky = function () {
+    };
     return Project;
 }(ExportableProject_1.ExportableProject));
 exports.Project = Project;
