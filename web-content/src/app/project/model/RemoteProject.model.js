@@ -16,6 +16,12 @@ var RemoteProject = /** @class */ (function (_super) {
     function RemoteProject() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    RemoteProject.prototype.isLocal = function () {
+        return false;
+    };
+    RemoteProject.prototype.isRemote = function () {
+        return true;
+    };
     return RemoteProject;
 }(Project_model_1.Project));
 exports.RemoteProject = RemoteProject;

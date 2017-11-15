@@ -13,8 +13,6 @@ var core_1 = require("@angular/core");
 require("./Project.component.htm");
 var Project_model_1 = require("./model/Project.model");
 var Observable_1 = require("rxjs/Observable");
-var RemoteProject_model_1 = require("./model/RemoteProject.model");
-var LocalProject_model_1 = require("./model/LocalProject.model");
 var Project_service_1 = require("./Project.service");
 var ProjectComponent = /** @class */ (function () {
     function ProjectComponent(projectService) {
@@ -56,10 +54,10 @@ var ProjectComponent = /** @class */ (function () {
         this.projectService.removeProject(this._project);
     };
     ProjectComponent.prototype.isRemoteProject = function () {
-        return this.project instanceof RemoteProject_model_1.RemoteProject;
+        return this.project.isRemote();
     };
     ProjectComponent.prototype.isLocalProject = function () {
-        return this.project instanceof LocalProject_model_1.LocalProject;
+        return this.project.isLocal();
     };
     ProjectComponent.prototype.saveAllProjects = function () {
         this.projectService.saveAllProjects();

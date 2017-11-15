@@ -53,11 +53,11 @@ export class ProjectComponent {
     }
 
     isRemoteProject(): boolean {
-        return this.project instanceof RemoteProject;
+        return this.project.isRemote();
     }
 
     isLocalProject(): boolean {
-        return this.project instanceof LocalProject;
+        return this.project.isLocal();
     }
 
     saveAllProjects(): void {

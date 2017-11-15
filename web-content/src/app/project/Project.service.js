@@ -69,6 +69,14 @@ var ProjectService = /** @class */ (function () {
         }
     };
     ProjectService.prototype.saveAllProjects = function () {
+        this.projectList
+            .filter(function (project) { return project.dirtyGurl; })
+            .forEach(function (project) {
+            if (project.isLocal()) {
+            }
+            else if (project.isRemote()) {
+            }
+        });
         return Observable_1.Observable.of(true);
     };
     ProjectService.prototype.promoteDemote = function (projectToPromoteIndex, projectToDemoteIndex) {

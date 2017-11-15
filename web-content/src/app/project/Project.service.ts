@@ -68,7 +68,15 @@ export class ProjectService {
     }
 
     saveAllProjects(): Observable<boolean> {
+        this.projectList
+            .filter(project=>project.dirtyGurl)
+            .forEach(project=>{
+                if(project.isLocal()){
 
+                } else if (project.isRemote()){
+
+                }
+            });
         return Observable.of(true);
     }
 

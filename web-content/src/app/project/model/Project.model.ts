@@ -9,7 +9,6 @@ import {LocalReach} from "./LocalReach.model";
 
 export abstract class Project extends ExportableProject {
     private _dirty: boolean = false;
-    private _selectedReach: ReachInterface;
 
     constructor(description: Description = new Description(),
                 reach: ReachInterface = new LocalReach(),
@@ -18,6 +17,17 @@ export abstract class Project extends ExportableProject {
                 rank: ProjectRank = new ProjectRank()) {
         super(description, background, location, rank);
         this._selectedReach = reach;
+    }
+
+    private _selectedReach: ReachInterface;
+
+    get selectedReach(): ReachInterface {
+        return this._selectedReach;
+    }
+
+    set selectedReach(value: ReachInterface) {
+        this.thatGurlIsFreaky();
+        this._selectedReach = value;
     }
 
     get dirtyGurl(): boolean {
@@ -87,16 +97,6 @@ export abstract class Project extends ExportableProject {
         this.description.excerpt = value;
     }
 
-    get selectedReach(): ReachInterface {
-        return this._selectedReach;
-    }
-
-
-    set selectedReach(value: ReachInterface) {
-        this.thatGurlIsFreaky();
-        this._selectedReach = value;
-    }
-
     get reachBlob(): Observable<any> {
         return this.selectedReach.imageBinary();
     }
@@ -118,7 +118,11 @@ export abstract class Project extends ExportableProject {
         this.background.textColor = value;
     }
 
-    private thatGurlIsFreaky(): void {
+    abstract isLocal(): boolean;
 
+    abstract isRemote(): boolean;
+
+    private thatGurlIsFreaky(): void {
+        this._dirty = true;
     }
 }

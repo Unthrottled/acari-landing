@@ -29,6 +29,17 @@ var Project = /** @class */ (function (_super) {
         _this._selectedReach = reach;
         return _this;
     }
+    Object.defineProperty(Project.prototype, "selectedReach", {
+        get: function () {
+            return this._selectedReach;
+        },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this._selectedReach = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Project.prototype, "dirtyGurl", {
         get: function () {
             return this._dirty;
@@ -113,17 +124,6 @@ var Project = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Project.prototype, "selectedReach", {
-        get: function () {
-            return this._selectedReach;
-        },
-        set: function (value) {
-            this.thatGurlIsFreaky();
-            this._selectedReach = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(Project.prototype, "reachBlob", {
         get: function () {
             return this.selectedReach.imageBinary();
@@ -157,6 +157,7 @@ var Project = /** @class */ (function (_super) {
         configurable: true
     });
     Project.prototype.thatGurlIsFreaky = function () {
+        this._dirty = true;
     };
     return Project;
 }(ExportableProject_1.ExportableProject));

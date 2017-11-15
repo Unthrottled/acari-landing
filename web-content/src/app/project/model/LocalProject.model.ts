@@ -7,6 +7,13 @@ import {Location} from "./Location.model";
 import {Observable} from "rxjs/Observable";
 
 export class LocalProject extends Project {
+    isLocal(): boolean {
+        return true;
+    }
+
+    isRemote(): boolean {
+        return false;
+    }
 
     constructor(description: Description = new Description(),
                 private localReach: LocalReach = new LocalReach(),

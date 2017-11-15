@@ -28,6 +28,12 @@ var LocalProject = /** @class */ (function (_super) {
         _this.localReach = localReach;
         return _this;
     }
+    LocalProject.prototype.isLocal = function () {
+        return true;
+    };
+    LocalProject.prototype.isRemote = function () {
+        return false;
+    };
     Object.defineProperty(LocalProject.prototype, "reachFile", {
         get: function () {
             return this.localReach.selectedFile;
