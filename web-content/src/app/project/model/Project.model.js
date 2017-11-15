@@ -5,6 +5,7 @@ var Location_model_1 = require("./Location.model");
 var Background_model_1 = require("./Background.model");
 var ProjectRank_model_1 = require("./ProjectRank.model");
 var LocalReach_model_1 = require("./LocalReach.model");
+var ExportableLocalProject_model_1 = require("./ExportableLocalProject.model");
 var Project = /** @class */ (function () {
     function Project(description, reach, background, location, rank) {
         if (description === void 0) { description = new Description_model_1.Description(); }
@@ -19,6 +20,13 @@ var Project = /** @class */ (function () {
         this._location = location;
         this._rank = rank;
     }
+    Object.defineProperty(Project.prototype, "exportableLocalProject", {
+        get: function () {
+            return new ExportableLocalProject_model_1.ExportableLocalProject(this.description, this.background, this.location, this.rank);
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Project.prototype, "selectedReach", {
         get: function () {
             return this._selectedReach;
@@ -26,7 +34,6 @@ var Project = /** @class */ (function () {
         set: function (value) {
             this.thatGurlIsFreaky();
             this._selectedReach = value;
-            console.log(this.selectedReach);
         },
         enumerable: true,
         configurable: true

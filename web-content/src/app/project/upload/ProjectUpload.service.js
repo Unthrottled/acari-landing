@@ -18,6 +18,7 @@ var ProjectUploadService = /** @class */ (function () {
     }
     ProjectUploadService.prototype.pushFileToStorage = function (projectToUpload) {
         var _this = this;
+        console.log(JSON.stringify(projectToUpload.exportableLocalProject));
         return projectToUpload.reachFile
             .map(function (reachFile) {
             var formData = new FormData();

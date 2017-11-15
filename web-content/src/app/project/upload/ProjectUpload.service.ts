@@ -12,6 +12,7 @@ export class ProjectUploadService {
     }
 
     pushFileToStorage(projectToUpload: LocalProject): Observable<RemoteProject> {
+        console.log(JSON.stringify(projectToUpload.exportableLocalProject));
         return projectToUpload.reachFile
             .map(reachFile => {
                 let formData = new FormData();

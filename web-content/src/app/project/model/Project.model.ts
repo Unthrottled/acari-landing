@@ -5,6 +5,7 @@ import {Location} from './Location.model'
 import {Background} from "./Background.model";
 import {ProjectRank} from "./ProjectRank.model";
 import {LocalReach} from "./LocalReach.model";
+import {ExportableLocalProject} from "./ExportableLocalProject.model";
 
 export abstract class Project {
     private _dirty: boolean = false;
@@ -27,6 +28,11 @@ export abstract class Project {
 
     private _selectedReach: ReachInterface;
 
+    get exportableLocalProject(): ExportableLocalProject {
+        return new ExportableLocalProject(this.description,
+            this.background, this.location, this.rank);
+    }
+
     get selectedReach(): ReachInterface {
         return this._selectedReach;
     }
@@ -34,7 +40,6 @@ export abstract class Project {
     set selectedReach(value: ReachInterface) {
         this.thatGurlIsFreaky();
         this._selectedReach = value;
-        console.log(this.selectedReach);
     }
 
     get dirtyGurl(): boolean {
