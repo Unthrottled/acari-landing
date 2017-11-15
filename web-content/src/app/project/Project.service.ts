@@ -5,12 +5,14 @@ import {Project} from "./model/Project.model";
 import {LocalProject} from "./model/LocalProject.model";
 import {LocalProjectFactory} from "./LocalProject.factory";
 import {RemoteProject} from "./model/RemoteProject.model";
+import {ProjectUploadService} from "./upload/ProjectUpload.service";
 
 @Injectable()
 export class ProjectService {
 
     constructor(private backendAPIService: BackendAPIService,
-                private localProjectFactory: LocalProjectFactory) {
+                private localProjectFactory: LocalProjectFactory,
+                private projectUploadService: ProjectUploadService) {
 
     }
 
@@ -68,12 +70,11 @@ export class ProjectService {
     }
 
     saveAllProjects(): Observable<boolean> {
-        //todo: future me start here! -Love Past You <3
         this.projectList
             .filter(project=>project.dirtyGurl)
             .forEach(project=>{
                 if(project.isLocal()){
-
+                    this.projectUploadService.pushFileToStorage(<LocalProject>project);
                 } else if (project.isRemote()){
 
                 }

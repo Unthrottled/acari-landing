@@ -15,10 +15,12 @@ var Observable_1 = require("rxjs/Observable");
 var LocalProject_model_1 = require("./model/LocalProject.model");
 var LocalProject_factory_1 = require("./LocalProject.factory");
 var RemoteProject_model_1 = require("./model/RemoteProject.model");
+var ProjectUpload_service_1 = require("./upload/ProjectUpload.service");
 var ProjectService = /** @class */ (function () {
-    function ProjectService(backendAPIService, localProjectFactory) {
+    function ProjectService(backendAPIService, localProjectFactory, projectUploadService) {
         this.backendAPIService = backendAPIService;
         this.localProjectFactory = localProjectFactory;
+        this.projectUploadService = projectUploadService;
         this._projectList = [];
     }
     Object.defineProperty(ProjectService.prototype, "projectList", {
@@ -69,11 +71,13 @@ var ProjectService = /** @class */ (function () {
         }
     };
     ProjectService.prototype.saveAllProjects = function () {
+        var _this = this;
         //todo: future me start here! -Love Past You <3
         this.projectList
             .filter(function (project) { return project.dirtyGurl; })
             .forEach(function (project) {
             if (project.isLocal()) {
+                _this.projectUploadService.pushFileToStorage(project);
             }
             else if (project.isRemote()) {
             }
@@ -96,7 +100,8 @@ var ProjectService = /** @class */ (function () {
     ProjectService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService,
-            LocalProject_factory_1.LocalProjectFactory])
+            LocalProject_factory_1.LocalProjectFactory,
+            ProjectUpload_service_1.ProjectUploadService])
     ], ProjectService);
     return ProjectService;
 }());
