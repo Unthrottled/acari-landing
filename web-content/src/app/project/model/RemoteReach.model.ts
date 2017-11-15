@@ -7,7 +7,7 @@ export class RemoteReach implements ReachInterface {
     private loaded = false;
     private _rawFile: Observable<Blob>;
 
-    constructor(file: Observable<Blob>) {
+    constructor(file: Observable<Blob> = Observable.empty()) {
 
         file.subscribe(blob => {
             this.loaded = true;
