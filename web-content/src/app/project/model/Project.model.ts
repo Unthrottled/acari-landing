@@ -9,13 +9,15 @@ import {LocalReach} from "./LocalReach.model";
 
 export abstract class Project extends ExportableProject {
     private _dirty: boolean = false;
+    private _selectedReach: ReachInterface;
 
     constructor(description: Description = new Description(),
                 reach: ReachInterface = new LocalReach(),
                 background: Background = new Background(),
                 location: Location = new Location(),
                 rank: ProjectRank = new ProjectRank()) {
-        super(description, reach, background, location, rank);
+        super(description, background, location, rank);
+        this._selectedReach = reach;
     }
 
     get dirtyGurl(): boolean {
@@ -83,6 +85,16 @@ export abstract class Project extends ExportableProject {
     set excerpt(value: string) {
         this.thatGurlIsFreaky();
         this.description.excerpt = value;
+    }
+
+    get selectedReach(): ReachInterface {
+        return this._selectedReach;
+    }
+
+
+    set selectedReach(value: ReachInterface) {
+        this.thatGurlIsFreaky();
+        this._selectedReach = value;
     }
 
     get reachBlob(): Observable<any> {

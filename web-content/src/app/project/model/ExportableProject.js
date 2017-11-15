@@ -1,23 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ExportableProject = /** @class */ (function () {
-    function ExportableProject(description, reach, background, location, rank) {
+    function ExportableProject(description, background, location, rank) {
         this._description = description;
-        this._selectedReach = reach;
         this._background = background;
         this._location = location;
         this._rank = rank;
     }
-    Object.defineProperty(ExportableProject.prototype, "selectedReach", {
-        get: function () {
-            return this._selectedReach;
-        },
-        set: function (value) {
-            this._selectedReach = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(ExportableProject.prototype, "rank", {
         get: function () {
             return this._rank;

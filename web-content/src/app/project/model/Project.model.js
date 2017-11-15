@@ -24,8 +24,9 @@ var Project = /** @class */ (function (_super) {
         if (background === void 0) { background = new Background_model_1.Background(); }
         if (location === void 0) { location = new Location_model_1.Location(); }
         if (rank === void 0) { rank = new ProjectRank_model_1.ProjectRank(); }
-        var _this = _super.call(this, description, reach, background, location, rank) || this;
+        var _this = _super.call(this, description, background, location, rank) || this;
         _this._dirty = false;
+        _this._selectedReach = reach;
         return _this;
     }
     Object.defineProperty(Project.prototype, "dirtyGurl", {
@@ -108,6 +109,17 @@ var Project = /** @class */ (function (_super) {
         set: function (value) {
             this.thatGurlIsFreaky();
             this.description.excerpt = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "selectedReach", {
+        get: function () {
+            return this._selectedReach;
+        },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this._selectedReach = value;
         },
         enumerable: true,
         configurable: true
