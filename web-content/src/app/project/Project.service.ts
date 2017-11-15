@@ -11,8 +11,7 @@ import {ProjectUpdateService} from "./upload/ProjectUpdate.service";
 @Injectable()
 export class ProjectService {
 
-    constructor(private backendAPIService: BackendAPIService,
-                private localProjectFactory: LocalProjectFactory,
+    constructor(private localProjectFactory: LocalProjectFactory,
                 private projectUploadService: ProjectUploadService,
                 private projectUpdateService: ProjectUpdateService) {
 
