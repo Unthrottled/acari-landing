@@ -4,6 +4,8 @@ import {Project} from "../model/Project.model";
 import {ProjectService} from "../Project.service";
 import {LocalReachService} from "./LocalReach.service";
 import {LocalProjectFactory} from "../LocalProject.factory";
+import {LocalProject} from "../model/LocalProject.model";
+import {LocalReach} from "../model/LocalReach.model";
 
 export class ProjectManipulationComponent implements OnInit {
     @Output()
@@ -118,7 +120,7 @@ export class ProjectManipulationComponent implements OnInit {
 
 
     fileChosen(chosenFile: File): void {
-        this._project.selectedReach = this.buildReachBlob(Observable.of(chosenFile));
+        this._project.selectedReach = this.buildLocalReach(Observable.of(chosenFile));
         this.emitProject();
     }
 
@@ -134,7 +136,7 @@ export class ProjectManipulationComponent implements OnInit {
         this.projectService.demoteProject(this._project);
     }
 
-    private buildReachBlob(reachFile: Observable<File>) {
+    private buildLocalReach(reachFile: Observable<File>) : LocalReach {
         return this.localReachService.createReach(reachFile);
     }
 }

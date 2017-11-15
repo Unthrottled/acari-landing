@@ -139,7 +139,7 @@ var ProjectManipulationComponent = /** @class */ (function () {
         this.projectChanged.emit(this.project);
     };
     ProjectManipulationComponent.prototype.fileChosen = function (chosenFile) {
-        this._project.selectedReach = this.buildReachBlob(Observable_1.Observable.of(chosenFile));
+        this._project.selectedReach = this.buildLocalReach(Observable_1.Observable.of(chosenFile));
         this.emitProject();
     };
     ProjectManipulationComponent.prototype.fileUploadRequest = function () {
@@ -151,7 +151,7 @@ var ProjectManipulationComponent = /** @class */ (function () {
     ProjectManipulationComponent.prototype.demoteMe = function () {
         this.projectService.demoteProject(this._project);
     };
-    ProjectManipulationComponent.prototype.buildReachBlob = function (reachFile) {
+    ProjectManipulationComponent.prototype.buildLocalReach = function (reachFile) {
         return this.localReachService.createReach(reachFile);
     };
     __decorate([

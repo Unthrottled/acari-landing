@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../../util/BackendAPI.service");
-var Object_util_1 = require("../../util/Object.util");
 var RemoteProject_model_1 = require("../model/RemoteProject.model");
 var ProjectUploadService = /** @class */ (function () {
     function ProjectUploadService(backendAPIService) {
@@ -20,7 +19,6 @@ var ProjectUploadService = /** @class */ (function () {
     ProjectUploadService.prototype.pushFileToStorage = function (projectToUpload) {
         var _this = this;
         return projectToUpload.reachFile
-            .filter(Object_util_1.isDefined)
             .map(function (reachFile) {
             var formData = new FormData();
             formData.append('reach', reachFile);

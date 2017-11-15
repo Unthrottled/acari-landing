@@ -13,7 +13,6 @@ export class ProjectUploadService {
 
     pushFileToStorage(projectToUpload: LocalProject): Observable<RemoteProject> {
         return projectToUpload.reachFile
-            .filter(isDefined)
             .map(reachFile => {
                 let formData = new FormData();
                 formData.append('reach', reachFile);

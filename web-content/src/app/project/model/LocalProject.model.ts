@@ -7,23 +7,32 @@ import {Location} from "./Location.model";
 import {Observable} from "rxjs/Observable";
 
 export class LocalProject extends Project {
-    isLocal(): boolean {
-        return true;
-    }
-
-    isRemote(): boolean {
-        return false;
-    }
-
     constructor(description: Description = new Description(),
-                private localReach: LocalReach = new LocalReach(),
+                localReach: LocalReach = new LocalReach(),
                 background: Background = new Background(),
                 location: Location = new Location(),
                 rank: ProjectRank = new ProjectRank()) {
         super(description, localReach, background, location, rank);
     }
 
+    /**
+     * dis feels janky.
+     * @returns {Observable<File>}
+     */
     get reachFile(): Observable<File> {
-        return this.localReach.selectedFile;
+        if (this.selectedReach instanceof LocalReach) {
+            return (<LocalReach>this.selectedReach).selectedFile;
+        } else {
+            return Observable.empty();
+        }
+
+    }
+
+    isLocal(): boolean {
+        return true;
+    }
+
+    isRemote(): boolean {
+        return false;
     }
 }

@@ -1,4 +1,3 @@
-import {ExportableProject} from "./ExportableProject";
 import {Observable} from "rxjs/Observable";
 import {Description} from "./Description.model";
 import {ReachInterface} from "./ReachInterface";
@@ -7,16 +6,23 @@ import {Background} from "./Background.model";
 import {ProjectRank} from "./ProjectRank.model";
 import {LocalReach} from "./LocalReach.model";
 
-export abstract class Project extends ExportableProject {
+export abstract class Project {
     private _dirty: boolean = false;
+    private _rank: ProjectRank;
+    private _background: Background;
+    private _description: Description;
+    private _location: Location;
 
     constructor(description: Description = new Description(),
                 reach: ReachInterface = new LocalReach(),
                 background: Background = new Background(),
                 location: Location = new Location(),
                 rank: ProjectRank = new ProjectRank()) {
-        super(description, background, location, rank);
         this._selectedReach = reach;
+        this._description = description;
+        this._background = background;
+        this._location = location;
+        this._rank = rank;
     }
 
     private _selectedReach: ReachInterface;
@@ -28,6 +34,7 @@ export abstract class Project extends ExportableProject {
     set selectedReach(value: ReachInterface) {
         this.thatGurlIsFreaky();
         this._selectedReach = value;
+        console.log(this.selectedReach);
     }
 
     get dirtyGurl(): boolean {
@@ -124,5 +131,21 @@ export abstract class Project extends ExportableProject {
 
     private thatGurlIsFreaky(): void {
         this._dirty = true;
+    }
+
+    get rank(): ProjectRank {
+        return this._rank;
+    }
+
+    get background(): Background {
+        return this._background;
+    }
+
+    get description(): Description {
+        return this._description;
+    }
+
+    get location(): Location {
+        return this._location;
     }
 }

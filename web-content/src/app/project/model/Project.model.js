@@ -1,33 +1,23 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var ExportableProject_1 = require("./ExportableProject");
 var Description_model_1 = require("./Description.model");
 var Location_model_1 = require("./Location.model");
 var Background_model_1 = require("./Background.model");
 var ProjectRank_model_1 = require("./ProjectRank.model");
 var LocalReach_model_1 = require("./LocalReach.model");
-var Project = /** @class */ (function (_super) {
-    __extends(Project, _super);
+var Project = /** @class */ (function () {
     function Project(description, reach, background, location, rank) {
         if (description === void 0) { description = new Description_model_1.Description(); }
         if (reach === void 0) { reach = new LocalReach_model_1.LocalReach(); }
         if (background === void 0) { background = new Background_model_1.Background(); }
         if (location === void 0) { location = new Location_model_1.Location(); }
         if (rank === void 0) { rank = new ProjectRank_model_1.ProjectRank(); }
-        var _this = _super.call(this, description, background, location, rank) || this;
-        _this._dirty = false;
-        _this._selectedReach = reach;
-        return _this;
+        this._dirty = false;
+        this._selectedReach = reach;
+        this._description = description;
+        this._background = background;
+        this._location = location;
+        this._rank = rank;
     }
     Object.defineProperty(Project.prototype, "selectedReach", {
         get: function () {
@@ -36,6 +26,7 @@ var Project = /** @class */ (function (_super) {
         set: function (value) {
             this.thatGurlIsFreaky();
             this._selectedReach = value;
+            console.log(this.selectedReach);
         },
         enumerable: true,
         configurable: true
@@ -159,7 +150,35 @@ var Project = /** @class */ (function (_super) {
     Project.prototype.thatGurlIsFreaky = function () {
         this._dirty = true;
     };
+    Object.defineProperty(Project.prototype, "rank", {
+        get: function () {
+            return this._rank;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "background", {
+        get: function () {
+            return this._background;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "description", {
+        get: function () {
+            return this._description;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "location", {
+        get: function () {
+            return this._location;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Project;
-}(ExportableProject_1.ExportableProject));
+}());
 exports.Project = Project;
 //# sourceMappingURL=Project.model.js.map
