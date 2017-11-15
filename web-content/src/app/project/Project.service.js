@@ -69,6 +69,7 @@ var ProjectService = /** @class */ (function () {
         }
     };
     ProjectService.prototype.saveAllProjects = function () {
+        //todo: future me start here! -Love Past You <3
         this.projectList
             .filter(function (project) { return project.dirtyGurl; })
             .forEach(function (project) {

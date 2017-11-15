@@ -68,6 +68,7 @@ export class ProjectService {
     }
 
     saveAllProjects(): Observable<boolean> {
+        //todo: future me start here! -Love Past You <3
         this.projectList
             .filter(project=>project.dirtyGurl)
             .forEach(project=>{
