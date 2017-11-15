@@ -29,6 +29,8 @@ var ProjectUploadService = /** @class */ (function () {
         }).flatMap(function (formData) {
             return _this.backendAPIService.postImage(formData);
         });
+        this.backendAPIService.postProject(projectToUpload)
+            .subscribe();
         return Observable_1.Observable.of(new RemoteProject_model_1.RemoteProject());
     };
     ProjectUploadService = __decorate([

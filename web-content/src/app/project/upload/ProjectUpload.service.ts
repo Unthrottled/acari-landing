@@ -20,7 +20,8 @@ export class ProjectUploadService {
                 return formData
             }).flatMap(formData =>
                 this.backendAPIService.postImage(formData));
-
+        this.backendAPIService.postProject(projectToUpload)
+            .subscribe();
         return Observable.of(new RemoteProject());
     }
 }
