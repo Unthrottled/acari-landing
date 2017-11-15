@@ -12,12 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../../util/BackendAPI.service");
 var RemoteReach_model_1 = require("../model/RemoteReach.model");
+var Identifier_model_1 = require("../model/Identifier.model");
 var RemoteReachService = /** @class */ (function () {
     function RemoteReachService(backendAPI) {
         this.backendAPI = backendAPI;
     }
     RemoteReachService.prototype.fetchReach = function (reachId) {
-        return new RemoteReach_model_1.RemoteReach(this.backendAPI.fetchImage(reachId));
+        return new RemoteReach_model_1.RemoteReach(new Identifier_model_1.Identifier(reachId), this.backendAPI.fetchImage(reachId));
     };
     RemoteReachService = __decorate([
         core_1.Injectable(),

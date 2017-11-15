@@ -20,13 +20,9 @@ var Project = /** @class */ (function () {
         this._location = location;
         this._rank = rank;
     }
-    Object.defineProperty(Project.prototype, "exportableLocalProject", {
-        get: function () {
-            return new ExportableLocalProject_model_1.ExportableLocalProject(this.description, this.background, this.location, this.rank);
-        },
-        enumerable: true,
-        configurable: true
-    });
+    Project.prototype.exportableLocalProject = function (exportableReach) {
+        return new ExportableLocalProject_model_1.ExportableLocalProject(exportableReach, this.description, this.background, this.location, this.rank);
+    };
     Object.defineProperty(Project.prototype, "selectedReach", {
         get: function () {
             return this._selectedReach;

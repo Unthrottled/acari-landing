@@ -6,6 +6,7 @@ import {Background} from "./Background.model";
 import {ProjectRank} from "./ProjectRank.model";
 import {LocalReach} from "./LocalReach.model";
 import {ExportableLocalProject} from "./ExportableLocalProject.model";
+import {ExportableReach} from "./ExportableReach.model";
 
 export abstract class Project {
     private _dirty: boolean = false;
@@ -28,8 +29,8 @@ export abstract class Project {
 
     private _selectedReach: ReachInterface;
 
-    get exportableLocalProject(): ExportableLocalProject {
-        return new ExportableLocalProject(this.description,
+    exportableLocalProject(exportableReach: ExportableReach): ExportableLocalProject {
+        return new ExportableLocalProject(exportableReach, this.description,
             this.background, this.location, this.rank);
     }
 
