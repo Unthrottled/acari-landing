@@ -44,6 +44,7 @@ var ProjectService = /** @class */ (function () {
     };
     ProjectService.prototype.removeProject = function (projectToRemove) {
         if (projectToRemove instanceof RemoteProject_model_1.RemoteProject) {
+            //todo: remote project completly
         }
         else if (projectToRemove instanceof LocalProject_model_1.LocalProject) {
             this.removeLocal(projectToRemove);
@@ -70,21 +71,32 @@ var ProjectService = /** @class */ (function () {
         this.projectList
             .filter(function (project) { return project.dirtyGurl; })
             .forEach(function (project) {
+            _this.removeProject(project);
             if (project.isLocal()) {
-                _this.projectUploadService.pushFileToStorage(project);
+                _this.projectUploadService.pushFileToStorage(project)
+                    .subscribe(function (newProject) {
+                    //todo: rehydrate list with remote
+                });
             }
             else if (project.isRemote()) {
-                _this.projectUpdateService.updateFileInStorage(project);
+                _this.projectUpdateService.updateFileInStorage(project)
+                    .subscribe(function (updatedProject) {
+                    //todo: rehydrate list with remote
+                });
             }
         });
         return Observable_1.Observable.of(true);
     };
     ProjectService.prototype.removeLocal = function (projectToRemove) {
-        var start = projectToRemove.projectRank - 1;
-        this.projectList.splice(start, 1);
+        var start = this.removeProjectFromList(projectToRemove);
         //promotions!!
         for (var i = start; i < this.projectList.length; i++)
             this.projectList[i].projectRank--;
+    };
+    ProjectService.prototype.removeProjectFromList = function (projectToRemove) {
+        var start = projectToRemove.projectRank - 1;
+        this.projectList.splice(start, 1);
+        return start;
     };
     ProjectService.prototype.promoteDemote = function (projectToPromoteIndex, projectToDemoteIndex) {
         this.projectList[projectToPromoteIndex].projectRank--;

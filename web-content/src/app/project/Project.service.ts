@@ -39,7 +39,7 @@ export class ProjectService {
 
     removeProject(projectToRemove: Project): void {
         if (projectToRemove instanceof RemoteProject) {
-
+            //todo: remote project completly
         } else if (projectToRemove instanceof LocalProject) {
             this.removeLocal(projectToRemove);
         }
@@ -67,21 +67,35 @@ export class ProjectService {
         this.projectList
             .filter(project => project.dirtyGurl)
             .forEach(project => {
+                this.removeProject(project);
                 if (project.isLocal()) {
-                    this.projectUploadService.pushFileToStorage(<LocalProject>project);
+                    this.projectUploadService.pushFileToStorage(<LocalProject>project)
+                        .subscribe(newProject=>{
+                            //todo: rehydrate list with remote
+                        });
                 } else if (project.isRemote()) {
-                    this.projectUpdateService.updateFileInStorage(<RemoteProject>project);
+                    this.projectUpdateService.updateFileInStorage(<RemoteProject>project)
+                        .subscribe(updatedProject=>{
+                            //todo: rehydrate list with remote
+                        });
                 }
             });
         return Observable.of(true);
     }
 
+
+
     private removeLocal(projectToRemove: LocalProject) {
-        let start = projectToRemove.projectRank - 1;
-        this.projectList.splice(start, 1);
+        let start = this.removeProjectFromList(projectToRemove);
         //promotions!!
         for (let i = start; i < this.projectList.length; i++)
             this.projectList[i].projectRank--;
+    }
+
+    private removeProjectFromList(projectToRemove: Project) {
+        let start = projectToRemove.projectRank - 1;
+        this.projectList.splice(start, 1);
+        return start;
     }
 
     private promoteDemote(projectToPromoteIndex: number, projectToDemoteIndex: number) {
