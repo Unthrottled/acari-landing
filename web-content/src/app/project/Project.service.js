@@ -16,11 +16,13 @@ var LocalProject_model_1 = require("./model/LocalProject.model");
 var LocalProject_factory_1 = require("./LocalProject.factory");
 var RemoteProject_model_1 = require("./model/RemoteProject.model");
 var ProjectUpload_service_1 = require("./upload/ProjectUpload.service");
+var ProjectUpdate_service_1 = require("./upload/ProjectUpdate.service");
 var ProjectService = /** @class */ (function () {
-    function ProjectService(backendAPIService, localProjectFactory, projectUploadService) {
+    function ProjectService(backendAPIService, localProjectFactory, projectUploadService, projectUpdateService) {
         this.backendAPIService = backendAPIService;
         this.localProjectFactory = localProjectFactory;
         this.projectUploadService = projectUploadService;
+        this.projectUpdateService = projectUpdateService;
         this._projectList = [];
     }
     Object.defineProperty(ProjectService.prototype, "projectList", {
@@ -47,13 +49,6 @@ var ProjectService = /** @class */ (function () {
             this.removeLocal(projectToRemove);
         }
     };
-    ProjectService.prototype.removeLocal = function (projectToRemove) {
-        var start = projectToRemove.projectRank - 1;
-        this.projectList.splice(start, 1);
-        //promotions!!
-        for (var i = start; i < this.projectList.length; i++)
-            this.projectList[i].projectRank--;
-    };
     ProjectService.prototype.promoteProject = function (projectToPromote) {
         var projectToPromoteIndex = projectToPromote.projectRank - 1; //project passed in
         if (projectToPromoteIndex > 0) {
@@ -72,7 +67,6 @@ var ProjectService = /** @class */ (function () {
     };
     ProjectService.prototype.saveAllProjects = function () {
         var _this = this;
-        //todo: future me start here! -Love Past You <3
         this.projectList
             .filter(function (project) { return project.dirtyGurl; })
             .forEach(function (project) {
@@ -80,9 +74,17 @@ var ProjectService = /** @class */ (function () {
                 _this.projectUploadService.pushFileToStorage(project);
             }
             else if (project.isRemote()) {
+                _this.projectUpdateService.updateFileInStorage(project);
             }
         });
         return Observable_1.Observable.of(true);
+    };
+    ProjectService.prototype.removeLocal = function (projectToRemove) {
+        var start = projectToRemove.projectRank - 1;
+        this.projectList.splice(start, 1);
+        //promotions!!
+        for (var i = start; i < this.projectList.length; i++)
+            this.projectList[i].projectRank--;
     };
     ProjectService.prototype.promoteDemote = function (projectToPromoteIndex, projectToDemoteIndex) {
         this.projectList[projectToPromoteIndex].projectRank--;
@@ -101,7 +103,8 @@ var ProjectService = /** @class */ (function () {
         core_1.Injectable(),
         __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService,
             LocalProject_factory_1.LocalProjectFactory,
-            ProjectUpload_service_1.ProjectUploadService])
+            ProjectUpload_service_1.ProjectUploadService,
+            ProjectUpdate_service_1.ProjectUpdateService])
     ], ProjectService);
     return ProjectService;
 }());

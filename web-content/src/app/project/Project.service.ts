@@ -6,13 +6,15 @@ import {LocalProject} from "./model/LocalProject.model";
 import {LocalProjectFactory} from "./LocalProject.factory";
 import {RemoteProject} from "./model/RemoteProject.model";
 import {ProjectUploadService} from "./upload/ProjectUpload.service";
+import {ProjectUpdateService} from "./upload/ProjectUpdate.service";
 
 @Injectable()
 export class ProjectService {
 
     constructor(private backendAPIService: BackendAPIService,
                 private localProjectFactory: LocalProjectFactory,
-                private projectUploadService: ProjectUploadService) {
+                private projectUploadService: ProjectUploadService,
+                private projectUpdateService: ProjectUpdateService) {
 
     }
 
@@ -36,19 +38,11 @@ export class ProjectService {
     }
 
     removeProject(projectToRemove: Project): void {
-        if(projectToRemove instanceof RemoteProject){
+        if (projectToRemove instanceof RemoteProject) {
 
-        } else if(projectToRemove instanceof LocalProject) {
+        } else if (projectToRemove instanceof LocalProject) {
             this.removeLocal(projectToRemove);
         }
-    }
-
-    private removeLocal(projectToRemove: LocalProject) {
-        let start = projectToRemove.projectRank - 1;
-        this.projectList.splice(start, 1);
-        //promotions!!
-        for (let i = start; i < this.projectList.length; i++)
-            this.projectList[i].projectRank--;
     }
 
     promoteProject(projectToPromote: Project): void {
@@ -71,15 +65,23 @@ export class ProjectService {
 
     saveAllProjects(): Observable<boolean> {
         this.projectList
-            .filter(project=>project.dirtyGurl)
-            .forEach(project=>{
-                if(project.isLocal()){
+            .filter(project => project.dirtyGurl)
+            .forEach(project => {
+                if (project.isLocal()) {
                     this.projectUploadService.pushFileToStorage(<LocalProject>project);
-                } else if (project.isRemote()){
-
+                } else if (project.isRemote()) {
+                    this.projectUpdateService.updateFileInStorage(<RemoteProject>project);
                 }
             });
         return Observable.of(true);
+    }
+
+    private removeLocal(projectToRemove: LocalProject) {
+        let start = projectToRemove.projectRank - 1;
+        this.projectList.splice(start, 1);
+        //promotions!!
+        for (let i = start; i < this.projectList.length; i++)
+            this.projectList[i].projectRank--;
     }
 
     private promoteDemote(projectToPromoteIndex: number, projectToDemoteIndex: number) {
