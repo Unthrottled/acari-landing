@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../../util/BackendAPI.service");
+var Observable_1 = require("rxjs/Observable");
 var Object_util_1 = require("../../util/Object.util");
 var RemoteProject_model_1 = require("../model/RemoteProject.model");
 var ProjectUploadService = /** @class */ (function () {
@@ -19,17 +20,16 @@ var ProjectUploadService = /** @class */ (function () {
     }
     ProjectUploadService.prototype.pushFileToStorage = function (projectToUpload) {
         var _this = this;
-        return projectToUpload.reachFile
+        var reachId = projectToUpload.reachFile
             .filter(Object_util_1.isDefined)
             .map(function (reachFile) {
             var formData = new FormData();
             formData.append('reach', reachFile);
             return formData;
-        })
-            .flatMap(function (formData) {
-            return _this.backendAPIService.postImage(formData)
-                .map(function (imageId) { return new RemoteProject_model_1.RemoteProject(); });
+        }).flatMap(function (formData) {
+            return _this.backendAPIService.postImage(formData);
         });
+        return Observable_1.Observable.of(new RemoteProject_model_1.RemoteProject());
     };
     ProjectUploadService = __decorate([
         core_1.Injectable(),

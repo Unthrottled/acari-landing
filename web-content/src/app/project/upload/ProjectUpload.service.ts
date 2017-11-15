@@ -12,15 +12,15 @@ export class ProjectUploadService {
     }
 
     pushFileToStorage(projectToUpload: LocalProject): Observable<RemoteProject> {
-        return projectToUpload.reachFile
+        let reachId = projectToUpload.reachFile
             .filter(isDefined)
             .map(reachFile => {
                 let formData = new FormData();
                 formData.append('reach', reachFile);
                 return formData
-            })
-            .flatMap(formData =>
-                this.backendAPIService.postImage(formData)
-                    .map((imageId: string) => new RemoteProject()));
+            }).flatMap(formData =>
+                this.backendAPIService.postImage(formData));
+
+        return Observable.of(new RemoteProject());
     }
 }
