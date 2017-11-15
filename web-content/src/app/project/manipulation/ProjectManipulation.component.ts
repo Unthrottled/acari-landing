@@ -10,7 +10,6 @@ export class ProjectManipulationComponent implements OnInit {
     private projectChanged = new EventEmitter<Project>();
     @Output()
     private onUpdate = new EventEmitter<void>();
-    private _oldRank: number;
 
     constructor(private projectService: ProjectService,
                 private localReachService: LocalReachService,
@@ -106,7 +105,6 @@ export class ProjectManipulationComponent implements OnInit {
     }
 
     newRank(rank: number) {
-        this._oldRank = this.rank;
         this.project.projectRank = rank;
     }
 

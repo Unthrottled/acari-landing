@@ -131,7 +131,6 @@ var ProjectManipulationComponent = /** @class */ (function () {
         configurable: true
     });
     ProjectManipulationComponent.prototype.newRank = function (rank) {
-        this._oldRank = this.rank;
         this.project.projectRank = rank;
     };
     ProjectManipulationComponent.prototype.ngOnInit = function () {
