@@ -3,6 +3,7 @@ import {BackendAPIService} from "../../util/BackendAPI.service";
 import {Observable} from "rxjs/Observable";
 import {LocalProject} from "../model/LocalProject.model";
 import {isDefined} from "../../util/Object.util";
+import {RemoteProject} from "../model/RemoteProject.model";
 
 @Injectable()
 export class ProjectUploadService {
@@ -10,7 +11,7 @@ export class ProjectUploadService {
 
     }
 
-    pushFileToStorage(projectToUpload: LocalProject): Observable<boolean> {
+    pushFileToStorage(projectToUpload: LocalProject): Observable<RemoteProject> {
         return projectToUpload.reachFile
             .filter(isDefined)
             .map(reachFile => {
@@ -20,6 +21,6 @@ export class ProjectUploadService {
             })
             .flatMap(formData =>
                 this.backendAPIService.postImage(formData)
-                    .map((imageId: string) => imageId.length > 0));
+                    .map((imageId: string) => new RemoteProject()));
     }
 }

@@ -9,7 +9,7 @@ export class ProjectUpdateService {
 
     }
 
-    updateFileInStorage(projectToUpload: RemoteProject): Observable<boolean> {
-        return Observable.of(true);
+    updateFileInStorage(projectToUpload: RemoteProject): Observable<RemoteProject> {
+        return Observable.of(projectToUpload);
     }
 }

@@ -17,7 +17,7 @@ var ProjectUpdateService = /** @class */ (function () {
         this.backendAPIService = backendAPIService;
     }
     ProjectUpdateService.prototype.updateFileInStorage = function (projectToUpload) {
-        return Observable_1.Observable.of(true);
+        return Observable_1.Observable.of(projectToUpload);
     };
     ProjectUpdateService = __decorate([
         core_1.Injectable(),

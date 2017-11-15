@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../../util/BackendAPI.service");
 var Object_util_1 = require("../../util/Object.util");
+var RemoteProject_model_1 = require("../model/RemoteProject.model");
 var ProjectUploadService = /** @class */ (function () {
     function ProjectUploadService(backendAPIService) {
         this.backendAPIService = backendAPIService;
@@ -27,7 +28,7 @@ var ProjectUploadService = /** @class */ (function () {
         })
             .flatMap(function (formData) {
             return _this.backendAPIService.postImage(formData)
-                .map(function (imageId) { return imageId.length > 0; });
+                .map(function (imageId) { return new RemoteProject_model_1.RemoteProject(); });
         });
     };
     ProjectUploadService = __decorate([
