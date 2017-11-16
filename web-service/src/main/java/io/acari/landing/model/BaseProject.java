@@ -1,7 +1,5 @@
 package io.acari.landing.model;
 
-import org.bson.types.ObjectId;
-
 public class BaseProject {
 
     private Reach reach;

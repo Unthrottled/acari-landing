@@ -1,6 +1,9 @@
 package io.acari.landing;
 
 
+import io.acari.landing.model.BaseProject;
+import io.acari.landing.model.Identifier;
+import io.acari.landing.model.ResponseProject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +42,8 @@ public class LandingRestController {
     return imageHandler.saveImage(reach);
   }
 
-//    @PostMapping(value = "save/project", consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public Mono<String> saveProject(@RequestPart )
+    @PostMapping(value = "project/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<ResponseProject> saveProject(@RequestPart BaseProject newProject){
+      return null;
+    }
 }
