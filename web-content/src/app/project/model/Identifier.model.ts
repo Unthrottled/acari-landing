@@ -1,5 +1,6 @@
 export class Identifier {
     constructor(id: string = '') {
+        this._id = id;
     }
 
     private _id: string;

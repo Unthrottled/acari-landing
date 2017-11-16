@@ -11,6 +11,7 @@ export class RemoteReachService {
     }
 
     public fetchReach(reachId: string): RemoteReach {
-        return new RemoteReach(new Identifier(reachId), this.backendAPI.fetchImage(reachId));
+        return new RemoteReach(new Identifier(reachId),
+            this.backendAPI.fetchImage(reachId));
     }
 }

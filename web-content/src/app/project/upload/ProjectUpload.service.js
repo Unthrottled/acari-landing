@@ -12,13 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../../util/BackendAPI.service");
 var RemoteProject_model_1 = require("../model/RemoteProject.model");
+var ExportableReach_model_1 = require("../model/ExportableReach.model");
+var Identifier_model_1 = require("../model/Identifier.model");
 var ProjectUploadService = /** @class */ (function () {
     function ProjectUploadService(backendAPIService) {
         this.backendAPIService = backendAPIService;
     }
     ProjectUploadService.prototype.pushFileToStorage = function (projectToUpload) {
         var _this = this;
-        console.log(JSON.stringify(projectToUpload.exportableLocalProject));
+        console.log(JSON.stringify(projectToUpload.exportableLocalProject(new ExportableReach_model_1.ExportableReach(new Identifier_model_1.Identifier('a')))));
         return projectToUpload.reachFile
             .map(function (reachFile) {
             var formData = new FormData();
