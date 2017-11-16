@@ -28,6 +28,13 @@ export class BackendAPIService {
         });
     }
 
+    fetchAllImages(): Observable<RemoteProject[]> {
+        return this.http.get('./api/projects', {
+            responseType: 'json'
+        }).map(json=><any[]>json)
+            .map(json => json.map(projectJson=>this.remoteProjectFactory.createProject(projectJson)));
+    }
+
     postProject(exportableLocalProject: ExportableLocalProject): Observable<RemoteProject> {
         return this.http.post('./api/project/create', exportableLocalProject, {
             responseType: 'json'

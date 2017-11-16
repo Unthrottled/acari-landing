@@ -19,11 +19,17 @@ var ProjectUpdate_service_1 = require("./upload/ProjectUpdate.service");
 var RemoteProject_service_1 = require("./RemoteProject.service");
 var ProjectService = /** @class */ (function () {
     function ProjectService(localProjectFactory, projectUploadService, projectUpdateService, remoteProjectService) {
+        var _this = this;
         this.localProjectFactory = localProjectFactory;
         this.projectUploadService = projectUploadService;
         this.projectUpdateService = projectUpdateService;
         this.remoteProjectService = remoteProjectService;
         this._projectList = [];
+        console.log('steven');
+        this.remoteProjectService.fetchProjects()
+            .subscribe(function (remoteProjects) {
+            remoteProjects.forEach(function (remoteProject) { return _this.projectList.push(remoteProject); });
+        });
     }
     Object.defineProperty(ProjectService.prototype, "projectList", {
         get: function () {
@@ -36,11 +42,6 @@ var ProjectService = /** @class */ (function () {
         configurable: true
     });
     ProjectService.prototype.ngOnInit = function () {
-        var _this = this;
-        this.remoteProjectService.fetchProjects()
-            .subscribe(function (remoteProjects) {
-            remoteProjects.forEach(function (remoteProject) { return _this.projectList.push(remoteProject); });
-        });
     };
     ProjectService.prototype.projectCount = function () {
         return Observable_1.Observable.of(this.projectList.length);

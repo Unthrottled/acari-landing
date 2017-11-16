@@ -14,7 +14,11 @@ export class ProjectService implements OnInit {
                 private projectUploadService: ProjectUploadService,
                 private projectUpdateService: ProjectUpdateService,
                 private remoteProjectService: RemoteProjectService) {
-
+        console.log('steven');
+        this.remoteProjectService.fetchProjects()
+            .subscribe(remoteProjects => {
+                remoteProjects.forEach(remoteProject => this.projectList.push(remoteProject));
+            });
     }
 
     private _projectList: Project[] = [];
@@ -28,10 +32,7 @@ export class ProjectService implements OnInit {
     }
 
     ngOnInit(): void {
-        this.remoteProjectService.fetchProjects()
-            .subscribe(remoteProjects => {
-                remoteProjects.forEach(remoteProject => this.projectList.push(remoteProject));
-            });
+
     }
 
     projectCount(): Observable<number> {

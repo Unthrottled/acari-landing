@@ -10,17 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var Observable_1 = require("rxjs/Observable");
+var BackendAPI_service_1 = require("../util/BackendAPI.service");
 var RemoteProjectService = /** @class */ (function () {
-    function RemoteProjectService() {
+    function RemoteProjectService(backendAPIService) {
+        this.backendAPIService = backendAPIService;
     }
-    //todo: impl me
     RemoteProjectService.prototype.fetchProjects = function () {
-        return Observable_1.Observable.empty();
+        return this.backendAPIService.fetchAllImages();
     };
     RemoteProjectService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService])
     ], RemoteProjectService);
     return RemoteProjectService;
 }());

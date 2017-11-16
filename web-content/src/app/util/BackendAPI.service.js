@@ -27,6 +27,13 @@ var BackendAPIService = /** @class */ (function () {
             responseType: 'blob'
         });
     };
+    BackendAPIService.prototype.fetchAllImages = function () {
+        var _this = this;
+        return this.http.get('./api/projects', {
+            responseType: 'json'
+        }).map(function (json) { return json; })
+            .map(function (json) { return json.map(function (projectJson) { return _this.remoteProjectFactory.createProject(projectJson); }); });
+    };
     BackendAPIService.prototype.postProject = function (exportableLocalProject) {
         var _this = this;
         return this.http.post('./api/project/create', exportableLocalProject, {
