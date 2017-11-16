@@ -17,6 +17,7 @@ import {LocalProjectFactory} from "./LocalProject.factory";
 import {LocalProjectManipulationComponent} from "./manipulation/LocalProjectManipulation.component";
 import {RemoteProjectManipulationComponent} from "./manipulation/RemoteProjectManipulation.component";
 import {ProjectUpdateService} from "./upload/ProjectUpdate.service";
+import {RemoteProjectFactory} from "./RemoteProject.factory";
 
 @NgModule({
     imports: [CommonModule, FormsModule],
@@ -46,6 +47,7 @@ import {ProjectUpdateService} from "./upload/ProjectUpdate.service";
         ProjectService,
         RedirectService,
         LocalProjectFactory,
+        RemoteProjectFactory,
         LocalReachService,
         RemoteReachService,
         ProjectUpdateService

@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
+var RemoteProject_factory_1 = require("../project/RemoteProject.factory");
 var BackendAPIService = /** @class */ (function () {
-    function BackendAPIService(http) {
+    function BackendAPIService(http, remoteProjectFactory) {
         this.http = http;
+        this.remoteProjectFactory = remoteProjectFactory;
     }
     BackendAPIService.prototype.postImage = function (formData) {
         return this.http.post('./api/image/save', formData, {
@@ -25,9 +27,15 @@ var BackendAPIService = /** @class */ (function () {
             responseType: 'blob'
         });
     };
+    BackendAPIService.prototype.postProject = function (localProject) {
+        return this.http.post('./api/project/create', localProject, {
+            responseType: 'json'
+        }).map(this.remoteProjectFactory.createProject);
+    };
     BackendAPIService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.HttpClient])
+        __metadata("design:paramtypes", [http_1.HttpClient,
+            RemoteProject_factory_1.RemoteProjectFactory])
     ], BackendAPIService);
     return BackendAPIService;
 }());

@@ -1,5 +1,4 @@
 import {Injectable} from "@angular/core";
-import {BackendAPIService} from "../util/BackendAPI.service";
 import {Observable} from "rxjs/Observable";
 import {Project} from "./model/Project.model";
 import {LocalProject} from "./model/LocalProject.model";

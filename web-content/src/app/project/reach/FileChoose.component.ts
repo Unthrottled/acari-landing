@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+
 @Component({
     selector: 'file-choose',
     template: require('./FileChoose.component.htm')
