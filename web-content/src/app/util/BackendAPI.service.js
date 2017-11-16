@@ -27,8 +27,8 @@ var BackendAPIService = /** @class */ (function () {
             responseType: 'blob'
         });
     };
-    BackendAPIService.prototype.postProject = function (localProject) {
-        return this.http.post('./api/project/create', localProject, {
+    BackendAPIService.prototype.postProject = function (exportableLocalProject) {
+        return this.http.post('./api/project/create', exportableLocalProject, {
             responseType: 'json'
         }).map(this.remoteProjectFactory.createProject);
     };

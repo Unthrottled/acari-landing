@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {LocalProject} from "../project/model/LocalProject.model";
 import {RemoteProject} from "../project/model/RemoteProject.model";
 import {RemoteProjectFactory} from "../project/RemoteProject.factory";
+import {ExportableLocalProject} from "../project/model/ExportableLocalProject.model";
 
 
 @Injectable()
@@ -27,8 +28,8 @@ export class BackendAPIService {
         });
     }
 
-    postProject(localProject: LocalProject): Observable<RemoteProject> {
-        return this.http.post('./api/project/create', localProject, {
+    postProject(exportableLocalProject: ExportableLocalProject): Observable<RemoteProject> {
+        return this.http.post('./api/project/create', exportableLocalProject, {
             responseType: 'json'
         }).map(this.remoteProjectFactory.createProject)
     }

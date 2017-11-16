@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../../util/BackendAPI.service");
-var RemoteProject_model_1 = require("../model/RemoteProject.model");
+var Object_util_1 = require("../../util/Object.util");
 var ExportableReach_model_1 = require("../model/ExportableReach.model");
 var Identifier_model_1 = require("../model/Identifier.model");
 var ProjectUploadService = /** @class */ (function () {
@@ -20,17 +20,18 @@ var ProjectUploadService = /** @class */ (function () {
     }
     ProjectUploadService.prototype.pushFileToStorage = function (projectToUpload) {
         var _this = this;
-        console.log(JSON.stringify(projectToUpload.exportableLocalProject(new ExportableReach_model_1.ExportableReach(new Identifier_model_1.Identifier('a')))));
         return projectToUpload.reachFile
+            .filter(Object_util_1.isDefined)
             .map(function (reachFile) {
             var formData = new FormData();
             formData.append('reach', reachFile);
             return formData;
+        }).flatMap(function (formData) {
+            return _this.backendAPIService.postImage(formData);
         })
-            .flatMap(function (formData) {
-            return _this.backendAPIService.postImage(formData)
-                .map(function (imageId) { return new RemoteProject_model_1.RemoteProject(); });
-        });
+            .map(function (reachId) { return new ExportableReach_model_1.ExportableReach(new Identifier_model_1.Identifier(reachId)); })
+            .map(function (reach) { return projectToUpload.exportableLocalProject(reach); })
+            .flatMap(this.backendAPIService.postProject);
     };
     ProjectUploadService = __decorate([
         core_1.Injectable(),
