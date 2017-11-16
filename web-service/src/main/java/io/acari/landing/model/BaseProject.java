@@ -8,6 +8,8 @@ public class BaseProject {
     private Description description;
     private Location location;
 
+    public BaseProject(){}
+
     public BaseProject(Reach reach, ProjectRank rank, Background background, Description description, Location location) {
         this.reach = reach;
         this.rank = rank;

@@ -43,7 +43,7 @@ public class LandingRestController {
   }
 
     @PostMapping(value = "project/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<ResponseProject> saveProject(@RequestPart BaseProject newProject){
+    public Mono<ResponseProject> saveProject(@RequestBody  BaseProject newProject){
       return null;
     }
 }

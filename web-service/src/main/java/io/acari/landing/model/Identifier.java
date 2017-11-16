@@ -4,6 +4,7 @@ public class Identifier {
 
     private String _id;
 
+    public Identifier(){}
 
     public Identifier(String _id) {
         this._id = _id;

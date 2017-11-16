@@ -4,6 +4,9 @@ public class Reach {
 
   private Identifier _identifier;
 
+  public Reach() {
+  }
+
   public Reach(Identifier _identifier) {
     this._identifier = _identifier;
   }

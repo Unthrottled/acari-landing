@@ -3,6 +3,9 @@ package io.acari.landing.model;
 public class ProjectRank {
   private String _rank;
 
+  public ProjectRank() {
+  }
+
   public ProjectRank(String _rank) {
     this._rank = _rank;
   }

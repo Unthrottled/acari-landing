@@ -4,6 +4,8 @@ public class Description {
     private String _excerpt;
     private String _preachySpeechy;
 
+    public Description(){}
+
   public Description(String _excerpt, String _preachySpeechy) {
     this._excerpt = _excerpt;
     this._preachySpeechy = _preachySpeechy;

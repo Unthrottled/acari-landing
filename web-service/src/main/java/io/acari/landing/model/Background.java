@@ -6,6 +6,8 @@ public class Background {
   private String _colorOne;
   private String _colorTwo;
 
+  public Background(){}
+
   public Background(String backgroundStyle, String textColor, String _colorOne, String _colorTwo) {
     this.backgroundStyle = backgroundStyle;
     this.textColor = textColor;

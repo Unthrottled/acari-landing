@@ -3,6 +3,9 @@ package io.acari.landing.model;
 public class Location {
   private String _url;
 
+  public Location() {
+  }
+
   public Location(String _url) {
     this._url = _url;
   }
