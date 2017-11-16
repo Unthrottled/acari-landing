@@ -6,12 +6,14 @@ import {LocalProjectFactory} from "./LocalProject.factory";
 import {RemoteProject} from "./model/RemoteProject.model";
 import {ProjectUploadService} from "./upload/ProjectUpload.service";
 import {ProjectUpdateService} from "./upload/ProjectUpdate.service";
+import {RemoteProjectService} from "./RemoteProject.service";
 
 @Injectable()
 export class ProjectService implements OnInit {
     constructor(private localProjectFactory: LocalProjectFactory,
                 private projectUploadService: ProjectUploadService,
-                private projectUpdateService: ProjectUpdateService) {
+                private projectUpdateService: ProjectUpdateService,
+                private remoteProjectService: RemoteProjectService) {
 
     }
 
@@ -26,7 +28,10 @@ export class ProjectService implements OnInit {
     }
 
     ngOnInit(): void {
-        //TODO: LOAD REMOTE PROJECTS
+        this.remoteProjectService.fetchProjects()
+            .subscribe(remoteProjects => {
+                remoteProjects.forEach(remoteProject => this.projectList.push(remoteProject));
+            });
     }
 
     projectCount(): Observable<number> {

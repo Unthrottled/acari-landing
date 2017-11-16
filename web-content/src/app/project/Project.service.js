@@ -16,11 +16,13 @@ var LocalProject_factory_1 = require("./LocalProject.factory");
 var RemoteProject_model_1 = require("./model/RemoteProject.model");
 var ProjectUpload_service_1 = require("./upload/ProjectUpload.service");
 var ProjectUpdate_service_1 = require("./upload/ProjectUpdate.service");
+var RemoteProject_service_1 = require("./RemoteProject.service");
 var ProjectService = /** @class */ (function () {
-    function ProjectService(localProjectFactory, projectUploadService, projectUpdateService) {
+    function ProjectService(localProjectFactory, projectUploadService, projectUpdateService, remoteProjectService) {
         this.localProjectFactory = localProjectFactory;
         this.projectUploadService = projectUploadService;
         this.projectUpdateService = projectUpdateService;
+        this.remoteProjectService = remoteProjectService;
         this._projectList = [];
     }
     Object.defineProperty(ProjectService.prototype, "projectList", {
@@ -33,6 +35,13 @@ var ProjectService = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    ProjectService.prototype.ngOnInit = function () {
+        var _this = this;
+        this.remoteProjectService.fetchProjects()
+            .subscribe(function (remoteProjects) {
+            remoteProjects.forEach(function (remoteProject) { return _this.projectList.push(remoteProject); });
+        });
+    };
     ProjectService.prototype.projectCount = function () {
         return Observable_1.Observable.of(this.projectList.length);
     };
@@ -113,7 +122,8 @@ var ProjectService = /** @class */ (function () {
         core_1.Injectable(),
         __metadata("design:paramtypes", [LocalProject_factory_1.LocalProjectFactory,
             ProjectUpload_service_1.ProjectUploadService,
-            ProjectUpdate_service_1.ProjectUpdateService])
+            ProjectUpdate_service_1.ProjectUpdateService,
+            RemoteProject_service_1.RemoteProjectService])
     ], ProjectService);
     return ProjectService;
 }());
