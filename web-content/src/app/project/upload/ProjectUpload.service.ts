@@ -24,6 +24,6 @@ export class ProjectUploadService {
                 this.backendAPIService.postImage(formData))
             .map(reachId => new ExportableReach(new Identifier(reachId)))
             .map(reach => projectToUpload.exportableLocalProject(reach))
-            .flatMap(this.backendAPIService.postProject);
+            .flatMap(project=>this.backendAPIService.postProject(project));
     }
 }

@@ -31,7 +31,7 @@ var ProjectUploadService = /** @class */ (function () {
         })
             .map(function (reachId) { return new ExportableReach_model_1.ExportableReach(new Identifier_model_1.Identifier(reachId)); })
             .map(function (reach) { return projectToUpload.exportableLocalProject(reach); })
-            .flatMap(this.backendAPIService.postProject);
+            .flatMap(function (project) { return _this.backendAPIService.postProject(project); });
     };
     ProjectUploadService = __decorate([
         core_1.Injectable(),
