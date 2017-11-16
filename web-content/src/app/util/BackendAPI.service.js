@@ -28,9 +28,10 @@ var BackendAPIService = /** @class */ (function () {
         });
     };
     BackendAPIService.prototype.postProject = function (exportableLocalProject) {
+        var _this = this;
         return this.http.post('./api/project/create', exportableLocalProject, {
             responseType: 'json'
-        }).map(this.remoteProjectFactory.createProject);
+        }).map(function (json) { return _this.remoteProjectFactory.createProject(json); });
     };
     BackendAPIService = __decorate([
         core_1.Injectable(),

@@ -31,6 +31,6 @@ export class BackendAPIService {
     postProject(exportableLocalProject: ExportableLocalProject): Observable<RemoteProject> {
         return this.http.post('./api/project/create', exportableLocalProject, {
             responseType: 'json'
-        }).map(this.remoteProjectFactory.createProject)
+        }).map(json => this.remoteProjectFactory.createProject(json))
     }
 }
