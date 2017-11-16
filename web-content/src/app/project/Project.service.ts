@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Project} from "./model/Project.model";
 import {LocalProject} from "./model/LocalProject.model";
@@ -8,8 +8,7 @@ import {ProjectUploadService} from "./upload/ProjectUpload.service";
 import {ProjectUpdateService} from "./upload/ProjectUpdate.service";
 
 @Injectable()
-export class ProjectService {
-
+export class ProjectService implements OnInit {
     constructor(private localProjectFactory: LocalProjectFactory,
                 private projectUploadService: ProjectUploadService,
                 private projectUpdateService: ProjectUpdateService) {
@@ -24,6 +23,10 @@ export class ProjectService {
 
     set projectList(value: Project[]) {
         this._projectList = value;
+    }
+
+    ngOnInit(): void {
+        //TODO: LOAD REMOTE PROJECTS
     }
 
     projectCount(): Observable<number> {
@@ -68,19 +71,18 @@ export class ProjectService {
                 this.removeProject(project);
                 if (project.isLocal()) {
                     this.projectUploadService.pushFileToStorage(<LocalProject>project)
-                        .subscribe(newProject=>{
+                        .subscribe(newProject => {
                             //todo: rehydrate list with remote
                         });
                 } else if (project.isRemote()) {
                     this.projectUpdateService.updateFileInStorage(<RemoteProject>project)
-                        .subscribe(updatedProject=>{
+                        .subscribe(updatedProject => {
                             //todo: rehydrate list with remote
                         });
                 }
             });
         return Observable.of(true);
     }
-
 
 
     private removeLocal(projectToRemove: LocalProject) {
