@@ -16,17 +16,14 @@ WORKDIR /app
 #Add rest of source code :)
 ADD . .
 
-#RUN gradle clean shadowJar
+RUN gradle clean bootJar
 
 FROM java:8u111-alpine
 
 WORKDIR /app
 
-#COPY --from=packager /app/build/libs /app
+COPY --from=packager /app/build/libs /app
 
-#ENTRYPOINT ["java", "-jar", "wiki-1.0.3.jar"]
-
-ENTRYPOINT ["java", "-"]
-
+ENTRYPOINT ["java", "-Xdebug","-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=7896","-jar", "app-1.0.0.jar"]
 
 

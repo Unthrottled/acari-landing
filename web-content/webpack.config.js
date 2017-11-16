@@ -15,7 +15,7 @@ const extractSass = new ExtractTextPlugin({
 
 
 var proxyPeel = proxy('/api', {
-    target: 'http://sandwich:8080',
+    target: 'http://web-service:8080',
     changeOrigin: true,               // needed for virtual hosted sites
     ws: true,
     agent: keepAliveAgent

@@ -14,3 +14,6 @@ services:
     image: alexsimons/acari-web-service
     ports:
       - "8989:8989"
+      - "7896:7896"
+  mongo:
+    image: mongo:latest
