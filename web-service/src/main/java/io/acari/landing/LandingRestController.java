@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -17,11 +18,13 @@ public class LandingRestController {
   private static final Logger LOGGER = LoggerFactory.getLogger(LandingRestController.class);
 
   private final ImageHandler imageHandler;
+  private final AllProjectHandler allProjectHandler;
   private final ProjectCreationHandler projectCreationHandler;
 
   @Autowired
-  public LandingRestController(ImageHandler imageHandler, ProjectCreationHandler projectCreationHandler) {
+  public LandingRestController(ImageHandler imageHandler, AllProjectHandler allProjectHandler, ProjectCreationHandler projectCreationHandler) {
     this.imageHandler = imageHandler;
+    this.allProjectHandler = allProjectHandler;
     this.projectCreationHandler = projectCreationHandler;
   }
 
@@ -46,5 +49,10 @@ public class LandingRestController {
     @PostMapping(value = "project/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Mono<ResponseProject> saveProject(@RequestBody BaseProject newProject){
       return projectCreationHandler.create(Mono.just(newProject));
+    }
+
+    @GetMapping(value = "projects", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Flux<ResponseProject> allProjects(){
+      return allProjectHandler.findAll();
     }
 }
