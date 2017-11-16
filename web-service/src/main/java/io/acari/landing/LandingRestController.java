@@ -2,7 +2,6 @@ package io.acari.landing;
 
 
 import io.acari.landing.model.BaseProject;
-import io.acari.landing.model.Identifier;
 import io.acari.landing.model.ResponseProject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,10 +17,12 @@ public class LandingRestController {
   private static final Logger LOGGER = LoggerFactory.getLogger(LandingRestController.class);
 
   private final ImageHandler imageHandler;
+  private final ProjectCreationHandler projectCreationHandler;
 
   @Autowired
-  public LandingRestController(ImageHandler imageHandler) {
+  public LandingRestController(ImageHandler imageHandler, ProjectCreationHandler projectCreationHandler) {
     this.imageHandler = imageHandler;
+    this.projectCreationHandler = projectCreationHandler;
   }
 
 
@@ -43,7 +44,7 @@ public class LandingRestController {
   }
 
     @PostMapping(value = "project/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<ResponseProject> saveProject(@RequestBody  BaseProject newProject){
-      return null;
+    public Mono<ResponseProject> saveProject(@RequestBody BaseProject newProject){
+      return projectCreationHandler.create(Mono.just(newProject));
     }
 }

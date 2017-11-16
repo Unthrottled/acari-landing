@@ -14,6 +14,14 @@ public class MongoProject extends BaseProject {
     super(reach, rank, background, description, location);
   }
 
+  public MongoProject(){
+
+  }
+
+  public MongoProject(BaseProject baseProject){
+    super(baseProject.getReach(), baseProject.getRank(), baseProject.getBackground(), baseProject.getDescription(), baseProject.getLocation());
+  }
+
   public ObjectId get_id() {
     return _id;
   }
