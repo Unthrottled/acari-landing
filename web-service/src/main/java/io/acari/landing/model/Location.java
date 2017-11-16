@@ -1,17 +1,17 @@
 package io.acari.landing.model;
 
 public class Location {
-  private String url;
+  private String _url;
 
-  public Location(String url) {
-    this.url = url;
+  public Location(String _url) {
+    this._url = _url;
   }
 
-  public String getUrl() {
-    return url;
+  public String get_url() {
+    return _url;
   }
 
-  public void setUrl(String url) {
-    this.url = url;
+  public void set_url(String _url) {
+    this._url = _url;
   }
 }

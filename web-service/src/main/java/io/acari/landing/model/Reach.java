@@ -2,17 +2,17 @@ package io.acari.landing.model;
 
 public class Reach {
 
-  private String reachId;
+  private Identifier _identifier;
 
-  public Reach(String reachId) {
-    this.reachId = reachId;
+  public Reach(Identifier _identifier) {
+    this._identifier = _identifier;
   }
 
-  public String getReachId() {
-    return reachId;
+  public Identifier get_identifier() {
+    return _identifier;
   }
 
-  public void setReachId(String reachId) {
-    this.reachId = reachId;
+  public void set_identifier(Identifier _identifier) {
+    this._identifier = _identifier;
   }
 }

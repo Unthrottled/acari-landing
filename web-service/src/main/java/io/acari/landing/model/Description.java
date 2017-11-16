@@ -1,27 +1,27 @@
 package io.acari.landing.model;
 
 public class Description {
-    private String excerpt;
-    private String preachySpeechy;
+    private String _excerpt;
+    private String _preachySpeechy;
 
-  public Description(String excerpt, String preachySpeechy) {
-    this.excerpt = excerpt;
-    this.preachySpeechy = preachySpeechy;
+  public Description(String _excerpt, String _preachySpeechy) {
+    this._excerpt = _excerpt;
+    this._preachySpeechy = _preachySpeechy;
   }
 
-  public String getExcerpt() {
-    return excerpt;
+  public String get_excerpt() {
+    return _excerpt;
   }
 
-  public void setExcerpt(String excerpt) {
-    this.excerpt = excerpt;
+  public void set_excerpt(String _excerpt) {
+    this._excerpt = _excerpt;
   }
 
-  public String getPreachySpeechy() {
-    return preachySpeechy;
+  public String get_preachySpeechy() {
+    return _preachySpeechy;
   }
 
-  public void setPreachySpeechy(String preachySpeechy) {
-    this.preachySpeechy = preachySpeechy;
+  public void set_preachySpeechy(String _preachySpeechy) {
+    this._preachySpeechy = _preachySpeechy;
   }
 }
