@@ -21,7 +21,7 @@ var BackendAPIService = /** @class */ (function () {
         });
     };
     BackendAPIService.prototype.fetchImage = function (_id) {
-        return this.http.get('./api/image/get' + _id, {
+        return this.http.get('./api/image/get/' + _id, {
             responseType: 'blob'
         });
     };

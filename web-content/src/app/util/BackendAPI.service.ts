@@ -22,7 +22,7 @@ export class BackendAPIService {
     }
 
     fetchImage(_id: string): Observable<Blob> {
-        return this.http.get('./api/image/get' + _id, {
+        return this.http.get('./api/image/get/' + _id, {
             responseType: 'blob'
         });
     }
@@ -33,7 +33,7 @@ export class BackendAPIService {
         });
     }
 
-    postProject(exportableLocalProject: ExportableLocalProject): Observable<RemoteProject> {
+    postProject(exportableLocalProject: ExportableLocalProject): Observable<Object> {
         return this.http.post('./api/project/create', exportableLocalProject, {
             responseType: 'json'
         });
