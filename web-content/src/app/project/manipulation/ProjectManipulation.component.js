@@ -139,7 +139,7 @@ var ProjectManipulationComponent = /** @class */ (function () {
         this.projectChanged.emit(this.project);
     };
     ProjectManipulationComponent.prototype.fileChosen = function (chosenFile) {
-        this._project.selectedReach = this.buildLocalReach(Observable_1.Observable.of(chosenFile));
+        this._project.setSelectedReach(this.buildLocalReach(Observable_1.Observable.of(chosenFile)));
         this.emitProject();
     };
     ProjectManipulationComponent.prototype.fileUploadRequest = function () {

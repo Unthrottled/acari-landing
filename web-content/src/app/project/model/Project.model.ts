@@ -38,7 +38,7 @@ export abstract class Project {
         return this._selectedReach;
     }
 
-    set selectedReach(value: ReachInterface) {
+    public setSelectedReach(value: ReachInterface) {
         this.thatGurlIsFreaky();
         this._selectedReach = value;
     }

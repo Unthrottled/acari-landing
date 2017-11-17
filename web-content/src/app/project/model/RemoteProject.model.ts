@@ -6,6 +6,7 @@ import {Background} from "./Background.model";
 import {ProjectRank} from "./ProjectRank.model";
 import {Identifier} from "./Identifier.model";
 import {RemoteReach} from "./RemoteReach.model";
+import {ReachInterface} from "./ReachInterface";
 
 export class RemoteProject extends Project {
 
@@ -35,5 +36,16 @@ export class RemoteProject extends Project {
 
     isRemote(): boolean {
         return true;
+    }
+
+    private newImage = false;
+
+    setSelectedReach(value: ReachInterface) {
+        this.newImage = true;
+        super.setSelectedReach(value);
+    }
+
+    get imageChanged(): boolean {
+        return this.newImage;
     }
 }

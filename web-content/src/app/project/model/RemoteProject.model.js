@@ -27,6 +27,7 @@ var RemoteProject = /** @class */ (function (_super) {
         if (location === void 0) { location = new Location_model_1.Location(); }
         if (rank === void 0) { rank = new ProjectRank_model_1.ProjectRank(); }
         var _this = _super.call(this, description, localReach, background, location, rank) || this;
+        _this.newImage = false;
         _this._identifier = identifier;
         return _this;
     }
@@ -46,6 +47,17 @@ var RemoteProject = /** @class */ (function (_super) {
     RemoteProject.prototype.isRemote = function () {
         return true;
     };
+    RemoteProject.prototype.setSelectedReach = function (value) {
+        this.newImage = true;
+        _super.prototype.setSelectedReach.call(this, value);
+    };
+    Object.defineProperty(RemoteProject.prototype, "imageChanged", {
+        get: function () {
+            return this.newImage;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return RemoteProject;
 }(Project_model_1.Project));
 exports.RemoteProject = RemoteProject;

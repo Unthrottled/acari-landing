@@ -120,7 +120,7 @@ export class ProjectManipulationComponent implements OnInit {
 
 
     fileChosen(chosenFile: File): void {
-        this._project.selectedReach = this.buildLocalReach(Observable.of(chosenFile));
+        this._project.setSelectedReach(this.buildLocalReach(Observable.of(chosenFile)));
         this.emitProject();
     }
 

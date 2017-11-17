@@ -27,13 +27,13 @@ var Project = /** @class */ (function () {
         get: function () {
             return this._selectedReach;
         },
-        set: function (value) {
-            this.thatGurlIsFreaky();
-            this._selectedReach = value;
-        },
         enumerable: true,
         configurable: true
     });
+    Project.prototype.setSelectedReach = function (value) {
+        this.thatGurlIsFreaky();
+        this._selectedReach = value;
+    };
     Object.defineProperty(Project.prototype, "dirtyGurl", {
         get: function () {
             return this._dirty;
