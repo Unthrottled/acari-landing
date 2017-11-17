@@ -1,34 +1,34 @@
 package io.acari.landing.model;
 
 public class Background {
-  private String backgroundStyle;
-  private String textColor;
+  private String _backgroundStyle;
+  private String _textColor;
   private String _colorOne;
   private String _colorTwo;
 
   public Background(){}
 
-  public Background(String backgroundStyle, String textColor, String _colorOne, String _colorTwo) {
-    this.backgroundStyle = backgroundStyle;
-    this.textColor = textColor;
+  public Background(String _backgroundStyle, String _textColor, String _colorOne, String _colorTwo) {
+    this._backgroundStyle = _backgroundStyle;
+    this._textColor = _textColor;
     this._colorOne = _colorOne;
     this._colorTwo = _colorTwo;
   }
 
-  public String getBackgroundStyle() {
-    return backgroundStyle;
+  public String get_backgroundStyle() {
+    return _backgroundStyle;
   }
 
-  public void setBackgroundStyle(String backgroundStyle) {
-    this.backgroundStyle = backgroundStyle;
+  public void set_backgroundStyle(String _backgroundStyle) {
+    this._backgroundStyle = _backgroundStyle;
   }
 
-  public String getTextColor() {
-    return textColor;
+  public String get_textColor() {
+    return _textColor;
   }
 
-  public void setTextColor(String textColor) {
-    this.textColor = textColor;
+  public void set_textColor(String _textColor) {
+    this._textColor = _textColor;
   }
 
   public String get_colorOne() {
