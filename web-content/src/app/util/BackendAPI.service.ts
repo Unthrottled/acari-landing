@@ -21,9 +21,9 @@ export class BackendAPIService {
         });
     }
 
-    fetchImage(_id: string): Observable<Blob> {
+    fetchImage(_id: string): Observable<ArrayBuffer> {
         return this.http.get('./api/image/get/' + _id, {
-            responseType: 'blob'
+            responseType: 'arraybuffer'
         });
     }
 

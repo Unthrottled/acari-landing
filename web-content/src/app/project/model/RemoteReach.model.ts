@@ -4,12 +4,12 @@ import {ReplaySubject} from "rxjs/ReplaySubject";
 import {Identifier} from "./Identifier.model";
 
 export class RemoteReach implements ReachInterface {
-    private replaySubject = new ReplaySubject<Blob>(1);
+    private replaySubject = new ReplaySubject<any>(1);
     private loaded = false;
-    private _rawFile: Observable<Blob>;
+    private _rawFile: Observable<any>;
 
     constructor(identifier: Identifier = new Identifier(),
-                file: Observable<Blob> = Observable.empty()) {
+                file: Observable<any> = Observable.empty()) {
 
         file.subscribe(blob => {
             this.loaded = true;
@@ -34,7 +34,7 @@ export class RemoteReach implements ReachInterface {
         return this.loaded;
     }
 
-    imageBinary(): Observable<Blob> {
+    imageBinary(): Observable<any> {
         return this._rawFile;
     }
 

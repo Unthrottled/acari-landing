@@ -25,7 +25,6 @@ var ProjectService = /** @class */ (function () {
         this.projectUpdateService = projectUpdateService;
         this.remoteProjectService = remoteProjectService;
         this._projectList = [];
-        console.log('steven');
         this.remoteProjectService.fetchProjects()
             .subscribe(function (remoteProjects) {
             remoteProjects.forEach(function (remoteProject) { return _this.projectList.push(remoteProject); });

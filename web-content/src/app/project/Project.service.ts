@@ -14,7 +14,6 @@ export class ProjectService implements OnInit {
                 private projectUploadService: ProjectUploadService,
                 private projectUpdateService: ProjectUpdateService,
                 private remoteProjectService: RemoteProjectService) {
-        console.log('steven');
         this.remoteProjectService.fetchProjects()
             .subscribe(remoteProjects => {
                 remoteProjects.forEach(remoteProject => this.projectList.push(remoteProject));
