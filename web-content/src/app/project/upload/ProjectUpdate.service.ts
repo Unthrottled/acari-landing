@@ -2,6 +2,8 @@ import {Injectable} from "@angular/core";
 import {BackendAPIService} from "../../util/BackendAPI.service";
 import {Observable} from "rxjs/Observable";
 import {RemoteProject} from "../model/RemoteProject.model";
+import {ExportableReach} from "../model/ExportableReach.model";
+import {Identifier} from "../model/Identifier.model";
 
 @Injectable()
 export class ProjectUpdateService {
@@ -10,6 +12,14 @@ export class ProjectUpdateService {
     }
 
     updateFileInStorage(projectToUpload: RemoteProject): Observable<RemoteProject> {
-        return Observable.of(projectToUpload);
+        return this.fetchReach(projectToUpload);
+    }
+
+    private fetchReach(projectToUpload: RemoteProject): Observable<ExportableReach> {
+        if(projectToUpload.imageChanged){
+
+        } else {
+            return Observable.of(new ExportableReach(new Identifier(projectToUpload.reachId)))
+        }
     }
 }
