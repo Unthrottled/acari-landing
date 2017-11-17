@@ -4,8 +4,6 @@ import com.mongodb.reactivestreams.client.gridfs.GridFSBucket;
 import com.mongodb.reactivestreams.client.gridfs.GridFSDownloadStream;
 import com.mongodb.reactivestreams.client.gridfs.helpers.AsyncStreamHelper;
 import org.bson.types.ObjectId;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.ByteBuffer;
 
 @Component
@@ -61,5 +61,15 @@ public class ImageHandler {
             LOGGER.info("hmm");
           });
     });
+  }
+
+  public Mono<byte[]> fetchImageBinary(String imageId) {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    return Mono.from(gridFSBucket.downloadToStream(new ObjectId(imageId),
+        AsyncStreamHelper.toAsyncOutputStream(outputStream)))
+    .map(l->{
+      return outputStream.toByteArray();
+    });
+
   }
 }
