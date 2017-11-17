@@ -78,21 +78,19 @@ var ProjectService = /** @class */ (function () {
         this.projectList
             .filter(function (project) { return project.dirtyGurl; })
             .forEach(function (project) {
-            _this.removeProject(project);
             if (project.isLocal()) {
                 _this.projectUploadService.pushFileToStorage(project)
-                    .subscribe(function (newProject) {
-                    //todo: rehydrate list with remote
-                });
+                    .subscribe(function (newProject) { return _this.hydrateProject(newProject); });
             }
             else if (project.isRemote()) {
                 _this.projectUpdateService.updateFileInStorage(project)
-                    .subscribe(function (updatedProject) {
-                    //todo: rehydrate list with remote
-                });
+                    .subscribe(function (updatedProject) { return _this.hydrateProject(updatedProject); });
             }
         });
         return Observable_1.Observable.of(true);
+    };
+    ProjectService.prototype.hydrateProject = function (project) {
+        this.projectList[project.projectRank - 1] = project;
     };
     ProjectService.prototype.removeLocal = function (projectToRemove) {
         var start = this.removeProjectFromList(projectToRemove);

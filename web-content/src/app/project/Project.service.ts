@@ -73,20 +73,19 @@ export class ProjectService implements OnInit {
         this.projectList
             .filter(project => project.dirtyGurl)
             .forEach(project => {
-                this.removeProject(project);
                 if (project.isLocal()) {
                     this.projectUploadService.pushFileToStorage(<LocalProject>project)
-                        .subscribe(newProject => {
-                            //todo: rehydrate list with remote
-                        });
+                        .subscribe(newProject => this.hydrateProject(newProject));
                 } else if (project.isRemote()) {
                     this.projectUpdateService.updateFileInStorage(<RemoteProject>project)
-                        .subscribe(updatedProject => {
-                            //todo: rehydrate list with remote
-                        });
+                        .subscribe(updatedProject => this.hydrateProject(updatedProject));
                 }
             });
         return Observable.of(true);
+    }
+
+    private hydrateProject(project: Project){
+        this.projectList[project.projectRank - 1] = project;
     }
 
 
