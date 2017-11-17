@@ -5,12 +5,13 @@ import {Location} from "./Location.model"
 import {Background} from "./Background.model";
 import {ProjectRank} from "./ProjectRank.model";
 import {Identifier} from "./Identifier.model";
+import {RemoteReach} from "./RemoteReach.model";
 
 export class RemoteProject extends Project {
 
     constructor(identifier: Identifier = new Identifier(),
                 description: Description = new Description(),
-                localReach: LocalReach = new LocalReach(),
+                localReach: RemoteReach = new RemoteReach(),
                 background: Background = new Background(),
                 location: Location = new Location(),
                 rank: ProjectRank = new ProjectRank()) {

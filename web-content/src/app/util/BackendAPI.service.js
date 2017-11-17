@@ -11,11 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
-var RemoteProject_factory_1 = require("../project/RemoteProject.factory");
 var BackendAPIService = /** @class */ (function () {
-    function BackendAPIService(http, remoteProjectFactory) {
+    function BackendAPIService(http) {
         this.http = http;
-        this.remoteProjectFactory = remoteProjectFactory;
     }
     BackendAPIService.prototype.postImage = function (formData) {
         return this.http.post('./api/image/save', formData, {
@@ -28,22 +26,18 @@ var BackendAPIService = /** @class */ (function () {
         });
     };
     BackendAPIService.prototype.fetchAllImages = function () {
-        var _this = this;
         return this.http.get('./api/projects', {
             responseType: 'json'
-        }).map(function (json) { return json; })
-            .map(function (json) { return json.map(function (projectJson) { return _this.remoteProjectFactory.createProject(projectJson); }); });
+        });
     };
     BackendAPIService.prototype.postProject = function (exportableLocalProject) {
-        var _this = this;
         return this.http.post('./api/project/create', exportableLocalProject, {
             responseType: 'json'
-        }).map(function (json) { return _this.remoteProjectFactory.createProject(json); });
+        });
     };
     BackendAPIService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.HttpClient,
-            RemoteProject_factory_1.RemoteProjectFactory])
+        __metadata("design:paramtypes", [http_1.HttpClient])
     ], BackendAPIService);
     return BackendAPIService;
 }());

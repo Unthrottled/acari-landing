@@ -11,15 +11,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var RemoteProject_model_1 = require("./model/RemoteProject.model");
+var Identifier_model_1 = require("./model/Identifier.model");
+var Description_model_1 = require("./model/Description.model");
+var RemoteReach_service_1 = require("./remote/RemoteReach.service");
+var Background_model_1 = require("./model/Background.model");
+var Location_model_1 = require("./model/Location.model");
+var ProjectRank_model_1 = require("./model/ProjectRank.model");
 var RemoteProjectFactory = /** @class */ (function () {
-    function RemoteProjectFactory() {
+    function RemoteProjectFactory(remoteReachService) {
+        this.remoteReachService = remoteReachService;
     }
     RemoteProjectFactory.prototype.createProject = function (json) {
-        return new RemoteProject_model_1.RemoteProject();
+        var identifier = new Identifier_model_1.Identifier(json.identifier._id);
+        var description = new Description_model_1.Description(json.description.excerpt, json.description.preachySpeechy);
+        var remoteReach = this.remoteReachService.fetchReach(json.reach._identifier._id);
+        var background = new Background_model_1.Background(json.background.colorOne, json.background.colorTwo, json.background.textColor);
+        var location2 = new Location_model_1.Location(json.location._url);
+        var projectRank = new ProjectRank_model_1.ProjectRank(json.rank._rank);
+        return new RemoteProject_model_1.RemoteProject(identifier, description, remoteReach, background, location2, projectRank);
     };
     RemoteProjectFactory = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [RemoteReach_service_1.RemoteReachService])
     ], RemoteProjectFactory);
     return RemoteProjectFactory;
 }());

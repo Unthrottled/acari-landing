@@ -6,10 +6,12 @@ import {isDefined} from "../../util/Object.util";
 import {RemoteProject} from "../model/RemoteProject.model";
 import {ExportableReach} from "../model/ExportableReach.model";
 import {Identifier} from "../model/Identifier.model";
+import {RemoteProjectFactory} from "../RemoteProject.factory";
 
 @Injectable()
 export class ProjectUploadService {
-    constructor(private backendAPIService: BackendAPIService) {
+    constructor(private backendAPIService: BackendAPIService,
+                private remoteProjectFactory: RemoteProjectFactory) {
 
     }
 
@@ -24,6 +26,7 @@ export class ProjectUploadService {
                 this.backendAPIService.postImage(formData))
             .map(reachId => new ExportableReach(new Identifier(reachId)))
             .map(reach => projectToUpload.exportableLocalProject(reach))
-            .flatMap(project=>this.backendAPIService.postProject(project));
+            .flatMap(project => this.backendAPIService.postProject(project)
+                .map(json => this.remoteProjectFactory.createProject(json)));
     }
 }

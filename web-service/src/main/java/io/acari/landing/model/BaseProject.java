@@ -1,6 +1,6 @@
 package io.acari.landing.model;
 
-public class BaseProject {
+public class BaseProject implements Comparable<BaseProject> {
 
     private Reach reach;
     private ProjectRank rank;
@@ -58,4 +58,8 @@ public class BaseProject {
         this.location = location;
     }
 
+    @Override
+    public int compareTo(BaseProject baseProject) {
+        return this.rank.compareTo(baseProject.getRank());
+    }
 }

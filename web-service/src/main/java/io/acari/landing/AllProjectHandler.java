@@ -20,6 +20,7 @@ public class AllProjectHandler {
 
   public Flux<ResponseProject> findAll(){
     return this.projectRepository.findAll()
-        .map(ResponseProject::new);
+        .map(ResponseProject::new)
+        .sort(ResponseProject::compareTo);
     }
 }

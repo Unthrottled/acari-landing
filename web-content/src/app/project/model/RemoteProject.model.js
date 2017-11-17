@@ -11,18 +11,18 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Project_model_1 = require("./Project.model");
-var LocalReach_model_1 = require("./LocalReach.model");
 var Description_model_1 = require("./Description.model");
 var Location_model_1 = require("./Location.model");
 var Background_model_1 = require("./Background.model");
 var ProjectRank_model_1 = require("./ProjectRank.model");
 var Identifier_model_1 = require("./Identifier.model");
+var RemoteReach_model_1 = require("./RemoteReach.model");
 var RemoteProject = /** @class */ (function (_super) {
     __extends(RemoteProject, _super);
     function RemoteProject(identifier, description, localReach, background, location, rank) {
         if (identifier === void 0) { identifier = new Identifier_model_1.Identifier(); }
         if (description === void 0) { description = new Description_model_1.Description(); }
-        if (localReach === void 0) { localReach = new LocalReach_model_1.LocalReach(); }
+        if (localReach === void 0) { localReach = new RemoteReach_model_1.RemoteReach(); }
         if (background === void 0) { background = new Background_model_1.Background(); }
         if (location === void 0) { location = new Location_model_1.Location(); }
         if (rank === void 0) { rank = new ProjectRank_model_1.ProjectRank(); }
