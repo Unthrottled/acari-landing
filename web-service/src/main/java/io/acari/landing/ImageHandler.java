@@ -16,7 +16,6 @@ import reactor.core.publisher.Mono;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.nio.ByteBuffer;
 
 @Component
@@ -47,7 +46,7 @@ public class ImageHandler {
       DefaultDataBufferFactory defaultDataBufferFactory = new DefaultDataBufferFactory();
       ByteBuffer byteBuffer = ByteBuffer.allocate(4096);
       Mono.from(gridFSDownloadStream.read(byteBuffer))
-          .subscribe(read->{
+          .subscribe(read -> {
             if (read < 0) {
               synchronousSink.complete();
               gridFSDownloadStream.close();
@@ -57,7 +56,7 @@ public class ImageHandler {
           }, throwable -> {
             LOGGER.warn("Ohhhshit", throwable);
             synchronousSink.complete();
-          }, ()->{
+          }, () -> {
             LOGGER.info("hmm");
           });
     });
@@ -67,9 +66,6 @@ public class ImageHandler {
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     return Mono.from(gridFSBucket.downloadToStream(new ObjectId(imageId),
         AsyncStreamHelper.toAsyncOutputStream(outputStream)))
-    .map(l->{
-      return outputStream.toByteArray();
-    });
-
+        .map(l -> outputStream.toByteArray());
   }
 }
