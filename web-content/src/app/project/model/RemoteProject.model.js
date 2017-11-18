@@ -48,8 +48,14 @@ var RemoteProject = /** @class */ (function (_super) {
     });
     Object.defineProperty(RemoteProject.prototype, "reachId", {
         get: function () {
-            //mmm... that law of demeter break.
-            return this.remoteReach.identifier.id;
+            return this.remoteReach.id;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RemoteProject.prototype, "projectId", {
+        get: function () {
+            return this.identifier.id;
         },
         enumerable: true,
         configurable: true

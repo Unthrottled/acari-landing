@@ -33,6 +33,12 @@ export class BackendAPIService {
         });
     }
 
+    removeProject(projectId: string): Observable<boolean> {
+        return this.http.delete('./api/project/delete/'+projectId, {
+            responseType: 'text'
+        }).map(response=>(response=='true'));
+    }
+
     postProject(exportableLocalProject: ExportableLocalProject): Observable<Object> {
         return this.http.post('./api/project/create', exportableLocalProject, {
             responseType: 'json'

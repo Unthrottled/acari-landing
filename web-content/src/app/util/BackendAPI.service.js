@@ -30,6 +30,11 @@ var BackendAPIService = /** @class */ (function () {
             responseType: 'json'
         });
     };
+    BackendAPIService.prototype.removeProject = function (projectId) {
+        return this.http.delete('./api/project/delete/' + projectId, {
+            responseType: 'text'
+        }).map(function (response) { return (response == 'true'); });
+    };
     BackendAPIService.prototype.postProject = function (exportableLocalProject) {
         return this.http.post('./api/project/create', exportableLocalProject, {
             responseType: 'json'

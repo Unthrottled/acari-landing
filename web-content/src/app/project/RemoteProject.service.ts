@@ -18,7 +18,6 @@ export class RemoteProjectService {
     }
 
     removeProject(projectToRemove: RemoteProject): Observable<boolean> {
-
-        return Observable.of(false);
+        return this.backendAPIService.removeProject(projectToRemove.projectId);
     }
 }

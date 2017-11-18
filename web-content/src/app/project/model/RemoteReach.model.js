@@ -30,6 +30,13 @@ var RemoteReach = /** @class */ (function () {
     RemoteReach.prototype.isLoaded = function () {
         return this.loaded;
     };
+    Object.defineProperty(RemoteReach.prototype, "id", {
+        get: function () {
+            return this.identifier.id;
+        },
+        enumerable: true,
+        configurable: true
+    });
     RemoteReach.prototype.imageBinary = function () {
         return this._rawFile;
     };

@@ -34,6 +34,10 @@ export class RemoteReach implements ReachInterface {
         return this.loaded;
     }
 
+    get id(): string {
+        return this.identifier.id;
+    }
+
     imageBinary(): Observable<any> {
         return this._rawFile;
     }

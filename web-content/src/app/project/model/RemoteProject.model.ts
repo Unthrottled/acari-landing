@@ -38,8 +38,11 @@ export class RemoteProject extends Project {
     }
 
     get reachId(): string{
-        //mmm... that law of demeter break.
-        return this.remoteReach.identifier.id;
+        return this.remoteReach.id;
+    }
+
+    get projectId(): string {
+        return this.identifier.id;
     }
 
     set identifier(value: Identifier) {

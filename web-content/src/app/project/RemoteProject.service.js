@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var Observable_1 = require("rxjs/Observable");
 var BackendAPI_service_1 = require("../util/BackendAPI.service");
 var RemoteProject_factory_1 = require("./RemoteProject.factory");
 var RemoteProjectService = /** @class */ (function () {
@@ -25,7 +24,7 @@ var RemoteProjectService = /** @class */ (function () {
             .map(function (json) { return json.map(function (projectJson) { return _this.remoteProjectFactory.createProject(projectJson); }); });
     };
     RemoteProjectService.prototype.removeProject = function (projectToRemove) {
-        return Observable_1.Observable.of(false);
+        return this.backendAPIService.removeProject(projectToRemove.projectId);
     };
     RemoteProjectService = __decorate([
         core_1.Injectable(),
