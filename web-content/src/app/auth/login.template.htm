@@ -1,0 +1,42 @@
+<div class="app-container">
+    <div class="container content-container">
+        <form name="form-signin"
+              (ngSubmit)="f.form.valid && login()"
+              #f="ngForm" novalidate>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                <h2 class="form-signin-heading">Welcome, Please sign in!</h2>
+                <label for="username" class="sr-only">Username</label>
+                <input type="text" class="form-control"
+                       name="username"
+                       placeholder="User Name"
+                       [(ngModel)]="model.username"
+                       #username="ngModel" required/>
+                <div *ngIf="f.submitted && !username.valid"
+                     class="help-block">Username is required
+                </div>
+            </div>
+            <div class="form-group"
+                 [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                <label for="password" class="sr-only">Password</label>
+                <input type="password"
+                       class="form-control"
+                       placeholder="Password"
+                       name="password"
+                       [(ngModel)]="model.password" #password="ngModel" required/>
+                <div *ngIf="f.submitted && !password.valid"
+                     class="help-block">Password is required
+                </div>
+            </div>
+            <button [disabled]="!f.form.valid"
+                    class="btn btn-lg btn-primary btn-block">Login
+            </button>
+        </form>
+        <div class="container">
+            <div class="register-container">
+                <label>New User?</label>
+                <button class="btn btn-sm btn-outline-info" routerLink="/register">Register!</button>
+            </div>
+        </div>
+    </div>
+    <simple-notifications></simple-notifications>
+</div>

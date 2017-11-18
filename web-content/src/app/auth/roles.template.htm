@@ -1,0 +1,12 @@
+<div class="nav-pills">
+    <h3>User Role</h3>
+    <label
+            class="role-label"
+            *ngFor="let role of roles">
+        <input type="radio"
+               name="options"
+               (click)="setRole(role)"
+               [checked]="role === selectedRole">
+        {{role}}
+    </label>`
+</div>
