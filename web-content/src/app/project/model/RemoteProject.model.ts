@@ -37,7 +37,7 @@ export class RemoteProject extends Project {
         return this._identifier;
     }
 
-    get reachId(): String{
+    get reachId(): string{
         //mmm... that law of demeter break.
         return this.remoteReach.identifier.id;
     }

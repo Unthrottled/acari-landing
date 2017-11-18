@@ -35,6 +35,11 @@ var BackendAPIService = /** @class */ (function () {
             responseType: 'json'
         });
     };
+    BackendAPIService.prototype.updateProject = function (exportableLocalProject) {
+        return this.http.post('./api/project/update', exportableLocalProject, {
+            responseType: 'json'
+        });
+    };
     BackendAPIService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.HttpClient])

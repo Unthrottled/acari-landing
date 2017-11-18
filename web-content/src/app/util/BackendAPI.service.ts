@@ -38,4 +38,10 @@ export class BackendAPIService {
             responseType: 'json'
         });
     }
+
+    updateProject(exportableLocalProject: ExportableLocalProject): Observable<Object> {
+        return this.http.post('./api/project/update', exportableLocalProject, {
+            responseType: 'json'
+        });
+    }
 }

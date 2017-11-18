@@ -38,6 +38,20 @@ export abstract class Project {
         return this._selectedReach;
     }
 
+
+    /**
+     * dis feels janky.
+     * @returns {Observable<File>}
+     */
+    get reachFile(): Observable<File> {
+        if (this.selectedReach instanceof LocalReach) {
+            return (<LocalReach>this.selectedReach).selectedFile;
+        } else {
+            return Observable.empty();
+        }
+
+    }
+
     public setSelectedReach(value: ReachInterface) {
         this.thatGurlIsFreaky();
         this._selectedReach = value;

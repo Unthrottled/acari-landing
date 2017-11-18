@@ -15,19 +15,6 @@ export class LocalProject extends Project {
         super(description, localReach, background, location, rank);
     }
 
-    /**
-     * dis feels janky.
-     * @returns {Observable<File>}
-     */
-    get reachFile(): Observable<File> {
-        if (this.selectedReach instanceof LocalReach) {
-            return (<LocalReach>this.selectedReach).selectedFile;
-        } else {
-            return Observable.empty();
-        }
-
-    }
-
     isLocal(): boolean {
         return true;
     }

@@ -17,6 +17,7 @@ var Background_model_1 = require("./Background.model");
 var ProjectRank_model_1 = require("./ProjectRank.model");
 var Identifier_model_1 = require("./Identifier.model");
 var RemoteReach_model_1 = require("./RemoteReach.model");
+var ExportableRemoteProject_model_1 = require("./ExportableRemoteProject.model");
 var RemoteProject = /** @class */ (function (_super) {
     __extends(RemoteProject, _super);
     function RemoteProject(identifier, description, localReach, background, location, rank) {
@@ -29,14 +30,26 @@ var RemoteProject = /** @class */ (function (_super) {
         var _this = _super.call(this, description, localReach, background, location, rank) || this;
         _this.newImage = false;
         _this._identifier = identifier;
+        _this.remoteReach = localReach;
         return _this;
     }
+    RemoteProject.prototype.exportableLocalProject = function (exportableReach) {
+        return new ExportableRemoteProject_model_1.ExportableRemoteProject(this.identifier, exportableReach, this.description, this.background, this.location, this.rank);
+    };
     Object.defineProperty(RemoteProject.prototype, "identifier", {
         get: function () {
             return this._identifier;
         },
         set: function (value) {
             this._identifier = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RemoteProject.prototype, "reachId", {
+        get: function () {
+            //mmm... that law of demeter break.
+            return this.remoteReach.identifier.id;
         },
         enumerable: true,
         configurable: true

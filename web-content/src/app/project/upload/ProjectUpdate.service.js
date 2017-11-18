@@ -12,16 +12,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BackendAPI_service_1 = require("../../util/BackendAPI.service");
 var Observable_1 = require("rxjs/Observable");
+var ExportableReach_model_1 = require("../model/ExportableReach.model");
+var Identifier_model_1 = require("../model/Identifier.model");
+var RemoteProject_factory_1 = require("../RemoteProject.factory");
 var ProjectUpdateService = /** @class */ (function () {
-    function ProjectUpdateService(backendAPIService) {
+    function ProjectUpdateService(backendAPIService, remoteProjectFactory) {
         this.backendAPIService = backendAPIService;
+        this.remoteProjectFactory = remoteProjectFactory;
     }
     ProjectUpdateService.prototype.updateFileInStorage = function (projectToUpload) {
-        return Observable_1.Observable.of(projectToUpload);
+        var _this = this;
+        return this.fetchReach(projectToUpload)
+            .map(function (reachToExport) { return projectToUpload.exportableLocalProject(reachToExport); })
+            .flatMap(function (project) { return _this.backendAPIService.updateProject(project)
+            .map(function (json) { return _this.remoteProjectFactory.createProject(json); }); });
+    };
+    ProjectUpdateService.prototype.fetchReach = function (projectToUpload) {
+        if (projectToUpload.imageChanged) {
+        }
+        else {
+            return Observable_1.Observable.of(new ExportableReach_model_1.ExportableReach(new Identifier_model_1.Identifier(projectToUpload.reachId)));
+        }
     };
     ProjectUpdateService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService])
+        __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService,
+            RemoteProject_factory_1.RemoteProjectFactory])
     ], ProjectUpdateService);
     return ProjectUpdateService;
 }());

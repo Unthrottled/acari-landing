@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var Observable_1 = require("rxjs/Observable");
 var Description_model_1 = require("./Description.model");
 var Location_model_1 = require("./Location.model");
 var Background_model_1 = require("./Background.model");
@@ -26,6 +27,22 @@ var Project = /** @class */ (function () {
     Object.defineProperty(Project.prototype, "selectedReach", {
         get: function () {
             return this._selectedReach;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "reachFile", {
+        /**
+         * dis feels janky.
+         * @returns {Observable<File>}
+         */
+        get: function () {
+            if (this.selectedReach instanceof LocalReach_model_1.LocalReach) {
+                return this.selectedReach.selectedFile;
+            }
+            else {
+                return Observable_1.Observable.empty();
+            }
         },
         enumerable: true,
         configurable: true

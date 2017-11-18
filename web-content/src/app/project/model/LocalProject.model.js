@@ -16,7 +16,6 @@ var Description_model_1 = require("./Description.model");
 var Background_model_1 = require("./Background.model");
 var ProjectRank_model_1 = require("./ProjectRank.model");
 var Location_model_1 = require("./Location.model");
-var Observable_1 = require("rxjs/Observable");
 var LocalProject = /** @class */ (function (_super) {
     __extends(LocalProject, _super);
     function LocalProject(description, localReach, background, location, rank) {
@@ -27,22 +26,6 @@ var LocalProject = /** @class */ (function (_super) {
         if (rank === void 0) { rank = new ProjectRank_model_1.ProjectRank(); }
         return _super.call(this, description, localReach, background, location, rank) || this;
     }
-    Object.defineProperty(LocalProject.prototype, "reachFile", {
-        /**
-         * dis feels janky.
-         * @returns {Observable<File>}
-         */
-        get: function () {
-            if (this.selectedReach instanceof LocalReach_model_1.LocalReach) {
-                return this.selectedReach.selectedFile;
-            }
-            else {
-                return Observable_1.Observable.empty();
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
     LocalProject.prototype.isLocal = function () {
         return true;
     };
