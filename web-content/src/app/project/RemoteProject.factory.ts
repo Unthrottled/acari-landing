@@ -18,16 +18,16 @@ export class RemoteProjectFactory {
             json.identifier._id
         );
         let description = new Description(
-            json.description.excerpt,
-            json.description.preachySpeechy,
+            json.description._excerpt,
+            json.description._preachySpeechy,
         );
         let remoteReach = this.remoteReachService.fetchReach(
             json.reach._identifier._id
         );
         let background = new Background(
-            json.background.colorOne,
-            json.background.colorTwo,
-            json.background.textColor
+            json.background._colorOne,
+            json.background._colorTwo,
+            json.background._textColor
         );
         let location2 = new Location(
             json.location._url
