@@ -50,4 +50,8 @@ export class BackendAPIService {
             responseType: 'json'
         });
     }
+
+    logoutUser(): Observable<boolean> {
+        return Observable.of(false);
+    }
 }

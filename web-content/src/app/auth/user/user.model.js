@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Created by alex on 9/15/17.
  */
-var User = (function () {
+var User = /** @class */ (function () {
     function User(login, password) {
         this.login = login;
         this.password = password;

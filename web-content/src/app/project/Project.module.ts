@@ -20,9 +20,10 @@ import {ProjectUpdateService} from "./upload/ProjectUpdate.service";
 import {RemoteProjectFactory} from "./RemoteProject.factory";
 import {RemoteProjectService} from "./RemoteProject.service";
 import {ImageUploadService} from "./upload/ImageUpload.service";
+import {AuthModule} from "../auth/auth.module";
 
 @NgModule({
-    imports: [CommonModule, FormsModule],
+    imports: [CommonModule, FormsModule, AuthModule],
     exports: [FileChooseComponent,
         LocalProjectManipulationComponent,
         RemoteProjectManipulationComponent,

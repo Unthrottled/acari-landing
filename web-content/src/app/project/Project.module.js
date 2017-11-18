@@ -28,12 +28,13 @@ var ProjectUpdate_service_1 = require("./upload/ProjectUpdate.service");
 var RemoteProject_factory_1 = require("./RemoteProject.factory");
 var RemoteProject_service_1 = require("./RemoteProject.service");
 var ImageUpload_service_1 = require("./upload/ImageUpload.service");
+var auth_module_1 = require("../auth/auth.module");
 var ProjectModule = /** @class */ (function () {
     function ProjectModule() {
     }
     ProjectModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, forms_1.FormsModule],
+            imports: [common_1.CommonModule, forms_1.FormsModule, auth_module_1.AuthModule],
             exports: [FileChoose_component_1.FileChooseComponent,
                 LocalProjectManipulation_component_1.LocalProjectManipulationComponent,
                 RemoteProjectManipulation_component_1.RemoteProjectManipulationComponent,

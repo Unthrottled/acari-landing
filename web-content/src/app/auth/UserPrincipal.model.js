@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * Created by alex on 9/16/17.
  */
 var core_1 = require("@angular/core");
-var UserPrincipal = (function () {
+var UserPrincipal = /** @class */ (function () {
     function UserPrincipal() {
     }
     Object.defineProperty(UserPrincipal.prototype, "canView", {
@@ -77,11 +77,11 @@ var UserPrincipal = (function () {
         this._role = principal.principal.role;
         this._username = principal.principal.username;
     };
+    UserPrincipal = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [])
+    ], UserPrincipal);
     return UserPrincipal;
 }());
-UserPrincipal = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], UserPrincipal);
 exports.UserPrincipal = UserPrincipal;
 //# sourceMappingURL=UserPrincipal.model.js.map

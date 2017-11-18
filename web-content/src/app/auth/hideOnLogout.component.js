@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var auth_service_1 = require("./auth.service");
 require("./logoutHider.template.htm");
-var LogoutHiderComponent = (function () {
+var LogoutHiderComponent = /** @class */ (function () {
     function LogoutHiderComponent(authService) {
         this.authService = authService;
     }
@@ -26,14 +26,14 @@ var LogoutHiderComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    LogoutHiderComponent = __decorate([
+        core_1.Component({
+            selector: 'logout-hider',
+            template: require('./logoutHider.template.htm')
+        }),
+        __metadata("design:paramtypes", [auth_service_1.AuthService])
+    ], LogoutHiderComponent);
     return LogoutHiderComponent;
 }());
-LogoutHiderComponent = __decorate([
-    core_1.Component({
-        selector: 'logout-hider',
-        template: require('./logoutHider.template.htm')
-    }),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
-], LogoutHiderComponent);
 exports.LogoutHiderComponent = LogoutHiderComponent;
 //# sourceMappingURL=hideOnLogout.component.js.map

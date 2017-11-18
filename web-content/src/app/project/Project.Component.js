@@ -14,9 +14,11 @@ require("./Project.component.htm");
 var Project_model_1 = require("./model/Project.model");
 var Observable_1 = require("rxjs/Observable");
 var Project_service_1 = require("./Project.service");
+var auth_service_1 = require("../auth/auth.service");
 var ProjectComponent = /** @class */ (function () {
-    function ProjectComponent(projectService) {
+    function ProjectComponent(projectService, authService) {
         this.projectService = projectService;
+        this.authService = authService;
         this._hideEdit = Observable_1.Observable.of(true);
     }
     Object.defineProperty(ProjectComponent.prototype, "project", {
@@ -41,7 +43,7 @@ var ProjectComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectComponent.prototype, "cantEdit", {
         get: function () {
-            return Observable_1.Observable.of(false);
+            return Observable_1.Observable.of(!this.authService.isLoggedIn);
         },
         enumerable: true,
         configurable: true
@@ -77,7 +79,8 @@ var ProjectComponent = /** @class */ (function () {
             selector: 'project',
             template: require('./Project.component.htm')
         }),
-        __metadata("design:paramtypes", [Project_service_1.ProjectService])
+        __metadata("design:paramtypes", [Project_service_1.ProjectService,
+            auth_service_1.AuthService])
     ], ProjectComponent);
     return ProjectComponent;
 }());

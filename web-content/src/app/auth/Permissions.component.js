@@ -15,10 +15,11 @@ var core_1 = require("@angular/core");
 /**
  * Created by alex on 9/17/17.
  */
-var Permissions = Permissions_1 = (function () {
+var Permissions = /** @class */ (function () {
     function Permissions(userPrince) {
         this.userPrince = userPrince;
     }
+    Permissions_1 = Permissions;
     Object.defineProperty(Permissions.prototype, "canView", {
         get: function () {
             return Permissions_1.canActivate(this.userPrince, 'view');
@@ -41,12 +42,12 @@ var Permissions = Permissions_1 = (function () {
                 return userToken.canView;
         }
     };
+    Permissions = Permissions_1 = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [UserPrincipal_model_1.UserPrincipal])
+    ], Permissions);
     return Permissions;
+    var Permissions_1;
 }());
-Permissions = Permissions_1 = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [UserPrincipal_model_1.UserPrincipal])
-], Permissions);
 exports.Permissions = Permissions;
-var Permissions_1;
 //# sourceMappingURL=Permissions.component.js.map

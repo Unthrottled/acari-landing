@@ -17,6 +17,7 @@ var BackendAPI_service_1 = require("./util/BackendAPI.service");
 var http_2 = require("@angular/common/http");
 var Project_module_1 = require("./project/Project.module");
 var window_1 = require("./util/window");
+var auth_module_1 = require("./auth/auth.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -28,7 +29,8 @@ var AppModule = /** @class */ (function () {
                 http_1.HttpModule,
                 http_2.HttpClientModule,
                 animations_1.BrowserAnimationsModule,
-                Project_module_1.ProjectModule
+                Project_module_1.ProjectModule,
+                auth_module_1.AuthModule
             ],
             exports: [
                 router_1.RouterModule

@@ -3,6 +3,7 @@ import "./Project.component.htm";
 import {Project} from "./model/Project.model";
 import {Observable} from "rxjs/Observable";
 import {ProjectService} from "./Project.service";
+import {AuthService} from "../auth/auth.service";
 
 
 @Component({
@@ -11,7 +12,8 @@ import {ProjectService} from "./Project.service";
 })
 export class ProjectComponent {
 
-    constructor(private projectService: ProjectService) {
+    constructor(private projectService: ProjectService,
+                private authService: AuthService) {
     }
 
     private _project: Project;
@@ -37,7 +39,7 @@ export class ProjectComponent {
     }
 
     get cantEdit(): Observable<boolean> {
-        return Observable.of(false);
+        return Observable.of(!this.authService.isLoggedIn);
     }
 
     toggleEdit(): void {

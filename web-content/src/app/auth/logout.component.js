@@ -16,7 +16,7 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var auth_service_1 = require("./auth.service");
 require("./logout.template.htm");
-var LogoutComponent = (function () {
+var LogoutComponent = /** @class */ (function () {
     function LogoutComponent(authService, router) {
         this.authService = authService;
         this.router = router;
@@ -28,14 +28,14 @@ var LogoutComponent = (function () {
         this.authService.logout()
             .subscribe(function (success) { return self.router.navigate(['/login']); });
     };
+    LogoutComponent = __decorate([
+        core_1.Component({
+            selector: 'logout-butt',
+            template: require('./logout.template.htm')
+        }),
+        __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
+    ], LogoutComponent);
     return LogoutComponent;
 }());
-LogoutComponent = __decorate([
-    core_1.Component({
-        selector: 'logout-butt',
-        template: require('./logout.template.htm')
-    }),
-    __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
-], LogoutComponent);
 exports.LogoutComponent = LogoutComponent;
 //# sourceMappingURL=logout.component.js.map

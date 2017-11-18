@@ -9,8 +9,8 @@ import {HttpModule} from "@angular/http";
 import {BackendAPIService} from "./util/BackendAPI.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ProjectModule} from "./project/Project.module";
-import {SafetyStylePipe} from "./util/SafetyStylePipe";
 import {WindowRef} from "./util/window";
+import {AuthModule} from "./auth/auth.module";
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import {WindowRef} from "./util/window";
         HttpModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        ProjectModule
+        ProjectModule,
+        AuthModule
     ],
     exports: [
         RouterModule

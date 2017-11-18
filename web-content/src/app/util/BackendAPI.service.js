@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
+var Observable_1 = require("rxjs/Observable");
 var BackendAPIService = /** @class */ (function () {
     function BackendAPIService(http) {
         this.http = http;
@@ -44,6 +45,9 @@ var BackendAPIService = /** @class */ (function () {
         return this.http.post('./api/project/update', exportableLocalProject, {
             responseType: 'json'
         });
+    };
+    BackendAPIService.prototype.logoutUser = function () {
+        return Observable_1.Observable.of(false);
     };
     BackendAPIService = __decorate([
         core_1.Injectable(),
