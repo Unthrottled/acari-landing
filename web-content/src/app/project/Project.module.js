@@ -27,6 +27,7 @@ var RemoteProjectManipulation_component_1 = require("./manipulation/RemoteProjec
 var ProjectUpdate_service_1 = require("./upload/ProjectUpdate.service");
 var RemoteProject_factory_1 = require("./RemoteProject.factory");
 var RemoteProject_service_1 = require("./RemoteProject.service");
+var ImageUpload_service_1 = require("./upload/ImageUpload.service");
 var ProjectModule = /** @class */ (function () {
     function ProjectModule() {
     }
@@ -63,6 +64,7 @@ var ProjectModule = /** @class */ (function () {
                 LocalReach_service_1.LocalReachService,
                 RemoteProject_service_1.RemoteProjectService,
                 RemoteReach_service_1.RemoteReachService,
+                ImageUpload_service_1.ImageUploadService,
                 ProjectUpdate_service_1.ProjectUpdateService
             ],
             schemas: []
