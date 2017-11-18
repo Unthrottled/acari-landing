@@ -1,10 +1,18 @@
 
 import {NgModule} from "@angular/core";
+import {LogoutHiderComponent} from "./hideOnLogout.component";
+import {LogoutComponent} from "./logout.component";
 
 @NgModule({
     imports: [],
-    exports: [],
-    declarations: [],
+    exports: [
+        LogoutHiderComponent,
+        LogoutComponent
+    ],
+    declarations: [
+        LogoutHiderComponent,
+        LogoutComponent
+    ],
     bootstrap: [],
     providers: [],
     schemas: []
