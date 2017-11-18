@@ -8,7 +8,7 @@ import {Identifier} from "./Identifier.model";
 
 export class ExportableRemoteProject extends ExportableLocalProject {
 
-    constructor(private id: Identifier = new Identifier(),
+    constructor(private identifier: Identifier = new Identifier(),
                 reach: ExportableReach = new ExportableReach(),
                 description: Description = new Description(),
                 background: Background = new Background(),

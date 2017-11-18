@@ -19,15 +19,15 @@ var ExportableLocalProject_model_1 = require("./ExportableLocalProject.model");
 var Identifier_model_1 = require("./Identifier.model");
 var ExportableRemoteProject = /** @class */ (function (_super) {
     __extends(ExportableRemoteProject, _super);
-    function ExportableRemoteProject(id, reach, description, background, location, rank) {
-        if (id === void 0) { id = new Identifier_model_1.Identifier(); }
+    function ExportableRemoteProject(identifier, reach, description, background, location, rank) {
+        if (identifier === void 0) { identifier = new Identifier_model_1.Identifier(); }
         if (reach === void 0) { reach = new ExportableReach_model_1.ExportableReach(); }
         if (description === void 0) { description = new Description_model_1.Description(); }
         if (background === void 0) { background = new Background_model_1.Background(); }
         if (location === void 0) { location = new Location_model_1.Location(); }
         if (rank === void 0) { rank = new ProjectRank_model_1.ProjectRank(); }
         var _this = _super.call(this, reach, description, background, location, rank) || this;
-        _this.id = id;
+        _this.identifier = identifier;
         return _this;
     }
     return ExportableRemoteProject;
