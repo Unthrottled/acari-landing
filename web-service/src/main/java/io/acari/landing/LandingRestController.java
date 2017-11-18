@@ -68,7 +68,7 @@ public class LandingRestController {
   }
 
   @DeleteMapping(value = "project/delete/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
-  public Mono<Boolean> deleteProject(@RequestParam("id") String projectId) {
+  public Mono<String> deleteProject(@PathVariable("id") String projectId) {
     return projectRemovalHandler.removeProject(Mono.just(projectId));
   }
 

@@ -17,14 +17,16 @@ public class ProjectRemovalHandler {
     this.imageHandler = imageHandler;
   }
 
-  public Mono<Boolean> removeProject(Mono<String> projectId){
+  public Mono<String> removeProject(Mono<String> projectId){
     return projectId
         .flatMap(this.projectRepository::findById)
         .flatMap(project->{
           Mono<Boolean> booleanMono = imageHandler.removeImage(project.getImageId());
-          Mono<Boolean> voidMono = projectRepository.deleteById(project.getProjectId()).map(a->true);
+          Mono<Boolean> voidMono = projectRepository.deleteById(project.getProjectId())
+              .map(a->true)
+              .defaultIfEmpty(true);
           return booleanMono.zipWith(voidMono, (imageRemoved, projectRemoved)->imageRemoved && projectRemoved);
-        });
+        }).map(Object::toString);
 
     }
 }
