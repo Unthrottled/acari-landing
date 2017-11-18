@@ -22,6 +22,11 @@ public class MongoProject extends BaseProject {
     super(baseProject.getReach(), baseProject.getRank(), baseProject.getBackground(), baseProject.getDescription(), baseProject.getLocation());
   }
 
+  public MongoProject(ResponseProject baseProject){
+    super(baseProject.getReach(), baseProject.getRank(), baseProject.getBackground(), baseProject.getDescription(), baseProject.getLocation());
+    this._id = new ObjectId(baseProject.getIdentifier().get_id());
+  }
+
   public ObjectId get_id() {
     return _id;
   }

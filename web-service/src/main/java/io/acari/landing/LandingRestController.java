@@ -20,12 +20,17 @@ public class LandingRestController {
   private final ImageHandler imageHandler;
   private final AllProjectHandler allProjectHandler;
   private final ProjectCreationHandler projectCreationHandler;
+  private final ProjectUpdateHandler projectUpdateHandler;
 
   @Autowired
-  public LandingRestController(ImageHandler imageHandler, AllProjectHandler allProjectHandler, ProjectCreationHandler projectCreationHandler) {
+  public LandingRestController(ImageHandler imageHandler,
+                               AllProjectHandler allProjectHandler,
+                               ProjectCreationHandler projectCreationHandler,
+                               ProjectUpdateHandler projectUpdateHandler) {
     this.imageHandler = imageHandler;
     this.allProjectHandler = allProjectHandler;
     this.projectCreationHandler = projectCreationHandler;
+    this.projectUpdateHandler = projectUpdateHandler;
   }
 
 
@@ -57,6 +62,11 @@ public class LandingRestController {
   @PostMapping(value = "project/create", consumes = MediaType.APPLICATION_JSON_VALUE)
   public Mono<ResponseProject> saveProject(@RequestBody BaseProject newProject) {
     return projectCreationHandler.create(Mono.just(newProject));
+  }
+
+  @PostMapping(value = "project/update", consumes = MediaType.APPLICATION_JSON_VALUE)
+  public Mono<ResponseProject> updateProject(@RequestBody ResponseProject newProject) {
+    return projectUpdateHandler.updateProject(Mono.just(newProject));
   }
 
   @GetMapping(value = "projects", produces = MediaType.APPLICATION_JSON_VALUE)
