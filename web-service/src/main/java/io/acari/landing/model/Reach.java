@@ -18,4 +18,8 @@ public class Reach {
   public void set_identifier(Identifier _identifier) {
     this._identifier = _identifier;
   }
+
+  public String getId() {
+    return _identifier.get_id();
+  }
 }

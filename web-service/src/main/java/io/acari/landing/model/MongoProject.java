@@ -35,6 +35,14 @@ public class MongoProject extends BaseProject {
     this._id = _id;
   }
 
+  public String getImageId(){
+    return this.getReach().getId();
+  }
+
+  public String getProjectId(){
+    return this._id.toHexString();
+  }
+
 
 }
 

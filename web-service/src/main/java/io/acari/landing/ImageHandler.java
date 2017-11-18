@@ -17,6 +17,7 @@ import reactor.core.publisher.Mono;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.Objects;
 
 @Component
 public class ImageHandler {
@@ -67,5 +68,10 @@ public class ImageHandler {
     return Mono.from(gridFSBucket.downloadToStream(new ObjectId(imageId),
         AsyncStreamHelper.toAsyncOutputStream(outputStream)))
         .map(l -> outputStream.toByteArray());
+  }
+
+  public Mono<Boolean> removeImage(String imageId) {
+    return Mono.from(gridFSBucket.delete(new ObjectId(imageId)))
+        .map(Objects::nonNull);
   }
 }
