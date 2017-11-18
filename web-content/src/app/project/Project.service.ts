@@ -45,7 +45,11 @@ export class ProjectService implements OnInit {
 
     removeProject(projectToRemove: Project): void {
         if (projectToRemove instanceof RemoteProject) {
-            //todo: remote project completly
+            this.removeRemote(<RemoteProject>projectToRemove)
+                .defaultIfEmpty(false)
+                .subscribe(result => {
+                    //todo: something meaningful??
+                })
         } else if (projectToRemove instanceof LocalProject) {
             this.removeLocal(projectToRemove);
         }
@@ -84,16 +88,33 @@ export class ProjectService implements OnInit {
         return Observable.of(true);
     }
 
-    private hydrateProject(project: Project){
+    private hydrateProject(project: Project) {
         this.projectList[project.projectRank - 1] = project;
     }
 
 
     private removeLocal(projectToRemove: LocalProject) {
         let start = this.removeProjectFromList(projectToRemove);
-        //promotions!!
+        this.promoteOtherProjects(start);
+    }
+
+    private removeRemote(projectToRemove: RemoteProject): Observable<boolean> {
+        return this.removeRemoteProjectFromList(projectToRemove)
+            .map(removalIndex => this.promoteOtherProjects(removalIndex))
+            .filter(b => b)
+            .flatMap(b => this.saveAllProjects());
+    }
+
+    private promoteOtherProjects(start: number): boolean {
         for (let i = start; i < this.projectList.length; i++)
             this.projectList[i].projectRank--;
+        return true;
+    }
+
+    private removeRemoteProjectFromList(projectToRemove: RemoteProject): Observable<number> {
+        return this.remoteProjectService.removeProject(projectToRemove)
+            .filter(b => b)
+            .map(b => this.removeProjectFromList(projectToRemove));
     }
 
     private removeProjectFromList(projectToRemove: Project) {

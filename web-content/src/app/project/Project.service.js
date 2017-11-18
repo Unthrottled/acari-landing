@@ -51,7 +51,11 @@ var ProjectService = /** @class */ (function () {
     };
     ProjectService.prototype.removeProject = function (projectToRemove) {
         if (projectToRemove instanceof RemoteProject_model_1.RemoteProject) {
-            //todo: remote project completly
+            this.removeRemote(projectToRemove)
+                .defaultIfEmpty(false)
+                .subscribe(function (result) {
+                //todo: something meaningful??
+            });
         }
         else if (projectToRemove instanceof LocalProject_model_1.LocalProject) {
             this.removeLocal(projectToRemove);
@@ -94,9 +98,25 @@ var ProjectService = /** @class */ (function () {
     };
     ProjectService.prototype.removeLocal = function (projectToRemove) {
         var start = this.removeProjectFromList(projectToRemove);
-        //promotions!!
+        this.promoteOtherProjects(start);
+    };
+    ProjectService.prototype.removeRemote = function (projectToRemove) {
+        var _this = this;
+        return this.removeRemoteProjectFromList(projectToRemove)
+            .map(function (removalIndex) { return _this.promoteOtherProjects(removalIndex); })
+            .filter(function (b) { return b; })
+            .flatMap(function (b) { return _this.saveAllProjects(); });
+    };
+    ProjectService.prototype.promoteOtherProjects = function (start) {
         for (var i = start; i < this.projectList.length; i++)
             this.projectList[i].projectRank--;
+        return true;
+    };
+    ProjectService.prototype.removeRemoteProjectFromList = function (projectToRemove) {
+        var _this = this;
+        return this.remoteProjectService.removeProject(projectToRemove)
+            .filter(function (b) { return b; })
+            .map(function (b) { return _this.removeProjectFromList(projectToRemove); });
     };
     ProjectService.prototype.removeProjectFromList = function (projectToRemove) {
         var start = projectToRemove.projectRank - 1;

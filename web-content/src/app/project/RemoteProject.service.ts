@@ -16,4 +16,9 @@ export class RemoteProjectService {
             .map(json=><any[]>json)
             .map(json => json.map(projectJson=>this.remoteProjectFactory.createProject(projectJson)));
     }
+
+    removeProject(projectToRemove: RemoteProject): Observable<boolean> {
+
+        return Observable.of(false);
+    }
 }
