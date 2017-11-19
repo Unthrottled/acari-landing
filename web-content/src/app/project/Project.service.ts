@@ -14,10 +14,14 @@ export class ProjectService implements OnInit {
                 private projectUploadService: ProjectUploadService,
                 private projectUpdateService: ProjectUpdateService,
                 private remoteProjectService: RemoteProjectService) {
+<<<<<<< HEAD
         this.remoteProjectService.fetchProjects()
             .subscribe(remoteProjects => {
                 remoteProjects.forEach(remoteProject => this.projectList.push(remoteProject));
             });
+=======
+
+>>>>>>> parent of 8f08cb7... less security.... for now
     }
 
     private _projectList: Project[] = [];
@@ -31,7 +35,10 @@ export class ProjectService implements OnInit {
     }
 
     ngOnInit(): void {
-
+        this.remoteProjectService.fetchProjects()
+            .subscribe(remoteProjects => {
+                remoteProjects.forEach(remoteProject => this.projectList.push(remoteProject));
+            });
     }
 
     projectCount(): Observable<number> {

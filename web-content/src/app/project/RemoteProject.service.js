@@ -10,14 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+<<<<<<< HEAD
 var BackendAPI_service_1 = require("../util/BackendAPI.service");
 var RemoteProject_factory_1 = require("./RemoteProject.factory");
 var RemoteProjectService = /** @class */ (function () {
     function RemoteProjectService(backendAPIService, remoteProjectFactory) {
         this.backendAPIService = backendAPIService;
         this.remoteProjectFactory = remoteProjectFactory;
+=======
+var Observable_1 = require("rxjs/Observable");
+var RemoteProjectService = /** @class */ (function () {
+    function RemoteProjectService() {
+>>>>>>> parent of 8f08cb7... less security.... for now
     }
+    //todo: impl me
     RemoteProjectService.prototype.fetchProjects = function () {
+<<<<<<< HEAD
         var _this = this;
         return this.backendAPIService.fetchAllImages()
             .map(function (json) { return json; })
@@ -30,6 +38,13 @@ var RemoteProjectService = /** @class */ (function () {
         core_1.Injectable(),
         __metadata("design:paramtypes", [BackendAPI_service_1.BackendAPIService,
             RemoteProject_factory_1.RemoteProjectFactory])
+=======
+        return Observable_1.Observable.empty();
+    };
+    RemoteProjectService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [])
+>>>>>>> parent of 8f08cb7... less security.... for now
     ], RemoteProjectService);
     return RemoteProjectService;
 }());
