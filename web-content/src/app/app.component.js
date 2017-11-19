@@ -15,6 +15,7 @@ var Project_service_1 = require("./project/Project.service");
 var AppComponent = /** @class */ (function () {
     function AppComponent(projectService) {
         this.projectService = projectService;
+        this._ableToLogin = false;
     }
     Object.defineProperty(AppComponent.prototype, "projectList", {
         get: function () {
@@ -25,6 +26,20 @@ var AppComponent = /** @class */ (function () {
     });
     AppComponent.prototype.addProject = function () {
         this.projectService.addProject();
+    };
+    Object.defineProperty(AppComponent.prototype, "ableToLogin", {
+        get: function () {
+            return this._ableToLogin;
+        },
+        set: function (value) {
+            this._ableToLogin = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AppComponent.prototype.enableLogin = function () {
+        console.log('butttttttt');
+        this.ableToLogin = true;
     };
     AppComponent = __decorate([
         core_1.Component({

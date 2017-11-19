@@ -1,7 +1,7 @@
 /**
  * Created by alex on 9/15/17.
  */
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthService} from "./auth.service";
 import "./login.template.htm";
@@ -16,8 +16,19 @@ export class LoginComponent implements OnInit {
     message: string;
     model: any = {};
 
-    constructor(public authService: AuthService,
-                public router: Router) {
+    private _viewable: boolean = true;
+
+
+    @Input()
+    get viewable(): boolean {
+        return this._viewable;
+    }
+
+    set viewable(value: boolean) {
+        this._viewable = value;
+    }
+
+    constructor(public authService: AuthService) {
 
     }
 
@@ -41,5 +52,9 @@ export class LoginComponent implements OnInit {
 
     logout() {
         this.authService.logout();
+    }
+
+    isLoggedIn(): boolean {
+        return this.authService.isLoggedIn;
     }
 }

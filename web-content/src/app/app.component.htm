@@ -1,7 +1,10 @@
 <div class="site-border"></div>
 <div class="app-container">
     <!--todo: componentize dis-->
-    <div>
+    <div (konami)="enableLogin()">
+        <login-form-guy [viewable]="ableToLogin">
+
+        </login-form-guy>
         <logout-hider>
             <button class="btn btn-lg btn-primary"
                     (click)="addProject()">Add project

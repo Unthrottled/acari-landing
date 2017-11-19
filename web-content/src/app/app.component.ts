@@ -20,4 +20,20 @@ export class AppComponent {
     addProject(): void {
         this.projectService.addProject();
     }
+
+    private _ableToLogin: boolean = false;
+
+
+    get ableToLogin(): boolean {
+        return this._ableToLogin;
+    }
+
+    set ableToLogin(value: boolean) {
+        this._ableToLogin = value;
+    }
+
+    enableLogin(){
+        console.log('butttttttt');
+        this.ableToLogin = true;
+    }
 }

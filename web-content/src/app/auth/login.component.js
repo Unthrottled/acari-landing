@@ -13,17 +13,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * Created by alex on 9/15/17.
  */
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
 var auth_service_1 = require("./auth.service");
 require("./login.template.htm");
 var Subscriber_1 = require("rxjs/Subscriber");
 var user_model_1 = require("./user/user.model");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(authService, router) {
+    function LoginComponent(authService) {
         this.authService = authService;
-        this.router = router;
         this.model = {};
+        this._viewable = true;
     }
+    Object.defineProperty(LoginComponent.prototype, "viewable", {
+        get: function () {
+            return this._viewable;
+        },
+        set: function (value) {
+            this._viewable = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     LoginComponent.prototype.getUser = function () {
         return new user_model_1.User(this.model.username, this.model.password);
     };
@@ -41,13 +50,20 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.logout = function () {
         this.authService.logout();
     };
+    LoginComponent.prototype.isLoggedIn = function () {
+        return this.authService.isLoggedIn;
+    };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Boolean),
+        __metadata("design:paramtypes", [Boolean])
+    ], LoginComponent.prototype, "viewable", null);
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login-form-guy',
             template: require('./login.template.htm')
         }),
-        __metadata("design:paramtypes", [auth_service_1.AuthService,
-            router_1.Router])
+        __metadata("design:paramtypes", [auth_service_1.AuthService])
     ], LoginComponent);
     return LoginComponent;
 }());
