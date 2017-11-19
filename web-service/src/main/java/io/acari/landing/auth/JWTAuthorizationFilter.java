@@ -1,4 +1,4 @@
-package io.acari.landing;
+package io.acari.landing.auth;
 
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,8 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static io.acari.landing.SecurityUtils.HEADER_STRING;
-import static io.acari.landing.SecurityUtils.TOKEN_PREFIX;
+import static io.acari.landing.auth.SecurityUtils.HEADER_STRING;
+import static io.acari.landing.auth.SecurityUtils.TOKEN_PREFIX;
+
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 

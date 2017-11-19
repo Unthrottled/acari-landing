@@ -1,6 +1,5 @@
-package io.acari.landing;
+package io.acari.landing.project;
 
-import io.acari.landing.model.BaseProject;
 import io.acari.landing.model.MongoProject;
 import io.acari.landing.model.ResponseProject;
 import org.springframework.beans.factory.annotation.Autowired;

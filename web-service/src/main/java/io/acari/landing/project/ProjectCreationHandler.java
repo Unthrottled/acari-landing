@@ -1,4 +1,4 @@
-package io.acari.landing;
+package io.acari.landing.project;
 
 import io.acari.landing.model.BaseProject;
 import io.acari.landing.model.MongoProject;

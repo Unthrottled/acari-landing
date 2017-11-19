@@ -1,12 +1,9 @@
-package io.acari.landing;
+package io.acari.landing.project;
 
-import io.acari.landing.model.BaseProject;
-import io.acari.landing.model.MongoProject;
 import io.acari.landing.model.ResponseProject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @Component
 public class AllProjectHandler {

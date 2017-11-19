@@ -1,4 +1,4 @@
-package io.acari.landing;
+package io.acari.landing.auth;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

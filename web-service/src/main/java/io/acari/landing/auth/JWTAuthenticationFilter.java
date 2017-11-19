@@ -1,4 +1,4 @@
-package io.acari.landing;
+package io.acari.landing.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
@@ -18,7 +18,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static io.acari.landing.SecurityUtils.*;
+import static io.acari.landing.auth.SecurityUtils.EXPIRATION_TIME;
+import static io.acari.landing.auth.SecurityUtils.HEADER_STRING;
+import static io.acari.landing.auth.SecurityUtils.TOKEN_PREFIX;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	private AuthenticationManager authenticationManager;

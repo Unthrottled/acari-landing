@@ -1,4 +1,4 @@
-package io.acari.landing;
+package io.acari.landing.auth;
 
 public class ApplicationUser {
 

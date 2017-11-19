@@ -1,4 +1,4 @@
-package io.acari.landing;
+package io.acari.landing.auth;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

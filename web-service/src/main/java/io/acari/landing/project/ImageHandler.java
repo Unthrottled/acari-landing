@@ -1,4 +1,4 @@
-package io.acari.landing;
+package io.acari.landing.project;
 
 import com.mongodb.reactivestreams.client.gridfs.GridFSBucket;
 import com.mongodb.reactivestreams.client.gridfs.GridFSDownloadStream;

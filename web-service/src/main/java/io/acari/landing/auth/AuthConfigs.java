@@ -1,4 +1,4 @@
-package io.acari.landing;
+package io.acari.landing.auth;
 
 import java.io.IOException;
 import java.io.InputStream;

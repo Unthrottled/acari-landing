@@ -1,4 +1,4 @@
-package io.acari.landing;
+package io.acari.landing.project;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

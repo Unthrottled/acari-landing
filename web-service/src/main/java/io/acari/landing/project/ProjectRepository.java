@@ -1,4 +1,4 @@
-package io.acari.landing;
+package io.acari.landing.project;
 
 import io.acari.landing.model.MongoProject;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
