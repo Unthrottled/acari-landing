@@ -26,8 +26,6 @@ var BackendAPIService = /** @class */ (function () {
             responseType: 'arraybuffer'
         });
     };
-<<<<<<< HEAD
-<<<<<<< HEAD
     BackendAPIService.prototype.fetchAllImages = function () {
         return this.http.get('./api/projects', {
             responseType: 'json'
@@ -38,10 +36,6 @@ var BackendAPIService = /** @class */ (function () {
             responseType: 'text'
         }).map(function (response) { return (response == 'true'); });
     };
-=======
->>>>>>> parent of 8f08cb7... less security.... for now
-=======
->>>>>>> parent of 8f08cb7... less security.... for now
     BackendAPIService.prototype.postProject = function (exportableLocalProject) {
         return this.http.post('./api/project/create', exportableLocalProject, {
             responseType: 'json'
