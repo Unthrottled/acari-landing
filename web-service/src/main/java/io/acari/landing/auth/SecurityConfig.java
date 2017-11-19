@@ -1,6 +1,7 @@
 package io.acari.landing.auth;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,10 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http.headers().defaultsDisabled().cacheControl();
     http.cors().and().csrf().disable().authorizeRequests()
         .antMatchers("/api/projects").permitAll()
+        .antMatchers("/api/token").permitAll()
         .antMatchers("/api/image/get/*").permitAll()
         .anyRequest().authenticated()
         .and()
-        .addFilter(new JWTAuthenticationFilter(authenticationManager()))
         .addFilter(new JWTAuthorizationFilter(authenticationManager()))
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
   }
@@ -41,6 +42,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
     return source;
+  }
+
+  @Bean
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+    return authenticationManager();
   }
 
   @Bean
