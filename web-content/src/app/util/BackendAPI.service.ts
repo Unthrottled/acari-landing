@@ -26,7 +26,7 @@ export class BackendAPIService {
         });
     }
 
-    fetchAllImages(): Observable<Object> {
+    fetchAllProjects(): Observable<Object> {
         return this.http.get('./api/projects', {
             responseType: 'json'
         });

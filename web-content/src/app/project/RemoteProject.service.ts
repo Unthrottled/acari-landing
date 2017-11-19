@@ -12,7 +12,7 @@ export class RemoteProjectService {
     }
 
     fetchProjects(): Observable<RemoteProject[]> {
-        return this.backendAPIService.fetchAllImages()
+        return this.backendAPIService.fetchAllProjects()
             .map(json=><any[]>json)
             .map(json => json.map(projectJson=>this.remoteProjectFactory.createProject(projectJson)));
     }

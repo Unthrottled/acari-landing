@@ -19,7 +19,7 @@ var RemoteProjectService = /** @class */ (function () {
     }
     RemoteProjectService.prototype.fetchProjects = function () {
         var _this = this;
-        return this.backendAPIService.fetchAllImages()
+        return this.backendAPIService.fetchAllProjects()
             .map(function (json) { return json; })
             .map(function (json) { return json.map(function (projectJson) { return _this.remoteProjectFactory.createProject(projectJson); }); });
     };

@@ -29,7 +29,7 @@ var BackendAPIService = /** @class */ (function () {
             responseType: 'arraybuffer'
         });
     };
-    BackendAPIService.prototype.fetchAllImages = function () {
+    BackendAPIService.prototype.fetchAllProjects = function () {
         return this.http.get('./api/projects', {
             responseType: 'json'
         });
