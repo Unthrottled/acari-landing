@@ -1,22 +1,21 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
-import {LocalProject} from "../project/model/LocalProject.model";
-import {RemoteProject} from "../project/model/RemoteProject.model";
-import {RemoteProjectFactory} from "../project/RemoteProject.factory";
 import {ExportableLocalProject} from "../project/model/ExportableLocalProject.model";
+import {UserPrincipal} from "../auth/UserPrincipal.model";
 
 
 @Injectable()
 export class BackendAPIService {
 
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private userToken: UserPrincipal) {
     }
 
 
     postImage(formData: FormData): Observable<string> {
         return this.http.post('./api/image/save', formData, {
+            headers: this.getHeaders(),
             responseType: 'text'
         });
     }
@@ -34,24 +33,34 @@ export class BackendAPIService {
     }
 
     removeProject(projectId: string): Observable<boolean> {
-        return this.http.delete('./api/project/delete/'+projectId, {
+        return this.http.delete('./api/project/delete/' + projectId, {
+            headers: this.getHeaders(),
             responseType: 'text'
-        }).map(response=>(response=='true'));
+        }).map(response => (response == 'true'));
     }
 
     postProject(exportableLocalProject: ExportableLocalProject): Observable<Object> {
         return this.http.post('./api/project/create', exportableLocalProject, {
+            headers: this.getHeaders(),
             responseType: 'json'
         });
     }
 
     updateProject(exportableLocalProject: ExportableLocalProject): Observable<Object> {
         return this.http.post('./api/project/update', exportableLocalProject, {
+            headers: this.getHeaders(),
             responseType: 'json'
         });
     }
 
     logoutUser(): Observable<boolean> {
         return Observable.of(false);
+    }
+
+
+    private getHeaders(): HttpHeaders {
+        let headers = new HttpHeaders({'Content-Type': 'application/json'});
+        headers.append('Authorization', 'Bearer ' + this.userToken.token);
+        return headers;
     }
 }

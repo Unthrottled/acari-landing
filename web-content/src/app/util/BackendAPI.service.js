@@ -12,12 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
 var Observable_1 = require("rxjs/Observable");
+var UserPrincipal_model_1 = require("../auth/UserPrincipal.model");
 var BackendAPIService = /** @class */ (function () {
-    function BackendAPIService(http) {
+    function BackendAPIService(http, userToken) {
         this.http = http;
+        this.userToken = userToken;
     }
     BackendAPIService.prototype.postImage = function (formData) {
         return this.http.post('./api/image/save', formData, {
+            headers: this.getHeaders(),
             responseType: 'text'
         });
     };
@@ -33,25 +36,33 @@ var BackendAPIService = /** @class */ (function () {
     };
     BackendAPIService.prototype.removeProject = function (projectId) {
         return this.http.delete('./api/project/delete/' + projectId, {
+            headers: this.getHeaders(),
             responseType: 'text'
         }).map(function (response) { return (response == 'true'); });
     };
     BackendAPIService.prototype.postProject = function (exportableLocalProject) {
         return this.http.post('./api/project/create', exportableLocalProject, {
+            headers: this.getHeaders(),
             responseType: 'json'
         });
     };
     BackendAPIService.prototype.updateProject = function (exportableLocalProject) {
         return this.http.post('./api/project/update', exportableLocalProject, {
+            headers: this.getHeaders(),
             responseType: 'json'
         });
     };
     BackendAPIService.prototype.logoutUser = function () {
         return Observable_1.Observable.of(false);
     };
+    BackendAPIService.prototype.getHeaders = function () {
+        var headers = new http_1.HttpHeaders({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + this.userToken.token);
+        return headers;
+    };
     BackendAPIService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.HttpClient])
+        __metadata("design:paramtypes", [http_1.HttpClient, UserPrincipal_model_1.UserPrincipal])
     ], BackendAPIService);
     return BackendAPIService;
 }());
