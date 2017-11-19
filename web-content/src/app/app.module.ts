@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ProjectModule} from "./project/Project.module";
 import {WindowRef} from "./util/window";
 import {AuthModule} from "./auth/auth.module";
+import {KonamiModule} from "ngx-konami"
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {AuthModule} from "./auth/auth.module";
         HttpClientModule,
         BrowserAnimationsModule,
         ProjectModule,
-        AuthModule
+        AuthModule,
+        KonamiModule.forRoot()
     ],
     exports: [
         RouterModule
