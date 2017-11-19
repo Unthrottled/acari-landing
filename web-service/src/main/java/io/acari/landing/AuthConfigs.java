@@ -11,8 +11,7 @@ public class AuthConfigs {
     try (InputStream is = AuthConfigs.class.getResourceAsStream("/auth-configs.properties")) {
       properties = new Properties();
       properties.load(is);
-    } catch (IOException e) {
-      e.printStackTrace();
+    } catch (IOException ignored) {
     }
   }
 
