@@ -33,7 +33,6 @@ export class AppComponent {
     }
 
     enableLogin(){
-        console.log('butttttttt');
         this.ableToLogin = true;
     }
 }

@@ -38,7 +38,6 @@ var AppComponent = /** @class */ (function () {
         configurable: true
     });
     AppComponent.prototype.enableLogin = function () {
-        console.log('butttttttt');
         this.ableToLogin = true;
     };
     AppComponent = __decorate([
