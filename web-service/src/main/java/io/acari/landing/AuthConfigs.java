@@ -16,7 +16,7 @@ public class AuthConfigs {
   }
 
   public enum Configs {
-    PASSWORD("password");
+    PASSWORD("password"), USERNAME("username"), SECRET("secret");
 
     private final String value;
 

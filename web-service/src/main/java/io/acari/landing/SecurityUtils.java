@@ -14,7 +14,7 @@ public class SecurityUtils {
 		return Jwts.builder()
 				.setSubject(username)
 				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-				.signWith(SignatureAlgorithm.HS512, AuthConfigs.Configs.PASSWORD.getValue().getBytes())
+				.signWith(SignatureAlgorithm.HS512, AuthConfigs.Configs.SECRET.getValue().getBytes())
 				.compact();
 	}
 }

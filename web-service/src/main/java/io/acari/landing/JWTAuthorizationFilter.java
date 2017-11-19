@@ -44,7 +44,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 		if (token != null) {
 			// parse the token.
 			String user = Jwts.parser()
-					.setSigningKey(AuthConfigs.Configs.PASSWORD.getValue().getBytes())
+					.setSigningKey(AuthConfigs.Configs.SECRET.getValue().getBytes())
 					.parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
 					.getBody()
 					.getSubject();
