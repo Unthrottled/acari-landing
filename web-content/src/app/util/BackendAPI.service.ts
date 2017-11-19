@@ -28,6 +28,7 @@ export class BackendAPIService {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     fetchAllImages(): Observable<Object> {
         return this.http.get('./api/projects', {
             responseType: 'json'
@@ -42,6 +43,8 @@ export class BackendAPIService {
 
     postProject(exportableLocalProject: ExportableLocalProject): Observable<Object> {
 =======
+=======
+>>>>>>> parent of 8f08cb7... less security.... for now
     postProject(exportableLocalProject: ExportableLocalProject): Observable<RemoteProject> {
 >>>>>>> parent of 8f08cb7... less security.... for now
         return this.http.post('./api/project/create', exportableLocalProject, {

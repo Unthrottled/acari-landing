@@ -15,10 +15,14 @@ export class ProjectService implements OnInit {
                 private projectUpdateService: ProjectUpdateService,
                 private remoteProjectService: RemoteProjectService) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.remoteProjectService.fetchProjects()
             .subscribe(remoteProjects => {
                 remoteProjects.forEach(remoteProject => this.projectList.push(remoteProject));
             });
+=======
+
+>>>>>>> parent of 8f08cb7... less security.... for now
 =======
 
 >>>>>>> parent of 8f08cb7... less security.... for now

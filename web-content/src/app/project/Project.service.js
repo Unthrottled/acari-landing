@@ -25,10 +25,13 @@ var ProjectService = /** @class */ (function () {
         this.remoteProjectService = remoteProjectService;
         this._projectList = [];
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.remoteProjectService.fetchProjects()
             .subscribe(function (remoteProjects) {
             remoteProjects.forEach(function (remoteProject) { return _this.projectList.push(remoteProject); });
         });
+=======
+>>>>>>> parent of 8f08cb7... less security.... for now
 =======
 >>>>>>> parent of 8f08cb7... less security.... for now
     }
