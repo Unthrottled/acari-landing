@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static io.acari.landing.SecurityUtils.HEADER_STRING;
-import static io.acari.landing.SecurityUtils.SECRET;
 import static io.acari.landing.SecurityUtils.TOKEN_PREFIX;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
@@ -45,7 +44,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 		if (token != null) {
 			// parse the token.
 			String user = Jwts.parser()
-					.setSigningKey(SECRET.getBytes())
+					.setSigningKey(AuthConfigs.Configs.PASSWORD.getValue().getBytes())
 					.parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
 					.getBody()
 					.getSubject();
