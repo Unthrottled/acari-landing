@@ -11,7 +11,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {ProjectModule} from "./project/Project.module";
 import {WindowRef} from "./util/window";
 import {AuthModule} from "./auth/auth.module";
-import {KonamiModule} from "ngx-konami"
+import {CommonModule} from "@angular/common";
+import {KonamiDirective} from "./util/konami.directive";
 
 
 @NgModule({
@@ -23,14 +24,14 @@ import {KonamiModule} from "ngx-konami"
         BrowserAnimationsModule,
         ProjectModule,
         AuthModule,
-        KonamiModule.forRoot()
+        CommonModule
     ],
     exports: [
         RouterModule
     ],
     declarations: [
-        AppComponent
-
+        AppComponent,
+        KonamiDirective
     ],
     bootstrap: [AppComponent],
     providers: [

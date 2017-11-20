@@ -18,7 +18,8 @@ var http_2 = require("@angular/common/http");
 var Project_module_1 = require("./project/Project.module");
 var window_1 = require("./util/window");
 var auth_module_1 = require("./auth/auth.module");
-var ngx_konami_1 = require("ngx-konami");
+var common_1 = require("@angular/common");
+var konami_directive_1 = require("./util/konami.directive");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -32,13 +33,14 @@ var AppModule = /** @class */ (function () {
                 animations_1.BrowserAnimationsModule,
                 Project_module_1.ProjectModule,
                 auth_module_1.AuthModule,
-                ngx_konami_1.KonamiModule.forRoot()
+                common_1.CommonModule
             ],
             exports: [
                 router_1.RouterModule
             ],
             declarations: [
-                app_component_1.AppComponent
+                app_component_1.AppComponent,
+                konami_directive_1.KonamiDirective
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [
