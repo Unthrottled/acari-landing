@@ -1,4 +1,7 @@
-<div class="project-container" (click)="redirect()">
+<div class="project-container"
+     (click)="redirect()"
+     (mouseenter)="mouseEnter()"
+     (mouseleave)="mouseLeave()">
     <div class="project-reach-container"
             *ngIf="reachBinary | async">
         <img [src]="reachBinary | async" alt="HALO REACH"/>
