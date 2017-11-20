@@ -1,6 +1,7 @@
 package io.acari.landing.auth;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,9 +29,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     super.configure(http);
     http.headers().defaultsDisabled().cacheControl();
     http.cors().and().csrf().disable().authorizeRequests()
-        .antMatchers("/api/projects").permitAll()
-        .antMatchers("/api/token").permitAll()
-        .antMatchers("/api/image/get/*").permitAll()
+        .antMatchers(HttpMethod.GET,"/api/projects").permitAll()
+        .antMatchers(HttpMethod.POST,"/api/token").permitAll()
+        .antMatchers(HttpMethod.GET,"/api/image/get/*").permitAll()
         .anyRequest().authenticated()
         .and()
         .addFilter(new JWTAuthorizationFilter(authenticationManager()))

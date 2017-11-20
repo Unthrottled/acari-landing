@@ -4,7 +4,7 @@ services:
     build: ./web-service
     image: alexsimons/acari-web-service:1.0.0
     ports:
-      - "80:8989"
+      - "80:8080"
       - "7896:7896"
   mongo:
     image: mongo:latest
