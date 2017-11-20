@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         this.authService.login(this.getUser())
             .subscribe(Subscriber.create((succeded: boolean) => {
                 if (succeded) {
-
+                    this.viewable = false;
                 }
             }, (e) => {}));
     }

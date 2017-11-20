@@ -1,16 +1,16 @@
 import {Injectable} from "@angular/core";
 
 import {Observable} from "rxjs/Observable";
-import {Http, Response} from "@angular/http";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import {User} from "./user/user.model";
 import {UserPrincipal} from "./UserPrincipal.model";
 import {BackendAPIService} from "../util/BackendAPI.service";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class AuthService {
-    constructor(private http: Http,
+    constructor(private http: HttpClient,
                 private userToken: UserPrincipal,
                 private backendService: BackendAPIService) {
 
@@ -28,11 +28,9 @@ export class AuthService {
 
     login(user: User): Observable<boolean> {
         let self = this;
-        return this.http.post('./api/token', user)
-            .map((response: Response) => {
-                return response && response.json ?
-                    response.json() : ''
-            })
+        return this.http.post('./api/token', user, {
+            responseType: 'text'
+        })
             .map(json => {
                 self.userToken.newUserPrincipal(json);
                 return self.userToken;

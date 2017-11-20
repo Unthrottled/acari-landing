@@ -37,10 +37,12 @@ var LoginComponent = /** @class */ (function () {
         return new user_model_1.User(this.model.username, this.model.password);
     };
     LoginComponent.prototype.login = function () {
+        var _this = this;
         var self = this;
         this.authService.login(this.getUser())
             .subscribe(Subscriber_1.Subscriber.create(function (succeded) {
             if (succeded) {
+                _this.viewable = false;
             }
         }, function (e) { }));
     };

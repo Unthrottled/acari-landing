@@ -59,8 +59,8 @@ export class BackendAPIService {
 
 
     private getHeaders(): HttpHeaders {
-        let headers = new HttpHeaders({'Content-Type': 'application/json'});
-        headers.append('Authorization', 'Bearer ' + this.userToken.token);
-        return headers;
+        return new HttpHeaders({
+            'Authorization': 'Bearer ' + this.userToken.token
+        });
     }
 }

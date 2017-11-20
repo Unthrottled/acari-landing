@@ -10,11 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 var UserPrincipal_model_1 = require("./UserPrincipal.model");
 var BackendAPI_service_1 = require("../util/BackendAPI.service");
+var http_1 = require("@angular/common/http");
 var AuthService = /** @class */ (function () {
     function AuthService(http, userToken, backendService) {
         this.http = http;
@@ -34,10 +34,8 @@ var AuthService = /** @class */ (function () {
     });
     AuthService.prototype.login = function (user) {
         var self = this;
-        return this.http.post('./api/token', user)
-            .map(function (response) {
-            return response && response.json ?
-                response.json() : '';
+        return this.http.post('./api/token', user, {
+            responseType: 'text'
         })
             .map(function (json) {
             self.userToken.newUserPrincipal(json);
@@ -56,7 +54,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [http_1.Http,
+        __metadata("design:paramtypes", [http_1.HttpClient,
             UserPrincipal_model_1.UserPrincipal,
             BackendAPI_service_1.BackendAPIService])
     ], AuthService);

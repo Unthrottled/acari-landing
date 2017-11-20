@@ -55,13 +55,8 @@ export class UserPrincipal {
         this.setFields(principal);
     }
 
-    private setFields(principal: any) {
-        this._canView = principal.principal.canView;
-        this._canCreate = principal.principal.canCreate;
-        this._canUpdate = principal.principal.canUpdate;
-        this._canDelete = principal.principal.canDelete;
-        this._token = principal.token;
-        this._role = principal.principal.role;
-        this._username = principal.principal.username;
+    private setFields(token: string) {
+        this._token = token;
+
     }
 }

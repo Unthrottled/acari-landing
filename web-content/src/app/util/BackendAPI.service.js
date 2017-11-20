@@ -56,9 +56,9 @@ var BackendAPIService = /** @class */ (function () {
         return Observable_1.Observable.of(false);
     };
     BackendAPIService.prototype.getHeaders = function () {
-        var headers = new http_1.HttpHeaders({ 'Content-Type': 'application/json' });
-        headers.append('Authorization', 'Bearer ' + this.userToken.token);
-        return headers;
+        return new http_1.HttpHeaders({
+            'Authorization': 'Bearer ' + this.userToken.token
+        });
     };
     BackendAPIService = __decorate([
         core_1.Injectable(),

@@ -5,18 +5,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var User = /** @class */ (function () {
     function User(login, password) {
-        this.login = login;
+        this.username = login;
         this.password = password;
-        this._username = login;
-        this._password = password;
     }
-    Object.defineProperty(User.prototype, "username", {
-        get: function () {
-            return this._username;
-        },
-        enumerable: true,
-        configurable: true
-    });
     return User;
 }());
 exports.User = User;

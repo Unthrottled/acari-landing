@@ -68,14 +68,8 @@ var UserPrincipal = /** @class */ (function () {
     UserPrincipal.prototype.newUserPrincipal = function (principal) {
         this.setFields(principal);
     };
-    UserPrincipal.prototype.setFields = function (principal) {
-        this._canView = principal.principal.canView;
-        this._canCreate = principal.principal.canCreate;
-        this._canUpdate = principal.principal.canUpdate;
-        this._canDelete = principal.principal.canDelete;
-        this._token = principal.token;
-        this._role = principal.principal.role;
-        this._username = principal.principal.username;
+    UserPrincipal.prototype.setFields = function (token) {
+        this._token = token;
     };
     UserPrincipal = __decorate([
         core_1.Injectable(),
