@@ -198,6 +198,17 @@ var Project = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Project.prototype, "hoverColor", {
+        get: function () {
+            return this._background.hoverColor;
+        },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this._background.hoverColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Project;
 }());
 exports.Project = Project;

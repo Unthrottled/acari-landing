@@ -5,14 +5,17 @@ public class Background {
   private String _textColor;
   private String _colorOne;
   private String _colorTwo;
+  private String _hoverColor;
 
   public Background(){}
 
-  public Background(String _backgroundStyle, String _textColor, String _colorOne, String _colorTwo) {
+  public Background(String _backgroundStyle, String _textColor, String _colorOne, String _colorTwo,
+                    String _hoverColor) {
     this._backgroundStyle = _backgroundStyle;
     this._textColor = _textColor;
     this._colorOne = _colorOne;
     this._colorTwo = _colorTwo;
+    this._hoverColor = _hoverColor;
   }
 
   public String get_backgroundStyle() {
@@ -45,5 +48,13 @@ public class Background {
 
   public void set_colorTwo(String _colorTwo) {
     this._colorTwo = _colorTwo;
+  }
+
+  public String get_hoverColor() {
+    return _hoverColor;
+  }
+
+  public void set_hoverColor(String _hoverColor) {
+    this._hoverColor = _hoverColor;
   }
 }

@@ -1,13 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Background = /** @class */ (function () {
-    function Background(colorOne, colorTwo, textColor) {
+    function Background(colorOne, colorTwo, textColor, hoverColor) {
         if (colorOne === void 0) { colorOne = '#8d85d6'; }
         if (colorTwo === void 0) { colorTwo = '#464646'; }
         if (textColor === void 0) { textColor = '#f5f5f5'; }
+        if (hoverColor === void 0) { hoverColor = 'rgba(141, 133, 214, 0.25)'; }
         this._colorOne = colorOne;
         this._colorTwo = colorTwo;
         this._textColor = textColor;
+        this._hoverColor = hoverColor;
     }
     Object.defineProperty(Background.prototype, "backgroundStyle", {
         get: function () {
@@ -47,6 +49,16 @@ var Background = /** @class */ (function () {
         },
         set: function (value) {
             this._textColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Background.prototype, "hoverColor", {
+        get: function () {
+            return this._hoverColor;
+        },
+        set: function (value) {
+            this._hoverColor = value;
         },
         enumerable: true,
         configurable: true

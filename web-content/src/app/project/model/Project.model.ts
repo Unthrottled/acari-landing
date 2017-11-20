@@ -168,4 +168,14 @@ export abstract class Project {
     get location(): Location {
         return this._location;
     }
+
+
+    get hoverColor(): string {
+        return this._background.hoverColor;
+    }
+
+    set hoverColor(value: string) {
+        this.thatGurlIsFreaky();
+        this._background.hoverColor = value;
+    }
 }

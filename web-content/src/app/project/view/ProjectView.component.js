@@ -66,7 +66,7 @@ var ProjectViewComponent = /** @class */ (function () {
         this.redirectService.redirectToUrl(this.project.url);
     };
     ProjectViewComponent.prototype.mouseEnter = function () {
-        this.changeBackroundStyle('rgba(215, 26, 106, 0.25)');
+        this.changeBackroundStyle(this.project.hoverColor);
     };
     ProjectViewComponent.prototype.mouseLeave = function () {
         this.changeBackroundStyle('');

@@ -50,7 +50,7 @@ export class ProjectViewComponent {
     }
 
     mouseEnter(): void {
-        this.changeBackroundStyle('rgba(215, 26, 106, 0.25)');
+        this.changeBackroundStyle(this.project.hoverColor);
     }
 
     private container_hover_color: string = '';
