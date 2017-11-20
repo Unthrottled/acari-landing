@@ -1,7 +1,8 @@
 <div class="project-container"
      (click)="redirect()"
      (mouseenter)="mouseEnter()"
-     (mouseleave)="mouseLeave()">
+     (mouseleave)="mouseLeave()"
+        [style.backgroundColor]="container_hover_color">
     <div class="project-reach-container"
             *ngIf="reachBinary | async">
         <img [src]="reachBinary | async" alt="HALO REACH"/>

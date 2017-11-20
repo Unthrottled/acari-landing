@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input} from '@angular/core';
+import {Component, ElementRef, Input, Renderer2} from '@angular/core';
 import {Project} from "../model/Project.model";
 import {RedirectService} from "../../util/RedirectService";
 import {Observable} from "rxjs/Observable";
@@ -10,7 +10,8 @@ import {Observable} from "rxjs/Observable";
 export class ProjectViewComponent {
 
     constructor(private redirectService: RedirectService,
-                private elementRef: ElementRef) {
+                private elementRef: ElementRef,
+                private renderer: Renderer2) {
     }
 
     private _project: Project;
@@ -51,14 +52,16 @@ export class ProjectViewComponent {
     }
 
     mouseEnter(): void {
-        this.changeBackroundStyle('black');
+        this.changeBackroundStyle('pink');
     }
 
+    private container_hover_color: string = '';
+
     mouseLeave(): void {
-        this.changeBackroundStyle(null);
+        this.changeBackroundStyle('');
     }
 
     private changeBackroundStyle(style: string): void {
-        this.elementRef.nativeElement.style.backgroundColor = style;
+        this.container_hover_color = style;
     }
 }
