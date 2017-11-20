@@ -27,7 +27,8 @@ export class RemoteProjectFactory {
         let background = new Background(
             json.background._colorOne,
             json.background._colorTwo,
-            json.background._textColor
+            json.background._textColor,
+            json.background._hoverColor
         );
         let location2 = new Location(
             json.location._url
