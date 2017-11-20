@@ -38,6 +38,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
 	compile('org.springframework.boot:spring-boot-starter-hateoas')
 	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('com.google.guava:guava:23.4-jre')
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
 	compile('org.springframework.boot:spring-boot-starter-webflux')
 	compile("io.jsonwebtoken:jjwt:0.7.0")

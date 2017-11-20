@@ -1,5 +1,6 @@
 package io.acari.landing.auth;
 
+import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,7 +40,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Bean
   CorsConfigurationSource corsConfigurationSource() {
     final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+    CorsConfiguration config = new CorsConfiguration().applyPermitDefaultValues();
+    config.setAllowedMethods(Lists.newArrayList("GET","POST","PUT","DELETE","HEAD","OPTIONS"));
+    source.registerCorsConfiguration("/**", config);
     return source;
   }
 
