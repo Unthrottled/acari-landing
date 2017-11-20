@@ -53,6 +53,17 @@ var ProjectManipulationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ProjectManipulationComponent.prototype, "hoverColor", {
+        get: function () {
+            return this._project.hoverColor;
+        },
+        set: function (value) {
+            this._project.hoverColor = value;
+            this.emitProject();
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(ProjectManipulationComponent.prototype, "descriptionTextColor", {
         get: function () {
             return this._project.textColor;

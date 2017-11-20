@@ -48,6 +48,15 @@ export class ProjectManipulationComponent implements OnInit {
         this.emitProject();
     }
 
+    get hoverColor(): string {
+        return this._project.hoverColor;
+    }
+
+    set hoverColor(value: string) {
+        this._project.hoverColor = value;
+        this.emitProject();
+    }
+
     get descriptionTextColor(): string {
         return this._project.textColor;
     }

@@ -50,16 +50,16 @@ export class ProjectViewComponent {
     }
 
     mouseEnter(): void {
-        this.changeBackroundStyle(this.project.hoverColor);
+        this.changeBackgroundStyle(this.project.hoverColor);
     }
 
     private container_hover_color: string = '';
 
     mouseLeave(): void {
-        this.changeBackroundStyle('');
+        this.changeBackgroundStyle('');
     }
 
-    private changeBackroundStyle(style: string): void {
+    private changeBackgroundStyle(style: string): void {
         this.container_hover_color = style;
     }
 }

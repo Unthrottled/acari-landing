@@ -66,12 +66,12 @@ var ProjectViewComponent = /** @class */ (function () {
         this.redirectService.redirectToUrl(this.project.url);
     };
     ProjectViewComponent.prototype.mouseEnter = function () {
-        this.changeBackroundStyle(this.project.hoverColor);
+        this.changeBackgroundStyle(this.project.hoverColor);
     };
     ProjectViewComponent.prototype.mouseLeave = function () {
-        this.changeBackroundStyle('');
+        this.changeBackgroundStyle('');
     };
-    ProjectViewComponent.prototype.changeBackroundStyle = function (style) {
+    ProjectViewComponent.prototype.changeBackgroundStyle = function (style) {
         this.container_hover_color = style;
     };
     __decorate([
