@@ -1,22 +1,25 @@
-<div class="edit-container" [hidden]="cantEdit | async">
-    <button (click)="toggleEdit()"
-    class="btn-lg btn btn-info">Edit</button>
-    <button (click)="removeProject()"
-    class="btn-lg btn btn-danger">
-        Remove
-    </button>
-    <div [hidden]="hideEdit | async">
-        <!--TODO: I THINK I DO NOT NEED TO DO DIS-->
-        <div *ngIf="isLocalProject()">
-            <local-project-manipulation [(project)]="project"
-                                        (onUpdate)="saveAllProjects()"
-            ></local-project-manipulation>
-        </div>
-        <div *ngIf="isRemoteProject()">
-            <remote-project-manipulation [(project)]="project"
-                                         (onUpdate)="saveAllProjects()"></remote-project-manipulation>
+<div class="complete-project-container">
+    <div class="edit-container" [hidden]="cantEdit | async">
+        <button (click)="toggleEdit()"
+                class="btn-lg btn btn-info">Edit</button>
+        <button (click)="removeProject()"
+                class="btn-lg btn btn-danger">
+            Remove
+        </button>
+        <div [hidden]="hideEdit | async">
+            <!--TODO: I THINK I DO NOT NEED TO DO DIS-->
+            <div *ngIf="isLocalProject()">
+                <local-project-manipulation [(project)]="project"
+                                            (onUpdate)="saveAllProjects()"
+                ></local-project-manipulation>
+            </div>
+            <div *ngIf="isRemoteProject()">
+                <remote-project-manipulation [(project)]="project"
+                                             (onUpdate)="saveAllProjects()"></remote-project-manipulation>
+            </div>
         </div>
     </div>
+
+    <project-view [project]="project"></project-view>
 </div>
 
-<project-view [project]="project"></project-view>
