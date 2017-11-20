@@ -5,6 +5,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -29,9 +30,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     super.configure(http);
     http.headers().defaultsDisabled().cacheControl();
     http.cors().and().csrf().disable().authorizeRequests()
-        .antMatchers(HttpMethod.GET,"/api/projects").permitAll()
-        .antMatchers(HttpMethod.POST,"/api/token").permitAll()
-        .antMatchers(HttpMethod.GET,"/api/image/get/*").permitAll()
         .anyRequest().authenticated()
         .and()
         .addFilter(new JWTAuthorizationFilter(authenticationManager()))
@@ -45,18 +43,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     return source;
   }
 
+  @Override
+  public void configure(WebSecurity webSecurity) {
+    webSecurity.ignoring().antMatchers(HttpMethod.GET, "/api/projects")
+        .antMatchers(HttpMethod.POST, "/api/token")
+        .antMatchers(HttpMethod.GET, "/api/image/get/*");
+  }
+
   @Bean
   public AuthenticationManager authenticationManagerBean() throws Exception {
     return authenticationManager();
   }
 
-  @Bean
-  public BCryptPasswordEncoder bCryptPasswordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
-
   @Override
   public void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+    auth.userDetailsService(userDetailsService);
   }
 }
