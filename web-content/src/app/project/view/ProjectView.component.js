@@ -13,10 +13,8 @@ var core_1 = require("@angular/core");
 var Project_model_1 = require("../model/Project.model");
 var RedirectService_1 = require("../../util/RedirectService");
 var ProjectViewComponent = /** @class */ (function () {
-    function ProjectViewComponent(redirectService, elementRef, renderer) {
+    function ProjectViewComponent(redirectService) {
         this.redirectService = redirectService;
-        this.elementRef = elementRef;
-        this.renderer = renderer;
         this.container_hover_color = '';
     }
     Object.defineProperty(ProjectViewComponent.prototype, "project", {
@@ -68,7 +66,7 @@ var ProjectViewComponent = /** @class */ (function () {
         this.redirectService.redirectToUrl(this.project.url);
     };
     ProjectViewComponent.prototype.mouseEnter = function () {
-        this.changeBackroundStyle('pink');
+        this.changeBackroundStyle('rgba(215, 26, 106, 0.25)');
     };
     ProjectViewComponent.prototype.mouseLeave = function () {
         this.changeBackroundStyle('');
@@ -86,9 +84,7 @@ var ProjectViewComponent = /** @class */ (function () {
             selector: 'project-view',
             template: require('./ProjectView.component.htm')
         }),
-        __metadata("design:paramtypes", [RedirectService_1.RedirectService,
-            core_1.ElementRef,
-            core_1.Renderer2])
+        __metadata("design:paramtypes", [RedirectService_1.RedirectService])
     ], ProjectViewComponent);
     return ProjectViewComponent;
 }());

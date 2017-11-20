@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, Renderer2} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Project} from "../model/Project.model";
 import {RedirectService} from "../../util/RedirectService";
 import {Observable} from "rxjs/Observable";
@@ -9,9 +9,7 @@ import {Observable} from "rxjs/Observable";
 })
 export class ProjectViewComponent {
 
-    constructor(private redirectService: RedirectService,
-                private elementRef: ElementRef,
-                private renderer: Renderer2) {
+    constructor(private redirectService: RedirectService) {
     }
 
     private _project: Project;
@@ -52,7 +50,7 @@ export class ProjectViewComponent {
     }
 
     mouseEnter(): void {
-        this.changeBackroundStyle('pink');
+        this.changeBackroundStyle('rgba(215, 26, 106, 0.25)');
     }
 
     private container_hover_color: string = '';
