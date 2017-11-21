@@ -1,6 +1,10 @@
 package io.acari.landing;
 
 import com.mongodb.MongoClientOptions;
+import com.mongodb.async.client.MongoClientSettings;
+import com.mongodb.connection.SslSettings;
+import com.mongodb.connection.netty.NettyStreamFactory;
+import com.mongodb.connection.netty.NettyStreamFactoryFactory;
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;
 import com.mongodb.reactivestreams.client.gridfs.GridFSBucket;
@@ -31,13 +35,17 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
         String property = environment.getProperty("acari.mongo.connectionString", "localhost:27017");
         return MongoClients.create(property);
     }
-//
-//    @Bean
-//    public MongoClientOptions mongoClientOptions(){
-//        return MongoClientOptions.builder()
-//                .sslEnabled(true)
-//                .build();
-//    }
+
+    @Bean
+    public MongoClientSettings mongoClientOptions(){
+        return MongoClientSettings.builder()
+                .sslSettings(SslSettings.builder()
+                        .enabled(true)
+                        .invalidHostNameAllowed(true)
+                        .build())
+                .streamFactoryFactory(NettyStreamFactoryFactory.builder().build())
+                .build();
+    }
 
 
     @Override
