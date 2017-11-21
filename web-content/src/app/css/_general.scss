@@ -1,12 +1,3 @@
-.boxed-content {
-  background: #afafaf;
-  z-index: 10000;
-  position: relative;
-  width: 99.984%;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
 img {
   max-width: 100%;
   vertical-align: middle;
@@ -17,7 +8,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   font-weight: 300;
-  background: ghostwhite url('../images/stripe.png');
+  background: #cdb5b7 url('../images/stripe.png');
   background-attachment: fixed;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
@@ -27,25 +18,14 @@ body {
   padding: 40px 50px;
 }
 
-.site-border {
-  opacity: 0.75;
-  background: #c14646;
-  background: -webkit-linear-gradient(left, rgba(150, 0, 19, 0.98), #d98c8c);
-  /*Safari 5.1-6*/
-  background: -o-linear-gradient(right, rgba(150, 0, 19, 0.98), #d98c8c);
-  /*Opera 11.1-12*/
-  background: -moz-linear-gradient(right, rgba(150, 0, 19, 0.98), #d98c8c);
-  /*Fx 3.6-15*/
-  background: linear-gradient(to right, rgba(150, 0, 19, 0.98), #d98c8c);
-  /*Standard*/
-  height: 0.5em; }
+
 
 
 .project-creation-container {
 }
 
 .boxed-content {
-  background: rgba(70, 70, 70, 0.25);
+  background: rgba(150, 150, 150, 0.25);
   z-index: 10000;
   position: relative;
   width: 99.984%;
@@ -57,6 +37,7 @@ body {
 .app-container {
   box-sizing: content-box;
   padding: 20px;
+  border-radius: 1.5em;
 }
 
 .slider-bro {
