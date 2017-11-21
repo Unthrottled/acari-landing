@@ -47,6 +47,8 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
             .build())
         .sslSettings(SslSettings.builder()
             .enabled(true)
+            .invalidHostNameAllowed(true)
+            .applyConnectionString(connectionString)
             .build())
         .streamFactoryFactory(NettyStreamFactoryFactory.builder().build())
         .build());
