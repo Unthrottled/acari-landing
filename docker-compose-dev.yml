@@ -16,4 +16,4 @@ services:
       - "8989:8989"
       - "7896:7896"
   mongo:
-    image: mongo:latest
+    image: alexsimons/mongo-ssl

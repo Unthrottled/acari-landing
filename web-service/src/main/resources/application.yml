@@ -1,4 +1,12 @@
 acari:
   mongo:
-    connectionString: mongodb://mongo:27017
+    connectionString: mongodb://mongo:27017/admin?authMechanism=MONGODB-X509&ssl=true
     landingDatabase: landing
+
+javax:
+  net:
+    ssl:
+      trustStore: mongodb-client.jks
+      trustStorePassword: 123456 #That's amazing! I got the same combination on my luggage!
+      keystore: mongodb-client.jks
+      keystorePassword: 123456

@@ -1,5 +1,6 @@
 package io.acari.landing;
 
+import com.mongodb.MongoClientOptions;
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;
 import com.mongodb.reactivestreams.client.gridfs.GridFSBucket;
@@ -17,6 +18,7 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfig.class);
     private final Environment environment;
 
+
     @Autowired
     public MongoConfig(Environment environment) {
         this.environment = environment;
@@ -29,6 +31,14 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
         String property = environment.getProperty("acari.mongo.connectionString", "localhost:27017");
         return MongoClients.create(property);
     }
+//
+//    @Bean
+//    public MongoClientOptions mongoClientOptions(){
+//        return MongoClientOptions.builder()
+//                .sslEnabled(true)
+//                .build();
+//    }
+
 
     @Override
     protected String getDatabaseName() {
