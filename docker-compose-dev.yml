@@ -17,3 +17,4 @@ services:
       - "7896:7896"
   mongo:
     image: alexsimons/mongo-ssl
+
