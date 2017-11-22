@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+#MONGO DB VOLUME
+dataDump
+
 # Log file
 *.log
 
