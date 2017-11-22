@@ -6,7 +6,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var proxy = require('http-proxy-middleware');
 var htmlLoader = require('raw-loader');
-var http = require('http');
+var http = require('https');
 var keepAliveAgent = new http.Agent({keepAlive: true});
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const extractSass = new ExtractTextPlugin({
@@ -15,9 +15,10 @@ const extractSass = new ExtractTextPlugin({
 
 
 var proxyPeel = proxy('/api', {
-    target: 'http://web-service:8080',
+    target: 'https://web-service:8080',
     changeOrigin: true,               // needed for virtual hosted sites
     ws: true,
+    secure: false,
     agent: keepAliveAgent
 });
 
@@ -150,6 +151,7 @@ module.exports = {
             // ./dist directory is being served
             host: 'localhost',
             port: 3000,
+            https: true,
             server: {baseDir: ['dist']},
             middleware: [proxyPeel]
         })

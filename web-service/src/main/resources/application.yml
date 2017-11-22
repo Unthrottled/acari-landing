@@ -2,3 +2,12 @@ acari:
   mongo:
     connectionString: mongodb://mongo:27017
     landingDatabase: landing
+
+server:
+  ssl:
+    key-store: classpath:keystore.jks
+    key-password: 123456 #AMAZING! That's my luggage password!!
+    key-store-type: JKS
+    key-alias: selfsigned
+    key-store-provider: SUN
+  port: 8080
