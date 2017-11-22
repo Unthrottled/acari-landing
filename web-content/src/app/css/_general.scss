@@ -53,12 +53,16 @@ body {
   display: flex;
 }
 
+.welcome-container {
+  white-space: pre-line;
+}
+
 .content-container {
-  background: rgba(70, 70, 70, 0.25);
-  color: #3e3e3e;
+  background: rgba(70, 70, 70, 0.55);
+  color: ghostwhite;
+  font-weight: 400;
   padding: 10px;
   border-radius: 5px;
-  white-space: pre-line;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
