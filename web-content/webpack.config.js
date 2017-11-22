@@ -151,6 +151,7 @@ module.exports = {
             // ./dist directory is being served
             host: 'localhost',
             port: 3000,
+            https: true,
             server: {baseDir: ['dist']},
             middleware: [proxyPeel]
         })
