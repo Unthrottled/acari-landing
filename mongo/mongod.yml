@@ -1,7 +1,0 @@
-net:
-  ssl:
-    mode: requireSSL
-    PEMKeyFile: /etc/ssl/mongodb.pem
-    PEMKeyPassword: biggity
-    allowInvalidCertificates: true
-    allowInvalidHostnames: true
