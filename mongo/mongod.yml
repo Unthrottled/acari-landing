@@ -5,3 +5,4 @@ net:
     PEMKeyPassword: biggity
     allowInvalidCertificates: true
     allowInvalidHostnames: true
+    allowConnectionsWithoutCertificates: true
