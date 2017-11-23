@@ -4,4 +4,4 @@ net:
     mode: "requireSSL"
     PEMKeyFile: "/etc/ssl/mongodb.pem"
     disabledProtocols: "TLS1_0,TLS1_1"
-    allowConnectionsWithoutCertificates: true # <-- The line to add to your config
+    allowConnectionsWithoutCertificates: true

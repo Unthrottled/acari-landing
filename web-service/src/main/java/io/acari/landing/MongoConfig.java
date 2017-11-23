@@ -1,8 +1,6 @@
 package io.acari.landing;
 
-import com.google.common.collect.Lists;
 import com.mongodb.ConnectionString;
-import com.mongodb.ServerAddress;
 import com.mongodb.async.client.MongoClientSettings;
 import com.mongodb.connection.ClusterSettings;
 import com.mongodb.connection.SslSettings;
