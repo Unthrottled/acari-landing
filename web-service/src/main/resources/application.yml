@@ -1,6 +1,6 @@
 acari:
   mongo:
-    connectionString: mongo
+    connectionString: mongodb://mongo:27017/?ssl=true
     landingDatabase: landing
 
 server:

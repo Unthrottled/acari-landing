@@ -1,6 +1,7 @@
 package io.acari.landing;
 
 import com.google.common.collect.Lists;
+import com.mongodb.ConnectionString;
 import com.mongodb.ServerAddress;
 import com.mongodb.async.client.MongoClientSettings;
 import com.mongodb.connection.ClusterSettings;
@@ -36,16 +37,16 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
   @Bean
   @Override
   public MongoClient reactiveMongoClient() {
-    String property = environment.getProperty("acari.mongo.connectionString", "localhost:27017");
+    ConnectionString connectionString = new ConnectionString(environment.getProperty("acari.mongo.connectionString", "localhost:27017"));
     return MongoClients.create(MongoClientSettings.builder()
             .streamFactoryFactory(NettyStreamFactoryFactory.builder()
                     .eventLoopGroup(eventLoopGroup)
                     .build())
             .sslSettings(SslSettings.builder()
-                    .enabled(true)
+                    .applyConnectionString(connectionString)
                     .build())
             .clusterSettings(ClusterSettings.builder()
-                    .hosts(Lists.newArrayList(new ServerAddress(property)))
+                    .applyConnectionString(connectionString)
                     .build())
             .build());
   }
