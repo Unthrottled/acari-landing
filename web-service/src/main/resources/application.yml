@@ -11,8 +11,3 @@ server:
     key-alias: selfsigned
     key-store-provider: SUN
   port: 8080
-
-javax:
-  net:
-    ssl:
-      trustStore: classpath:truststore.ts
