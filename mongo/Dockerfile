@@ -1,6 +1,6 @@
 FROM mongo:latest
 
-ADD mongod.yml /etc/mongod.conf
+ADD mongod.conf /etc/
 
 RUN mkdir -p /etc/ssl
 ADD mongodb.pem /etc/ssl/
