@@ -1,15 +1,5 @@
 package io.acari.landing;
 
-import com.google.common.collect.Lists;
-import com.mongodb.ConnectionString;
-import com.mongodb.MongoClientOptions;
-import com.mongodb.ServerAddress;
-import com.mongodb.async.client.MongoClientSettings;
-import com.mongodb.connection.ClusterConnectionMode;
-import com.mongodb.connection.ClusterSettings;
-import com.mongodb.connection.SslSettings;
-import com.mongodb.connection.netty.NettyStreamFactory;
-import com.mongodb.connection.netty.NettyStreamFactoryFactory;
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;
 import com.mongodb.reactivestreams.client.gridfs.GridFSBucket;
@@ -21,8 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration;
-
-import javax.net.ssl.SSLContext;
 
 @Configuration
 public class MongoConfig extends AbstractReactiveMongoConfiguration {
@@ -39,17 +27,7 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
   @Override
   public MongoClient reactiveMongoClient() {
     String property = environment.getProperty("acari.mongo.connectionString", "localhost:27017");
-    return MongoClients.create(MongoClientSettings.builder()
-            .sslSettings(SslSettings.builder()
-                    .invalidHostNameAllowed(true)
-                    .enabled(true)
-                    .build())
-            .clusterSettings(ClusterSettings.builder()
-                    .mode(ClusterConnectionMode.SINGLE)
-                    .hosts(Lists.newArrayList(new ServerAddress(property)))
-                    .build())
-            .streamFactoryFactory(NettyStreamFactoryFactory.builder().build())
-            .build());
+    return MongoClients.create(property);
   }
 
   @Override
