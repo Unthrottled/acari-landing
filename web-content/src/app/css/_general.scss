@@ -1,6 +1,36 @@
+$icon-color: #828282;
+
+
+/**
+ * Site footer
+ */
+.site-footer {
+  padding: 1em 0;
+}
+
+.footer-wapper {
+  display: flex;
+}
+
+.footer-heading {
+  font-size: 1.15em;
+  margin-bottom: 0.5em;
+}
+
+.contact-list,
+.social-media-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+
 img {
   max-width: 100%;
   vertical-align: middle;
+}
+
+.credits {
+  font-size: 0.5em;
 }
 
 body {
@@ -11,6 +41,7 @@ body {
   background: #5d0f00 url('../images/stripe.png');
   background-attachment: fixed;
   -webkit-text-size-adjust: 100%;
+  color: ghostwhite;
   overflow-x: hidden;
   display: block;
   max-width: 1500px;
@@ -80,4 +111,23 @@ body {
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
+/**
+ * Icons
+ */
+.icon {
+
+  > svg {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+
+    path {
+      fill: $icon-color;
+    }
+  }
+}
+
 
