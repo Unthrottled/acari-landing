@@ -5,7 +5,7 @@ var Background = /** @class */ (function () {
         if (colorOne === void 0) { colorOne = '#8d85d6'; }
         if (colorTwo === void 0) { colorTwo = '#464646'; }
         if (textColor === void 0) { textColor = '#f5f5f5'; }
-        if (hoverColor === void 0) { hoverColor = 'rgba(141, 133, 214, 0.25)'; }
+        if (hoverColor === void 0) { hoverColor = 'rgba(141, 133, 214, 0.55)'; }
         this._colorOne = colorOne;
         this._colorTwo = colorTwo;
         this._textColor = textColor;
