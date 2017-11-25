@@ -38,7 +38,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   font-weight: 300;
-  background: #775b5e url('../images/stripe.png');
+  background: #e3e3e3 url('../images/stripe.png');
   background-attachment: fixed;
   -webkit-text-size-adjust: 100%;
   color: ghostwhite;
@@ -56,7 +56,7 @@ body {
 }
 
 .boxed-content {
-  background: rgba(108, 102, 103, 0.45);
+  background: rgba(29, 2, 2, 0.37);
   z-index: 10000;
   position: relative;
   width: 99.984%;
@@ -110,17 +110,18 @@ body {
 }
 
 .content-container {
-  background: rgba(70, 41, 40, 0.65);
+  background: rgba(73, 73, 73, 0.56);
   color: ghostwhite;
   font-weight: 400;
   padding: 1.5em;
-  border-radius: 5px;
+  border-radius: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .preachy-speechy {
   padding: 1em;
-  color: #775b5e;
+  color: white;
+  font-weight: 500;
   background-color: rgba(200, 200, 200, 0.75);
   border-radius: 0.5em 1em;
 }
