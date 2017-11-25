@@ -67,7 +67,7 @@ body {
 
 .app-container {
   box-sizing: content-box;
-  padding: 20px;
+  padding: 1.5em;
   border-radius: 1.5em;
 }
 
@@ -110,17 +110,18 @@ body {
 }
 
 .content-container {
-  background: rgba(70, 41, 40, 0.75);
+  background: rgba(70, 41, 40, 0.65);
   color: ghostwhite;
   font-weight: 400;
-  padding: 10px;
+  padding: 1.5em;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .preachy-speechy {
   padding: 1em;
-  background-color: rgba(200, 200, 200, 0.50);
+  color: #775b5e;
+  background-color: rgba(200, 200, 200, 0.75);
   border-radius: 0.5em 1em;
 }
 
