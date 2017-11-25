@@ -38,7 +38,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   font-weight: 300;
-  background: #5d0f00 url('../images/stripe.png');
+  background: #775b5e url('../images/stripe.png');
   background-attachment: fixed;
   -webkit-text-size-adjust: 100%;
   color: ghostwhite;
@@ -56,7 +56,7 @@ body {
 }
 
 .boxed-content {
-  background: rgba(13, 15, 108, 0.25);
+  background: rgba(108, 13, 13, 0.45);
   z-index: 10000;
   position: relative;
   width: 99.984%;
@@ -80,16 +80,16 @@ body {
 }
 
 .site-border {
-  background: rgba(14, 0, 150, 0.64);
+  background: rgba(150, 0, 14, 0.64);
   border-radius: 1em 1em 0 0;
   opacity: 0.5;
-  background: -webkit-linear-gradient(left, rgba(14, 0, 150, 0.64), #cecbd9);
+  background: -webkit-linear-gradient(left, rgba(150, 0, 14, 0.64), #cecbd9);
   /*Safari 5.1-6*/
-  background: -o-linear-gradient(right, rgba(14, 0, 150, 0.64), #cecbd9);
+  background: -o-linear-gradient(right, rgba(150, 0, 14, 0.64), #cecbd9);
   /*Opera 11.1-12*/
-  background: -moz-linear-gradient(right, rgba(14, 0, 150, 0.64), #cecbd9);
+  background: -moz-linear-gradient(right, rgba(150, 0, 14, 0.64), #cecbd9);
   /*Fx 3.6-15*/
-  background: linear-gradient(to right, rgba(14, 0, 150, 0.64), #cecbd9);
+  background: linear-gradient(to right, rgba(150, 0, 14, 0.64), #cecbd9);
   /*Standard*/
   height: 1em; }
 
@@ -106,11 +106,11 @@ body {
   background-position: top right !important;
   background-size: 50% 75%!important;
   background-repeat: no-repeat !important;
-
+  color: black;
 }
 
 .content-container {
-  background: rgba(45, 41, 70, 0.75);
+  background: rgba(70, 41, 40, 0.75);
   color: ghostwhite;
   font-weight: 400;
   padding: 10px;
