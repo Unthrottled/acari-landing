@@ -21,4 +21,6 @@ services:
       context: ./mongo
     volumes:
       - "./dataDump/:/data/db"
+    ports:
+      - "27017:27017"
 
