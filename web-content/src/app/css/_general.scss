@@ -27,6 +27,14 @@ $icon-color: crimson;
   min-width: 0;
 }
 
+.welcome-header {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5em;
+  max-width: 10em;
+  margin-bottom: 0.5em;
+  border-radius: 0.25em 1em 0.5em 1em;
+}
+
 .footer-wapper a {
   font-weight: 500;
   background-color: rgba(0, 0, 0, 0.5);
@@ -159,8 +167,9 @@ body {
 .preachy-speechy {
   padding: 1em;
   color: white;
-  font-weight: 500;
-  background-color: rgba(200, 200, 200, 0.75);
+  font-size: 1.1em;
+  font-weight: 300;
+  background-color: rgba(54, 52, 52, 0.86);
   border-radius: 0.5em 1em;
 }
 
