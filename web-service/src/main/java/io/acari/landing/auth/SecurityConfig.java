@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   public void configure(WebSecurity webSecurity) {
     webSecurity.ignoring().antMatchers(HttpMethod.GET, "/api/projects")
         .antMatchers(HttpMethod.POST, "/api/token")
+        .antMatchers(HttpMethod.GET, "/*")
         .antMatchers(HttpMethod.GET, "/api/image/get/*");
   }
 
