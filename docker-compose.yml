@@ -8,3 +8,5 @@ services:
       - "7896:7896"
   mongo:
     image: mongo:latest
+    volumes:
+          - "./dataDump/:/data/db"
