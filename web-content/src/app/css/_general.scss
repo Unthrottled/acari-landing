@@ -156,7 +156,9 @@ body {
 .welcome-container {
   padding: 1.5em;
   color: black;
-  background: rgba(73, 73, 73, 0.56) url(../images/hex.png) repeat-y left top !important;
+  background: url(../images/hex.png), url(../images/hex-right.png), rgba(73, 73, 73, 0.56) !important;
+  background-position: top left, top right !important;
+  background-repeat: repeat-y, repeat-y !important;
 }
 
 .content-container {
