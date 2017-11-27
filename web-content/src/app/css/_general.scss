@@ -28,11 +28,14 @@ $icon-color: crimson;
   min-width: 0;
 }
 
+.welcome-header-container {
+  display: inline-flex;
+}
+
 .welcome-header {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0.5em;
   max-width: 10em;
-  margin-bottom: 0.5em;
   border-radius: 0.25em 1em 0.5em 1em;
   text-shadow: -1px -1px 0 #850013,
   1px -1px 0 #850013,
@@ -152,7 +155,6 @@ body {
 
 .welcome-container {
   padding: 1.5em;
-  white-space: pre-line;
   color: black;
   background: rgba(73, 73, 73, 0.56) url(../images/hex.png) repeat-y left top !important;
 }
