@@ -1,0 +1,41 @@
+
+.welcome-header-container {
+  display: inline-flex;
+}
+
+@font-face {
+  font-family: 'proto';
+  src: url('./Protos.otf');
+}
+
+.welcome-header {
+  background-color:  rgba(144, 26, 26, 0.28);
+  padding: 0.5em;
+  color: ghostwhite;
+  font-family: 'proto', Consolas, Monaco, 'Andale Mono', monospace;
+  border-radius: 0.25em 1em 0.5em 1em;
+  text-shadow: -1px -1px 0 #850013,
+  1px -1px 0 #850013,
+  -1px 1px 0 #850013,
+  1px 1px 0 #850013;
+}
+
+
+
+.welcome-container {
+  padding: 1.5em;
+  color: black;
+  background: url(../images/hex.png), url(../images/hex-right.png), rgba(73, 73, 73, 1) !important;
+  background-position: top left, top right !important;
+  background-repeat: repeat-y, repeat-y !important;
+}
+
+.preachy-speechy p {
+  padding: 1em;
+  font-size: 1em;
+  font-weight: 300;
+  color: limegreen;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace, "Lucida Console", monospace;
+  background-color: rgba(54, 52, 52, 0.35);
+  border-radius: 0.5em 1em;
+}

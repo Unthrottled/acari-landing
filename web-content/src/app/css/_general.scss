@@ -28,26 +28,6 @@ $icon-color: crimson;
   min-width: 0;
 }
 
-.welcome-header-container {
-  display: inline-flex;
-}
-
-@font-face {
-  font-family: 'proto';
-  src: url('./Protos.otf');
-}
-
-.welcome-header {
-  background-color:  rgba(144, 26, 26, 0.28);
-  padding: 0.5em;
-  font-family: 'proto';
-  border-radius: 0.25em 1em 0.5em 1em;
-  text-shadow: -1px -1px 0 #850013,
-  1px -1px 0 #850013,
-  -1px 1px 0 #850013,
-  1px 1px 0 #850013;
-}
-
 .footer-wapper a {
   font-weight: 500;
   color: ghostwhite;
@@ -159,15 +139,6 @@ body {
 .view-container {
   display: flex;
 }
-
-.welcome-container {
-  padding: 1.5em;
-  color: black;
-  background: url(../images/hex.png), url(../images/hex-right.png), rgba(73, 73, 73, 1) !important;
-  background-position: top left, top right !important;
-  background-repeat: repeat-y, repeat-y !important;
-}
-
 .content-container {
   background: rgba(73, 73, 73, 0.56);
   color: ghostwhite;
@@ -175,18 +146,6 @@ body {
   padding: 1.5em;
   border-radius: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.preachy-speechy p {
-  padding: 1em;
-  color: white;
-  font-size: 1em;
-  font-weight: 300;
-  color: limegreen;
-  font-family: Monaco, "Lucida Console", monospace;
-  background-color: rgba(54, 52, 52, 0.35);
-  border-radius: 0.5em 1em;
-  //text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 
