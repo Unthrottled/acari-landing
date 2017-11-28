@@ -2,10 +2,10 @@
   background: #111;
   margin-left: 1px;
 
-  -webkit-animation: blink 2s linear 0s infinite;
-  -moz-animation: blink 2s linear 0s infinite;
-  -ms-animation: blink 2s linear 0s infinite;
-  -o-animation: blink 2s linear 0s infinite;
+  -webkit-animation: blink 2s step-end 0s infinite;
+  -moz-animation: blink 2s step-end 0s infinite;
+  -ms-animation: blink 2s step-end 0s infinite;
+  -o-animation: blink 2s step-end 0s infinite;
 }
 @-webkit-keyframes blink {
   0%   { background: rgba(0,200,0, 1);color:rgba(0,0,0,0)  }
