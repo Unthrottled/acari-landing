@@ -67,7 +67,7 @@ module.exports = {
                 loader: "raw-loader"
             },
             {
-                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                test: /\.(png|jpe?g|gif|svg|woff|woff2|otf|ttf|eot|ico)$/,
                 loader: 'file-loader?name=[name].[hash].[ext]',
                 exclude: [/node_modules/, /build/, /dist/, /gradle/]
             },
