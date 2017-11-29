@@ -35,8 +35,11 @@ export class WelcomeBarComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.content = Observable.interval(100)
-            .takeWhile(value => value <= this.words.length)
-            .map(value => this.words.substr(0, value))
+        this.content =
+            Observable.of(1)
+                .delay(1000)
+                .flatMap(seed => Observable.interval(45))
+                .takeWhile(value => value <= this.words.length)
+                .map(value => this.words.substr(0, value))
     }
 }

@@ -30,12 +30,14 @@
   background-repeat: repeat-y, repeat-y !important;
 }
 
-.preachy-speechy p {
+.preachy-speechy p, .welcome-bar {
   padding: 1em;
   font-size: 1em;
   font-weight: 300;
   color: limegreen;
+  white-space: pre-wrap;
   font-family: Consolas, Monaco, 'Andale Mono', monospace, "Lucida Console", monospace;
   background-color: rgba(54, 52, 52, 0.35);
   border-radius: 0.5em 1em;
 }
+

@@ -39,9 +39,12 @@ var WelcomeBarComponent = /** @class */ (function () {
     });
     WelcomeBarComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.content = Observable_1.Observable.interval(100)
-            .takeWhile(function (value) { return value <= _this.words.length; })
-            .map(function (value) { return _this.words.substr(0, value); });
+        this.content =
+            Observable_1.Observable.of(1)
+                .delay(1000)
+                .flatMap(function (seed) { return Observable_1.Observable.interval(45); })
+                .takeWhile(function (value) { return value <= _this.words.length; })
+                .map(function (value) { return _this.words.substr(0, value); });
     };
     __decorate([
         core_1.Output(),
