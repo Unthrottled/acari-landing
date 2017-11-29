@@ -57,3 +57,21 @@ $welcome-background-color: rgba(73, 73, 73, 1);
   flex-grow: 0.25;
   padding-left: 0.25em;
 }
+
+.nano-command-row {
+  display: flex;
+}
+
+.nano-command {
+  display: flex;
+}
+
+.nano-command-hotkey {
+  background: limegreen;
+  color: $welcome-background-color;
+  margin-right: 0.5em;
+}
+
+.nano-command-label {
+  margin-right: 0.5em;
+}
