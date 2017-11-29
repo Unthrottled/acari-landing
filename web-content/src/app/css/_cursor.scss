@@ -2,6 +2,8 @@ $cursor-color: rgba(0,200,0, 1);
 
 .blinking-cursor {
   margin-left: 1px;
+  background: $cursor-color;
+  color: $cursor-color;
   -webkit-animation: blink 2s step-end 0s infinite;
   -moz-animation: blink 2s step-end 0s infinite;
   -ms-animation: blink 2s step-end 0s infinite;
@@ -9,29 +11,30 @@ $cursor-color: rgba(0,200,0, 1);
 }
 
 .cursor {
+  color: $cursor-color;
   background: $cursor-color;
   margin-left: 1px;
 }
 @-webkit-keyframes blink {
-  0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
+  //0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
   50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
-  100%   { background: $cursor-color; color:rgba(0,0,0,0)}
+  //100%   { background: $cursor-color; color:rgba(0,0,0,0)}
 }
 
 @-moz-keyframes blink {
-  0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
+  //0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
   50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
-  100%   { background: $cursor-color; color:rgba(0,0,0,0)}
+  //100%   { background: $cursor-color; color:rgba(0,0,0,0)}
 }
 
 @-ms-keyframes blink {
-  0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
+  //0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
   50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
-  100%   { background: $cursor-color; color:rgba(0,0,0,0)}
+  //100%   { background: $cursor-color; color:rgba(0,0,0,0)}
 }
 
 @-o-keyframes blink {
-  0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
+  //0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
   50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
-  100%   { background: $cursor-color; color:rgba(0,0,0,0)}
+  //100%   { background: $cursor-color; color:rgba(0,0,0,0)}
 }

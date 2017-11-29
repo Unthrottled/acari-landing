@@ -62,4 +62,8 @@ export class ProjectViewComponent {
     private changeBackgroundStyle(style: string): void {
         this.container_hover_color = style;
     }
+
+    get fileName(): string {
+        return this.project.fileName;
+    }
 }

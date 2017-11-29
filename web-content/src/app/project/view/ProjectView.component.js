@@ -74,6 +74,13 @@ var ProjectViewComponent = /** @class */ (function () {
     ProjectViewComponent.prototype.changeBackgroundStyle = function (style) {
         this.container_hover_color = style;
     };
+    Object.defineProperty(ProjectViewComponent.prototype, "fileName", {
+        get: function () {
+            return this.project.fileName;
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),

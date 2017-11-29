@@ -209,6 +209,15 @@ var Project = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Project.prototype, "fileName", {
+        get: function () {
+            return 'placeholder';
+        },
+        set: function (value) {
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Project;
 }());
 exports.Project = Project;

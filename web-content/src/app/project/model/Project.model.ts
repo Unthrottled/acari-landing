@@ -178,4 +178,12 @@ export abstract class Project {
         this.thatGurlIsFreaky();
         this._background.hoverColor = value;
     }
+
+    get fileName(): string {
+        return 'placeholder'
+    }
+
+    set fileName(value: string){
+
+    }
 }
