@@ -10,21 +10,21 @@ $welcome-highlight-color: limegreen;
 }
 
 .welcome-header {
-  background-color:  rgba(144, 26, 26, 0.28);
+  background-color: rgba(54, 144, 18, 0.28);
   padding: 0.5em;
   color: ghostwhite;
   font-family: 'proto', Consolas, Monaco, 'Andale Mono', monospace;
   border-radius: 0.25em 1em 0.5em 1em;
-  text-shadow: -1px -1px 0 #850013,
-  1px -1px 0 #850013,
-  -1px 1px 0 #850013,
-  1px 1px 0 #850013;
+  text-shadow: -1px -1px 0 limegreen,
+  1px -1px 0 limegreen,
+  -1px 1px 0 limegreen,
+  1px 1px 0 limegreen;
 }
 
 
 
 .welcome-container {
-  padding: 1.5em;
+  padding: 2em;
   color: black;
   background: url(../images/hex.png), url(../images/hex-right.png), $welcome-background-color !important;
   background-position: top left, top right !important;
@@ -36,7 +36,6 @@ $welcome-highlight-color: limegreen;
 }
 
 .nano-container {
-  padding: 1em;
   font-size: 1em;
   font-weight: 300;
   color: $welcome-highlight-color;
