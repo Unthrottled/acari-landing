@@ -1,3 +1,4 @@
+$welcome-background-color: rgba(73, 73, 73, 1);
 
 .welcome-header-container {
   display: inline-flex;
@@ -25,19 +26,34 @@
 .welcome-container {
   padding: 1.5em;
   color: black;
-  background: url(../images/hex.png), url(../images/hex-right.png), rgba(73, 73, 73, 1) !important;
+  background: url(../images/hex.png), url(../images/hex-right.png), $welcome-background-color !important;
   background-position: top left, top right !important;
   background-repeat: repeat-y, repeat-y !important;
 }
 
 .preachy-speechy p, .welcome-bar {
+
+
+  background-color: rgba(54, 52, 52, 0.35);
+  border-radius: 0.5em 1em;
+}
+
+.nano-container {
   padding: 1em;
   font-size: 1em;
   font-weight: 300;
   color: limegreen;
   white-space: pre-wrap;
   font-family: Consolas, Monaco, 'Andale Mono', monospace, "Lucida Console", monospace;
-  background-color: rgba(54, 52, 52, 0.35);
-  border-radius: 0.5em 1em;
 }
 
+.nano-header {
+  display: flex;
+  background: limegreen;
+  color: $welcome-background-color;
+}
+
+.nano-version {
+  flex-grow: 0.25;
+  padding-left: 0.25em;
+}
