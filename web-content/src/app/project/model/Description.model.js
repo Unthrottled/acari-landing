@@ -1,12 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Description = /** @class */ (function () {
-    function Description(excerpt, preachySpeechy) {
+    function Description(excerpt, preachySpeechy, projectName) {
         if (excerpt === void 0) { excerpt = Description.defaultExcerpt; }
         if (preachySpeechy === void 0) { preachySpeechy = Description.defaultPreachy; }
+        if (projectName === void 0) { projectName = Description.defaultProjectName; }
         this._excerpt = excerpt;
         this._preachySpeechy = preachySpeechy;
+        this._projectName = projectName;
     }
+    Object.defineProperty(Description.prototype, "projectName", {
+        get: function () {
+            return this._projectName;
+        },
+        set: function (value) {
+            this._projectName = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Description.prototype, "excerpt", {
         get: function () {
             return this._excerpt;
@@ -34,6 +46,7 @@ var Description = /** @class */ (function () {
         '\n' +
         '            Proin faucibus tellus odio, a malesuada felis dictum ut.\n' +
         ' Integer venenatis in arcu id gravida. Nulla dapibus augue sapien, id tincidunt enim varius vel.';
+    Description.defaultProjectName = 'theBestProject.txt';
     return Description;
 }());
 exports.Description = Description;

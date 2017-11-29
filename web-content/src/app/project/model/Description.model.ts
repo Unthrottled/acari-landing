@@ -6,10 +6,25 @@ export class Description {
         '\n' +
         '            Proin faucibus tellus odio, a malesuada felis dictum ut.\n' +
         ' Integer venenatis in arcu id gravida. Nulla dapibus augue sapien, id tincidunt enim varius vel.';
+    private static defaultProjectName = 'theBestProject.txt';
 
-    constructor(excerpt: string = Description.defaultExcerpt, preachySpeechy: string = Description.defaultPreachy) {
+    constructor(excerpt: string = Description.defaultExcerpt,
+                preachySpeechy: string = Description.defaultPreachy,
+                projectName: string = Description.defaultProjectName) {
         this._excerpt = excerpt;
         this._preachySpeechy = preachySpeechy;
+        this._projectName = projectName;
+    }
+
+    private _projectName: string;
+
+
+    get projectName(): string {
+        return this._projectName;
+    }
+
+    set projectName(value: string) {
+        this._projectName = value;
     }
 
     private _excerpt: string;

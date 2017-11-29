@@ -180,10 +180,10 @@ export abstract class Project {
     }
 
     get fileName(): string {
-        return 'placeholder'
+        return this.description.projectName
     }
 
     set fileName(value: string){
-
+        this.description.projectName = value;
     }
 }

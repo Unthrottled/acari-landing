@@ -211,9 +211,10 @@ var Project = /** @class */ (function () {
     });
     Object.defineProperty(Project.prototype, "fileName", {
         get: function () {
-            return 'placeholder';
+            return this.description.projectName;
         },
         set: function (value) {
+            this.description.projectName = value;
         },
         enumerable: true,
         configurable: true
