@@ -44,7 +44,7 @@ var CaretComponent = /** @class */ (function () {
         get: function () {
             return this._typing
                 .map(function (b) { return !b; })
-                .withLatestFrom(this.isBlurred, function (a, b) { return a && !b; });
+                .withLatestFrom(this.isBlurred, function (notTyping, windowNotInFocus) { return notTyping && !windowNotInFocus; });
         },
         enumerable: true,
         configurable: true

@@ -35,7 +35,7 @@ export class CaretComponent {
     get notTyping(): Observable<boolean> {
         return this._typing
             .map(b=>!b)
-            .withLatestFrom(this.isBlurred, (notTyping: boolean, windowBlurred: boolean)=>notTyping && !windowBlurred);
+            .withLatestFrom(this.isBlurred, (notTyping, windowNotInFocus)=>notTyping && !windowNotInFocus);
     }
 
     set typing(value: Observable<boolean>) {
