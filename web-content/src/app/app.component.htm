@@ -1,15 +1,6 @@
 <div class="app-container">
-
-        <div class="content-container welcome-container">
-            <div class="welcome-header-container">
-                <h2 class="welcome-header">Acari Cyber Suite</h2>
-            </div>
-            <div class="preachy-speechy">
-                <p>Welcome! The Acari Cyber Suite is a dedicated landing spot for all technical projects, exercises, knowledge dumps, etc. produced by the contributors at Acari.</p>
-                <p>We are excited that you are here! The realm of software development has always been a fast paced and ever changing environment. All of these changes are driven by the passionate engineers that never settle for okay solutions for various high value problems. As the problems of the future evolve, so does the software, machines, and the people that support it. Granted some problems we face today may have resulted from coding while tired the day before!</p>
-                <welcome-bar [words]="tempo"></welcome-bar>
-            </div>
-        </div><br/>
+    <welcome></welcome>
+   <br/>
     <div (konami)="enableLogin()">
         <login-form-guy [viewable]="ableToLogin">
 

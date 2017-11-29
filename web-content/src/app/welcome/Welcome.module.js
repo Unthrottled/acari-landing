@@ -11,14 +11,21 @@ var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
 var auth_module_1 = require("../auth/auth.module");
 var WelcomeBar_component_1 = require("./WelcomeBar.component");
+var Welcome_component_1 = require("./Welcome.component");
 var WelcomeModule = /** @class */ (function () {
     function WelcomeModule() {
     }
     WelcomeModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule, forms_1.FormsModule, auth_module_1.AuthModule],
-            exports: [WelcomeBar_component_1.WelcomeBarComponent],
-            declarations: [WelcomeBar_component_1.WelcomeBarComponent],
+            exports: [
+                WelcomeBar_component_1.WelcomeBarComponent,
+                Welcome_component_1.WelcomeComponent
+            ],
+            declarations: [
+                WelcomeBar_component_1.WelcomeBarComponent,
+                Welcome_component_1.WelcomeComponent
+            ],
             bootstrap: [],
             providers: [],
             schemas: []
