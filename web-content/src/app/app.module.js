@@ -20,6 +20,7 @@ var window_1 = require("./util/window");
 var auth_module_1 = require("./auth/auth.module");
 var common_1 = require("@angular/common");
 var konami_directive_1 = require("./util/konami.directive");
+var WelcomeBar_component_1 = require("./welcome/WelcomeBar.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -40,7 +41,8 @@ var AppModule = /** @class */ (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                konami_directive_1.KonamiDirective
+                konami_directive_1.KonamiDirective,
+                WelcomeBar_component_1.WelcomeBarComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [

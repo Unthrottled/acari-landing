@@ -13,6 +13,7 @@ import {WindowRef} from "./util/window";
 import {AuthModule} from "./auth/auth.module";
 import {CommonModule} from "@angular/common";
 import {KonamiDirective} from "./util/konami.directive";
+import {WelcomeBarComponent} from "./welcome/WelcomeBar.component";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {KonamiDirective} from "./util/konami.directive";
     ],
     declarations: [
         AppComponent,
-        KonamiDirective
+        KonamiDirective,
+        WelcomeBarComponent
     ],
     bootstrap: [AppComponent],
     providers: [
