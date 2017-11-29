@@ -14,7 +14,7 @@ var Observable_1 = require("rxjs/Observable");
 var WelcomeBarComponent = /** @class */ (function () {
     function WelcomeBarComponent() {
         this.writeComplete = new core_1.EventEmitter();
-        this._content = Observable_1.Observable.empty();
+        this._content = '';
         this._words = '';
     }
     Object.defineProperty(WelcomeBarComponent.prototype, "content", {
@@ -39,12 +39,12 @@ var WelcomeBarComponent = /** @class */ (function () {
     });
     WelcomeBarComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.content =
-            Observable_1.Observable.of(1)
-                .delay(1000)
-                .flatMap(function (seed) { return Observable_1.Observable.interval(45); })
-                .takeWhile(function (value) { return value <= _this.words.length; })
-                .map(function (value) { return _this.words.substr(0, value); });
+        Observable_1.Observable.of(1)
+            .delay(1000)
+            .flatMap(function (seed) { return Observable_1.Observable.interval(45); })
+            .takeWhile(function (value) { return value <= _this.words.length; })
+            .map(function (value) { return _this.words.charAt(value); })
+            .subscribe(function (newChar) { return _this.content += newChar; }, function (error) { }, function () { });
     };
     __decorate([
         core_1.Output(),

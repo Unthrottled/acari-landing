@@ -13,13 +13,13 @@ export class WelcomeBarComponent implements OnInit {
     constructor() {
     }
 
-    private _content: Observable<string> = Observable.empty();
+    private _content: string = '';
 
-    get content(): Observable<string> {
+    get content(): string {
         return this._content;
     }
 
-    set content(value: Observable<string>) {
+    set content(value: string) {
         this._content = value;
     }
 
@@ -35,11 +35,11 @@ export class WelcomeBarComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.content =
-            Observable.of(1)
-                .delay(1000)
-                .flatMap(seed => Observable.interval(45))
-                .takeWhile(value => value <= this.words.length)
-                .map(value => this.words.substr(0, value))
+        Observable.of(1)
+            .delay(1000)
+            .flatMap(seed => Observable.interval(45))
+            .takeWhile(value => value <= this.words.length)
+            .map(value => this.words.charAt(value))
+            .subscribe(newChar=>this.content+=newChar, (error)=>{}, ()=>{});
     }
 }
