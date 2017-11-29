@@ -21,9 +21,10 @@ import {RemoteProjectFactory} from "./RemoteProject.factory";
 import {RemoteProjectService} from "./RemoteProject.service";
 import {ImageUploadService} from "./upload/ImageUpload.service";
 import {AuthModule} from "../auth/auth.module";
+import {CaretModule} from "../cursor/Caret.module";
 
 @NgModule({
-    imports: [CommonModule, FormsModule, AuthModule],
+    imports: [CommonModule, FormsModule, AuthModule, CaretModule],
     exports: [FileChooseComponent,
         LocalProjectManipulationComponent,
         RemoteProjectManipulationComponent,

@@ -1,5 +1,11 @@
 $cursor-color: rgba(0,200,0, 1);
 
+.blurred-cursor {
+  color: $cursor-color;
+  outline: 0.05em $cursor-color solid;
+  margin-left: 1px;
+}
+
 .blinking-cursor {
   margin-left: 1px;
   background: $cursor-color;
@@ -16,25 +22,17 @@ $cursor-color: rgba(0,200,0, 1);
   margin-left: 1px;
 }
 @-webkit-keyframes blink {
-  //0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
   50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
-  //100%   { background: $cursor-color; color:rgba(0,0,0,0)}
 }
 
 @-moz-keyframes blink {
-  //0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
   50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
-  //100%   { background: $cursor-color; color:rgba(0,0,0,0)}
 }
 
 @-ms-keyframes blink {
-  //0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
   50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
-  //100%   { background: $cursor-color; color:rgba(0,0,0,0)}
 }
 
 @-o-keyframes blink {
-  //0%   { background: $cursor-color;color:rgba(0,0,0,0)  }
   50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
-  //100%   { background: $cursor-color; color:rgba(0,0,0,0)}
 }

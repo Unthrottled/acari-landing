@@ -10,29 +10,21 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
 var auth_module_1 = require("../auth/auth.module");
-var WelcomeBar_component_1 = require("./WelcomeBar.component");
-var Welcome_component_1 = require("./Welcome.component");
-var Caret_module_1 = require("../cursor/Caret.module");
-var WelcomeModule = /** @class */ (function () {
-    function WelcomeModule() {
+var Caret_component_1 = require("./Caret.component");
+var CaretModule = /** @class */ (function () {
+    function CaretModule() {
     }
-    WelcomeModule = __decorate([
+    CaretModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, forms_1.FormsModule, auth_module_1.AuthModule, Caret_module_1.CaretModule],
-            exports: [
-                WelcomeBar_component_1.WelcomeBarComponent,
-                Welcome_component_1.WelcomeComponent
-            ],
-            declarations: [
-                WelcomeBar_component_1.WelcomeBarComponent,
-                Welcome_component_1.WelcomeComponent
-            ],
+            imports: [common_1.CommonModule, forms_1.FormsModule, auth_module_1.AuthModule],
+            exports: [Caret_component_1.CaretComponent],
+            declarations: [Caret_component_1.CaretComponent],
             bootstrap: [],
             providers: [],
             schemas: []
         })
-    ], WelcomeModule);
-    return WelcomeModule;
+    ], CaretModule);
+    return CaretModule;
 }());
-exports.WelcomeModule = WelcomeModule;
-//# sourceMappingURL=Welcome.module.js.map
+exports.CaretModule = CaretModule;
+//# sourceMappingURL=Caret.module.js.map
