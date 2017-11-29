@@ -31,9 +31,8 @@ $welcome-background-color: rgba(73, 73, 73, 1);
   background-repeat: repeat-y, repeat-y !important;
 }
 
-.preachy-speechy p, .welcome-bar {
-
-
+.welcome-bar {
+  white-space: pre-wrap;
   background-color: rgba(54, 52, 52, 0.35);
   border-radius: 0.5em 1em;
 }
@@ -43,13 +42,14 @@ $welcome-background-color: rgba(73, 73, 73, 1);
   font-size: 1em;
   font-weight: 300;
   color: limegreen;
-  white-space: pre-wrap;
+
   font-family: Consolas, Monaco, 'Andale Mono', monospace, "Lucida Console", monospace;
 }
 
 .nano-header {
   display: flex;
   background: limegreen;
+  margin-bottom: 1em;
   color: $welcome-background-color;
 }
 
@@ -58,12 +58,27 @@ $welcome-background-color: rgba(73, 73, 73, 1);
   padding-left: 0.25em;
 }
 
-.nano-command-row {
-  display: flex;
-}
 
 .nano-command {
   display: flex;
+}
+
+.nano-command-container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.nano-command-group {
+  flex-grow: 1;
+}
+
+.nano-commands {
+  display: flex;
+}
+
+.nano-commands div {
+  margin-bottom: 0;
+  position: relative;
 }
 
 .nano-command-hotkey {
