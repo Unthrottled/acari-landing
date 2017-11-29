@@ -1,5 +1,5 @@
 $welcome-background-color: rgba(73, 73, 73, 1);
-
+$welcome-highlight-color: limegreen;
 .welcome-header-container {
   display: inline-flex;
 }
@@ -33,22 +33,20 @@ $welcome-background-color: rgba(73, 73, 73, 1);
 
 .welcome-bar {
   white-space: pre-wrap;
-  background-color: rgba(54, 52, 52, 0.35);
-  border-radius: 0.5em 1em;
 }
 
 .nano-container {
   padding: 1em;
   font-size: 1em;
   font-weight: 300;
-  color: limegreen;
+  color: $welcome-highlight-color;
 
   font-family: Consolas, Monaco, 'Andale Mono', monospace, "Lucida Console", monospace;
 }
 
 .nano-header {
   display: flex;
-  background: limegreen;
+  background: $welcome-highlight-color;
   margin-bottom: 1em;
   color: $welcome-background-color;
 }
@@ -82,7 +80,7 @@ $welcome-background-color: rgba(73, 73, 73, 1);
 }
 
 .nano-command-hotkey {
-  background: limegreen;
+  background: $welcome-highlight-color;
   color: $welcome-background-color;
   margin-right: 0.5em;
 }
