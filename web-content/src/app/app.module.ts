@@ -14,6 +14,7 @@ import {AuthModule} from "./auth/auth.module";
 import {CommonModule} from "@angular/common";
 import {KonamiDirective} from "./util/konami.directive";
 import {WelcomeBarComponent} from "./welcome/WelcomeBar.component";
+import {WelcomeModule} from "./welcome/Welcome.module";
 
 
 @NgModule({
@@ -25,15 +26,15 @@ import {WelcomeBarComponent} from "./welcome/WelcomeBar.component";
         BrowserAnimationsModule,
         ProjectModule,
         AuthModule,
-        CommonModule
+        CommonModule,
+        WelcomeModule
     ],
     exports: [
         RouterModule
     ],
     declarations: [
         AppComponent,
-        KonamiDirective,
-        WelcomeBarComponent
+        KonamiDirective
     ],
     bootstrap: [AppComponent],
     providers: [
