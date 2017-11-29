@@ -1,1 +1,1 @@
-<p class="welcome-bar">{{content}}<span class="cursor">_</span></p>
+<p class="welcome-bar">{{content}}<span [class.blinking-cursor]="notTyping | async" [class.cursor]="typing | async">_</span></p>

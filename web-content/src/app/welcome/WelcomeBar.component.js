@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
+var ReplaySubject_1 = require("rxjs/ReplaySubject");
 var WelcomeBarComponent = /** @class */ (function () {
     function WelcomeBarComponent() {
         this.writeComplete = new core_1.EventEmitter();
         this._content = '';
         this._words = '';
+        this.isTyping = new ReplaySubject_1.ReplaySubject();
     }
     Object.defineProperty(WelcomeBarComponent.prototype, "content", {
         get: function () {
@@ -37,14 +39,36 @@ var WelcomeBarComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(WelcomeBarComponent.prototype, "typing", {
+        get: function () {
+            return this.isTyping;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(WelcomeBarComponent.prototype, "notTyping", {
+        get: function () {
+            return this.isTyping.map(function (b) { return !b; });
+        },
+        enumerable: true,
+        configurable: true
+    });
     WelcomeBarComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.isTyping.next(false);
         Observable_1.Observable.of(1)
             .delay(1000)
+            .map((function (value) {
+            _this.isTyping.next(true);
+            return value;
+        }))
             .flatMap(function (seed) { return Observable_1.Observable.interval(45); })
             .takeWhile(function (value) { return value <= _this.words.length; })
             .map(function (value) { return _this.words.charAt(value); })
-            .subscribe(function (newChar) { return _this.content += newChar; }, function (error) { }, function () { });
+            .subscribe(function (newChar) { return _this.content += newChar; }, function (error) { }, function () {
+            _this.isTyping.next(false);
+            _this.isTyping.complete();
+        });
     };
     __decorate([
         core_1.Output(),
