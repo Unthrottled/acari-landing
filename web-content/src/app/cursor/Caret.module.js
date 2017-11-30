@@ -11,6 +11,7 @@ var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
 var auth_module_1 = require("../auth/auth.module");
 var Caret_component_1 = require("./Caret.component");
+var window_1 = require("../util/window");
 var CaretModule = /** @class */ (function () {
     function CaretModule() {
     }
@@ -20,7 +21,7 @@ var CaretModule = /** @class */ (function () {
             exports: [Caret_component_1.CaretComponent],
             declarations: [Caret_component_1.CaretComponent],
             bootstrap: [],
-            providers: [],
+            providers: [window_1.WindowRef],
             schemas: []
         })
     ], CaretModule);

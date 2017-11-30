@@ -12,8 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var BehaviorSubject_1 = require("rxjs/BehaviorSubject");
 var Observable_1 = require("rxjs/Observable");
+var window_1 = require("../util/window");
 var CaretComponent = /** @class */ (function () {
-    function CaretComponent() {
+    function CaretComponent(windowRef) {
+        this.windowRef = windowRef;
         this.isBlurred = new BehaviorSubject_1.BehaviorSubject(false);
         this._empty = 'rgba(0,0,0,0)';
         this._typing = Observable_1.Observable.of(false);
@@ -21,6 +23,11 @@ var CaretComponent = /** @class */ (function () {
         this._currentBackgroundColor = new BehaviorSubject_1.BehaviorSubject(this.backgroundColor);
         this._outline = '0.05em green solid';
     }
+    CaretComponent.prototype.ngOnInit = function () {
+        if (!this.windowRef.nativeWindow.document.hasFocus()) {
+            this.onBlur({});
+        }
+    };
     CaretComponent.prototype.onFocus = function (event) {
         this.isBlurred.next(false);
         this._currentBackgroundColor.next(this.backgroundColor);
@@ -48,9 +55,13 @@ var CaretComponent = /** @class */ (function () {
     });
     Object.defineProperty(CaretComponent.prototype, "notTyping", {
         get: function () {
-            return this._typing
-                .map(function (b) { return !b; })
-                .withLatestFrom(this.isBlurred, function (notTyping, windowNotInFocus) { return notTyping && !windowNotInFocus; });
+            //intellij typscript compiler
+            //y u no recognize dis without
+            //casting?!?
+            return this._typing.map(function (b) { return !b; })
+                .withLatestFrom(this.isBlurred, function (notTyping, windowNotInFocus) {
+                return notTyping && !windowNotInFocus;
+            });
         },
         enumerable: true,
         configurable: true
@@ -114,7 +125,8 @@ var CaretComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'caret',
             template: require('./Caret.component.htm')
-        })
+        }),
+        __metadata("design:paramtypes", [window_1.WindowRef])
     ], CaretComponent);
     return CaretComponent;
 }());

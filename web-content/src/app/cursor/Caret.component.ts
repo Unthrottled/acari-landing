@@ -1,13 +1,24 @@
-import {Component, HostListener, Input} from "@angular/core";
+import {Component, HostListener, Input, OnInit} from "@angular/core";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
+import {WindowRef} from "../util/window";
 
 @Component({
     selector: 'caret',
     template: require('./Caret.component.htm')
 })
-export class CaretComponent {
+export class CaretComponent implements OnInit {
+    ngOnInit(): void {
+        if(!this.windowRef.nativeWindow.document.hasFocus()){
+            this.onBlur({});
+        }
+    }
+
+    constructor(private windowRef: WindowRef){
+
+    }
+
     private isBlurred: Subject<boolean> = new BehaviorSubject<boolean>(false);
     private _empty: string = 'rgba(0,0,0,0)';
     @HostListener('window:focus', ['$event'])
@@ -35,9 +46,13 @@ export class CaretComponent {
     }
 
     get notTyping(): Observable<boolean> {
-        return this._typing
-            .map(b=>!b)
-            .withLatestFrom(this.isBlurred, (notTyping, windowNotInFocus)=>notTyping && !windowNotInFocus);
+        //intellij typscript compiler
+        //y u no recognize dis without
+        //casting?!?
+        return <Observable<boolean>>this._typing.map(b=>!b)
+            .withLatestFrom(this.isBlurred,
+                (notTyping: boolean, windowNotInFocus: boolean)=>
+                    notTyping && !windowNotInFocus);
     }
 
     set typing(value: Observable<boolean>) {
