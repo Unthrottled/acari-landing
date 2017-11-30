@@ -6,7 +6,8 @@ import {Component} from '@angular/core';
 })
 export class WelcomeComponent {
 
-    tempo: string = 'The content below is a rich collection of various projects that capture the principals that drive our passion. The never ending quest of continuous improvement is what drives us, and is what we hope you are looking to find!'.trim();
+    endingStatement: string = 'The content below is a rich collection of various projects that capture the principals that drive our passion. ' +
+        'The never ending quest of continuous improvement is what drives us everyday. Hopefully, we produce something that you are looking to find!';
 
     constructor() {
     }
