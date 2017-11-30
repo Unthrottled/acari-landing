@@ -10,12 +10,13 @@
     <div class="project-description-container"
             [style.color]="textColor | safetyStyle"
          [style.background-image]="backgroundStyle | safetyStyle">
-        <h4 class="project-title">
+        <h4 class="project-title" [style.color]="titleColor">
             {{excerpt}}
         </h4>
-        <p><span class="project-host-name">alex@acari</span>:<span class="project-pwd">~/projects</span>$ cat {{fileName}}</p>
+        {{hostNameColor}}
+        <p><span class="project-host-name" [style.color]="hostNameColor">alex@acari</span>:<span class="project-pwd" [style.color]="pwdColor">~/projects</span>$ cat {{fileName}}</p>
         <p>{{description}}</p>
-        <p><span class="project-host-name">alex@acari</span>:<span class="project-pwd">~/projects</span>$ <caret></caret></p>
+        <p><span class="project-host-name" [style.color]="hostNameColor">alex@acari</span>:<span class="project-pwd" [style.color]="pwdColor">~/projects</span>$ <caret></caret></p>
     </div>
 
 </div>

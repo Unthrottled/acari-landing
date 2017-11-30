@@ -2,7 +2,7 @@ export class Background {
     constructor(colorOne: string = '#8d85d6',
                 colorTwo: string = '#464646',
                 textColor: string = '#f5f5f5',
-                hostNameColor: string = 'green',
+                hostNameColor: string = 'orange',
                 pwdColor: string = 'cyan',
                 titleColor: string = 'ghostwhite',
                 hoverColor: string = 'rgba(141, 133, 214, 0.55)') {
