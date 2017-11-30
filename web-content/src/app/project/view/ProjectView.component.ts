@@ -66,4 +66,16 @@ export class ProjectViewComponent {
     get fileName(): string {
         return this.project.fileName;
     }
+
+    get titleColor(): string {
+        return this.project.titleColor;
+    }
+
+    get hostNameColor(): string {
+        return this.project.hostNameColor;
+    }
+
+    get pwdColor(): string {
+        return this.project.pwdColor;
+    }
 }

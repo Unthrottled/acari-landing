@@ -186,4 +186,28 @@ export abstract class Project {
     set fileName(value: string){
         this.description.projectName = value;
     }
+
+    get titleColor(): string {
+        return this.background.titleColor;
+    }
+
+    get hostNameColor(): string {
+        return this.background.hostNameColor;
+    }
+
+    get pwdColor(): string {
+        return this.background.pwdColor;
+    }
+
+    set titleColor(value: string) {
+         this.background.titleColor = value;
+    }
+
+    set hostNameColor(value: string) {
+         this.background.hostNameColor = value;
+    }
+
+    set pwdColor(value: string) {
+         this.background.pwdColor = value;
+    }
 }

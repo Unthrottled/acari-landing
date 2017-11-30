@@ -219,6 +219,36 @@ var Project = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Project.prototype, "titleColor", {
+        get: function () {
+            return this.background.titleColor;
+        },
+        set: function (value) {
+            this.background.titleColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "hostNameColor", {
+        get: function () {
+            return this.background.hostNameColor;
+        },
+        set: function (value) {
+            this.background.hostNameColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "pwdColor", {
+        get: function () {
+            return this.background.pwdColor;
+        },
+        set: function (value) {
+            this.background.pwdColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Project;
 }());
 exports.Project = Project;

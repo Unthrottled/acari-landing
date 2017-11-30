@@ -81,6 +81,27 @@ var ProjectViewComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ProjectViewComponent.prototype, "titleColor", {
+        get: function () {
+            return this.project.titleColor;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ProjectViewComponent.prototype, "hostNameColor", {
+        get: function () {
+            return this.project.hostNameColor;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ProjectViewComponent.prototype, "pwdColor", {
+        get: function () {
+            return this.project.pwdColor;
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),

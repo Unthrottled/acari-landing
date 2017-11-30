@@ -1,16 +1,52 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Background = /** @class */ (function () {
-    function Background(colorOne, colorTwo, textColor, hoverColor) {
+    function Background(colorOne, colorTwo, textColor, hostNameColor, pwdColor, titleColor, hoverColor) {
         if (colorOne === void 0) { colorOne = '#8d85d6'; }
         if (colorTwo === void 0) { colorTwo = '#464646'; }
         if (textColor === void 0) { textColor = '#f5f5f5'; }
+        if (hostNameColor === void 0) { hostNameColor = 'green'; }
+        if (pwdColor === void 0) { pwdColor = 'cyan'; }
+        if (titleColor === void 0) { titleColor = 'ghostwhite'; }
         if (hoverColor === void 0) { hoverColor = 'rgba(141, 133, 214, 0.55)'; }
         this._colorOne = colorOne;
         this._colorTwo = colorTwo;
         this._textColor = textColor;
+        this._hostNameColor = hostNameColor;
+        this._pwdColor = pwdColor;
+        this._titleColor = titleColor;
         this._hoverColor = hoverColor;
     }
+    Object.defineProperty(Background.prototype, "hostNameColor", {
+        get: function () {
+            return this._hostNameColor;
+        },
+        set: function (value) {
+            this._hostNameColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Background.prototype, "pwdColor", {
+        get: function () {
+            return this._pwdColor;
+        },
+        set: function (value) {
+            this._pwdColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Background.prototype, "titleColor", {
+        get: function () {
+            return this._titleColor;
+        },
+        set: function (value) {
+            this._titleColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Background.prototype, "backgroundStyle", {
         get: function () {
             return this._backgroundStyle;
