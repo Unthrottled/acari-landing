@@ -4,9 +4,13 @@ services:
     build: ./web-service
     image: alexsimons/acari-web-service:1.0.0
     ports:
-      - "80:8080"
+      - "443:8080"
       - "7896:7896"
   mongo:
-    image: mongo:latest
-    volumes:
-          - "./dataDump/:/data/db"
+      image: alexsimons/mongo-ssl:0.0.2
+      build:
+        context: ./mongo
+      volumes:
+        - "./dataDump/:/data/db"
+      ports:
+        - "27017:27017"
