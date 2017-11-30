@@ -135,6 +135,28 @@ var Project = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Project.prototype, "caretSolidColor", {
+        get: function () {
+            return this.background.caretSolidColor;
+        },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this.background.caretSolidColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Project.prototype, "caretBlurredStyle", {
+        get: function () {
+            return this.background.caretBlurredStyle;
+        },
+        set: function (value) {
+            this.thatGurlIsFreaky();
+            this.background.caretBlurredStyle = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Project.prototype, "reachBlob", {
         get: function () {
             return this.selectedReach.imageBinary();

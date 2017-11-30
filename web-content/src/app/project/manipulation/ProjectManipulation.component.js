@@ -162,6 +162,28 @@ var ProjectManipulationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ProjectManipulationComponent.prototype, "caretSolidColor", {
+        get: function () {
+            return this._project.caretSolidColor;
+        },
+        set: function (value) {
+            this._project.caretSolidColor = value;
+            this.emitProject();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ProjectManipulationComponent.prototype, "caretBlurredStyle", {
+        get: function () {
+            return this._project.caretBlurredStyle;
+        },
+        set: function (value) {
+            this._project.caretBlurredStyle = value;
+            this.emitProject();
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(ProjectManipulationComponent.prototype, "notUploadable", {
         get: function () {
             return !this._project.isUploadable;

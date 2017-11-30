@@ -5,7 +5,9 @@ export class Background {
                 hostNameColor: string = 'orange',
                 pwdColor: string = 'cyan',
                 titleColor: string = 'ghostwhite',
-                hoverColor: string = 'rgba(141, 133, 214, 0.55)') {
+                hoverColor: string = 'rgba(141, 133, 214, 0.55)',
+                caretSolidColor: string ='purple',
+                caretBlurredStyle: string = '0.05em purple solid') {
         this._colorOne = colorOne;
         this._colorTwo = colorTwo;
         this._textColor = textColor;
@@ -13,12 +15,32 @@ export class Background {
         this._pwdColor = pwdColor;
         this._titleColor = titleColor;
         this._hoverColor = hoverColor;
+        this._caretSolidColor = caretSolidColor;
+        this._caretBlurredStyle = caretBlurredStyle;
     }
 
     private _hostNameColor: string;
     private _pwdColor: string;
     private _titleColor: string;
+    private _caretSolidColor: string;
+    private _caretBlurredStyle: string;
 
+
+    get caretSolidColor(): string {
+        return this._caretSolidColor;
+    }
+
+    set caretSolidColor(value: string) {
+        this._caretSolidColor = value;
+    }
+
+    get caretBlurredStyle(): string {
+        return this._caretBlurredStyle;
+    }
+
+    set caretBlurredStyle(value: string) {
+        this._caretBlurredStyle = value;
+    }
 
     get hostNameColor(): string {
         return this._hostNameColor;

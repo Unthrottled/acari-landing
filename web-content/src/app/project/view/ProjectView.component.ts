@@ -78,4 +78,12 @@ export class ProjectViewComponent {
     get pwdColor(): string {
         return this.project.pwdColor;
     }
+
+    get caretBlurredStyle(): string {
+        return this.project.caretBlurredStyle;
+    }
+
+    get caretSolidColor(): string {
+        return this.project.caretSolidColor;
+    }
 }

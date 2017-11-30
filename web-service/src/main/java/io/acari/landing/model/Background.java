@@ -9,6 +9,8 @@ public class Background {
   private String _pwdColor;
   private String _titleColor;
   private String _hoverColor;
+  private String _caretSolidColor;
+  private String _caretBlurredStyle;
 
   public Background(){}
 
@@ -74,5 +76,21 @@ public class Background {
 
   public void set_titleColor(String _titleColor) {
     this._titleColor = _titleColor;
+  }
+
+  public String get_caretSolidColor() {
+    return _caretSolidColor;
+  }
+
+  public void set_caretSolidColor(String _caretSolidColor) {
+    this._caretSolidColor = _caretSolidColor;
+  }
+
+  public String get_caretBlurredStyle() {
+    return _caretBlurredStyle;
+  }
+
+  public void set_caretBlurredStyle(String _caretBlurredStyle) {
+    this._caretBlurredStyle = _caretBlurredStyle;
   }
 }

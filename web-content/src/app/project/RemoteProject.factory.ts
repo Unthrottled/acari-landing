@@ -32,7 +32,9 @@ export class RemoteProjectFactory {
             json.background._hostNameColor,
             json.background._pwdColor,
             json.background._titleColor,
-            json.background._hoverColor
+            json.background._hoverColor,
+            json.background._caretSolidColor,
+            json.background._caretBlurredStyle,
         );
         let location2 = new Location(
             json.location._url

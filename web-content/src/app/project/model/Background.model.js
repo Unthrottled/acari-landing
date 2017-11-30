@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Background = /** @class */ (function () {
-    function Background(colorOne, colorTwo, textColor, hostNameColor, pwdColor, titleColor, hoverColor) {
+    function Background(colorOne, colorTwo, textColor, hostNameColor, pwdColor, titleColor, hoverColor, caretSolidColor, caretBlurredStyle) {
         if (colorOne === void 0) { colorOne = '#8d85d6'; }
         if (colorTwo === void 0) { colorTwo = '#464646'; }
         if (textColor === void 0) { textColor = '#f5f5f5'; }
@@ -9,6 +9,8 @@ var Background = /** @class */ (function () {
         if (pwdColor === void 0) { pwdColor = 'cyan'; }
         if (titleColor === void 0) { titleColor = 'ghostwhite'; }
         if (hoverColor === void 0) { hoverColor = 'rgba(141, 133, 214, 0.55)'; }
+        if (caretSolidColor === void 0) { caretSolidColor = 'purple'; }
+        if (caretBlurredStyle === void 0) { caretBlurredStyle = '0.05em purple solid'; }
         this._colorOne = colorOne;
         this._colorTwo = colorTwo;
         this._textColor = textColor;
@@ -16,7 +18,29 @@ var Background = /** @class */ (function () {
         this._pwdColor = pwdColor;
         this._titleColor = titleColor;
         this._hoverColor = hoverColor;
+        this._caretSolidColor = caretSolidColor;
+        this._caretBlurredStyle = caretBlurredStyle;
     }
+    Object.defineProperty(Background.prototype, "caretSolidColor", {
+        get: function () {
+            return this._caretSolidColor;
+        },
+        set: function (value) {
+            this._caretSolidColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Background.prototype, "caretBlurredStyle", {
+        get: function () {
+            return this._caretBlurredStyle;
+        },
+        set: function (value) {
+            this._caretBlurredStyle = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Background.prototype, "hostNameColor", {
         get: function () {
             return this._hostNameColor;

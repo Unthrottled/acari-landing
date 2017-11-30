@@ -15,7 +15,7 @@ var Observable_1 = require("rxjs/Observable");
 var CaretComponent = /** @class */ (function () {
     function CaretComponent() {
         this.isBlurred = new BehaviorSubject_1.BehaviorSubject(false);
-        this._empty = '';
+        this._empty = 'rgba(0,0,0,0)';
         this._typing = Observable_1.Observable.of(false);
         this._backgroundColor = 'lime';
         this._currentBackgroundColor = new BehaviorSubject_1.BehaviorSubject(this.backgroundColor);

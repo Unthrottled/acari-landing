@@ -137,6 +137,24 @@ export class ProjectManipulationComponent implements OnInit {
         this.emitProject();
     }
 
+    get caretSolidColor(): string {
+        return this._project.caretSolidColor;
+    }
+
+    set caretSolidColor(value: string) {
+        this._project.caretSolidColor = value;
+        this.emitProject();
+    }
+
+    get caretBlurredStyle(): string {
+        return this._project.caretBlurredStyle;
+    }
+
+    set caretBlurredStyle(value: string) {
+        this._project.caretBlurredStyle = value;
+        this.emitProject();
+    }
+
     get notUploadable(): boolean {
         return !this._project.isUploadable;
     }

@@ -9,7 +9,7 @@ import {Observable} from "rxjs/Observable";
 })
 export class CaretComponent {
     private isBlurred: Subject<boolean> = new BehaviorSubject<boolean>(false);
-    private _empty: string = '';
+    private _empty: string = 'rgba(0,0,0,0)';
     @HostListener('window:focus', ['$event'])
     onFocus(event: any): void {
         this.isBlurred.next(false);

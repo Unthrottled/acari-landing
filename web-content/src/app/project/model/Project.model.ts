@@ -124,6 +124,24 @@ export abstract class Project {
         this.description.excerpt = value;
     }
 
+    get caretSolidColor(): string {
+        return this.background.caretSolidColor;
+    }
+
+    set caretSolidColor(value: string) {
+        this.thatGurlIsFreaky();
+        this.background.caretSolidColor = value;
+    }
+
+    get caretBlurredStyle(): string {
+        return this.background.caretBlurredStyle;
+    }
+
+    set caretBlurredStyle(value: string) {
+        this.thatGurlIsFreaky();
+        this.background.caretBlurredStyle = value;
+    }
+
     get reachBlob(): Observable<any> {
         return this.selectedReach.imageBinary();
     }
@@ -214,4 +232,5 @@ export abstract class Project {
     get backgroundStyle(): string {
         return this.background.backgroundStyle;
     }
+
 }

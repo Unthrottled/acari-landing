@@ -102,6 +102,20 @@ var ProjectViewComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ProjectViewComponent.prototype, "caretBlurredStyle", {
+        get: function () {
+            return this.project.caretBlurredStyle;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ProjectViewComponent.prototype, "caretSolidColor", {
+        get: function () {
+            return this.project.caretSolidColor;
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
         core_1.Input(),
         __metadata("design:type", Project_model_1.Project),
