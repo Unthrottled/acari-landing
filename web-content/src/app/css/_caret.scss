@@ -1,15 +1,12 @@
 $cursor-color: rgba(0,200,0, 1);
 
 .blurred-cursor {
-  color: $cursor-color;
-  outline: 0.05em $cursor-color solid;
+
   margin-left: 1px;
 }
 
 .blinking-cursor {
   margin-left: 1px;
-  background: $cursor-color;
-  color: $cursor-color;
   -webkit-animation: blink 2s step-end 0s infinite;
   -moz-animation: blink 2s step-end 0s infinite;
   -ms-animation: blink 2s step-end 0s infinite;
@@ -17,22 +14,20 @@ $cursor-color: rgba(0,200,0, 1);
 }
 
 .cursor {
-  color: $cursor-color;
-  background: $cursor-color;
   margin-left: 1px;
 }
 @-webkit-keyframes blink {
-  50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
+  50%  { opacity: 0; }
 }
 
 @-moz-keyframes blink {
-  50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
+  50%  { opacity: 0; }
 }
 
 @-ms-keyframes blink {
-  50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
+  50%  { opacity: 0; }
 }
 
 @-o-keyframes blink {
-  50%  { background: rgba(0,50,0, 0.0);color:rgba(0,0,0,0) }
+  50%  { opacity: 0; }
 }

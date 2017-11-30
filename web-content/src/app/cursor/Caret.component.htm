@@ -1,3 +1,6 @@
 <span [class.blinking-cursor]="notTyping | async"
       [class.cursor]="typing | async"
-      [class.blurred-cursor]="blurred | async">_</span>
+      [class.blurred-cursor]="blurred | async"
+      [style.background]="currentBackgroundColor | async"
+      [style.outline]="outline | safetyStyle"
+>_</span>

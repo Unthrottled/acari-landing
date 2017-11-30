@@ -32,8 +32,7 @@ import {CaretModule} from "../cursor/Caret.module";
         ProjectViewComponent,
         TextEntryComponent,
         ProjectListComponent,
-        ProjectComponent,
-        SafetyStylePipe],
+        ProjectComponent],
     declarations: [
         FileChooseComponent,
         LocalProjectManipulationComponent,
@@ -41,7 +40,6 @@ import {CaretModule} from "../cursor/Caret.module";
         ProjectViewComponent,
         ProjectUploadComponent,
         TextEntryComponent,
-        SafetyStylePipe,
         ProjectComponent,
         ProjectListComponent
     ],

@@ -15,6 +15,7 @@ var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var platform_browser_1 = require("@angular/platform-browser");
 var UserPrincipal_model_1 = require("./UserPrincipal.model");
+var SafetyStylePipe_1 = require("../util/SafetyStylePipe");
 var AuthModule = /** @class */ (function () {
     function AuthModule() {
     }
@@ -26,12 +27,14 @@ var AuthModule = /** @class */ (function () {
             exports: [
                 hideOnLogout_component_1.LogoutHiderComponent,
                 logout_component_1.LogoutComponent,
-                login_component_1.LoginComponent
+                login_component_1.LoginComponent,
+                SafetyStylePipe_1.SafetyStylePipe
             ],
             declarations: [
                 hideOnLogout_component_1.LogoutHiderComponent,
                 logout_component_1.LogoutComponent,
-                login_component_1.LoginComponent
+                login_component_1.LoginComponent,
+                SafetyStylePipe_1.SafetyStylePipe
             ],
             bootstrap: [],
             providers: [

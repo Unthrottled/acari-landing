@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {BrowserModule} from "@angular/platform-browser";
 import {UserPrincipal} from "./UserPrincipal.model";
+import {SafetyStylePipe} from "../util/SafetyStylePipe";
 
 @NgModule({
     imports: [BrowserModule,
@@ -16,12 +17,14 @@ import {UserPrincipal} from "./UserPrincipal.model";
     exports: [
         LogoutHiderComponent,
         LogoutComponent,
-        LoginComponent
+        LoginComponent,
+        SafetyStylePipe
     ],
     declarations: [
         LogoutHiderComponent,
         LogoutComponent,
-        LoginComponent
+        LoginComponent,
+        SafetyStylePipe
     ],
     bootstrap: [],
     providers: [

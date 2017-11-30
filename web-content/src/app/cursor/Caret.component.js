@@ -15,13 +15,19 @@ var Observable_1 = require("rxjs/Observable");
 var CaretComponent = /** @class */ (function () {
     function CaretComponent() {
         this.isBlurred = new BehaviorSubject_1.BehaviorSubject(false);
+        this._empty = '';
         this._typing = Observable_1.Observable.of(false);
+        this._backgroundColor = 'lime';
+        this._currentBackgroundColor = new BehaviorSubject_1.BehaviorSubject(this.backgroundColor);
+        this._outline = '0.05em green solid';
     }
     CaretComponent.prototype.onFocus = function (event) {
         this.isBlurred.next(false);
+        this._currentBackgroundColor.next(this.backgroundColor);
     };
     CaretComponent.prototype.onBlur = function (event) {
         this.isBlurred.next(true);
+        this._currentBackgroundColor.next(this._empty);
     };
     Object.defineProperty(CaretComponent.prototype, "blurred", {
         get: function () {
@@ -49,6 +55,34 @@ var CaretComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(CaretComponent.prototype, "currentBackgroundColor", {
+        get: function () {
+            return this._currentBackgroundColor;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(CaretComponent.prototype, "backgroundColor", {
+        get: function () {
+            return this._backgroundColor;
+        },
+        set: function (value) {
+            this._backgroundColor = value;
+            this._currentBackgroundColor.next(value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(CaretComponent.prototype, "outline", {
+        get: function () {
+            return this._outline;
+        },
+        set: function (value) {
+            this._outline = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
         core_1.HostListener('window:focus', ['$event']),
         __metadata("design:type", Function),
@@ -66,6 +100,16 @@ var CaretComponent = /** @class */ (function () {
         __metadata("design:type", Observable_1.Observable),
         __metadata("design:paramtypes", [Observable_1.Observable])
     ], CaretComponent.prototype, "typing", null);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String),
+        __metadata("design:paramtypes", [String])
+    ], CaretComponent.prototype, "backgroundColor", null);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String),
+        __metadata("design:paramtypes", [String])
+    ], CaretComponent.prototype, "outline", null);
     CaretComponent = __decorate([
         core_1.Component({
             selector: 'caret',
