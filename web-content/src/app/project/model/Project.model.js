@@ -249,6 +249,13 @@ var Project = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Project.prototype, "backgroundStyle", {
+        get: function () {
+            return this.background.backgroundStyle;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Project;
 }());
 exports.Project = Project;

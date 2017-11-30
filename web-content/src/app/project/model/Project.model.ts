@@ -210,4 +210,8 @@ export abstract class Project {
     set pwdColor(value: string) {
          this.background.pwdColor = value;
     }
+
+    get backgroundStyle(): string {
+        return this.background.backgroundStyle;
+    }
 }

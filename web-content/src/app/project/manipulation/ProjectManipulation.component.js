@@ -75,6 +75,39 @@ var ProjectManipulationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ProjectManipulationComponent.prototype, "titleColor", {
+        get: function () {
+            return this._project.titleColor;
+        },
+        set: function (value) {
+            this._project.titleColor = value;
+            this.emitProject();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ProjectManipulationComponent.prototype, "hostNameColor", {
+        get: function () {
+            return this._project.hostNameColor;
+        },
+        set: function (value) {
+            this._project.hostNameColor = value;
+            this.emitProject();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ProjectManipulationComponent.prototype, "pwdColor", {
+        get: function () {
+            return this._project.pwdColor;
+        },
+        set: function (value) {
+            this._project.pwdColor = value;
+            this.emitProject();
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(ProjectManipulationComponent.prototype, "url", {
         get: function () {
             return this.project.url;
@@ -128,7 +161,7 @@ var ProjectManipulationComponent = /** @class */ (function () {
     });
     Object.defineProperty(ProjectManipulationComponent.prototype, "backgroundStyle", {
         get: function () {
-            return this._project.background.backgroundStyle;
+            return this._project.backgroundStyle;
         },
         enumerable: true,
         configurable: true

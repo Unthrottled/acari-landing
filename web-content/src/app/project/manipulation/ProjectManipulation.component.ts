@@ -4,7 +4,6 @@ import {Project} from "../model/Project.model";
 import {ProjectService} from "../Project.service";
 import {LocalReachService} from "./LocalReach.service";
 import {LocalProjectFactory} from "../LocalProject.factory";
-import {LocalProject} from "../model/LocalProject.model";
 import {LocalReach} from "../model/LocalReach.model";
 
 export class ProjectManipulationComponent implements OnInit {
@@ -66,6 +65,34 @@ export class ProjectManipulationComponent implements OnInit {
         this.emitProject();
     }
 
+
+    get titleColor(): string {
+        return this._project.titleColor;
+    }
+
+    get hostNameColor(): string {
+        return this._project.hostNameColor;
+    }
+
+    get pwdColor(): string {
+        return this._project.pwdColor;
+    }
+
+    set titleColor(value: string) {
+        this._project.titleColor = value;
+        this.emitProject();
+    }
+
+    set hostNameColor(value: string) {
+        this._project.hostNameColor = value;
+        this.emitProject();
+    }
+
+    set pwdColor(value: string) {
+        this._project.pwdColor = value;
+        this.emitProject();
+    }
+
     get url(): string {
         return this.project.url;
     }
@@ -107,7 +134,7 @@ export class ProjectManipulationComponent implements OnInit {
     }
 
     get backgroundStyle(): string {
-        return this._project.background.backgroundStyle;
+        return this._project.backgroundStyle;
     }
 
     get maxProjectCount(): Observable<number> {
