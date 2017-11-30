@@ -2,11 +2,46 @@ export class Background {
     constructor(colorOne: string = '#8d85d6',
                 colorTwo: string = '#464646',
                 textColor: string = '#f5f5f5',
+                hostNameColor: string = 'green',
+                pwdColor: string = 'cyan',
+                titleColor: string = 'ghostwhite',
                 hoverColor: string = 'rgba(141, 133, 214, 0.55)') {
         this._colorOne = colorOne;
         this._colorTwo = colorTwo;
         this._textColor = textColor;
+        this._hostNameColor = hostNameColor;
+        this._pwdColor = pwdColor;
+        this._titleColor = titleColor;
         this._hoverColor = hoverColor;
+    }
+
+    private _hostNameColor: string;
+    private _pwdColor: string;
+    private _titleColor: string;
+
+
+    get hostNameColor(): string {
+        return this._hostNameColor;
+    }
+
+    set hostNameColor(value: string) {
+        this._hostNameColor = value;
+    }
+
+    get pwdColor(): string {
+        return this._pwdColor;
+    }
+
+    set pwdColor(value: string) {
+        this._pwdColor = value;
+    }
+
+    get titleColor(): string {
+        return this._titleColor;
+    }
+
+    set titleColor(value: string) {
+        this._titleColor = value;
     }
 
     private _backgroundStyle: string;
