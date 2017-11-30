@@ -12,14 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
 var BehaviorSubject_1 = require("rxjs/BehaviorSubject");
-var WelcomeBarComponent = /** @class */ (function () {
-    function WelcomeBarComponent() {
+var PhantomTypingComponent = /** @class */ (function () {
+    function PhantomTypingComponent() {
         this.writeComplete = new core_1.EventEmitter();
         this.isTyping = new BehaviorSubject_1.BehaviorSubject(false);
         this._content = '';
         this._words = '';
     }
-    Object.defineProperty(WelcomeBarComponent.prototype, "content", {
+    Object.defineProperty(PhantomTypingComponent.prototype, "content", {
         get: function () {
             return this._content;
         },
@@ -29,7 +29,7 @@ var WelcomeBarComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(WelcomeBarComponent.prototype, "words", {
+    Object.defineProperty(PhantomTypingComponent.prototype, "words", {
         get: function () {
             return this._words;
         },
@@ -39,14 +39,14 @@ var WelcomeBarComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(WelcomeBarComponent.prototype, "typing", {
+    Object.defineProperty(PhantomTypingComponent.prototype, "typing", {
         get: function () {
             return this.isTyping;
         },
         enumerable: true,
         configurable: true
     });
-    WelcomeBarComponent.prototype.ngOnInit = function () {
+    PhantomTypingComponent.prototype.ngOnInit = function () {
         var _this = this;
         Observable_1.Observable.of(1)
             .delay(1000)
@@ -65,20 +65,20 @@ var WelcomeBarComponent = /** @class */ (function () {
     __decorate([
         core_1.Output(),
         __metadata("design:type", Object)
-    ], WelcomeBarComponent.prototype, "writeComplete", void 0);
+    ], PhantomTypingComponent.prototype, "writeComplete", void 0);
     __decorate([
         core_1.Input(),
         __metadata("design:type", String),
         __metadata("design:paramtypes", [String])
-    ], WelcomeBarComponent.prototype, "words", null);
-    WelcomeBarComponent = __decorate([
+    ], PhantomTypingComponent.prototype, "words", null);
+    PhantomTypingComponent = __decorate([
         core_1.Component({
-            selector: 'welcome-bar',
-            template: require('./WelcomeBar.component.htm')
+            selector: 'phantom-typing',
+            template: require('./PhantomTyping.component.htm')
         }),
         __metadata("design:paramtypes", [])
-    ], WelcomeBarComponent);
-    return WelcomeBarComponent;
+    ], PhantomTypingComponent);
+    return PhantomTypingComponent;
 }());
-exports.WelcomeBarComponent = WelcomeBarComponent;
-//# sourceMappingURL=WelcomeBar.component.js.map
+exports.PhantomTypingComponent = PhantomTypingComponent;
+//# sourceMappingURL=PhantomTyping.component.js.map

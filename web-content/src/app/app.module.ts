@@ -13,7 +13,6 @@ import {WindowRef} from "./util/window";
 import {AuthModule} from "./auth/auth.module";
 import {CommonModule} from "@angular/common";
 import {KonamiDirective} from "./util/konami.directive";
-import {WelcomeBarComponent} from "./welcome/WelcomeBar.component";
 import {WelcomeModule} from "./welcome/Welcome.module";
 
 

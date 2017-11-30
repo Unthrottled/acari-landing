@@ -10,7 +10,7 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
 var auth_module_1 = require("../auth/auth.module");
-var WelcomeBar_component_1 = require("./WelcomeBar.component");
+var PhantomTyping_component_1 = require("./PhantomTyping.component");
 var Welcome_component_1 = require("./Welcome.component");
 var Caret_module_1 = require("../cursor/Caret.module");
 var WelcomeModule = /** @class */ (function () {
@@ -20,11 +20,11 @@ var WelcomeModule = /** @class */ (function () {
         core_1.NgModule({
             imports: [common_1.CommonModule, forms_1.FormsModule, auth_module_1.AuthModule, Caret_module_1.CaretModule],
             exports: [
-                WelcomeBar_component_1.WelcomeBarComponent,
+                PhantomTyping_component_1.PhantomTypingComponent,
                 Welcome_component_1.WelcomeComponent
             ],
             declarations: [
-                WelcomeBar_component_1.WelcomeBarComponent,
+                PhantomTyping_component_1.PhantomTypingComponent,
                 Welcome_component_1.WelcomeComponent
             ],
             bootstrap: [],

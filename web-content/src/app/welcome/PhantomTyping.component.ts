@@ -4,10 +4,10 @@ import {Subject} from "rxjs/Subject";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 @Component({
-    selector: 'welcome-bar',
-    template: require('./WelcomeBar.component.htm')
+    selector: 'phantom-typing',
+    template: require('./PhantomTyping.component.htm')
 })
-export class WelcomeBarComponent implements OnInit {
+export class PhantomTypingComponent implements OnInit {
 
     @Output()
     private writeComplete = new EventEmitter<void>();
