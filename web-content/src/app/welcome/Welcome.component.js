@@ -13,7 +13,7 @@ var core_1 = require("@angular/core");
 var WelcomeComponent = /** @class */ (function () {
     function WelcomeComponent() {
         this.endingStatement = 'The content below is a rich collection of various projects that capture the principals that drive our passion. ' +
-            'The never ending quest of continuous improvement is what drives us everyday. Hopefully, we produce something that you are looking to find!';
+            'The never ending quest of continuous improvement is what drives us everyday. Hopefully, we have produced something that you are looking to find!';
     }
     WelcomeComponent = __decorate([
         core_1.Component({

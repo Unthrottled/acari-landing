@@ -1,5 +1,5 @@
 $welcome-background-color: rgba(73, 73, 73, 1);
-$welcome-highlight-color: limegreen;
+$welcome-highlight-color: rgba(23, 250, 0, 0.75);
 .welcome-header-container {
   display: inline-flex;
 }
@@ -15,10 +15,10 @@ $welcome-highlight-color: limegreen;
   color: ghostwhite;
   font-family: 'proto', Consolas, Monaco, 'Andale Mono', monospace;
   border-radius: 0.25em 1em 0.5em 1em;
-  text-shadow: -1px -1px 0 limegreen,
-  1px -1px 0 limegreen,
-  -1px 1px 0 limegreen,
-  1px 1px 0 limegreen;
+  text-shadow: -1px -1px 0 $welcome-highlight-color,
+  1px -1px 0 $welcome-highlight-color,
+  -1px 1px 0 $welcome-highlight-color,
+  1px 1px 0 $welcome-highlight-color;
 }
 
 
