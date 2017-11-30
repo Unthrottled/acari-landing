@@ -5,18 +5,12 @@ public class Background {
   private String _textColor;
   private String _colorOne;
   private String _colorTwo;
+  private String _hostNameColor;
+  private String _pwdColor;
+  private String _titleColor;
   private String _hoverColor;
 
   public Background(){}
-
-  public Background(String _backgroundStyle, String _textColor, String _colorOne, String _colorTwo,
-                    String _hoverColor) {
-    this._backgroundStyle = _backgroundStyle;
-    this._textColor = _textColor;
-    this._colorOne = _colorOne;
-    this._colorTwo = _colorTwo;
-    this._hoverColor = _hoverColor;
-  }
 
   public String get_backgroundStyle() {
     return _backgroundStyle;
@@ -56,5 +50,29 @@ public class Background {
 
   public void set_hoverColor(String _hoverColor) {
     this._hoverColor = _hoverColor;
+  }
+
+  public String get_hostNameColor() {
+    return _hostNameColor;
+  }
+
+  public void set_hostNameColor(String _hostNameColor) {
+    this._hostNameColor = _hostNameColor;
+  }
+
+  public String get_pwdColor() {
+    return _pwdColor;
+  }
+
+  public void set_pwdColor(String _pwdColor) {
+    this._pwdColor = _pwdColor;
+  }
+
+  public String get_titleColor() {
+    return _titleColor;
+  }
+
+  public void set_titleColor(String _titleColor) {
+    this._titleColor = _titleColor;
   }
 }

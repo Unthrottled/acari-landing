@@ -111,6 +111,14 @@ export class ProjectManipulationComponent implements OnInit {
         this.emitProject();
     }
 
+    get fileName(): string {
+        return this.project.fileName;
+    }
+
+    set fileName(value: string) {
+        this.project.fileName = value;
+    }
+
     get excerpt(): string {
         return this._project.excerpt;
     }

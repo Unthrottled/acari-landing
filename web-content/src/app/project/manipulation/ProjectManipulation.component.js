@@ -130,6 +130,16 @@ var ProjectManipulationComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ProjectManipulationComponent.prototype, "fileName", {
+        get: function () {
+            return this.project.fileName;
+        },
+        set: function (value) {
+            this.project.fileName = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(ProjectManipulationComponent.prototype, "excerpt", {
         get: function () {
             return this._project.excerpt;

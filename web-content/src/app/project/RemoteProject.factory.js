@@ -23,7 +23,7 @@ var RemoteProjectFactory = /** @class */ (function () {
     }
     RemoteProjectFactory.prototype.createProject = function (json) {
         var identifier = new Identifier_model_1.Identifier(json.identifier._id);
-        var description = new Description_model_1.Description(json.description._excerpt, json.description._preachySpeechy);
+        var description = new Description_model_1.Description(json.description._excerpt, json.description._preachySpeechy, json.description._projectName);
         var remoteReach = this.remoteReachService.fetchReach(json.reach._identifier._id);
         var background = new Background_model_1.Background(json.background._colorOne, json.background._colorTwo, json.background._textColor, json.background._hostNameColor, json.background._pwdColor, json.background._titleColor, json.background._hoverColor);
         var location2 = new Location_model_1.Location(json.location._url);

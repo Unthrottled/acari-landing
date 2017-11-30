@@ -3,6 +3,7 @@ package io.acari.landing.model;
 public class Description {
     private String _excerpt;
     private String _preachySpeechy;
+    private String _projectName;
 
     public Description(){}
 
@@ -25,5 +26,13 @@ public class Description {
 
   public void set_preachySpeechy(String _preachySpeechy) {
     this._preachySpeechy = _preachySpeechy;
+  }
+
+  public String get_projectName() {
+    return _projectName;
+  }
+
+  public void set_projectName(String _projectName) {
+    this._projectName = _projectName;
   }
 }

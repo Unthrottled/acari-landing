@@ -20,6 +20,7 @@ export class RemoteProjectFactory {
         let description = new Description(
             json.description._excerpt,
             json.description._preachySpeechy,
+            json.description._projectName,
         );
         let remoteReach = this.remoteReachService.fetchReach(
             json.reach._identifier._id
