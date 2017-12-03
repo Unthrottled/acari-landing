@@ -1,8 +1,11 @@
 package io.acari.landing;
 
+import com.google.common.collect.Lists;
 import com.mongodb.ConnectionString;
+import com.mongodb.MongoCredential;
 import com.mongodb.async.client.MongoClientSettings;
 import com.mongodb.connection.ClusterSettings;
+import com.mongodb.connection.ConnectionPoolSettings;
 import com.mongodb.connection.SslSettings;
 import com.mongodb.connection.netty.NettyStreamFactoryFactory;
 import com.mongodb.reactivestreams.client.MongoClient;
@@ -43,6 +46,11 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
             .sslSettings(SslSettings.builder()
                     .applyConnectionString(connectionString)
                     .build())
+        .credentialList(Lists.newArrayList(
+            MongoCredential.createCredential(
+                environment.getProperty("acari.mongo.username",
+                    "admin"), "admin",
+                environment.getProperty("acari.mongo.pass", "123abc").toCharArray())))
             .clusterSettings(ClusterSettings.builder()
                     .applyConnectionString(connectionString)
                     .build())
