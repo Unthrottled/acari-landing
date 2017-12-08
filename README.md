@@ -52,7 +52,9 @@ To move the changed code into the web server all you have to do is run,
 
 #### Live action development!
 
-`docker-compose -f docker-compose-dev.yml up -d` will run the web server, mongo, and also serve the static web-content from browsersync.
+`docker-compose -f docker-compose-dev.yml up -d` 
+
+will run the web server, mongo, and also serve the static web-content from browsersync.
 
 The plus here is that you get live change updates, as the dev server will watch all web-content files for changes.
 
@@ -62,6 +64,8 @@ Fun fact, if you make any changes to typscript files, you will have to recompile
 
 You could create a script that has this as the command:
 
-`docker run --rm -v /home/alex/workspace/acari-landing/web-content:/app alexsimons/nodebuild run compile` replacing /home/alex/workspace with whatever you put the repository. 
+`docker run --rm -v /home/alex/workspace/acari-landing/web-content:/app alexsimons/nodebuild run compile` 
+
+You will probably want to replace  /home/alex/workspace with whatever you put the repository. 
 
 ![END](images/end.jpg)
