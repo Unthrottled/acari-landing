@@ -1,41 +1,53 @@
-# Acari Template Project
+# Acari Landing Project
 
 ---
 
-This project is, like the title states, a template for creating applications for the Acari web-suite.
+I assume since you are reading this that you probably want to know more about this project.
+I guess that is what a README is for, right?
 
-It comes pre-baked with the following goodies
+Rather that tell you I can just show you.
 
-## Web-Service
+## [Here is the live example](https://acari.io)
 
-This directory is a place holder for the Server-Side code. 
-There is nothing in here @ the moment, because I may change what I want to use as my middle-ware from time to time.
+---
 
+To run this project locally you will need the following goodies:
 
-## Web-content
+ - [Docker 17.09.0](https://www.docker.com/) 
+ - [Docker-Compose 1.12.0](https://docs.docker.com/compose/install/)
+ 
+All you have to do is at the root of this repository run:
+    `docker-compose up -d`
 
-This directory holds all of the fun bits to serve end-user rendered html.
-This can be bundled with the web-service, but is broken out in-case I want to take advantage of content servers such as Apache or nginx.
-Web-content has code in it because, I know Angular 4 the best at the moment. 
-Most of the work on all of these projects in front-end work. So I am currently sticking to what I know at the moment.
-  
+Boom! You are done.
 
-### Webpack 2
+What this does is starts a Mongo server that is running with TLS configured.
+In addition to mounting the data location to dataDump in the root of this repository.
+So that when the Mongo server container gets removed, all of the data is saved.
 
-Webpack is currently configured with the following goodies:
+The the spring boot web server is started, which runs on port 443.
+Which means that you can access it via `https://localhost`. 
+Granted, it is using a self signed certificate, so any browser is going to complain that `This site is unsecure!`.
 
-- Browsersync Server that runs on localhost:3000 (when you run `npm run watch`) with a proxy to redirect HTTP request to an intended destination.
-- It is set to create 3 files on build
-    - app.[hash].js: which is all of the application code bundled together in a cache-busting hash post-fixed js file.
-    - vendor.[hash].js: all of the vendor code wrapped up such as: angular4, bootstrap, rxjs, etc.
-    - polyfills.[hash].js: all of the browser compatability stuff, I think....
-- It is set to expose jquery as the global variables $ and jQuery
-- It is set to load html templates post-fixed with htm into the javascript files (to avoid browser caching).
-- It has a sass build process.
-- All of the bundled files will be put into the index.html body when the node task `build` is run.
+All of the fancy packaged static web content is stored in web-service/src/main/resources/static.
 
-### Bootstrap 4
+If you want to make changes to any of this code, the unpackaged code exists in the web-content directory.
+Famililarity with Angular 4 is a plus.
 
-### Typescript Linting
-Which is run by the command `npm run lint`
+There exists a docker compose file that will allow you to install your node modules locally (node_models).
+All you have to do is run `docker-compose -f docker-compose-build.yml up`.
 
+Once that is done, you are free to make changes!
+To move the changed code into the web server all you have to do is run, 
+`docker-compose -f docker-compose-deploy.yml up` and that should transpile all of the typscript, bundle it up, and move it to web-service/src/main/resources
+
+`docker-compose -f docker-compose-dev.yml up -d` will run the web server, mongo, and also serve the static web-content from browsersync.
+The plus here is that you get live change updates, as the dev server will watch all web-content files for changes.
+The dev server runs on `https://localhost:3000`. 
+
+Fun fact, if you make any changes to typscript files, you will have to recompile the code to get the changes to take hold.
+You could create a script that has this as the command:
+
+`docker run --rm -v /home/alex/workspace/acari-landing/web-content:/app alexsimons/nodebuild run compile` replacing /home/alex/workspace with whatever you put the repository. 
+
+![END](images/end.jpg)
