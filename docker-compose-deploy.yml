@@ -6,6 +6,6 @@ services:
       context: ./web-content
     image: alexsimons/nodeinstall
     volumes:
-      - ./web-content:/app
+      - .:/app
     entrypoint:
       - "cd web-content/;npm run build" #yes I know its confusing to have the deploy proccess called build :\
