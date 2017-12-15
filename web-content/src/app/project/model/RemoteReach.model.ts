@@ -39,7 +39,7 @@ export class RemoteReach implements ReachInterface {
     }
 
     imageBinary(): Observable<any> {
-        return this._rawFile;
+        return this.replaySubject;
     }
 
 }

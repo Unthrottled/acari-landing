@@ -1,0 +1,11 @@
+version: "3"
+services:
+  node-install:
+    build:
+      dockerfile: Dockerfile-install
+      context: ./web-content
+    image: alexsimons/nodeinstall
+    volumes:
+      - .:/app
+    entrypoint:
+      - "cd web-content/;npm run build" #yes I know its confusing to have the deploy proccess called build :\
