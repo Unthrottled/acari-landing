@@ -38,7 +38,7 @@ var RemoteReach = /** @class */ (function () {
         configurable: true
     });
     RemoteReach.prototype.imageBinary = function () {
-        return this._rawFile;
+        return this.replaySubject;
     };
     return RemoteReach;
 }());

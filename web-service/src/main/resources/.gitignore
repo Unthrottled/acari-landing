@@ -2,3 +2,4 @@ db-configs.properties
 keystore.jceks
 auth-configs.properties
 application.yml
+*.jks
