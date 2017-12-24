@@ -38,7 +38,7 @@ All of the fancy packaged static web content is stored in web-service/src/main/r
 ### Local Development
 
 If you want to make changes to any of this code, the unpackaged code exists in the web-content directory.
-Famililarity with Angular 4 is a plus.
+Familiarity with Angular 4 is a plus.
 
 There exists a docker compose file that will allow you to install your node modules locally (node_models).
 
