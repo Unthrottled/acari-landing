@@ -53,8 +53,8 @@ public class JWTFilter implements WebFilter {
         }
 
         return getAuthentication(authHeaders)
-                .flatMap(authenticationManager::authenticate)
                 .filter(Authentication::isAuthenticated)
+                .onErrorMap(t->new AccessDeniedException("YOU SHALL NOT PASS"))
                 .switchIfEmpty(Mono.error(new AccessDeniedException("YOU SHALL NOT PASS!!")))
                 .flatMap(goodToken -> chain.filter(exchange));
 

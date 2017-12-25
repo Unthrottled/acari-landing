@@ -32,7 +32,7 @@ public class SecurityConfiguration implements WebFluxConfigurer {
 
             @Override
             public boolean matches(CharSequence rawPassword, String encodedPassword) {
-                return rawPassword.equals(encodedPassword);
+                return rawPassword != null && encodedPassword != null && rawPassword.equals(encodedPassword);
             }
         });
         return userDetailsRepositoryReactiveAuthenticationManager;
