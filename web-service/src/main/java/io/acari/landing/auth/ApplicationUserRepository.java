@@ -11,10 +11,6 @@ import java.util.Optional;
 
 @Service
 public class ApplicationUserRepository implements ReactiveUserDetailsService {
-    ApplicationUser afindByUsername(String username) {
-        return null;
-    }
-
 
     @Override
     public Mono<UserDetails> findByUsername(String username) {
