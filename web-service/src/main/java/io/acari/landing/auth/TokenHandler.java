@@ -20,10 +20,10 @@ public class TokenHandler {
   }
 
   public Mono<String> handleUser(Mono<ApplicationUser> maybeAlex) {
-    return maybeAlex.flatMap(alex-> authenticationManager.authenticate(
+    return maybeAlex.flatMap(probablyAlex-> authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(
-            alex.getUsername(),
-            alex.getPassword(),
+            probablyAlex.getUsername(),
+            probablyAlex.getPassword(),
             new ArrayList<>())))
         .filter(Authentication::isAuthenticated)
         //Is Alex!!
