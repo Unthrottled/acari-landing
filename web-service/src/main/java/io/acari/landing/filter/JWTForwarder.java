@@ -14,6 +14,7 @@ import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 import reactor.util.annotation.NonNull;
 
+import java.nio.file.AccessDeniedException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -37,8 +38,7 @@ public class JWTForwarder implements WebFilter {
         }
 
         return getAuthentication(authHeaders)
-                .defaultIfEmpty(null)//bad token
-                .map(token-> Preconditions.checkNotNull(token, "Unauthorized!"))
+                .switchIfEmpty(Mono.error(new AccessDeniedException("YOU SHALL NOT PASS!!")))
                 .flatMap(goodToken -> chain.filter(exchange));
 
     }
