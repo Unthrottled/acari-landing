@@ -1,6 +1,7 @@
 package io.acari.landing.auth;
 
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -12,14 +13,14 @@ import java.util.ArrayList;
 @Component
 public class TokenHandler {
 
-  private final AuthenticationManager authenticationManager;
+  private final ReactiveAuthenticationManager authenticationManager;
 
-  public TokenHandler(AuthenticationManager authenticationManager) {
+  public TokenHandler(ReactiveAuthenticationManager authenticationManager) {
     this.authenticationManager = authenticationManager;
   }
 
   public Mono<String> handleUser(Mono<ApplicationUser> maybeAlex) {
-    return maybeAlex.map(alex-> authenticationManager.authenticate(
+    return maybeAlex.flatMap(alex-> authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(
             alex.getUsername(),
             alex.getPassword(),
