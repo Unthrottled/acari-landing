@@ -37,15 +37,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
   }
 
-  @Bean
-  CorsConfigurationSource corsConfigurationSource() {
-    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    CorsConfiguration config = new CorsConfiguration().applyPermitDefaultValues();
-    config.setAllowedMethods(Lists.newArrayList("GET","POST","PUT","DELETE","HEAD","OPTIONS"));
-    source.registerCorsConfiguration("/**", config);
-    return source;
-  }
-
   @Override
   public void configure(WebSecurity webSecurity) {
     webSecurity.ignoring().antMatchers(HttpMethod.GET, "/api/projects")
