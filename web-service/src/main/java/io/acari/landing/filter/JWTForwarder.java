@@ -3,10 +3,13 @@ package io.acari.landing.filter;
 import com.google.common.base.Preconditions;
 import io.acari.landing.auth.AuthConfigs;
 import io.jsonwebtoken.Jwts;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
@@ -24,6 +27,14 @@ import static io.acari.landing.auth.SecurityUtils.TOKEN_PREFIX;
 
 @Component
 public class JWTForwarder implements WebFilter {
+
+    private final ReactiveAuthenticationManager authenticationManager;
+
+    @Autowired
+    public JWTForwarder(ReactiveAuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+    }
+
     @Override
     @NonNull
     public Mono<Void> filter(@NonNull ServerWebExchange exchange, @NonNull WebFilterChain chain) {
@@ -38,6 +49,8 @@ public class JWTForwarder implements WebFilter {
         }
 
         return getAuthentication(authHeaders)
+                .flatMap(authenticationManager::authenticate)
+                .filter(Authentication::isAuthenticated)
                 .switchIfEmpty(Mono.error(new AccessDeniedException("YOU SHALL NOT PASS!!")))
                 .flatMap(goodToken -> chain.filter(exchange));
 
