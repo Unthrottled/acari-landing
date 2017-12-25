@@ -1,5 +1,7 @@
 package io.acari.landing.auth;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 
 @Component
 public class TokenHandler {
-
+  private static final Logger LOGGER = LoggerFactory.getLogger(TokenHandler.class);
   private final ReactiveAuthenticationManager authenticationManager;
 
   public TokenHandler(ReactiveAuthenticationManager authenticationManager) {
@@ -20,6 +22,7 @@ public class TokenHandler {
   }
 
   public Mono<String> handleUser(Mono<ApplicationUser> maybeAlex) {
+
     return maybeAlex.flatMap(probablyAlex-> authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(
             probablyAlex.getUsername(),
@@ -27,7 +30,7 @@ public class TokenHandler {
             new ArrayList<>())))
         .filter(Authentication::isAuthenticated)
         //Is Alex!!
-        .flatMap(auth -> maybeAlex.map(ApplicationUser::getUsername))
+        .map(auth -> AuthConfigs.Configs.USERNAME.getValue())
         .map(TokenGenerator::generateToken)
         .switchIfEmpty(Mono.error(new AccessDeniedException("YOU SHALL NOT PASS!!")));
   }
