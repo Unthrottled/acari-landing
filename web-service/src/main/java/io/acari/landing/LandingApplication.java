@@ -14,5 +14,4 @@ public class LandingApplication {
     public static void main(String[] args) {
         SpringApplication.run(LandingApplication.class, args);
     }
-
 }
