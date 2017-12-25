@@ -22,13 +22,4 @@ public class LandingApplication {
         SpringApplication.run(LandingApplication.class, args);
     }
 
-    @Bean
-    public NettyContext nettyContext(ApplicationContext context) {
-        HttpHandler handler = WebHttpHandlerBuilder
-                .applicationContext(context).build();
-        ReactorHttpHandlerAdapter adapter
-                = new ReactorHttpHandlerAdapter(handler);
-        HttpServer httpServer = HttpServer.create("localhost", 8080);
-        return httpServer.newHandler(adapter).block();
-    }
 }
