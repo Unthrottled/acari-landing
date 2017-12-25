@@ -30,11 +30,10 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-	compile('org.springframework.boot:spring-boot-starter-hateoas')
-	compile('org.springframework.boot:spring-boot-starter-security')
 	compile 'io.netty:netty-buffer'
 	compile 'io.projectreactor.ipc:reactor-netty'
 	compile 'org.springframework:spring-context'
+	compile 'org.springframework.security:spring-security-core'
 	compile('org.springframework.boot:spring-boot-starter-webflux')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile('com.google.guava:guava:23.4-jre')
