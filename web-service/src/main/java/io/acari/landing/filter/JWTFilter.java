@@ -26,12 +26,12 @@ import static io.acari.landing.auth.SecurityUtils.HEADER_KEY;
 import static io.acari.landing.auth.SecurityUtils.TOKEN_PREFIX;
 
 @Component
-public class JWTForwarder implements WebFilter {
+public class JWTFilter implements WebFilter {
 
     private final ReactiveAuthenticationManager authenticationManager;
 
     @Autowired
-    public JWTForwarder(ReactiveAuthenticationManager authenticationManager) {
+    public JWTFilter(ReactiveAuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
 
