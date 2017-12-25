@@ -20,8 +20,7 @@ public class SecurityConfiguration implements WebFluxConfigurer {
     }
 
     @Bean
-    public ReactiveAuthenticationManager authenticationManager(ReactiveUserDetailsService reactiveUserDetailsService){
+    public ReactiveAuthenticationManager authenticationManager(ReactiveUserDetailsService reactiveUserDetailsService) {
         return new UserDetailsRepositoryReactiveAuthenticationManager(reactiveUserDetailsService);
     }
-
 }
