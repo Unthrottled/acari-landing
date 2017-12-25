@@ -39,6 +39,10 @@ public class JWTForwarder implements WebFilter {
     @NonNull
     public Mono<Void> filter(@NonNull ServerWebExchange exchange, @NonNull WebFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
+        if(isIgnored(request.getURI().getPath())){
+            return chain.filter(exchange);
+        }
+
         ServerHttpResponse response = exchange.getResponse();
         List<String> authHeaders = request.getHeaders().get(HEADER_KEY);
 
@@ -55,6 +59,14 @@ public class JWTForwarder implements WebFilter {
                 .flatMap(goodToken -> chain.filter(exchange));
 
     }
+
+    private boolean isIgnored(String path) {
+        return path.lastIndexOf("/") == 0 ||
+                path.equals("/api/projects") ||
+                path.startsWith("/api/image/get/") ||
+                path.equals("/api/token");
+    }
+
 
     private Mono<UsernamePasswordAuthenticationToken> getAuthentication(List<String> request) {
         return Mono.just(request)
