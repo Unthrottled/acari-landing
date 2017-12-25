@@ -12,9 +12,9 @@ public class RootForwarder implements WebFilter {
   @Override
   public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
     ServerHttpRequest request = exchange.getRequest();
-    if (request.getURI().getPath().equals("/")) {
-      return chain.filter(exchange.mutate().request(request.mutate().path("/index.html").build()).build());
-    }
+//    if (request.getURI().getPath().equals("/")) {
+//      return chain.filter(exchange.mutate().request(request.mutate().path("/index.html").build()).build());
+//    }
 
     return chain.filter(exchange);
   }
