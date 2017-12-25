@@ -17,6 +17,7 @@ public class ApplicationUserRepository implements ReactiveUserDetailsService {
         return Mono.just(username)
                 .filter(u -> AuthConfigs.Configs.USERNAME.getValue().equals(u))
                 .map(u -> User.builder()
+                        .roles("ADMIN")
                         .username(AuthConfigs.Configs.USERNAME.getValue())
                         .password(AuthConfigs.Configs.PASSWORD.getValue()).build());
     }
