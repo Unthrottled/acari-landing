@@ -3,6 +3,8 @@ package io.acari.landing.project;
 import com.mongodb.reactivestreams.client.gridfs.GridFSBucket;
 import com.mongodb.reactivestreams.client.gridfs.GridFSDownloadStream;
 import com.mongodb.reactivestreams.client.gridfs.helpers.AsyncStreamHelper;
+import io.acari.landing.flux.DownloadStreamToFluxFactory;
+import io.acari.landing.flux.FluxAsyncStreamConverter;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,29 +26,32 @@ import java.util.Objects;
 public class ImageHandler {
   private static final Logger LOGGER = LoggerFactory.getLogger(ImageHandler.class);
   private final GridFSBucket gridFSBucket;
+  private final DownloadStreamToFluxFactory downloadStreamToFluxFactory = new DownloadStreamToFluxFactory();
 
   @Autowired
   public ImageHandler(GridFSBucket gridFSBucket) {
     this.gridFSBucket = gridFSBucket;
   }
 
-  public Mono<String> saveImage(Flux<Part> multipartFile) {
-    return null;
+  public Flux<String> saveImage(Flux<Part> multipartFile) {
+    return multipartFile
+            .flatMap(part -> Mono.from(gridFSBucket.uploadFromStream(part.name(),
+                    FluxAsyncStreamConverter.convert(part.content()))))
+            .map(ObjectId::toHexString);
   }
 
   public Flux<byte[]> fetchImage(String imageId) {
-    return null;
-  }
-
-  public Mono<byte[]> fetchImageBinary(String imageId) {
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    return Mono.from(gridFSBucket.downloadToStream(new ObjectId(imageId),
-        AsyncStreamHelper.toAsyncOutputStream(outputStream)))
-        .map(l -> outputStream.toByteArray());
+    return downloadStreamToFluxFactory
+            .convert(gridFSBucket.openDownloadStream(getId(imageId)));
   }
 
   public Mono<Boolean> removeImage(String imageId) {
-    return Mono.from(gridFSBucket.delete(new ObjectId(imageId)))
-        .map(Objects::nonNull);
+    return Mono.from(gridFSBucket.delete(getId(imageId)))
+            .map(Objects::nonNull)
+            .onErrorReturn(false);
+  }
+
+  private ObjectId getId(String imageId) {
+    return new ObjectId(imageId);
   }
 }
