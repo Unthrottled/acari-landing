@@ -9,87 +9,71 @@ import io.acari.landing.project.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import reactor.core.publisher.Flux;
+import org.springframework.http.codec.multipart.Part;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.RequestPredicates;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
+import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
-@RestController
-@RequestMapping("/api")
+@Component
 public class LandingRestController {
-  private static final Logger LOGGER = LoggerFactory.getLogger(LandingRestController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LandingRestController.class);
 
-  private final ImageHandler imageHandler;
-  private final AllProjectHandler allProjectHandler;
-  private final ProjectCreationHandler projectCreationHandler;
-  private final ProjectUpdateHandler projectUpdateHandler;
-  private final ProjectRemovalHandler projectRemovalHandler;
-  private final TokenHandler tokenHandler;
+    private final ImageHandler imageHandler;
+    private final AllProjectHandler allProjectHandler;
+    private final ProjectCreationHandler projectCreationHandler;
+    private final ProjectUpdateHandler projectUpdateHandler;
+    private final ProjectRemovalHandler projectRemovalHandler;
+    private final TokenHandler tokenHandler;
 
-  @Autowired
-  public LandingRestController(ImageHandler imageHandler,
-                               AllProjectHandler allProjectHandler,
-                               ProjectCreationHandler projectCreationHandler,
-                               ProjectUpdateHandler projectUpdateHandler,
-                               ProjectRemovalHandler projectRemovalHandler,
-                               TokenHandler tokenHandler) {
-    this.imageHandler = imageHandler;
-    this.allProjectHandler = allProjectHandler;
-    this.projectCreationHandler = projectCreationHandler;
-    this.projectUpdateHandler = projectUpdateHandler;
-    this.projectRemovalHandler = projectRemovalHandler;
-    this.tokenHandler = tokenHandler;
-  }
+    @Autowired
+    public LandingRestController(ImageHandler imageHandler,
+                                 AllProjectHandler allProjectHandler,
+                                 ProjectCreationHandler projectCreationHandler,
+                                 ProjectUpdateHandler projectUpdateHandler,
+                                 ProjectRemovalHandler projectRemovalHandler,
+                                 TokenHandler tokenHandler) {
+        this.imageHandler = imageHandler;
+        this.allProjectHandler = allProjectHandler;
+        this.projectCreationHandler = projectCreationHandler;
+        this.projectUpdateHandler = projectUpdateHandler;
+        this.projectRemovalHandler = projectRemovalHandler;
+        this.tokenHandler = tokenHandler;
+    }
 
-
-  @GetMapping("")
-  public Mono<String> fetchBase() {
-    return Mono.just("Hello Werld!\n");
-  }
-
-  @PostMapping(value = "token", produces = {MediaType.TEXT_PLAIN_VALUE, MediaType.APPLICATION_JSON_VALUE})
-  public Mono<String> fetchToken(@RequestBody ApplicationUser maybeAlex){
-    return this.tokenHandler.handleUser(maybeAlex);
-  }
-
-  @PostMapping(value = "image/save", consumes = {
-      MediaType.MULTIPART_FORM_DATA_VALUE,
-      MediaType.IMAGE_PNG_VALUE,
-      MediaType.IMAGE_JPEG_VALUE,
-      MediaType.IMAGE_GIF_VALUE,
-      MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-
-  })
-  public Mono<String> saveImage(@RequestPart MultipartFile reach) {
-    return imageHandler.saveImage(reach);
-  }
-
-  @RequestMapping(value = "image/get/{id}", produces = {MediaType.IMAGE_PNG_VALUE,
-      MediaType.IMAGE_JPEG_VALUE,
-      MediaType.IMAGE_GIF_VALUE})
-  public Mono<byte[]> fetchImage(@PathVariable("id") String id) {
-    return imageHandler.fetchImageBinary(id);
-  }
-
-
-  @PostMapping(value = "project/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-  public Mono<ResponseProject> saveProject(@RequestBody BaseProject newProject) {
-    return projectCreationHandler.create(Mono.just(newProject));
-  }
-
-  @DeleteMapping(value = "project/delete/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
-  public Mono<String> deleteProject(@PathVariable("id") String projectId) {
-    return projectRemovalHandler.removeProject(Mono.just(projectId));
-  }
-
-  @PostMapping(value = "project/update", consumes = MediaType.APPLICATION_JSON_VALUE)
-  public Mono<ResponseProject> updateProject(@RequestBody ResponseProject newProject) {
-    return projectUpdateHandler.updateProject(Mono.just(newProject));
-  }
-
-  @GetMapping(value = "projects", produces = MediaType.APPLICATION_JSON_VALUE)
-  public Flux<ResponseProject> allProjects() {
-    return allProjectHandler.findAll();
-  }
+    @Bean
+    public RouterFunction<?> landingRouterFunction() {
+        return RouterFunctions.nest(RequestPredicates.path("/api"),
+                RouterFunctions.route(RequestPredicates.GET("/projects"),
+                        request -> ServerResponse.ok()
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(allProjectHandler.findAll(), ResponseProject.class))
+                        .andRoute(RequestPredicates.POST("/token"),
+                                request -> ServerResponse.ok()
+                                        .contentType(MediaType.TEXT_PLAIN)
+                                        .body(this.tokenHandler.handleUser(request.bodyToMono(ApplicationUser.class)), String.class))
+                        .andRoute(RequestPredicates.POST("/image/save"),
+                                request -> ServerResponse.ok()
+                                        .body(imageHandler.saveImage(request.bodyToFlux(Part.class)), String.class))
+                        .andRoute(RequestPredicates.POST("/project/update"),
+                                request -> ServerResponse.ok()
+                                        .contentType(MediaType.APPLICATION_JSON)
+                                        .body(projectUpdateHandler.updateProject(request.bodyToMono(ResponseProject.class)), ResponseProject.class))
+                        .andRoute(RequestPredicates.POST("/project/create"),
+                                request -> ServerResponse.ok()
+                                        .contentType(MediaType.APPLICATION_JSON)
+                                        .body(projectCreationHandler.create(request.bodyToMono(BaseProject.class)), ResponseProject.class))
+                        .andRoute(RequestPredicates.GET("/image/get/{id}"),
+                                request -> ServerResponse.ok()
+                                        .body(imageHandler.fetchImage(request.pathVariable("id")), byte[].class))
+                        .andRoute(RequestPredicates.DELETE("/project/delete/{id}"),
+                                request -> ServerResponse.ok()
+                                        .body(projectRemovalHandler.removeProject(Mono.just(request.pathVariable("id"))), String.class))
+        ).andOther(RouterFunctions.resources("/**", new ClassPathResource("static/")));
+    }
 }

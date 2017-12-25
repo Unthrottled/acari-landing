@@ -18,15 +18,15 @@ public class TokenHandler {
     this.authenticationManager = authenticationManager;
   }
 
-  public Mono<String> handleUser(ApplicationUser maybeAlex) {
-    return Mono.just(authenticationManager.authenticate(
+  public Mono<String> handleUser(Mono<ApplicationUser> maybeAlex) {
+    return maybeAlex.map(alex-> authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(
-            maybeAlex.getUsername(),
-            maybeAlex.getPassword(),
+            alex.getUsername(),
+            alex.getPassword(),
             new ArrayList<>())))
         .filter(Authentication::isAuthenticated)
         //Is Alex!!
-        .map(auth -> maybeAlex.getUsername())
+        .flatMap(auth -> maybeAlex.map(ApplicationUser::getUsername))
         .map(TokenGenerator::generateToken)
         .switchIfEmpty(Mono.error(new AccessDeniedException("YOU SHALL NOT PASS!!")));
   }
