@@ -36,9 +36,14 @@ public class FluxAsyncInputStream implements AsyncInputStream {
   public Publisher<Integer> read(ByteBuffer dst) {
     return this.source.takeNext()
         .map(dataBuffer -> {
+          int bytesToReadCount = dataBuffer.readableByteCount();
           dst.put(dataBuffer.asByteBuffer());
-          return dataBuffer.readableByteCount() <= 0 ? -1 : dataBuffer.readableByteCount();
-        }).defaultIfEmpty(-1);
+          return bytesToReadCount <= 0 ? -1 : bytesToReadCount;
+        }).defaultIfEmpty(-1)
+            .onErrorMap(throwable -> {
+              LOGGER.warn("oh snaps!", throwable);
+              return throwable;
+            });
   }
 
   /**
