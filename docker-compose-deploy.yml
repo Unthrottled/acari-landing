@@ -4,8 +4,13 @@ services:
     build:
       dockerfile: Dockerfile-install
       context: ./web-content
-    image: alexsimons/nodeinstall
+    image: alexsimons/nodeinstall:9.2.0
     volumes:
-      - .:/app
+      - "./:/app"
     entrypoint:
-      - "cd web-content/;npm run build" #yes I know its confusing to have the deploy proccess called build :\
+      - /bin/bash
+    command:
+      - "-c"
+      - "cd web-content; npm run build"
+
+#runs the node install
