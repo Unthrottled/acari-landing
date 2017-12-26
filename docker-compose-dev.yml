@@ -2,13 +2,18 @@ version: "3"
 services:
   web-content:
     build:
-      dockerfile: Dockerfile-dev
+      dockerfile: Dockerfile-install
       context: ./web-content
-    image: alexsimons/acari-web-content
+    image: alexsimons/nodeinstall:9.2.0
+    volumes:
+      - "./:/app"
+    entrypoint:
+      - /bin/bash
+    command:
+      - "-c"
+      - "cd web-content; npm run watch"
     ports:
       - "3000:3000"
-    volumes:
-      - ./web-content:/app
   web-service:
     build: ./web-service
     image: alexsimons/acari-web-service
