@@ -1,0 +1,200 @@
+.glitch-button {
+  background: $header-link-background;
+  -moz-transition: opacity 300ms;
+  -o-transition: opacity 300ms;
+  -webkit-transition: opacity 300ms;
+  transition: opacity 300ms;
+  font-weight: bold;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  border-radius: 0.5em;
+  color: $header-link-color;
+  padding: {
+    left: 10px;
+    right: 10px;
+  }
+  letter-spacing: 0.05em;
+  display: inline-block;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.glitch-button:after {
+  -moz-box-shadow: $about-line-left 0 0 15px 2px;
+  -webkit-box-shadow: $about-line-left 0 0 15px 2px;
+  box-shadow: $about-line-left 0 0 15px 2px;
+  background: $about-line-left;
+  content: "";
+  width: 2px;
+  position: absolute;
+  height: 100%;
+  opacity: 0;
+}
+
+.glitch-button:before {
+  -moz-box-shadow: $about-line-up 0 0 15px 2px;
+  -webkit-box-shadow: $about-line-up 0 0 15px 2px;
+  box-shadow: $about-line-up 0 0 15px 2px;
+  background: $about-line-up;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  left: 2px;
+  opacity: 0;
+}
+
+.glitch-button:hover {
+  -webkit-animation: glitch 750ms infinite;
+}
+
+.glitch-button:hover:before {
+  -webkit-animation: inverseScan 2s infinite;
+  opacity: 1;
+}
+
+.glitch-button:hover:after {
+  -webkit-animation: scan 2s infinite;
+  opacity: 1;
+}
+
+@-webkit-keyframes glitch {
+  0% {
+    -moz-transform: skewX(0deg);
+    -ms-transform: skewX(0deg);
+    -webkit-transform: skewX(0deg);
+    transform: skewX(0deg);
+  }
+  5% {
+    -moz-transform: matrix(1, 0, 0.5, 1, 10, 0);
+    -ms-transform: matrix(1, 0, 0.5, 1, 10, 0);
+    -webkit-transform: matrix(1, 0, 0.5, 1, 10, 0);
+    transform: matrix(1, 0, 0.5, 1, 10, 0);
+    opacity: 0.75;
+  }
+  10% {
+    -moz-transform: skewX(0deg);
+    -ms-transform: skewX(0deg);
+    -webkit-transform: skewX(0deg);
+    transform: skewX(0deg);
+    opacity: 1;
+  }
+  15% {
+    -moz-transform: skewX(-5deg);
+    -ms-transform: skewX(-5deg);
+    -webkit-transform: skewX(-5deg);
+    transform: skewX(-5deg);
+    opacity: 0.75;
+  }
+  20% {
+    -moz-transform: skewX(0deg);
+    -ms-transform: skewX(0deg);
+    -webkit-transform: skewX(0deg);
+    transform: skewX(0deg);
+    opacity: 1;
+  }
+  45% {
+    -moz-transform: skewX(3deg);
+    -ms-transform: skewX(3deg);
+    -webkit-transform: skewX(3deg);
+    transform: skewX(3deg);
+    opacity: 0.5;
+  }
+  50% {
+    -moz-transform: skewX(0deg);
+    -ms-transform: skewX(0deg);
+    -webkit-transform: skewX(0deg);
+    transform: skewX(0deg);
+    opacity: 1;
+  }
+  55% {
+    -moz-transform: skewX(0deg);
+    -ms-transform: skewX(0deg);
+    -webkit-transform: skewX(0deg);
+    transform: skewX(0deg);
+    opacity: 0.75;
+  }
+  60% {
+    -moz-transform: skewX(0deg);
+    -ms-transform: skewX(0deg);
+    -webkit-transform: skewX(0deg);
+    transform: skewX(0deg);
+    opacity: 1;
+  }
+  75% {
+    -moz-transform: matrix(-1, 0, -0.5, 1, -10, 0);
+    -ms-transform: matrix(-1, 0, -0.5, 1, -10, 0);
+    -webkit-transform: matrix(-1, 0, -0.5, 1, -10, 0);
+    transform: matrix(-1, 0, -0.5, 1, -10, 0);
+  }
+  80% {
+    -moz-transform: skewX(0deg);
+    -ms-transform: skewX(0deg);
+    -webkit-transform: skewX(0deg);
+    transform: skewX(0deg);
+  }
+  85% {
+    -moz-transform: skewX(-8deg);
+    -ms-transform: skewX(-8deg);
+    -webkit-transform: skewX(-8deg);
+    transform: skewX(-8deg);
+    opacity: 0.5;
+  }
+  90% {
+    -moz-transform: skewX(0deg);
+    -ms-transform: skewX(0deg);
+    -webkit-transform: skewX(0deg);
+    transform: skewX(0deg);
+    opacity: 1;
+  }
+  100% {
+    -moz-transform: skewX(0deg);
+    -ms-transform: skewX(0deg);
+    -webkit-transform: skewX(0deg);
+    transform: skewX(0deg);
+  }
+}
+
+@-webkit-keyframes scan {
+  0% {
+    left: 0%;
+  }
+  50% {
+    -moz-transform: skewX(-90deg);
+    -ms-transform: skewX(-90deg);
+    -webkit-transform: skewX(-90deg);
+    transform: skewX(-90deg);
+    left: 97%;
+  }
+  75% {
+    -moz-transform: skewX(0deg);
+    -ms-transform: skewX(0deg);
+    -webkit-transform: skewX(0deg);
+    transform: skewX(0deg);
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@-webkit-keyframes inverseScan {
+  0% {
+    bottom: 0%;
+  }
+  50% {
+    -moz-transform: skewX(-90deg);
+    -ms-transform: skewX(-90deg);
+    -webkit-transform: skewX(-90deg);
+    transform: skewX(-90deg);
+    bottom: 97%;
+  }
+  75% {
+    -moz-transform: skewX(0deg);
+    -ms-transform: skewX(0deg);
+    -webkit-transform: skewX(0deg);
+    transform: skewX(0deg);
+  }
+  100% {
+    bottom: 0%;
+  }
+}
