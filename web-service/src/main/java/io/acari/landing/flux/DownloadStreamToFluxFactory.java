@@ -17,8 +17,8 @@ public class DownloadStreamToFluxFactory {
   }
 
   private void readStream(GridFSDownloadStream gridFSDownloadStream, FluxSink<byte[]> synchronousSink) {
-    ByteBuffer allocate = ByteBuffer.allocate(4096);
-    Mono.from(gridFSDownloadStream.read(allocate))
+      ByteBuffer allocate = ByteBuffer.allocate(512000);
+      Mono.from(gridFSDownloadStream.read(allocate))
         .subscribe(bytesRead -> {
           if (finishedReading(bytesRead)) {
             Mono.from(gridFSDownloadStream.close())
