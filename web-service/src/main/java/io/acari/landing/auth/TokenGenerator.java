@@ -2,7 +2,6 @@ package io.acari.landing.auth;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.security.core.userdetails.User;
 
 import java.util.Date;
 

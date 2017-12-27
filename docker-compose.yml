@@ -2,7 +2,7 @@ version: "3"
 services:
   web-service:
     build: ./web-service
-    image: alexsimons/acari-web-service:1.0.1
+    image: alexsimons/acari-web-service:1.1.1
     ports:
       - "443:8080"
       - "7896:7896"
