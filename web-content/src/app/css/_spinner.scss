@@ -1,8 +1,13 @@
 $knightrider_color: #94151b;
 
+.loading-container {
+  padding: 3rem;
+}
+
 .spinner {
   margin: auto;
   height: 5em;
+  width: 100%;
   text-align: center;
   font-size: 1em;
 }
@@ -10,7 +15,7 @@ $knightrider_color: #94151b;
 .spinner > div {
   background-color: $knightrider_color;
   height: 100%;
-  width: 1.5em;
+  width: 4em;
   margin-right: 0.01em;
   display: inline-block;
 
