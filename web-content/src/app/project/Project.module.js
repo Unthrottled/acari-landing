@@ -29,12 +29,18 @@ var RemoteProject_service_1 = require("./RemoteProject.service");
 var ImageUpload_service_1 = require("./upload/ImageUpload.service");
 var auth_module_1 = require("../auth/auth.module");
 var Caret_module_1 = require("../cursor/Caret.module");
+var loading_indicator_module_1 = require("../loading/loading.indicator.module");
 var ProjectModule = /** @class */ (function () {
     function ProjectModule() {
     }
     ProjectModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, forms_1.FormsModule, auth_module_1.AuthModule, Caret_module_1.CaretModule],
+            imports: [common_1.CommonModule,
+                forms_1.FormsModule,
+                auth_module_1.AuthModule,
+                Caret_module_1.CaretModule,
+                loading_indicator_module_1.LoadingIndicatorModule
+            ],
             exports: [FileChoose_component_1.FileChooseComponent,
                 LocalProjectManipulation_component_1.LocalProjectManipulationComponent,
                 RemoteProjectManipulation_component_1.RemoteProjectManipulationComponent,

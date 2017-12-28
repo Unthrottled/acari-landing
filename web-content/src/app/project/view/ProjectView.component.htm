@@ -3,6 +3,7 @@
      (mouseenter)="mouseEnter()"
      (mouseleave)="mouseLeave()"
         [style.background]="container_hover_color | safetyStyle">
+    <loading-indicator></loading-indicator>
     <div class="project-reach-container"
             *ngIf="reachBinary | async">
         <img [src]="reachBinary | async" alt="HALO REACH"/>

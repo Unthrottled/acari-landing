@@ -13,7 +13,7 @@ export class LoadingIndicatorComponent {
     private _doneLoading: Observable<void> = Observable.empty();
 
 
-    @Input
+    @Input()
     get doneLoading(): Observable<void> {
         return this._doneLoading;
     }
@@ -22,7 +22,7 @@ export class LoadingIndicatorComponent {
         this._doneLoading = value;
     }
 
-    doneLoading(): Observable<boolean> {
+    completedLoading(): Observable<boolean> {
         return this.doneLoading
             .map(()=>true)
             .defaultIfEmpty(false);
