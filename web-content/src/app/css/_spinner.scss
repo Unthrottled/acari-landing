@@ -1,3 +1,5 @@
+$knightrider_color: #94151b;
+
 .spinner {
   margin: auto;
   height: 5em;
@@ -6,7 +8,7 @@
 }
 
 .spinner > div {
-  background-color: #94151b;
+  background-color: $knightrider_color;
   height: 100%;
   width: 1.5em;
   margin-right: 0.01em;
