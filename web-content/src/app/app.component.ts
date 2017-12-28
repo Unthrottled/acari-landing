@@ -8,6 +8,7 @@ import {ProjectService} from "./project/Project.service";
     template: require('./app.component.htm')
 })
 export class AppComponent {
+    versionNumber: string = "v.1.1.1";
 
 
     constructor(private projectService: ProjectService) {

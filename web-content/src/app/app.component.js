@@ -15,6 +15,7 @@ var Project_service_1 = require("./project/Project.service");
 var AppComponent = /** @class */ (function () {
     function AppComponent(projectService) {
         this.projectService = projectService;
+        this.versionNumber = "v.1.1.1";
         this._ableToLogin = false;
     }
     Object.defineProperty(AppComponent.prototype, "projectList", {
