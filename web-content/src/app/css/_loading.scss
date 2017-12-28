@@ -7,7 +7,7 @@
 .sk-cube-grid .sk-cube {
   width: 33%;
   height: 33%;
-  background-color: whitesmoke;
+  background-color: darkgrey;
   opacity: 0.75;
   float: left;
   -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
@@ -49,6 +49,9 @@
       -webkit-transform: scale3D(0, 0, 1);
       transform: scale3D(0, 0, 1);
     }
+  20%, 60% {
+    background-color: $knightrider_color
+  }
 }
 
 @keyframes sk-cubeGridScaleDelay {
@@ -59,4 +62,7 @@
       -webkit-transform: scale3D(0, 0, 1);
       transform: scale3D(0, 0, 1);
     }
+  20%, 60% {
+    background-color: $knightrider_color
+  }
 }
