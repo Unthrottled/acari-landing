@@ -9,7 +9,7 @@ import {Observable} from "rxjs/Observable";
     template: require('./app.component.htm')
 })
 export class AppComponent {
-    versionNumber: string = "v.1.1.1";
+    versionNumber: string = "v.1.1.2";
 
 
     constructor(private projectService: ProjectService) {
