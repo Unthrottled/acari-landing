@@ -7,6 +7,8 @@ import {RemoteProject} from "./model/RemoteProject.model";
 import {ProjectUploadService} from "./upload/ProjectUpload.service";
 import {ProjectUpdateService} from "./upload/ProjectUpdate.service";
 import {RemoteProjectService} from "./RemoteProject.service";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {ReplaySubject} from "rxjs/ReplaySubject";
 
 @Injectable()
 export class ProjectService implements OnInit {
@@ -17,9 +19,12 @@ export class ProjectService implements OnInit {
         this.remoteProjectService.fetchProjects()
             .subscribe(remoteProjects => {
                 remoteProjects.forEach(remoteProject => this.projectList.push(remoteProject));
+            }, ()=>{}, ()=>{
+                this.hasLoaded.next(true);
             });
     }
 
+    hasLoaded: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
     private _projectList: Project[] = [];
 
     get projectList(): Project[] {

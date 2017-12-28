@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import "./app.component.htm";
 import {Project} from "./project/model/Project.model";
 import {ProjectService} from "./project/Project.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: 'angular-application',
@@ -16,6 +17,10 @@ export class AppComponent {
 
     get projectList(): Project[] {
         return this.projectService.projectList;
+    }
+
+    get hasLoaded(): Observable<boolean> {
+        return this.projectService.hasLoaded;
     }
 
     addProject(): void {

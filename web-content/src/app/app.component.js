@@ -25,6 +25,13 @@ var AppComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(AppComponent.prototype, "hasLoaded", {
+        get: function () {
+            return this.projectService.hasLoaded;
+        },
+        enumerable: true,
+        configurable: true
+    });
     AppComponent.prototype.addProject = function () {
         this.projectService.addProject();
     };

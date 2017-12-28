@@ -21,6 +21,7 @@ var auth_module_1 = require("./auth/auth.module");
 var common_1 = require("@angular/common");
 var konami_directive_1 = require("./util/konami.directive");
 var Welcome_module_1 = require("./welcome/Welcome.module");
+var loading_indicator_module_1 = require("./loading/loading.indicator.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -35,6 +36,7 @@ var AppModule = /** @class */ (function () {
                 Project_module_1.ProjectModule,
                 auth_module_1.AuthModule,
                 common_1.CommonModule,
+                loading_indicator_module_1.LoadingIndicatorModule,
                 Welcome_module_1.WelcomeModule
             ],
             exports: [
