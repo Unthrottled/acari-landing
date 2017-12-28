@@ -3,7 +3,9 @@
      (mouseenter)="mouseEnter()"
      (mouseleave)="mouseLeave()"
         [style.background]="container_hover_color | safetyStyle">
-    <loading-indicator [doneLoading]="reachBinary"></loading-indicator>
+    <div class="project-loading-indicator-container">
+        <loading-indicator [doneLoading]="reachBinary"></loading-indicator>
+    </div>
     <div class="project-reach-container"
             *ngIf="reachBinary | async">
         <img [src]="reachBinary | async" alt="Reach Project Icon"/>
