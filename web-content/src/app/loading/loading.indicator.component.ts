@@ -1,5 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {Observable} from "rxjs/Observable";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 @Component({
     selector: 'loading-indicator',
@@ -11,7 +12,7 @@ export class LoadingIndicatorComponent {
     }
 
     private _doneLoading: Observable<void> = Observable.empty();
-
+    private completed: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
     @Input()
     get doneLoading(): Observable<void> {
@@ -20,12 +21,12 @@ export class LoadingIndicatorComponent {
 
     set doneLoading(value: Observable<void>) {
         this._doneLoading = value;
+        this.doneLoading.subscribe(()=>{}, ()=>{}, ()=>{this.completed.next(true);})
+
     }
 
-    completedLoading(): Observable<boolean> {
-        return this.doneLoading
-            .map(()=>true)
-            .defaultIfEmpty(false);
+    get completedLoading(): Observable<boolean> {
+        return this.completed;
     }
 
 
