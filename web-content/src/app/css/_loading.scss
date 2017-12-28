@@ -1,13 +1,14 @@
 .sk-cube-grid {
-  width: 40px;
-  height: 40px;
-  margin: 100px auto;
+  width: 5rem;
+  height: 5rem;
+  margin: 10rem auto;
 }
 
 .sk-cube-grid .sk-cube {
   width: 33%;
   height: 33%;
-  background-color: #333;
+  background-color: whitesmoke;
+  opacity: 0.75;
   float: left;
   -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
   animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
