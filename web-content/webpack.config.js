@@ -25,7 +25,7 @@ var proxyPeel = proxy('/api', {
 
 module.exports = {
     entry: {
-        'styles': './src/styles.ts',
+        'stylez': './src/app/css/sassy.sass',
         'app': './src/main.ts',
         'vendor': './src/vendor.ts',
         'polyfills': './src/polyfills.ts'
@@ -145,7 +145,8 @@ module.exports = {
             exclude: ['shared.js']
         }),
         new ExtractTextPlugin({
-            filename: 'styles.[contenthash].css'
+            filename: 'dist/style.[contenthash].css',
+            allChunks: true
         }),
         new BrowserSyncPlugin({
             // browse to http://localhost:3000/ during development,
