@@ -24,7 +24,8 @@ var LoadingIndicatorComponent = /** @class */ (function () {
         set: function (value) {
             var _this = this;
             this._doneLoading = value;
-            this.doneLoading.subscribe(function () { }, function () { }, function () { _this.completed.next(true); });
+            var emissionHandler = function () { _this.completed.next(true); };
+            this.doneLoading.subscribe(emissionHandler, emissionHandler, emissionHandler);
         },
         enumerable: true,
         configurable: true

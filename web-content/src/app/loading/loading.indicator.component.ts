@@ -21,7 +21,8 @@ export class LoadingIndicatorComponent {
 
     set doneLoading(value: Observable<void>) {
         this._doneLoading = value;
-        this.doneLoading.subscribe(()=>{}, ()=>{}, ()=>{this.completed.next(true);})
+        let emissionHandler = ()=>{this.completed.next(true);};
+        this.doneLoading.subscribe(emissionHandler, emissionHandler, emissionHandler)
 
     }
 
