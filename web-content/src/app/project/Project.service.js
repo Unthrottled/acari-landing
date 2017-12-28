@@ -17,6 +17,7 @@ var RemoteProject_model_1 = require("./model/RemoteProject.model");
 var ProjectUpload_service_1 = require("./upload/ProjectUpload.service");
 var ProjectUpdate_service_1 = require("./upload/ProjectUpdate.service");
 var RemoteProject_service_1 = require("./RemoteProject.service");
+var ReplaySubject_1 = require("rxjs/ReplaySubject");
 var ProjectService = /** @class */ (function () {
     function ProjectService(localProjectFactory, projectUploadService, projectUpdateService, remoteProjectService) {
         var _this = this;
@@ -24,10 +25,13 @@ var ProjectService = /** @class */ (function () {
         this.projectUploadService = projectUploadService;
         this.projectUpdateService = projectUpdateService;
         this.remoteProjectService = remoteProjectService;
+        this.hasLoaded = new ReplaySubject_1.ReplaySubject(1);
         this._projectList = [];
         this.remoteProjectService.fetchProjects()
             .subscribe(function (remoteProjects) {
             remoteProjects.forEach(function (remoteProject) { return _this.projectList.push(remoteProject); });
+        }, function () { }, function () {
+            _this.hasLoaded.next(true);
         });
     }
     Object.defineProperty(ProjectService.prototype, "projectList", {

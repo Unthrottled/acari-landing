@@ -15,11 +15,19 @@ var Project_service_1 = require("./project/Project.service");
 var AppComponent = /** @class */ (function () {
     function AppComponent(projectService) {
         this.projectService = projectService;
+        this.versionNumber = "v.1.1.2";
         this._ableToLogin = false;
     }
     Object.defineProperty(AppComponent.prototype, "projectList", {
         get: function () {
             return this.projectService.projectList;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "hasLoaded", {
+        get: function () {
+            return this.projectService.hasLoaded;
         },
         enumerable: true,
         configurable: true

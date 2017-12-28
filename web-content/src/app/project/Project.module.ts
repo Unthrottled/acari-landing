@@ -22,9 +22,16 @@ import {RemoteProjectService} from "./RemoteProject.service";
 import {ImageUploadService} from "./upload/ImageUpload.service";
 import {AuthModule} from "../auth/auth.module";
 import {CaretModule} from "../cursor/Caret.module";
+import {LoadingIndicatorComponent} from "../loading/loading.indicator.component";
+import {LoadingIndicatorModule} from "../loading/loading.indicator.module";
 
 @NgModule({
-    imports: [CommonModule, FormsModule, AuthModule, CaretModule],
+    imports: [CommonModule,
+        FormsModule,
+        AuthModule,
+        CaretModule,
+        LoadingIndicatorModule
+    ],
     exports: [FileChooseComponent,
         LocalProjectManipulationComponent,
         RemoteProjectManipulationComponent,

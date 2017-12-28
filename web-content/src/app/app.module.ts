@@ -14,6 +14,7 @@ import {AuthModule} from "./auth/auth.module";
 import {CommonModule} from "@angular/common";
 import {KonamiDirective} from "./util/konami.directive";
 import {WelcomeModule} from "./welcome/Welcome.module";
+import {LoadingIndicatorModule} from "./loading/loading.indicator.module";
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {WelcomeModule} from "./welcome/Welcome.module";
         ProjectModule,
         AuthModule,
         CommonModule,
+        LoadingIndicatorModule,
         WelcomeModule
     ],
     exports: [

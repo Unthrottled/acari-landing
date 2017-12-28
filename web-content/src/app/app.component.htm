@@ -11,6 +11,7 @@
             </button>
         </logout-hider>
     </div>
+    <loading-indicator [doneLoading]="hasLoaded"></loading-indicator>
     <project-list [projectList]="projectList"></project-list>
 </div>
 <div class="card-footer">
@@ -62,5 +63,6 @@
     <a class="btn btn-sm btn-danger"
        href="https://github.com/cyclic-reference/acari-landing"
        target="_blank">Source Code!</a>
+    <div class="project-version-number">{{versionNumber}}</div>
 </div>
 
