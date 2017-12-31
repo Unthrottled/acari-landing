@@ -8,7 +8,7 @@ public class ResponseProject extends BaseProject {
         identifier = new Identifier();
     }
 
-    public ResponseProject(MongoProject mongoProject){
+    public ResponseProject(MongoProject mongoProject) {
         super(mongoProject.getReach(), mongoProject.getRank(), mongoProject.getBackground(), mongoProject.getDescription(), mongoProject.getLocation());
         this.identifier = new Identifier(mongoProject.get_id().toHexString());
     }

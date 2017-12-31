@@ -9,17 +9,17 @@ import reactor.core.publisher.Mono;
 @Component
 public class ProjectUpdateHandler {
 
-  private final ProjectRepository projectRepository;
+    private final ProjectRepository projectRepository;
 
-  @Autowired
-  public ProjectUpdateHandler(ProjectRepository projectRepository) {
-    this.projectRepository = projectRepository;
-  }
+    @Autowired
+    public ProjectUpdateHandler(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
+    }
 
-  public Mono<ResponseProject> updateProject(Mono<ResponseProject> projcetToUpdate){
-    return projcetToUpdate
-        .map(MongoProject::new)
-        .flatMap(this.projectRepository::save)
-        .map(ResponseProject::new);
+    public Mono<ResponseProject> updateProject(Mono<ResponseProject> projcetToUpdate) {
+        return projcetToUpdate
+                .map(MongoProject::new)
+                .flatMap(this.projectRepository::save)
+                .map(ResponseProject::new);
     }
 }
