@@ -1,5 +1,5 @@
 $icon-color: crimson;
-
+@import "main";
 
 /**
  * Site footer
@@ -98,6 +98,9 @@ body {
   max-width: 1500px;
   margin: auto;
   padding: 40px 50px;
+  @include media-query($on-tablet) {
+    padding: 0 0 0 0;
+  }
 }
 
 .project-creation-container {
@@ -154,9 +157,6 @@ body {
 }
 
 
-/**
- * Icons
- */
 .icon {
 
   > svg {
