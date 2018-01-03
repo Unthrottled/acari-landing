@@ -7,7 +7,7 @@ import reactor.core.publisher.Flux;
 
 public class FluxAsyncStreamConverter {
 
-  public static AsyncInputStream convert(Flux<DataBuffer> source){
-    return new FluxAsyncInputStream(source);
-  }
+    public static AsyncInputStream convert(Flux<DataBuffer> source) {
+        return new FluxAsyncInputStream(source);
+    }
 }

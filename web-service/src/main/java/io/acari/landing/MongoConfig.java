@@ -22,45 +22,44 @@ import javax.annotation.PreDestroy;
 
 @Configuration
 public class MongoConfig extends AbstractReactiveMongoConfiguration {
-  private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfig.class);
-  private final Environment environment;
+    private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfig.class);
+    private final Environment environment;
+    private final NioEventLoopGroup eventLoopGroup = new NioEventLoopGroup();
 
-  @Autowired
-  public MongoConfig(Environment environment) {
-    this.environment = environment;
-  }
+    @Autowired
+    public MongoConfig(Environment environment) {
+        this.environment = environment;
+    }
 
-  private final NioEventLoopGroup eventLoopGroup = new NioEventLoopGroup();
+    @Bean
+    @Override
+    public MongoClient reactiveMongoClient() {
+        ConnectionString connectionString = new ConnectionString(environment.getProperty("acari.mongo.connectionString", "localhost:27017"));
+        return MongoClients.create(MongoClientSettings.builder()
+                .streamFactoryFactory(NettyStreamFactoryFactory.builder()
+                        .eventLoopGroup(eventLoopGroup)
+                        .build())
+                .sslSettings(SslSettings.builder()
+                        .applyConnectionString(connectionString)
+                        .build())
+                .clusterSettings(ClusterSettings.builder()
+                        .applyConnectionString(connectionString)
+                        .build())
+                .build());
+    }
 
-  @Bean
-  @Override
-  public MongoClient reactiveMongoClient() {
-    ConnectionString connectionString = new ConnectionString(environment.getProperty("acari.mongo.connectionString", "localhost:27017"));
-    return MongoClients.create(MongoClientSettings.builder()
-            .streamFactoryFactory(NettyStreamFactoryFactory.builder()
-                    .eventLoopGroup(eventLoopGroup)
-                    .build())
-            .sslSettings(SslSettings.builder()
-                    .applyConnectionString(connectionString)
-                    .build())
-            .clusterSettings(ClusterSettings.builder()
-                    .applyConnectionString(connectionString)
-                    .build())
-            .build());
-  }
+    @Override
+    protected String getDatabaseName() {
+        return "landing";
+    }
 
-  @Override
-  protected String getDatabaseName() {
-    return "landing";
-  }
+    @Bean
+    public GridFSBucket gridFsTemplate(MongoClient reactiveMongoClient) throws Exception {
+        return GridFSBuckets.create(reactiveMongoClient.getDatabase(environment.getProperty("acari.mongo.landingDatabase", "landing")));
+    }
 
-  @Bean
-  public GridFSBucket gridFsTemplate(MongoClient reactiveMongoClient) throws Exception {
-    return GridFSBuckets.create(reactiveMongoClient.getDatabase(environment.getProperty("acari.mongo.landingDatabase", "landing")));
-  }
-
-  @PreDestroy
-  public void shutdown(){
-    eventLoopGroup.shutdownGracefully();
-  }
+    @PreDestroy
+    public void shutdown() {
+        eventLoopGroup.shutdownGracefully();
+    }
 }

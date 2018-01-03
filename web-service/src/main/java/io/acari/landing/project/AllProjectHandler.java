@@ -8,16 +8,16 @@ import reactor.core.publisher.Flux;
 @Component
 public class AllProjectHandler {
 
-  private final ProjectRepository projectRepository;
+    private final ProjectRepository projectRepository;
 
-  @Autowired
-  public AllProjectHandler(ProjectRepository projectRepository) {
-    this.projectRepository = projectRepository;
-  }
+    @Autowired
+    public AllProjectHandler(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
+    }
 
-  public Flux<ResponseProject> findAll(){
-    return this.projectRepository.findAll()
-        .map(ResponseProject::new)
-        .sort(ResponseProject::compareTo);
+    public Flux<ResponseProject> findAll() {
+        return this.projectRepository.findAll()
+                .map(ResponseProject::new)
+                .sort(ResponseProject::compareTo);
     }
 }
