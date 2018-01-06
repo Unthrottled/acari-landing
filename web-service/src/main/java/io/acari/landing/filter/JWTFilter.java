@@ -29,7 +29,7 @@ public class JWTFilter implements WebFilter {
     @NonNull
     public Mono<Void> filter(@NonNull ServerWebExchange exchange, @NonNull WebFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
-        if(isIgnored(request.getURI().getPath())){
+        if (isIgnored(request.getURI().getPath())) {
             return chain.filter(exchange);
         }
 
@@ -43,7 +43,7 @@ public class JWTFilter implements WebFilter {
 
         return getAuthentication(authHeaders)
                 .filter(Authentication::isAuthenticated)
-                .onErrorMap(t->new AccessDeniedException("YOU SHALL NOT PASS"))
+                .onErrorMap(t -> new AccessDeniedException("YOU SHALL NOT PASS"))
                 .switchIfEmpty(Mono.error(new AccessDeniedException("YOU SHALL NOT PASS!!")))
                 .flatMap(goodToken -> chain.filter(exchange));
 

@@ -1,5 +1,4 @@
 import {Project} from "./Project.model";
-import {LocalReach} from "./LocalReach.model";
 import {Description} from "./Description.model";
 import {Location} from "./Location.model"
 import {Background} from "./Background.model";

@@ -10,12 +10,13 @@ $knightrider_color: #94151b;
   width: 100%;
   text-align: center;
   font-size: 1em;
+  display: flex;
 }
 
 .spinner > div {
   background-color: $knightrider_color;
   height: 100%;
-  width: 4em;
+  flex-grow: 1;
   margin-right: 0.01em;
   display: inline-block;
 
@@ -75,19 +76,19 @@ $knightrider_color: #94151b;
 
 @-webkit-keyframes sk-stretchdelay_1 {
   0% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
 
   10% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   20% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -99,19 +100,19 @@ $knightrider_color: #94151b;
 
 @keyframes sk-stretchdelay_1 {
   0% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
 
   10% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   20% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -132,18 +133,18 @@ $knightrider_color: #94151b;
   }
 
   10% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   20% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   30% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -161,18 +162,18 @@ $knightrider_color: #94151b;
   }
 
   10% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   20% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   30% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -193,18 +194,18 @@ $knightrider_color: #94151b;
   }
 
   20% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   30% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   40% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -222,18 +223,18 @@ $knightrider_color: #94151b;
   }
 
   20% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   30% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   40% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -253,18 +254,18 @@ $knightrider_color: #94151b;
   }
 
   30% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   40% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   50% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -282,18 +283,18 @@ $knightrider_color: #94151b;
   }
 
   30% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   40% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   50% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -313,18 +314,18 @@ $knightrider_color: #94151b;
   }
 
   40% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   50% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   60% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -342,18 +343,18 @@ $knightrider_color: #94151b;
   }
 
   40% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   50% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   60% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -373,18 +374,18 @@ $knightrider_color: #94151b;
   }
 
   50% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   60% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   70% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -402,18 +403,18 @@ $knightrider_color: #94151b;
   }
 
   50% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   60% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   70% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -433,18 +434,18 @@ $knightrider_color: #94151b;
   }
 
   60% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   70% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   80% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -462,18 +463,18 @@ $knightrider_color: #94151b;
   }
 
   60% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   70% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   80% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -493,18 +494,18 @@ $knightrider_color: #94151b;
   }
 
   70% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   80% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   90% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -522,18 +523,18 @@ $knightrider_color: #94151b;
   }
 
   70% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   80% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   90% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -553,13 +554,13 @@ $knightrider_color: #94151b;
   }
 
   80% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   90% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   100% {
@@ -577,13 +578,13 @@ $knightrider_color: #94151b;
   }
 
   80% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   90% {
-    transform: scaleY(0.75);
-    -webkit-transform: scaleY(0.75);
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
 	opacity:0.95;
   }
   100% {
@@ -603,8 +604,8 @@ $knightrider_color: #94151b;
 	opacity:0.05;
   }
   90% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {
@@ -620,8 +621,8 @@ $knightrider_color: #94151b;
 	opacity:0.05;
   }
   90% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.25);
+    -webkit-transform: scaleY(0.25);
 	opacity:0.4;
   }
   100% {

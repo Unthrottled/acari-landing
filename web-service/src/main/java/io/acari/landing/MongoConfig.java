@@ -25,15 +25,16 @@ import javax.annotation.PreDestroy;
 
 @Configuration
 public class MongoConfig extends AbstractReactiveMongoConfiguration {
-  private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfig.class);
-  private final Environment environment;
+    private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfig.class);
+    private final Environment environment;
+    private final NioEventLoopGroup eventLoopGroup = new NioEventLoopGroup();
 
-  @Autowired
-  public MongoConfig(Environment environment) {
-    this.environment = environment;
-  }
+    @Autowired
+    public MongoConfig(Environment environment) {
+        this.environment = environment;
+    }
 
-  private final NioEventLoopGroup eventLoopGroup = new NioEventLoopGroup();
+
 
   @Bean
   @Override
@@ -46,7 +47,7 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
             .sslSettings(SslSettings.builder()
                     .applyConnectionString(connectionString)
                     .build())
-        .credentialList(Lists.newArrayList(
+            .credentialList(Lists.newArrayList(
             MongoCredential.createCredential(
                 environment.getProperty("acari.mongo.username",
                     "admin"), "admin",
@@ -57,18 +58,18 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
             .build());
   }
 
-  @Override
-  protected String getDatabaseName() {
-    return "landing";
-  }
+    @Override
+    protected String getDatabaseName() {
+        return "landing";
+    }
 
-  @Bean
-  public GridFSBucket gridFsTemplate(MongoClient reactiveMongoClient) throws Exception {
-    return GridFSBuckets.create(reactiveMongoClient.getDatabase(environment.getProperty("acari.mongo.landingDatabase", "landing")));
-  }
+    @Bean
+    public GridFSBucket gridFsTemplate(MongoClient reactiveMongoClient) throws Exception {
+        return GridFSBuckets.create(reactiveMongoClient.getDatabase(environment.getProperty("acari.mongo.landingDatabase", "landing")));
+    }
 
-  @PreDestroy
-  public void shutdown(){
-    eventLoopGroup.shutdownGracefully();
-  }
+    @PreDestroy
+    public void shutdown() {
+        eventLoopGroup.shutdownGracefully();
+    }
 }

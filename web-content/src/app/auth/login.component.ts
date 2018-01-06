@@ -2,7 +2,6 @@
  * Created by alex on 9/15/17.
  */
 import {Component, Input, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
 import {AuthService} from "./auth.service";
 import "./login.template.htm";
 import {Subscriber} from "rxjs/Subscriber";

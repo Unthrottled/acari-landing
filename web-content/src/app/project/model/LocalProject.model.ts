@@ -4,7 +4,6 @@ import {Description} from "./Description.model";
 import {Background} from "./Background.model";
 import {ProjectRank} from "./ProjectRank.model";
 import {Location} from "./Location.model";
-import {Observable} from "rxjs/Observable";
 
 export class LocalProject extends Project {
     constructor(description: Description = new Description(),

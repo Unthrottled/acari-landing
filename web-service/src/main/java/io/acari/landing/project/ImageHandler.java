@@ -16,34 +16,34 @@ import java.util.Objects;
 
 @Component
 public class ImageHandler {
-  private static final Logger LOGGER = LoggerFactory.getLogger(ImageHandler.class);
-  private final GridFSBucket gridFSBucket;
-  private final DownloadStreamToFluxFactory downloadStreamToFluxFactory = new DownloadStreamToFluxFactory();
+    private static final Logger LOGGER = LoggerFactory.getLogger(ImageHandler.class);
+    private final GridFSBucket gridFSBucket;
+    private final DownloadStreamToFluxFactory downloadStreamToFluxFactory = new DownloadStreamToFluxFactory();
 
-  @Autowired
-  public ImageHandler(GridFSBucket gridFSBucket) {
-    this.gridFSBucket = gridFSBucket;
-  }
+    @Autowired
+    public ImageHandler(GridFSBucket gridFSBucket) {
+        this.gridFSBucket = gridFSBucket;
+    }
 
-  public Flux<String> saveImage(Flux<Part> multipartFile) {
-    return multipartFile
-            .flatMap(part -> Mono.from(gridFSBucket.uploadFromStream(part.name(),
-                    FluxAsyncStreamConverter.convert(part.content()))))
-            .map(ObjectId::toHexString);
-  }
+    public Flux<String> saveImage(Flux<Part> multipartFile) {
+        return multipartFile
+                .flatMap(part -> Mono.from(gridFSBucket.uploadFromStream(part.name(),
+                        FluxAsyncStreamConverter.convert(part.content()))))
+                .map(ObjectId::toHexString);
+    }
 
-  public Flux<byte[]> fetchImage(String imageId) {
-    return downloadStreamToFluxFactory
-            .convert(gridFSBucket.openDownloadStream(getId(imageId)));
-  }
+    public Flux<byte[]> fetchImage(String imageId) {
+        return downloadStreamToFluxFactory
+                .convert(gridFSBucket.openDownloadStream(getId(imageId)));
+    }
 
-  public Mono<Boolean> removeImage(String imageId) {
-    return Mono.from(gridFSBucket.delete(getId(imageId)))
-            .map(Objects::nonNull)
-            .onErrorReturn(false);
-  }
+    public Mono<Boolean> removeImage(String imageId) {
+        return Mono.from(gridFSBucket.delete(getId(imageId)))
+                .map(Objects::nonNull)
+                .onErrorReturn(false);
+    }
 
-  private ObjectId getId(String imageId) {
-    return new ObjectId(imageId);
-  }
+    private ObjectId getId(String imageId) {
+        return new ObjectId(imageId);
+    }
 }

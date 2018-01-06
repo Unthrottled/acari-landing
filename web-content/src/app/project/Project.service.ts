@@ -7,7 +7,6 @@ import {RemoteProject} from "./model/RemoteProject.model";
 import {ProjectUploadService} from "./upload/ProjectUpload.service";
 import {ProjectUpdateService} from "./upload/ProjectUpdate.service";
 import {RemoteProjectService} from "./RemoteProject.service";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {ReplaySubject} from "rxjs/ReplaySubject";
 
 @Injectable()

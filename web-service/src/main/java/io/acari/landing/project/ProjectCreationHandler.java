@@ -10,16 +10,16 @@ import reactor.core.publisher.Mono;
 @Component
 public class ProjectCreationHandler {
 
-  private final ProjectRepository projectRepository;
+    private final ProjectRepository projectRepository;
 
-  @Autowired
-  public ProjectCreationHandler(ProjectRepository projectRepository) {
-    this.projectRepository = projectRepository;
-  }
+    @Autowired
+    public ProjectCreationHandler(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
+    }
 
-  public Mono<ResponseProject> create(Mono<BaseProject> newProject){
-    return newProject.map(MongoProject::new)
-        .flatMap(this.projectRepository::save)
-        .map(ResponseProject::new);
+    public Mono<ResponseProject> create(Mono<BaseProject> newProject) {
+        return newProject.map(MongoProject::new)
+                .flatMap(this.projectRepository::save)
+                .map(ResponseProject::new);
     }
 }

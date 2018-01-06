@@ -6,8 +6,8 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var proxy = require('http-proxy-middleware');
 var htmlLoader = require('raw-loader');
-var http = require('https');
-var keepAliveAgent = new http.Agent({keepAlive: true});
+var https = require('https');
+var keepAliveAgent = new https.Agent({keepAlive: true});
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 
 
