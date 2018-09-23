@@ -5935,8 +5935,7 @@ body {
   font-family: Tahoma, Geneva, sans-serif;
   line-height: 1.5;
   font-weight: 300;
-  background: rgba(101, 16, 16, 0.83) url(stripe.ea57599555451c53af1db0db4f5b2664.png);
-  background-attachment: fixed;
+  background: url(stripe.ea57599555451c53af1db0db4f5b2664.png) fixed, linear-gradient(#3e3e3e, #3e3e3e, rgba(101, 16, 16, 0.83));
   -webkit-text-size-adjust: 100%;
   color: ghostwhite;
   overflow-x: hidden;
@@ -5965,16 +5964,16 @@ body {
   margin-top: 3rem; }
 
 .site-border {
-  background: #965050;
+  background: #829596;
   border-radius: 1em 1em 0 0;
   opacity: 0.5;
-  background: -webkit-linear-gradient(left, #965050, rgba(150, 0, 14, 0));
+  background: -webkit-linear-gradient(left, #829596, rgba(150, 0, 14, 0));
   /*Safari 5.1-6*/
-  background: -o-linear-gradient(right, #965050, rgba(150, 0, 14, 0));
+  background: -o-linear-gradient(right, #829596, rgba(150, 0, 14, 0));
   /*Opera 11.1-12*/
-  background: -moz-linear-gradient(right, #965050, rgba(150, 0, 14, 0));
+  background: -moz-linear-gradient(right, #829596, rgba(150, 0, 14, 0));
   /*Fx 3.6-15*/
-  background: linear-gradient(to right, #965050, rgba(150, 0, 14, 0));
+  background: linear-gradient(to right, #829596, rgba(150, 0, 14, 0));
   /*Standard*/
   height: 1em; }
 
