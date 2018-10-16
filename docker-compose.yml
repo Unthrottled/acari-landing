@@ -3,6 +3,8 @@ services:
   web-service:
     build: ./web-service
     image: alexsimons/acari-web-service:1.1.4
+    depends_on:
+      - mongo
     ports:
       - "443:8080"
       - "7896:7896"
