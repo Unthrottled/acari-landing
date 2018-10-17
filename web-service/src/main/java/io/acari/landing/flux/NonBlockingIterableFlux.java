@@ -12,11 +12,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.function.Consumer;
 
-//TODO: Would like this to be lazely evaluated
 public class NonBlockingIterableFlux<T> implements Disposable {
     private final Queue<T> itemBuffer = new LinkedList<>();
     private final Queue<MonoSinkHelper<T>> callables = new LinkedList<>();
-    private final Disposable subscription;
+    private final Flux<T> source;
+    private Disposable subscription;
     private boolean complete = false;
 
     /**
@@ -26,17 +26,16 @@ public class NonBlockingIterableFlux<T> implements Disposable {
      * It is a hot observable that buffers when it has
      * backpressure. It guarantees that all items where delivered
      * to somebody.
+     * <p>
+     * It will subscribe to the source only when the first Mono<T>
+     * has a subscription.
      *
      * @param source non-null flux source.
      * @throws NullPointerException when given null source
      */
     public NonBlockingIterableFlux(Flux<T> source) {
         Preconditions.checkNotNull(source);
-        Flux<T> messaged = Flux.create(stringFluxSink ->
-                source.subscribe(sourceItem -> emitNextItem(stringFluxSink, sourceItem),
-                        this::accept,
-                        this::run));
-        subscription = messaged.subscribe();
+        this.source = source;
     }
 
     /**
@@ -49,21 +48,23 @@ public class NonBlockingIterableFlux<T> implements Disposable {
 
     /**
      * Think of this like a "Take a Number" queue.
-     * When you {@code takeNext()} you are essentially asking
+     * When you `takeNext()` you are essentially asking
      * to be served when your number is called.
      * The order at which this is called determines what
      * item you get in the flux, ie the first call get the first element
      * and the second call gets the second item in the flux.
      * <p>
+     * <p>
      * Some people ahead of you may leave, that's okay,
      * because you will get their item.
      * <p>
-     * If you take a number that cannot fufilled
+     * <p>
+     * If you take a number that cannot fulfilled
      * (the flux handed out all of it's items),
      * you will be notified by an empty return.
      *
      * @return An item in the flux based off of the current queue of callbacks.
-     * or nothing if the flux has run out of items.
+     * or nothing if the flux has completeStream out of items.
      */
     public Mono<T> takeNext() {
         if (complete && itemBuffer.isEmpty()) {
@@ -76,42 +77,52 @@ public class NonBlockingIterableFlux<T> implements Disposable {
     }
 
     private Mono<T> createCallback() {
-        final Consumer<MonoSink<T>> stringConsumer = tMonoSink -> {
-            callables.offer(new MonoSinkHelper<>(tMonoSink));
+        final Consumer<MonoSink<T>> tConsumer = tMonoSink -> {
+            if (itemBuffer.isEmpty()) {
+                callables.offer(new MonoSinkHelper<>(tMonoSink));
+            } else {
+                tMonoSink.success(itemBuffer.poll());
+            }
         };
-        return Mono.create(stringConsumer);
+        return Mono.create(tConsumer)
+                .doOnSubscribe(sub -> subscribeToSource());
     }
 
-    private void emitNextItem(FluxSink<T> stringFluxSink, T a) {
+    private void jettisonNextItem(T t) {
         if (callables.isEmpty()) {
-            bufferItem(stringFluxSink, a);
+            bufferItem(t);
         } else {
-            emitToNextSubscribedCaller(stringFluxSink, a);
+            emitToNextSubscribedCaller(t);
         }
     }
 
-    private void bufferItem(FluxSink<T> stringFluxSink, T a) {
-        stringFluxSink.next(a);
+    private void bufferItem(T a) {
         itemBuffer.offer(a);
     }
 
-    private void emitToNextSubscribedCaller(FluxSink<T> stringFluxSink, T a) {
+    private void emitToNextSubscribedCaller(T a) {
         MonoSinkHelper<T> nextPersonInLine = callables.poll();
         if (nextPersonInLine.isDisposed()) {
-            emitNextItem(stringFluxSink, a);
+            jettisonNextItem(a);
         } else {
             nextPersonInLine.success(a);
         }
     }
 
-
-    private void accept(Throwable b) {
-        callables.forEach(callable -> callable.error(b));
+    private void subscribeToSource() {
+        if (this.subscription == null) {
+            subscription = source.subscribe(this::jettisonNextItem,
+                    this::accept,
+                    this::completeStream);
+        }
     }
 
-    private void run() {
+    private void accept(Throwable throwable) {
+        callables.forEach(callable -> callable.error(throwable));
+    }
+
+    private void completeStream() {
         callables.forEach(MonoSinkHelper::success);
         complete = true;
     }
-
 }
