@@ -1,4 +1,4 @@
-FROM mongo:latest
+FROM mongo:3.2
 
 ADD mongod.yml /etc/mongod.conf
 
