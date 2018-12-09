@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.0.M7'
+		springBootVersion = '2.1.1.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -23,7 +23,6 @@ sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
-	maven { url "https://repo.spring.io/snapshot" }
 	maven { url "https://repo.spring.io/milestone" }
 }
 
@@ -35,7 +34,6 @@ dependencies {
 	compile 'org.springframework:spring-context'
 	compile 'org.springframework.security:spring-security-core'
 	compile('org.springframework.boot:spring-boot-starter-webflux')
-	compile 'org.springframework:spring-web:5.1.0.RELEASE'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile('com.google.guava:guava:23.4-jre')
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
