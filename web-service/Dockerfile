@@ -1,4 +1,4 @@
-FROM gradle:4.10-jre8-slim as packager
+FROM gradle:4.10-jdk8 as packager
 MAINTAINER Alex Simons "alexsimons9999@gmail.com"
 USER root
 WORKDIR /app
