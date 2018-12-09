@@ -1,8 +1,11 @@
 package io.acari.landing;
 
+import com.google.common.collect.Lists;
 import com.mongodb.ConnectionString;
+import com.mongodb.MongoCredential;
 import com.mongodb.async.client.MongoClientSettings;
 import com.mongodb.connection.ClusterSettings;
+import com.mongodb.connection.ConnectionPoolSettings;
 import com.mongodb.connection.SslSettings;
 import com.mongodb.connection.netty.NettyStreamFactoryFactory;
 import com.mongodb.reactivestreams.client.MongoClient;
@@ -31,22 +34,29 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
         this.environment = environment;
     }
 
-    @Bean
-    @Override
-    public MongoClient reactiveMongoClient() {
-        ConnectionString connectionString = new ConnectionString(environment.getProperty("acari.mongo.connectionString", "localhost:27017"));
-        return MongoClients.create(MongoClientSettings.builder()
-                .streamFactoryFactory(NettyStreamFactoryFactory.builder()
-                        .eventLoopGroup(eventLoopGroup)
-                        .build())
-                .sslSettings(SslSettings.builder()
-                        .applyConnectionString(connectionString)
-                        .build())
-                .clusterSettings(ClusterSettings.builder()
-                        .applyConnectionString(connectionString)
-                        .build())
-                .build());
-    }
+
+
+  @Bean
+  @Override
+  public MongoClient reactiveMongoClient() {
+    ConnectionString connectionString = new ConnectionString(environment.getProperty("acari.mongo.connectionString", "localhost:27017"));
+    return MongoClients.create(MongoClientSettings.builder()
+            .streamFactoryFactory(NettyStreamFactoryFactory.builder()
+                    .eventLoopGroup(eventLoopGroup)
+                    .build())
+            .sslSettings(SslSettings.builder()
+                    .applyConnectionString(connectionString)
+                    .build())
+            .credentialList(Lists.newArrayList(
+            MongoCredential.createCredential(
+                environment.getProperty("acari.mongo.username",
+                    "admin"), "admin",
+                environment.getProperty("acari.mongo.pass", "123abc").toCharArray())))
+            .clusterSettings(ClusterSettings.builder()
+                    .applyConnectionString(connectionString)
+                    .build())
+            .build());
+  }
 
     @Override
     protected String getDatabaseName() {

@@ -1,5 +1,5 @@
 db-configs.properties
-keystore.jceks
+*keystore*
 auth-configs.properties
 application.yml
 *.jks
